@@ -1,11 +1,15 @@
 const Projects = () => (
-    <section>
-      <h1 className="text-3xl font-bold mb-4">Projects</h1>
-      <p className="text-lg text-gray-700 dark:text-gray-300">
-        Below you'll find a selection of my recent projects, including TriSwift — a full-stack app for tracking triathlon training.
-      </p>
-    </section>
-  )
+    <section className="space-y-8">
+      <h2 className="text-3xl font-bold">Projects</h2>
   
-  export default Projects
+      <div className="space-y-4">
+        <div className="border p-4 rounded shadow">
+          <h3 className="text-xl font-semibold">TriSwift</h3>
+          <p className="text-gray-600 dark:text-gray-300">Fitness tracking app built for triathletes. Full-stack with React, Node, GraphQL, PostgreSQL, and CI/CD pipelines.</p>
+        </div>
+      </div>
+    </section>
+  );
+  
+  export default Projects;
   
