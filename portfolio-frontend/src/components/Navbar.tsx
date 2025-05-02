@@ -1,37 +1,38 @@
-import { Link, useLocation } from 'react-router-dom'
-import DarkModeToggle from './DarkModeToggle'
+import { Link, useLocation } from 'react-router-dom';
+import DarkModeToggle from './DarkModeToggle';
 
 const Navbar = () => {
-  const location = useLocation()
+  const location = useLocation();
 
   const navItems = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
     { to: '/projects', label: 'Projects' },
     { to: '/contact', label: 'Contact' },
-  ]
+  ];
 
   return (
-    <nav className="bg-gray-100 dark:bg-gray-800 p-4 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
-        <span className="text-xl font-semibold">Sam Williamson</span>
-        <div className="flex items-center gap-4">
+    <header className="bg-gray-100 dark:bg-gray-800 shadow-md">
+      <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <span className="text-xl font-bold text-gray-900 dark:text-white">Sam Williamson</span>
+        <div className="flex items-center gap-6">
           {navItems.map(({ to, label }) => (
             <Link
               key={to}
               to={to}
-              className={`hover:underline ${
-                location.pathname === to ? 'font-bold text-blue-600 dark:text-blue-400' : ''
+              className={`transition-colors duration-200 hover:underline ${
+                location.pathname === to ? 'font-semibold text-blue-600 dark:text-blue-400' : ''
               }`}
+              aria-current={location.pathname === to ? 'page' : undefined}
             >
               {label}
             </Link>
           ))}
           <DarkModeToggle />
         </div>
-      </div>
-    </nav>
-  )
-}
+      </nav>
+    </header>
+  );
+};
 
-export default Navbar
+export default Navbar;
