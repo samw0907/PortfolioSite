@@ -21,8 +21,6 @@ const Projects = () => (
             <li>Log and edit swim, bike, run sessions</li>
             <li>Multi-sport session support with transitions</li>
             <li>Personal records and performance graphs</li>
-            <li>Responsive design with dark mode support</li>
-            <li>Mobile app via React Native</li>
             <li>CI/CD pipeline with Playwright tests and deployment to Fly.io</li>
           </ul>
         </div>

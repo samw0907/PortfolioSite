@@ -17,7 +17,7 @@ const Home = () => (
       />
       <h1 className="text-5xl font-extrabold">Sam Williamson</h1>
       <p className="text-lg text-gray-600 dark:text-gray-300">
-        Full Stack Developer — building functional, user-centric software.
+        Full Stack Developer
       </p>
     </motion.div>
 

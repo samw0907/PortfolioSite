@@ -1,14 +1,167 @@
-const About = () => (
-    <section className="space-y-4">
-    <h2 className="text-3xl font-bold">About Me</h2>
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import HCRD from '../assets/HCRD.png';
+import Soil from '../assets/Soil.png';
+import Drilling from '../assets/Drilling.png';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+
+const geoImages = [
+  {
+    src: Drilling,
+    alt: 'Drilling Image',
+    caption: 'Drilling & Grouting',
+  },
+  {
+    src: Soil,
+    alt: 'Soil Image',
+    caption: 'Environmental Testing & Remediation',
+  },
+];
+
+const About = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [fullscreen, setFullscreen] = useState(false);
+
+  const nextImage = () => {
+    setCurrentImage((currentImage + 1) % geoImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImage((currentImage - 1 + geoImages.length) % geoImages.length);
+  };
+
+  const openFullscreen = () => setFullscreen(true);
+  const closeFullscreen = () => setFullscreen(false);
+
+  return (
+    <section className="space-y-6">
+      <h2 className="text-3xl font-bold">Full Stack Experience</h2>
+
       <p className="text-gray-700 dark:text-gray-300">
-        I'm a self-taught full-stack developer, eager to continue developing my skills!
+        I'm a self-taught full-stack developer, eager to continue expanding my skills!
       </p>
+
       <p className="text-gray-700 dark:text-gray-300">
-        I completed the Helsinki Full Stack Open program and enjoy solving real-world problems with clean, maintainable code.
+        I completed the{' '}
+        <a
+          href="https://fullstackopen.com/en/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+        >
+          Helsinki Full Stack Open
+        </a>{' '}
+        program and enjoy solving real-world problems with clean, maintainable code.
+      </p>
+
+      <h2 className="text-3xl font-bold">Geo-Environmental Consulting</h2>
+
+      <p className="text-gray-700 dark:text-gray-300">
+        My background is in geo-environmental consulting, where I developed a strong foundation in problem-solving, communication, and attention to detail — all of which transfer well to software development.
+      </p>
+
+      <motion.div
+        className="flex flex-col items-center space-y-3"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div
+          className="relative w-60 h-40 sm:h-48 md:h-52 rounded-lg overflow-hidden shadow-lg cursor-pointer"
+          onClick={openFullscreen}
+        >
+          <img
+            src={geoImages[currentImage].src}
+            alt={geoImages[currentImage].alt}
+            className="w-full h-full object-cover transition-all duration-300"
+          />
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+            className="absolute top-1/2 left-2 -translate-y-1/2 bg-white dark:bg-gray-800 bg-opacity-60 rounded-full p-1 hover:bg-opacity-90 transition"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            className="absolute top-1/2 right-2 -translate-y-1/2 bg-white dark:bg-gray-800 bg-opacity-60 rounded-full p-1 hover:bg-opacity-90 transition"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md text-center">
+          {geoImages[currentImage].caption}
+        </p>
+      </motion.div>
+
+      {/* Fullscreen Modal */}
+      {fullscreen && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
+          <button
+            onClick={closeFullscreen}
+            className="absolute top-4 right-4 text-white hover:text-gray-300"
+          >
+            <X size={30} />
+          </button>
+
+          <button
+            onClick={prevImage}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300"
+          >
+            <ChevronLeft size={40} />
+          </button>
+
+          <img
+            src={geoImages[currentImage].src}
+            alt={geoImages[currentImage].alt}
+            className="max-w-full max-h-[80vh] rounded-lg shadow-lg"
+          />
+
+          <button
+            onClick={nextImage}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300"
+          >
+            <ChevronRight size={40} />
+          </button>
+        </div>
+      )}
+
+      <p className="text-gray-700 dark:text-gray-300">
+        I first discovered my interest in problem-solving and automation during a mine stability project in my consulting career...
+      </p>
+
+      <h2 className="text-3xl font-bold">Personal</h2>
+
+      <p className="text-gray-700 dark:text-gray-300">
+        Outside of work, sport has always been a big part of my life...
+      </p>
+
+      <motion.div
+        className="flex flex-col items-center space-y-3"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <img
+          src={HCRD}
+          alt="HCRD Site Image"
+          className="w-60 h-auto rounded-lg shadow-lg object-cover"
+        />
+        <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md text-center">
+          Helsinki City Running Day Half-Marathon
+        </p>
+      </motion.div>
+
+      <p className="text-gray-700 dark:text-gray-300">
+        This year, I’m shifting focus to triathlon and currently training to improve my swimming and cycling, with the goal of completing my first Ironman 70.3 next year.
       </p>
     </section>
   );
-  
-  export default About;
-  
+};
+
+export default About;
