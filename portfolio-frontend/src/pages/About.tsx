@@ -34,7 +34,7 @@ const About = () => {
   const closeFullscreen = () => setFullscreen(false);
 
   return (
-    <section className="space-y-6">
+    <section className="font-josefin space-y-6">
       <h2 className="text-3xl font-bold">Full Stack Experience</h2>
 
       <p className="text-gray-700 dark:text-gray-300">

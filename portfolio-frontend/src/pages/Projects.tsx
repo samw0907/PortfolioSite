@@ -1,5 +1,5 @@
 const Projects = () => (
-    <section className="space-y-8 max-w-4xl mx-auto">
+    <section className="font-josefin space-y-8 max-w-4xl mx-auto">
       <h2 className="text-3xl font-bold">Projects</h2>
   
       <article className="border rounded shadow p-6 space-y-4 bg-white dark:bg-gray-800">
@@ -11,7 +11,7 @@ const Projects = () => (
         <div>
           <h4 className="font-semibold text-gray-800 dark:text-gray-200">Tech Stack:</h4>
           <p className="text-gray-700 dark:text-gray-300">
-            React · TypeScript · Node.js · Express · PostgreSQL · GraphQL · Docker · Fly.io · GitHub Actions (CI/CD)
+            React · TypeScript · Node.js · Express · PostgreSQL · GraphQL · REST API · Docker · Fly.io · GitHub Actions (CI/CD)
           </p>
         </div>
   
@@ -43,6 +43,15 @@ const Projects = () => (
             🚀 Live Demo
           </a>
         </div>
+      </article>
+
+    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Coming Soon...</h3>
+      {/* Coming Soon Project */}
+      <article className="border rounded shadow p-6 space-y-4 bg-white dark:bg-gray-800">
+      <h3 className="text-2xl font-semibold text-blue-600 dark:text-blue-400">MineSecure</h3>
+        <p className="text-gray-700 dark:text-gray-300">
+          Utilizing my specialist knowledge of stability assessments of abandoned mines and remediation through high-pressure grouting, I have begun framing out a concept to better automate the tracking of such projects, reducing human error and increasing productivity.
+        </p>
       </article>
     </section>
   );

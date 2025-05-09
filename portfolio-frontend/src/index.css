@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  @keyframes scroll-fade {
+    0% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+    45% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    55% {
+      opacity: 1;
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+  }
+
+  .animate-scroll-fade {
+    animation: scroll-fade 30s linear infinite;
+    animation-play-state: running;
+  }
+
+  .pause-on-hover:hover .animate-scroll-fade {
+    animation-play-state: paused;
+  }
+}
+
+body {
+  @apply font-sans;
+}
