@@ -132,13 +132,17 @@ const About = () => {
       )}
 
       <p className="text-gray-700 dark:text-gray-300">
-        I first discovered my interest in problem-solving and automation during a mine stability project in my consulting career...
+        I first discovered my interest in problem-solving and automation during a mine stability project in my consulting career. At the time, our team was using a manual system to track drilling and treatment data — color-coded stickers on printed sheets for hundreds or even thousands of data points. It was time-consuming, error-prone, and inefficient.
+        <br /><br />
+        I decided to build an Excel spreadsheet that automated the process: by entering raw data from drilling contractors, the sheet would perform the necessary stability and treatment calculations automatically and create several useful colour-coded tables relating to the drilling grid on-site. This drastically reduced the time spent on manual input and improved both data reliability and quality control.
+        <br /><br />
+        While it wasn’t “real coding” in the traditional sense, the experience sparked a genuine interest in automation, logic, and building tools to solve real problems — and planted the seed for my transition into software development.
       </p>
 
       <h2 className="text-3xl font-bold">Personal</h2>
 
       <p className="text-gray-700 dark:text-gray-300">
-        Outside of work, sport has always been a big part of my life...
+        Outside of work, sport has always been a big part of my life. I represented my school in football, field hockey, badminton, and cross-country running. More recently, I’ve focused on endurance events — in 2024, I completed two half-marathons and my first full marathon.
       </p>
 
       <motion.div
