@@ -35,5 +35,6 @@
 }
 
 body {
-  @apply font-sans;
+
+  @apply font-josefin;
 }

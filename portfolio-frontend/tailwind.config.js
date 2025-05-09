@@ -1,16 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: 'class',
-    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-    theme: {
-      extend: {
-        fontFamily: {
-          heading: ['Poppins', 'sans-serif'],
-          body: ['Inter', 'sans-serif'],
-          josefin: ['Josefin Sans', 'sans-serif'],
+  darkMode: 'class',
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        heading: ['Poppins', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        josefin: ['Josefin Sans', 'sans-serif'],
+      },
+      animation: {
+        'spin-reverse': 'spin-reverse 1s linear infinite',
+      },
+      keyframes: {
+        'spin-reverse': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(-360deg)' },
         },
       },
     },
-    plugins: [],
-  };
-  
+  },
+  plugins: [],
+};

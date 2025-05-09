@@ -4,6 +4,7 @@ import profileImage from '../assets/profileImage.png';
 import Particles from '@tsparticles/react';
 import { loadAll } from '@tsparticles/all';
 import { tsParticles } from '@tsparticles/engine';
+import Loader from '../components/Loader.tsx';
 
 const icons = [
   'js', 'ts', 'react', 'nodejs', 'express', 'postgres',
@@ -12,9 +13,16 @@ const icons = [
 
 const Home = () => {
   const [isDark, setIsDark] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     loadAll(tsParticles);
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -83,6 +91,10 @@ const Home = () => {
       }}
     />
   ), [isDark]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <section className="font-josefin relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-12 bg-white dark:bg-[#0f172a] overflow-hidden">
