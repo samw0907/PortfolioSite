@@ -9,6 +9,15 @@ export default {
         body: ['Inter', 'sans-serif'],
         josefin: ['Josefin Sans', 'sans-serif'],
       },
+      colors: {
+        teal: {
+          300: '#5EEAD4',
+          400: '#2dd4bf',
+          500: '#14B8A6',
+          600: '#0d9488',
+          700: '#0F766E',
+        },
+      },
       animation: {
         'spin-reverse': 'spin-reverse 1s linear infinite',
       },

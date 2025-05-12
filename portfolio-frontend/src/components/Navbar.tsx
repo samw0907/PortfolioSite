@@ -20,8 +20,8 @@ const Navbar = () => {
             <Link
               key={to}
               to={to}
-              className={`transition-colors duration-200 hover:underline ${
-                location.pathname === to ? 'font-semibold text-blue-600 dark:text-blue-400' : ''
+              className={`underline-from-left transition-colors duration-200 ${
+                location.pathname === to ? 'font-semibold text-teal-600 dark:text-teal-400' : 'text-gray-700 dark:text-gray-300'
               }`}
               aria-current={location.pathname === to ? 'page' : undefined}
             >

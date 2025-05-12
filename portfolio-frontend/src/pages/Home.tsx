@@ -111,7 +111,7 @@ const Home = () => {
           <img
             src={profileImage}
             alt="Profile"
-            className="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-4 border-blue-600 shadow-xl object-cover"
+            className="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-4 border-teal-600 shadow-xl object-cover"
           />
         </div>
 
@@ -120,9 +120,10 @@ const Home = () => {
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-josefin font-light tracking-wide text-gray-900 dark:text-white">
             SAM WILLIAMSON
           </h1>
-          <p className="text-lg sm:text-xl text-blue-600 dark:text-blue-400  font-josefin font-light tracking-wide font-medium mt-2">
+          <p className="text-lg sm:text-xl text-teal-600 dark:text-teal-400 font-josefin font-light tracking-wide font-medium mt-2">
             FULL STACK DEVELOPER
           </p>
+
         </div>
 
         {/* Tech Stack Carousel */}
@@ -168,7 +169,7 @@ const Home = () => {
         >
           <a
             href="/projects"
-            className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition"
+            className="px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-lg shadow-md transition"
           >
             View My Work
           </a>

@@ -36,8 +36,8 @@ const Contact = () => {
   };
 
   return (
-    <section className="space-y-6 max-w-xl mx-auto font-josefin space-y-6">
-      <h2 className="text-3xl font-bold">Contact</h2>
+    <section className="space-y-6 max-w-xl mx-auto font-josefin">
+      <h2 className="text-3xl font-bold text-teal-600 dark:text-teal-400">Contact</h2>
       <p className="text-gray-700 dark:text-gray-300">
         Feel free to reach out via email or connect on LinkedIn.
       </p>
@@ -46,7 +46,7 @@ const Contact = () => {
           📧{' '}
           <a
             href="mailto:swilliamson_0907@outlook.com"
-            className="text-blue-600 hover:underline"
+            className="text-teal-600 hover:underline"
           >
             swilliamson_0907@outlook.com
           </a>
@@ -57,7 +57,7 @@ const Contact = () => {
             href="https://www.linkedin.com/in/sam-williamson-739530146/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-teal-600 hover:underline"
           >
             LinkedIn
           </a>
@@ -98,7 +98,7 @@ const Contact = () => {
         ></textarea>
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+          className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 transition"
         >
           Send Message
         </button>
