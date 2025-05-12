@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <header className="bg-gray-100 dark:bg-gray-800 shadow-md">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center font-josefin">
-        <span className="text-xl font-bold text-gray-900 dark:text-white">Sam Williamson</span>
+        <span className="text-xl font-josefin tracking-wide text-gray-900 dark:text-white">Sam Williamson</span>
         <div className="flex items-center gap-6">
           {navItems.map(({ to, label }) => (
             <Link
