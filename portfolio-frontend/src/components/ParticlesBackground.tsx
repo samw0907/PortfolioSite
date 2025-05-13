@@ -35,10 +35,10 @@ const ParticlesBackground: React.FC = () => {
         },
         particles: {
           number: {
-            value: 120, // ⬆ Increased density
+            value: 200,
             density: { enable: true },
           },
-          color: { value: isDark ? '#2dd4bf' : '#14B8A6' }, // Teal 400/500
+          color: { value: isDark ? '#2dd4bf' : '#14B8A6' },
           shape: { type: 'circle' },
           opacity: {
             value: 0.65,
@@ -50,7 +50,7 @@ const ParticlesBackground: React.FC = () => {
             },
           },
           size: {
-            value: { min: 1, max: 3 },
+            value: { min: 1, max: 3},
             animation: {
               enable: true,
               speed: 2,
@@ -65,7 +65,7 @@ const ParticlesBackground: React.FC = () => {
           },
           links: {
             enable: true,
-            color: isDark ? '#5EEAD4' : '#0F766E', // Soft teal lines
+            color: isDark ? '#5EEAD4' : '#0F766E',
             distance: 130,
             opacity: 0.6,
             width: 1,

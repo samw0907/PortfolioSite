@@ -54,10 +54,14 @@ const About = () => {
         program and enjoy solving real-world problems with clean, maintainable code.
       </p>
 
-      <h2 className="text-3xl font-bold">Geo-Environmental Consulting</h2>
+      <h2 className="text-3xl font-bold">My Background</h2>
 
       <p className="text-gray-700 dark:text-gray-300">
-        My background is in geo-environmental consulting, where I developed a strong foundation in problem-solving, communication, and attention to detail — all of which transfer well to software development.
+        I started off in geo-environmental consulting in Glasgow, Scotland after graduating universtiy.
+        I worked in a small team of five, conducting site investigations for some on the UK's largetst house builders.
+        This involved assessing any geo-technical or environmental constraints of a potential site, such as pollution or weak soils.
+        Additionally, old abandnoned coal mines ware a significant risk and we determine if these were present and if necessary, supervise the stabilisation measures.
+
       </p>
 
       <motion.div

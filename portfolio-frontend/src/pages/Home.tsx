@@ -1,9 +1,7 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import profileImage from '../assets/profileImage.png';
-import Particles from '@tsparticles/react';
-import { loadAll } from '@tsparticles/all';
-import { tsParticles } from '@tsparticles/engine';
+import ParticlesBackground from '../components/ParticlesBackground'; // <-- use this
 import Loader from '../components/Loader.tsx';
 
 const icons = [
@@ -12,93 +10,20 @@ const icons = [
 ];
 
 const Home = () => {
-  const [isDark, setIsDark] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    loadAll(tsParticles);
-
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1200);
-
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setIsDark(document.documentElement.classList.contains('dark'));
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    setIsDark(document.documentElement.classList.contains('dark'));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const memoizedParticles = useMemo(() => (
-    <Particles
-      id="tsparticles"
-      engine={tsParticles}
-      className="absolute inset-0 z-0"
-      options={{
-        fullScreen: false,
-        background: {
-          color: { value: isDark ? '#0f172a' : '#ffffff' },
-        },
-        particles: {
-          number: {
-            value: 80,
-            density: { enable: true },
-          },
-          color: { value: isDark ? '#ddd' : '#444' },
-          shape: { type: 'circle' },
-          opacity: {
-            value: 0.65,
-            animation: {
-              enable: true,
-              speed: 0.5,
-              min: 0.3,
-              sync: false,
-            },
-          },
-          size: {
-            value: { min: 1, max: 3 },
-            animation: {
-              enable: true,
-              speed: 2,
-              min: 1,
-              sync: false,
-            },
-          },
-          move: {
-            enable: true,
-            speed: 0.6,
-            outModes: { default: 'out' },
-          },
-          links: {
-            enable: true,
-            color: isDark ? '#ccc' : '#666',
-            distance: 130,
-            opacity: 0.6,
-            width: 1,
-          },
-        },
-      }}
-    />
-  ), [isDark]);
-
-  if (isLoading) {
-    return <Loader />;
-  }
+  if (isLoading) return <Loader />;
 
   return (
     <section className="font-josefin relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-12 bg-white dark:bg-[#0f172a] overflow-hidden">
-      {memoizedParticles}
+      <ParticlesBackground /> {/* ✅ Now correctly loaded */}
 
       <motion.div
         className="relative z-10 flex flex-col items-center space-y-6 max-w-3xl w-full"
@@ -123,7 +48,6 @@ const Home = () => {
           <p className="text-lg sm:text-xl text-teal-600 dark:text-teal-400 font-josefin font-light tracking-wide font-medium mt-2">
             FULL STACK DEVELOPER
           </p>
-
         </div>
 
         {/* Tech Stack Carousel */}
@@ -154,9 +78,8 @@ const Home = () => {
             What I Do
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg mt-2">
-            I build clean, performant web apps using modern technologies and best practices.
-            From backend APIs and databases to frontend components and animations — I love
-            creating tools that are elegant, efficient, and easy to use.
+            I build web apps that are clean and simple to use.
+            I enjoy learning new tools and finding better ways to solve real problems with useful apps.
           </p>
         </div>
 

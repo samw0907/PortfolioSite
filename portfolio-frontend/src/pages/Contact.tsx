@@ -37,7 +37,7 @@ const Contact = () => {
 
   return (
     <section className="space-y-6 max-w-xl mx-auto font-josefin">
-      <h2 className="text-3xl font-bold text-teal-600 dark:text-teal-400">Contact</h2>
+      <h2 className="text-3xl font-bold">Contact</h2>
       <p className="text-gray-700 dark:text-gray-300">
         Feel free to reach out via email or connect on LinkedIn.
       </p>
