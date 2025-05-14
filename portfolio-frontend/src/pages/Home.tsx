@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import profileImage from '../assets/profileImage.png';
-import ParticlesBackground from '../components/ParticlesBackground'; // <-- use this
-import Loader from '../components/Loader.tsx';
+import Loader from '../components/Loader';
+import ParticlesBackground from '../components/ParticlesBackground.tsx';
 
 const icons = [
   'js', 'ts', 'react', 'nodejs', 'express', 'postgres',
@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <section className="font-josefin relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-12 bg-white dark:bg-[#0f172a] overflow-hidden">
-      <ParticlesBackground /> {/* ✅ Now correctly loaded */}
+      <ParticlesBackground />
 
       <motion.div
         className="relative z-10 flex flex-col items-center space-y-6 max-w-3xl w-full"

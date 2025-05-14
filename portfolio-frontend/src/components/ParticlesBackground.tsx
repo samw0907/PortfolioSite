@@ -45,7 +45,7 @@ const ParticlesBackground: React.FC = () => {
             animation: {
               enable: true,
               speed: 0.5,
-              min: 0.3,
+              minimumValue: 0.3,
               sync: false,
             },
           },
@@ -54,7 +54,7 @@ const ParticlesBackground: React.FC = () => {
             animation: {
               enable: true,
               speed: 2,
-              min: 1,
+              minimumValue: 1,
               sync: false,
             },
           },
