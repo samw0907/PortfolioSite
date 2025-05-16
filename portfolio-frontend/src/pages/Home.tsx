@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import profileImage from '../assets/profileImage.png';
+import ColorCVPhotoEdit from '../assets/ColorCVPhotoEdit.png';
+import ColorEdit2 from '../assets/ColorEdit2.png';
+import CVPhotoEdit from '../assets/CVPhotoEdit.png';
+import BWPhotoEdit from '../assets/BWPhotoEdit.png';
 import Loader from '../components/Loader';
 import ParticlesBackground from '../components/ParticlesBackground.tsx';
 
@@ -34,7 +38,7 @@ const Home = () => {
         {/* Profile Image Block */}
         <div className="p-2 rounded-xl bg-white/70 dark:bg-[#0f172a]/80 backdrop-blur-md">
           <img
-            src={profileImage}
+            src={BWPhotoEdit}
             alt="Profile"
             className="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-4 border-teal-600 shadow-xl object-cover"
           />
