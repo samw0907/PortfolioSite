@@ -135,6 +135,7 @@ const About = () => {
         </div>
       )}
 
+{/* 
       <p className="text-gray-700 dark:text-gray-300">
         I first discovered my interest in problem-solving and automation during a mine stability project in my consulting career. At the time, our team was using a manual system to track drilling and treatment data — color-coded stickers on printed sheets for hundreds or even thousands of data points. It was time-consuming, error-prone, and inefficient.
         <br /><br />
@@ -142,6 +143,7 @@ const About = () => {
         <br /><br />
         While it wasn’t “real coding” in the traditional sense, the experience sparked a genuine interest in automation, logic, and building tools to solve real problems — and planted the seed for my transition into software development.
       </p>
+*/}
 
       <h2 className="text-3xl font-bold">Personal</h2>
 
