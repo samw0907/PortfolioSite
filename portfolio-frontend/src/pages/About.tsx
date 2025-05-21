@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import HCRD from '../assets/HCRD.png';
 import Soil from '../assets/Soil.png';
 import Drilling from '../assets/Drilling.png';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const geoImages = [
   {
@@ -18,158 +18,161 @@ const geoImages = [
   },
 ];
 
+const sections = [
+  {
+    title: 'Full Stack Pathway',
+    content: (
+      <>
+        <p className="text-gray-700 dark:text-gray-300">
+          After moving to Finland a few years ago, I focused on learning the language (up to B1.1) while looking for work in my field of geo-environmental consulting. I landed a six-month contract in the industry, but the role was well below my level of experience. It quickly became clear that without fluent, professional Finnish, progressing in that field would be tough.
+        </p>
+        <p>
+          I’ve always been someone who wants to take pride in their work. If I can’t do something well, it’s hard to stay motivated. Since I wasn’t able to work to my full potential, I decided it was time for a change — and jumped into learning web development.
+        </p>
+        <p className="text-gray-700 dark:text-gray-300">
+          I’d actually been thinking about it for a while, especially since the tech industry in Finland is more open to English speakers and doesn’t require a degree in the field. I started with some online coding courses and eventually completed the{' '}
+          <a
+            href="https://fullstackopen.com/en/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+          >
+            Helsinki University Full Stack Open
+          </a>{' '}
+          in Spring 2025.
+        </p>
+        <p>
+          Self-learning has definitely had its challenges, but the deeper I've got into it, the more I've enjoyed it. There’s something really satisfying about building a site from scratch and watching it come to life. Learning this way has taught me to be resourceful and to figure things out on my own — a skill I now really value.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: 'My Background',
+    content: (
+      <div className="flex flex-col md:flex-row gap-6 items-start">
+        <div className="flex-1 space-y-4">
+          <p className="text-gray-700 dark:text-gray-300">
+            I started off in geo-environmental consulting in Glasgow, Scotland after graduating university. I worked in a small team of five, conducting site investigations for some of the UK's largest house builders. This involved assessing any geo-technical or environmental constraints of a potential site, such as pollution or weak soils. Additionally, old abandoned coal mines were a significant risk and we determined if these were present and, if necessary, supervised the stabilisation measures.
+          </p>
+        </div>
+        <motion.div
+          className="flex-shrink-0 w-full md:w-60"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <img
+            src={geoImages[0].src}
+            alt={geoImages[0].alt}
+            className="rounded-lg shadow-lg object-cover w-full h-40 sm:h-48 md:h-52"
+          />
+          <p className="text-sm text-gray-600 dark:text-gray-400 text-center mt-2">
+            {geoImages[0].caption}
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+  {
+    title: 'Personal',
+    content: (
+      <div className="flex flex-col md:flex-row gap-6 items-start">
+        <div className="flex-1 space-y-4">
+          <p className="text-gray-700 dark:text-gray-300">
+            Outside of work, sport has always been a big part of my life.
+            I represented my schools in football, field hockey, badminton, and cross-country running.
+            These days running has been my main focus, completing two half-marathons and my first full marathon in 2024.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
+            Recently I've been shifting into triathlon, putting in more time on the bike and in the pool. My next big goal is the Ironman 70.3 in Tallinn next year.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
+            If you're also a runner or triathlete and interested in my times, you can check out my{' '}
+           <a
+              href="https://www.strava.com/athletes/38491517"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+            >
+              Strava.
+            </a>
+          </p>
+        </div>
+        <motion.div
+          className="flex-shrink-0 w-full md:w-60"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <img
+            src={HCRD}
+            alt="HCRD Site Image"
+            className="rounded-lg shadow-lg object-cover w-full h-auto"
+          />
+          <p className="text-sm text-gray-600 dark:text-gray-400 text-center mt-2">
+            Helsinki City Running Day Half-Marathon
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+];
+
 const About = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [fullscreen, setFullscreen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const nextImage = () => {
-    setCurrentImage((currentImage + 1) % geoImages.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImage((currentImage - 1 + geoImages.length) % geoImages.length);
-  };
-
-  const openFullscreen = () => setFullscreen(true);
-  const closeFullscreen = () => setFullscreen(false);
+  const next = () => setActiveIndex((prev) => (prev + 1) % sections.length);
+  const prev = () => setActiveIndex((prev) => (prev - 1 + sections.length) % sections.length);
+  const setActive = (index: number) => setActiveIndex(index);
 
   return (
-    <section className="font-josefin space-y-6">
-      <h2 className="text-3xl font-bold">Full Stack Experience</h2>
+    <section className="font-josefin space-y-6 max-w-3xl mx-auto px-4 pb-20 relative">
+      {/* Top Tab Navigation */}
+      <div className="flex justify-center gap-6 mt-6 flex-wrap">
+        {sections.map((section, index) => (
+          <button
+            key={section.title}
+            onClick={() => setActive(index)}
+            className={`text-lg font-medium transition relative pb-1 ${
+              index === activeIndex
+                ? 'text-teal-600 dark:text-teal-400 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-teal-600 dark:after:bg-teal-400'
+                : 'text-gray-500 dark:text-gray-400 hover:text-teal-500'
+            }`}
+          >
+            {section.title}
+          </button>
+        ))}
+      </div>
 
-      <p className="text-gray-700 dark:text-gray-300">
-        I'm a self-taught full-stack developer, eager to continue expanding my skills!
-      </p>
-
-      <p className="text-gray-700 dark:text-gray-300">
-        I completed the{' '}
-        <a
-          href="https://fullstackopen.com/en/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
-        >
-          Helsinki Full Stack Open
-        </a>{' '}
-        program and enjoy solving real-world problems with clean, maintainable code.
-      </p>
-
-      <h2 className="text-3xl font-bold">My Background</h2>
-
-      <p className="text-gray-700 dark:text-gray-300">
-        I started off in geo-environmental consulting in Glasgow, Scotland after graduating universtiy.
-        I worked in a small team of five, conducting site investigations for some on the UK's largetst house builders.
-        This involved assessing any geo-technical or environmental constraints of a potential site, such as pollution or weak soils.
-        Additionally, old abandnoned coal mines ware a significant risk and we determine if these were present and if necessary, supervise the stabilisation measures.
-
-      </p>
-
+      {/* Section Content */}
       <motion.div
-        className="flex flex-col items-center space-y-3"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        key={activeIndex}
+        className="space-y-4 mt-8"
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.4 }}
       >
-        <div
-          className="relative w-60 h-40 sm:h-48 md:h-52 rounded-lg overflow-hidden shadow-lg cursor-pointer"
-          onClick={openFullscreen}
-        >
-          <img
-            src={geoImages[currentImage].src}
-            alt={geoImages[currentImage].alt}
-            className="w-full h-full object-cover transition-all duration-300"
-          />
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              prevImage();
-            }}
-            className="absolute top-1/2 left-2 -translate-y-1/2 bg-white dark:bg-gray-800 bg-opacity-60 rounded-full p-1 hover:bg-opacity-90 transition"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              nextImage();
-            }}
-            className="absolute top-1/2 right-2 -translate-y-1/2 bg-white dark:bg-gray-800 bg-opacity-60 rounded-full p-1 hover:bg-opacity-90 transition"
-          >
-            <ChevronRight size={20} />
-          </button>
-        </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md text-center">
-          {geoImages[currentImage].caption}
-        </p>
+        <h2 className="text-3xl font-bold text-teal-600">{sections[activeIndex].title}</h2>
+        {sections[activeIndex].content}
       </motion.div>
 
-      {/* Fullscreen Modal */}
-      {fullscreen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
-          <button
-            onClick={closeFullscreen}
-            className="absolute top-4 right-4 text-white hover:text-gray-300"
-          >
-            <X size={30} />
-          </button>
-
-          <button
-            onClick={prevImage}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300"
-          >
-            <ChevronLeft size={40} />
-          </button>
-
-          <img
-            src={geoImages[currentImage].src}
-            alt={geoImages[currentImage].alt}
-            className="max-w-full max-h-[80vh] rounded-lg shadow-lg"
-          />
-
-          <button
-            onClick={nextImage}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300"
-          >
-            <ChevronRight size={40} />
-          </button>
-        </div>
-      )}
-
-{/* 
-      <p className="text-gray-700 dark:text-gray-300">
-        I first discovered my interest in problem-solving and automation during a mine stability project in my consulting career. At the time, our team was using a manual system to track drilling and treatment data — color-coded stickers on printed sheets for hundreds or even thousands of data points. It was time-consuming, error-prone, and inefficient.
-        <br /><br />
-        I decided to build an Excel spreadsheet that automated the process: by entering raw data from drilling contractors, the sheet would perform the necessary stability and treatment calculations automatically and create several useful colour-coded tables relating to the drilling grid on-site. This drastically reduced the time spent on manual input and improved both data reliability and quality control.
-        <br /><br />
-        While it wasn’t “real coding” in the traditional sense, the experience sparked a genuine interest in automation, logic, and building tools to solve real problems — and planted the seed for my transition into software development.
-      </p>
-*/}
-
-      <h2 className="text-3xl font-bold">Personal</h2>
-
-      <p className="text-gray-700 dark:text-gray-300">
-        Outside of work, sport has always been a big part of my life. I represented my school in football, field hockey, badminton, and cross-country running. More recently, I’ve focused on endurance events — in 2024, I completed two half-marathons and my first full marathon.
-      </p>
-
-      <motion.div
-        className="flex flex-col items-center space-y-3"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
+      {/* Chevron Navigation */}
+      <div className="flex justify-between mt-10 px-4">
+      <button
+        onClick={prev}
+        className="hidden sm:flex items-center justify-center absolute left-[-3rem] top-1/2 -translate-y-1/2 text-teal-600 hover:text-teal-800 dark:hover:text-teal-300 transition px-2"
       >
-        <img
-          src={HCRD}
-          alt="HCRD Site Image"
-          className="w-60 h-auto rounded-lg shadow-lg object-cover"
-        />
-        <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md text-center">
-          Helsinki City Running Day Half-Marathon
-        </p>
-      </motion.div>
+        <ChevronLeft size={36} />
+      </button>
 
-      <p className="text-gray-700 dark:text-gray-300">
-        This year, I’m shifting focus to triathlon and currently training to improve my swimming and cycling, with the goal of completing my first Ironman 70.3 next year.
-      </p>
+      <button
+        onClick={next}
+        className="hidden sm:flex items-center justify-center absolute right-[-3rem] top-1/2 -translate-y-1/2 text-teal-600 hover:text-teal-800 dark:hover:text-teal-300 transition px-2"
+      >
+        <ChevronRight size={36} />
+      </button>
+      </div>
     </section>
   );
 };

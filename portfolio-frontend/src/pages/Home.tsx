@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import profileImage from '../assets/profileImage.png';
-import ColorCVPhotoEdit from '../assets/ColorCVPhotoEdit.png';
-import ColorEdit2 from '../assets/ColorEdit2.png';
-import CVPhotoEdit from '../assets/CVPhotoEdit.png';
 import BWPhotoEdit from '../assets/BWPhotoEdit.png';
 import Loader from '../components/Loader';
 import ParticlesBackground from '../components/ParticlesBackground.tsx';
