@@ -99,10 +99,19 @@ const Home = () => {
           <a
             href="/assets/SamWilliamsonCV.pdf"
             download
-            className="px-8 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-white font-semibold rounded-lg shadow-md transition"
+            className="px-8 py-3 bg-teal-400 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-white font-semibold rounded-lg shadow-md transition"
           >
             📄 Download CV
           </a>
+          <a
+            href="https://github.com/samw0907"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-3 bg-black dark:bg-white hover:bg-gray-900 dark:hover:bg-gray-100 text-white dark:text-black font-semibold rounded-lg shadow-md transition"
+          >
+             GitHub Profile
+          </a>
+
         </motion.div>
       </motion.div>
     </section>
