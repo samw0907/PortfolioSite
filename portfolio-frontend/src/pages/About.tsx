@@ -129,7 +129,7 @@ const About = () => {
   return (
     <section className="font-josefin space-y-6 max-w-3xl mx-auto px-4 pb-20 relative">
       {/* Top Tab Navigation */}
-      <div className="flex justify-center gap-6 mt-6 flex-wrap">
+      <div className="flex justify-center gap-6 mt-6 mb-28 flex-wrap">
         {sections.map((section, index) => (
           <button
             key={section.title}
