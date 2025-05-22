@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import HCRD from '../assets/HCRD.png';
 import Soil from '../assets/Soil.png';
@@ -18,6 +18,43 @@ const geoImages = [
   },
 ];
 
+const MyBackgroundSection = () => {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setImageIndex((prev) => (prev + 1) % geoImages.length);
+    }, 5000); // 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="flex flex-col md:flex-row gap-6 items-start">
+      <div className="flex-1 space-y-4">
+        <p className="text-gray-700 dark:text-gray-300">
+          I started off in geo-environmental consulting in Glasgow, Scotland after graduating from university. I worked in a small team of five, conducting site investigations for some of the UK's largest house builders. This involved assessing any geo-technical or environmental constraints of a potential site, such as pollution or weak soils. Additionally, old abandoned coal mines were a significant risk and we determined if these were present and, if necessary, supervised the stabilisation measures.
+        </p>
+      </div>
+      <motion.div
+        className="flex-shrink-0 w-full md:w-60 relative"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <img
+          src={geoImages[imageIndex].src}
+          alt={geoImages[imageIndex].alt}
+          className="rounded-lg shadow-lg object-cover w-full h-40 sm:h-48 md:h-52"
+        />
+        <p className="text-sm text-gray-600 dark:text-gray-400 text-center mt-2">
+          {geoImages[imageIndex].caption}
+        </p>
+      </motion.div>
+    </div>
+  );
+};
+
 const sections = [
   {
     title: 'Full Stack Pathway',
@@ -30,7 +67,7 @@ const sections = [
           I’ve always been someone who wants to take pride in their work. If I can’t do something well, it’s hard to stay motivated. Since I wasn’t able to work to my full potential, I decided it was time for a change — and jumped into learning web development.
         </p>
         <p className="text-gray-700 dark:text-gray-300">
-          I’d actually been thinking about it for a while, especially since the tech industry in Finland is more open to English speakers and doesn’t require a degree in the field. I started with some online coding courses and eventually completed the{' '}
+          I'd been considering the move for a while, especially  knowing the tech industry in Finland is more open to English speakers and often doesn’t require a degree in the field. I started with some online coding courses and eventually completed the{' '}
           <a
             href="https://fullstackopen.com/en/"
             target="_blank"
@@ -49,30 +86,7 @@ const sections = [
   },
   {
     title: 'My Background',
-    content: (
-      <div className="flex flex-col md:flex-row gap-6 items-start">
-        <div className="flex-1 space-y-4">
-          <p className="text-gray-700 dark:text-gray-300">
-            I started off in geo-environmental consulting in Glasgow, Scotland after graduating university. I worked in a small team of five, conducting site investigations for some of the UK's largest house builders. This involved assessing any geo-technical or environmental constraints of a potential site, such as pollution or weak soils. Additionally, old abandoned coal mines were a significant risk and we determined if these were present and, if necessary, supervised the stabilisation measures.
-          </p>
-        </div>
-        <motion.div
-          className="flex-shrink-0 w-full md:w-60"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <img
-            src={geoImages[0].src}
-            alt={geoImages[0].alt}
-            className="rounded-lg shadow-lg object-cover w-full h-40 sm:h-48 md:h-52"
-          />
-          <p className="text-sm text-gray-600 dark:text-gray-400 text-center mt-2">
-            {geoImages[0].caption}
-          </p>
-        </motion.div>
-      </div>
-    ),
+    content: <MyBackgroundSection />,
   },
   {
     title: 'Personal',
@@ -85,7 +99,7 @@ const sections = [
             These days running has been my main focus, completing two half-marathons and my first full marathon in 2024.
           </p>
           <p className="text-gray-700 dark:text-gray-300">
-            Recently I've been shifting into triathlon, putting in more time on the bike and in the pool. My next big goal is the Ironman 70.3 in Tallinn next year.
+            Recently I've been shifting into triathlon, putting in more time on the bike and in the pool. My next big goal is the Ironman 70.3 Tallinn next year.
           </p>
           <p className="text-gray-700 dark:text-gray-300">
             If you're also a runner or triathlete and interested in my times, you can check out my{' '}
