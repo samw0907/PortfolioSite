@@ -6,8 +6,8 @@ const HomeTechStack = () => {
       initial={{ opacity: 0, scale: 0.6, y: 200 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      viewport={{ once: false }}
-      className="relative font-josefin px-6 py-24 bg-gray-100 dark:bg-[#0b1120] text-gray-800 dark:text-gray-100 overflow-hidden"
+      viewport={{ once: false, amount: 0.01 }}
+      className="relative font-josefin py-14 w-full bg-gray-100 dark:bg-[#0b1120] text-gray-800 dark:text-gray-100 overflow-hidden"
     >
       {/* Animated gradient divider at top */}
       <motion.div
