@@ -6,8 +6,8 @@ import ParticlesBackground from '../components/ParticlesBackground.tsx';
 import HomeTechStack from '../components/HomeTechStack.tsx';
 
 const icons = [
-  'js', 'ts', 'react', 'nodejs', 'express', 'postgres',
-  'docker', 'graphql', 'git', 'vite', 'jest', 'github'
+  'github', 'express', 'react', 'js', 'ts', 'nodejs', 'docker',
+   'graphql', 'mongo', 'postgres', 'vite', 'jest', 'postman'
 ];
 
 const Home = () => {
