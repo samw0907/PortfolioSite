@@ -10,12 +10,6 @@ const icons = [
   'graphql', 'mongo', 'postgres', 'vite', 'jest', 'postman',
 ];
 
-const FullBleed = ({ children }: { children: React.ReactNode }) => (
-  <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-    {children}
-  </div>
-);
-
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,8 +23,9 @@ const Home = () => {
   if (isLoading) return <Loader />;
 
   return (
+    <div>
     <div className="relative bg-transparent">
-      {/* ✅ Particle Background as lowest layer */}
+      {/* ✅ Particle Background*/}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <ParticlesBackground />
       </div>
@@ -125,11 +120,10 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* ✅ TECH STACK SECTION */}
-<FullBleed>
-  <HomeTechStack />
-</FullBleed>
     </div>
+          {/* ✅ TECH STACK SECTION */}
+      <HomeTechStack />
+      </div>
   );
 };
 
