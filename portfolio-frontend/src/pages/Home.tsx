@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import BWPhotoEdit from '../assets/BWPhotoEdit.png';
 import Loader from '../components/Loader';
 import ParticlesBackground from '../components/ParticlesBackground.tsx';
+import HomeTechStack from '../components/HomeTechStack.tsx';
 
 const icons = [
   'js', 'ts', 'react', 'nodejs', 'express', 'postgres',
@@ -22,6 +23,7 @@ const Home = () => {
   if (isLoading) return <Loader />;
 
   return (
+    <div>
     <section className="font-josefin relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-12 bg-white dark:bg-[#0f172a] overflow-hidden">
       <ParticlesBackground />
 
@@ -115,6 +117,8 @@ const Home = () => {
         </motion.div>
       </motion.div>
     </section>
+    <HomeTechStack />
+    </div>
   );
 };
 

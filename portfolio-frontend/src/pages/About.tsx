@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import HCRD from '../assets/HCRD.png';
 import Soil from '../assets/Soil.png';
 import Drilling from '../assets/Drilling.png';
+import ContaminatedSoil from '../assets/ContaminatedSoil.jpeg';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const geoImages = [
@@ -16,6 +17,11 @@ const geoImages = [
     alt: 'Soil Image',
     caption: 'Environmental Testing & Remediation',
   },
+    {
+    src: ContaminatedSoil,
+    alt: 'Contaminated Soil Image',
+    caption: 'Contaminated Soils',
+  },
 ];
 
 const MyBackgroundSection = () => {
@@ -24,7 +30,7 @@ const MyBackgroundSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setImageIndex((prev) => (prev + 1) % geoImages.length);
-    }, 5000); // 5 seconds
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
