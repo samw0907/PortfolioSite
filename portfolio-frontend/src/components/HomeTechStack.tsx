@@ -2,7 +2,13 @@ import { motion } from 'framer-motion';
 
 const HomeTechStack = () => {
   return (
-    <section className="relative font-josefin px-6 py-24 bg-gray-100 dark:bg-[#0b1120] text-gray-800 dark:text-gray-100 overflow-hidden">
+    <motion.section
+      initial={{ opacity: 0, scale: 0.6, y: 200 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 1.2 }}
+      viewport={{ once: false }}
+      className="relative font-josefin px-6 py-24 bg-gray-100 dark:bg-[#0b1120] text-gray-800 dark:text-gray-100 overflow-hidden"
+    >
       {/* Animated gradient divider at top */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -17,7 +23,7 @@ const HomeTechStack = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-center"
         >
           <h2 className="text-4xl font-bold mb-4 text-teal-600 dark:text-teal-400">
@@ -30,10 +36,10 @@ const HomeTechStack = () => {
 
         <div className="grid gap-12 md:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false }}
             className="space-y-6"
           >
             <h3 className="text-2xl font-semibold text-teal-500">Languages & Platforms</h3>
@@ -47,10 +53,10 @@ const HomeTechStack = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false }}
             className="space-y-6"
           >
             <h3 className="text-2xl font-semibold text-teal-500">Databases</h3>
@@ -61,7 +67,7 @@ const HomeTechStack = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
