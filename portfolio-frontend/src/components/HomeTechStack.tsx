@@ -1,5 +1,13 @@
 import { motion } from 'framer-motion';
 
+const stackItems = [
+  { title: 'Languages & Platforms', content: 'JavaScript, TypeScript, Node.js, HTML, CSS, SQL, Java' },
+  { title: 'Frameworks & Libraries', content: 'React, Redux, Express, Apollo Client, Apollo Server, Sequelize, Vite' },
+  { title: 'Tools & DevOps', content: 'Docker, GitHub Actions, Fly, Postman, ESLint' },
+  { title: 'Databases', content: 'PostgreSQL, MongoDB' },
+  { title: 'Testing', content: 'Vitest, Jest, Playwright' },
+];
+
 const HomeTechStack = () => {
   return (
     <motion.section
@@ -7,11 +15,7 @@ const HomeTechStack = () => {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: false, amount: 0.01 }}
-      className="relative font-josefin py-14 bg-gray-100 dark:bg-[#0b1120] text-gray-800 dark:text-gray-100 overflow-hidden"
-      style={{
-        width: '100vw',
-        marginLeft: 'calc(-50vw + 50%)',
-      }}
+      className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen font-josefin py-14 bg-gray-100 dark:bg-[#0b1120] text-gray-800 dark:text-gray-100 overflow-hidden"
     >
       {/* Animated gradient divider at top */}
       <motion.div
@@ -38,37 +42,20 @@ const HomeTechStack = () => {
           </p>
         </motion.div>
 
-        <div className="grid gap-12 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="space-y-6"
-          >
-            <h3 className="text-2xl font-semibold text-teal-500">Languages & Platforms</h3>
-            <p>JavaScript, TypeScript, Node.js, HTML, CSS, SQL, Java</p>
-
-            <h3 className="text-2xl font-semibold text-teal-500">Frameworks & Libraries</h3>
-            <p>React, Redux, Express, Apollo Client, Apollo Server, Sequelize, Vite</p>
-
-            <h3 className="text-2xl font-semibold text-teal-500">Tools & DevOps</h3>
-            <p>Docker, GitHub Actions, Fly, Postman, ESLint</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="space-y-6"
-          >
-            <h3 className="text-2xl font-semibold text-teal-500">Databases</h3>
-            <p>PostgreSQL, MongoDB</p>
-
-            <h3 className="text-2xl font-semibold text-teal-500">Testing</h3>
-            <p>Vitest, Jest, Playwright</p>
-          </motion.div>
+        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
+          {stackItems.map(({ title, content }, index) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false }}
+              className="space-y-2"
+            >
+              <h3 className="text-2xl font-semibold text-teal-500">{title}</h3>
+              <p>{content}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </motion.section>
@@ -76,4 +63,3 @@ const HomeTechStack = () => {
 };
 
 export default HomeTechStack;
-
