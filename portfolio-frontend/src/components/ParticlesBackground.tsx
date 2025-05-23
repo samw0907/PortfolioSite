@@ -26,8 +26,8 @@ const ParticlesBackground: React.FC = () => {
   const memoizedParticles = useMemo(() => (
     <Particles
       id="tsparticles"
-      engine={tsParticles}
       className="absolute inset-0 z-0"
+      {...({ engine: tsParticles } as any)} // <-- TypeScript-safe override
       options={{
         fullScreen: false,
         background: {
@@ -45,16 +45,14 @@ const ParticlesBackground: React.FC = () => {
             animation: {
               enable: true,
               speed: 0.5,
-              minimumValue: 0.3,
               sync: false,
             },
           },
           size: {
-            value: { min: 1, max: 3},
+            value: { min: 1, max: 3 },
             animation: {
               enable: true,
               speed: 2,
-              minimumValue: 1,
               sync: false,
             },
           },

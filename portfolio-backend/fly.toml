@@ -1,0 +1,35 @@
+# fly.toml app configuration file generated for portfolio-backend-withered-sound-1453
+
+app = "portfolio-backend-withered-sound-1453"
+primary_region = "arn"
+
+[build]
+  dockerfile = "./Dockerfile"
+
+[env]
+  PORT = "3001"
+
+[[services]]
+  internal_port = 3001
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+[http_service]
+  internal_port = 3001
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1

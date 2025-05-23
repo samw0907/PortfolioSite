@@ -18,7 +18,7 @@ const Contact = () => {
     setStatus('Sending...');
 
     try {
-      const res = await fetch('http://localhost:3001/api/contact', {
+      const res = await fetch('https://portfolio-backend-withered-sound-1453.fly.dev/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
