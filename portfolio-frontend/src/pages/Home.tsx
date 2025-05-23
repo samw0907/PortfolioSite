@@ -4,6 +4,8 @@ import BWPhotoEdit from '../assets/BWPhotoEdit.png';
 import Loader from '../components/Loader';
 import ParticlesBackground from '../components/ParticlesBackground.tsx';
 import HomeTechStack from '../components/HomeTechStack.tsx';
+import Spline3D from '../components/Spline3D';
+import SplineHint from '../components/SplineHint';
 
 const icons = [
   'github', 'express', 'react', 'js', 'ts', 'nodejs', 'docker',
@@ -117,6 +119,8 @@ const Home = () => {
         {/* ✅ Tech Stack Section */}
         <HomeTechStack />
       </div>
+      <Spline3D />
+      <SplineHint />
     </div>
   );
 };
