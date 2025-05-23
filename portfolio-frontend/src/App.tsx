@@ -10,8 +10,9 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 overflow-x-hidden">
       <Navbar />
-      
-      <main className="flex-grow px-4 py-8">
+
+      {/* Make main grow but not prevent footer from appearing */}
+      <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -21,6 +22,7 @@ function App() {
         </Routes>
       </main>
 
+      {/* Footer always visible */}
       <Footer />
     </div>
   );
