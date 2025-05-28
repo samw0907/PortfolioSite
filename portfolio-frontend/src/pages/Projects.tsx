@@ -5,7 +5,7 @@ const Projects = () => (
     <article className="border rounded shadow p-6 space-y-4 bg-white dark:bg-gray-800">
       <h3 className="text-2xl font-semibold text-teal-600 dark:text-teal-400">TriSwift</h3>
       <p className="text-gray-700 dark:text-gray-300">
-        A full-featured fitness tracking app built specifically for triathletes. TriSwift allows users to log workouts, track performance over time, and manage multi-sport sessions including transitions.
+        A fitness tracking app built specifically for triathletes. TriSwift allows users to log sessions, either for single sports or multi-sport sessions including transitions.
       </p>
 
       <div>
