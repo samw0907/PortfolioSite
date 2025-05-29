@@ -5,7 +5,10 @@ const Projects = () => (
     <article className="border rounded shadow p-6 space-y-4 bg-white dark:bg-gray-800">
       <h3 className="text-2xl font-semibold text-teal-600 dark:text-teal-400">TriSwift</h3>
       <p className="text-gray-700 dark:text-gray-300">
-        A fitness tracking app built specifically for triathletes. TriSwift allows users to log sessions, either for single sports or multi-sport sessions including transitions.
+        An activity tracking app built specifically for triathletes.
+      </p>
+      <p>
+        TriSwift allows users to log sessions, either for single sports or multi-sport sessions including transitions.
       </p>
 
       <div>
@@ -19,8 +22,10 @@ const Projects = () => (
         <h4 className="font-semibold text-gray-800 dark:text-gray-200">Features:</h4>
         <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
           <li>Log and edit swim, bike, run sessions</li>
-          <li>Multi-sport session support with transitions</li>
-          <li>Personal records and performance graphs</li>
+          <li>Log Multi-sport session support with transition inputs</li>
+          <li>Automaticlly generated top 3 Personal Bests for a range of event distances</li>
+          <li>Pace Calculator feature</li>
+          <li>Total distance tracking, displayed with line graphs</li>
           <li>CI/CD pipeline with Playwright tests and deployment to Fly.io</li>
         </ul>
       </div>
