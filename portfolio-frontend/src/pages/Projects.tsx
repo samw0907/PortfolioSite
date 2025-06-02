@@ -25,7 +25,7 @@ const Projects = () => (
           <li>Log Multi-sport session support with transition inputs</li>
           <li>Automaticlly generated top 3 Personal Bests for a range of event distances</li>
           <li>Pace Calculator feature</li>
-          <li>Total distance tracking, displayed with line graphs</li>
+          <li>Total distance tracking, displayed with line graphs</li>cd
           <li>CI/CD pipeline with Playwright tests and deployment to Fly.io</li>
         </ul>
       </div>

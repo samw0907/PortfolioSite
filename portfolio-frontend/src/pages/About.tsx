@@ -39,7 +39,10 @@ const MyBackgroundSection = () => {
     <div className="flex flex-col md:flex-row gap-6 items-start">
       <div className="flex-1 space-y-4">
         <p className="text-gray-700 dark:text-gray-300">
-          I started off in geo-environmental consulting in Glasgow, Scotland after graduating from university. I worked in a small team of five, conducting site investigations for some of the UK's largest house builders. This involved assessing any geo-technical or environmental constraints of a potential site, such as pollution or weak soils. Additionally, old abandoned coal mines were a significant risk and we determined if these were present and, if necessary, supervised the stabilisation measures.
+          I started off in geo-environmental consulting in Glasgow, Scotland after graduating from university.
+          I worked in a small team of five, conducting site investigations for some of the UK's largest house builders.
+          This involved assessing any geo-technical or environmental constraints of a potential site, such as pollution or weak soils.
+          Additionally, old abandoned coal mines were a significant risk and we determined if these were present and, if necessary, supervised the stabilisation measures.
         </p>
       </div>
       <motion.div
@@ -195,6 +198,6 @@ const About = () => {
       </div>
     </section>
   );
-};
+}
 
 export default About;
