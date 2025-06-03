@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import { motion, useAnimation, Variants } from 'framer-motion'
+import { motion, useAnimation, Variants, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { AnimatePresence } from 'framer-motion'
 import HCRD from '../assets/HCRD.png'
 import Soil from '../assets/Soil.png'
 import Drilling from '../assets/Drilling.png'
@@ -96,6 +95,15 @@ const containerVariants: Variants = {
   exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
 }
 
+const lineContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6 },
+  },
+  exit: { opacity: 0, transition: { duration: 0.3 } },
+}
+
 const letterVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -112,49 +120,102 @@ interface AnimatedHeadingProps {
 
 const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({ children, activeIndex }) => {
   const controls = useAnimation()
+  const [underlineStarted, setUnderlineStarted] = useState(false)
 
   useEffect(() => {
     controls.start('visible')
+    setUnderlineStarted(false)
   }, [activeIndex, controls])
 
-  const specialLineBreaks = {
-    'Full Stack Pathway': ['Full Stack', 'Pathway'],
-    'My Background': ['My', 'Background'],
+  useEffect(() => {
+    const text = typeof children === 'string' ? children.toUpperCase() : ''
+    const lettersCount = text.replace(/\s/g, '').length
+    const timeout = lettersCount * 50 + 350
+    const timer = setTimeout(() => setUnderlineStarted(true), timeout)
+    return () => clearTimeout(timer)
+  }, [children])
+
+  const specialLineBreaks: Record<string, string[]> = {
+    'Full Stack Pathway': ['FULL STACK', 'PATHWAY'],
+    'My Background': ['MY', 'BACKGROUND'], // force two lines correctly
   }
 
   const lines =
     typeof children === 'string' && specialLineBreaks[children]
       ? specialLineBreaks[children]
-      : [typeof children === 'string' ? children : '']
+      : [typeof children === 'string' ? children.toString().toUpperCase() : '']
 
   return (
     <motion.h1
       initial="hidden"
       animate={controls}
-      exit="exit"   
+      exit="exit"
       variants={containerVariants}
-      className="text-[9rem] font-light tracking-wide text-teal-600 dark:text-teal-400 text-center mb-[50vh] mt-[12rem] select-none leading-none"
-      style={{ whiteSpace: 'pre-line' }}
+      // Slightly narrower font size & wider container to avoid line breaks mid word
+      className="max-w-[850px] mx-auto text-[8.5rem] font-light tracking-wide text-white dark:text-white text-center mb-[50vh] mt-[12rem] select-none leading-[1.4]"
+      style={{ whiteSpace: 'pre-line', wordBreak: 'normal' }}
     >
-      {lines.map((line, lineIndex) => {
-        const upperLine = line.toUpperCase();
-        const letters = upperLine.split('').map((l) => (l === ' ' ? '\u00A0' : l));
+      <AnimatePresence mode="popLayout">
+        {lines.map((line, lineIndex) => {
+          const letters = line.split('').map((l) => (l === ' ' ? '\u00A0' : l))
 
-        return (
-          <div key={lineIndex} style={{ display: 'block', lineHeight: 1.1 }}>
-            {letters.map((letter, i) => (
-              <motion.span
-                key={i}
-                variants={letterVariants}
-                style={{ display: 'inline-block' }}
-                aria-hidden={letter === '\u00A0' ? true : undefined}
-              >
-                {letter}
+          return (
+            <motion.div
+              key={lineIndex}
+              style={{
+                display: 'inline-block',
+                position: 'relative',
+                paddingBottom: 8,
+                marginBottom: lineIndex === 0 ? 30 : 0, // bigger spacing between lines
+                whiteSpace: 'nowrap', // Prevent breaking within the line
+              }}
+              variants={lineContainerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              {/* Letters container */}
+              <motion.span style={{ display: 'inline-block' }} variants={containerVariants}>
+                {letters.map((letter, i) => (
+                  <motion.span
+                    key={i}
+                    variants={letterVariants}
+                    style={{ display: 'inline-block' }}
+                    aria-hidden={letter === '\u00A0' ? true : undefined}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
               </motion.span>
-            ))}
-          </div>
-        )
-      })}
+
+              {/* Underline bar */}
+              {underlineStarted && (
+                <motion.span
+                  aria-hidden="true"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  exit={{ scaleX: 0 }}
+                  transition={{
+                    delay: lineIndex * 0.6, // stagger underline by 0.6s per line
+                    duration: 0.6,
+                    ease: 'easeOut',
+                  }}
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    height: 4,
+                    width: '100%',
+                    backgroundColor: '#14b8a6',
+                    transformOrigin: 'left',
+                    borderRadius: 2,
+                  }}
+                />
+              )}
+            </motion.div>
+          )
+        })}
+      </AnimatePresence>
     </motion.h1>
   )
 }
@@ -283,7 +344,7 @@ const About = () => {
       {/* Animated Section Heading */}
       <AnimatePresence mode="wait">
         <AnimatedHeading
-          key={activeIndex}   // triggers remount
+          key={activeIndex} // triggers remount and re-animation
           activeIndex={activeIndex}
         >
           {sections[activeIndex].title}
