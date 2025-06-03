@@ -70,7 +70,7 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({ children, activeIndex
       animate={controls}
       exit="exit"
       variants={containerVariants}
-      className="max-w-[850px] mx-auto text-[4.25rem] font-light tracking-wide text-white dark:text-white text-center mb-[14vh] mt-[6rem] select-none leading-[1.4]"
+      className="max-w-[850px] mx-auto text-[5rem] font-light tracking-wide text-gray-900 dark:text-white text-center mb-[14vh] mt-[6rem] select-none leading-[1.4]"
       style={{ whiteSpace: 'pre-line', wordBreak: 'normal' }}
     >
       <AnimatePresence mode="popLayout">
