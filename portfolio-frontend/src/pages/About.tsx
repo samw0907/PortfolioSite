@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { AnimatePresence } from 'framer-motion'
 import HCRD from '../assets/HCRD.png'
 import Soil from '../assets/Soil.png'
 import Drilling from '../assets/Drilling.png'
@@ -8,21 +9,9 @@ import ContaminatedSoil from '../assets/ContaminatedSoil.jpeg'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const geoImages = [
-  {
-    src: Drilling,
-    alt: 'Drilling Image',
-    caption: 'Drilling & Grouting',
-  },
-  {
-    src: Soil,
-    alt: 'Soil Image',
-    caption: 'Environmental Testing & Remediation',
-  },
-  {
-    src: ContaminatedSoil,
-    alt: 'Contaminated Soil Image',
-    caption: 'Contaminated Soils',
-  },
+  { src: Drilling, alt: 'Drilling Image', caption: 'Drilling & Grouting' },
+  { src: Soil, alt: 'Soil Image', caption: 'Environmental Testing & Remediation' },
+  { src: ContaminatedSoil, alt: 'Contaminated Soil Image', caption: 'Contaminated Soils' },
 ]
 
 const MyBackgroundSection = () => {
@@ -32,7 +21,6 @@ const MyBackgroundSection = () => {
     const interval = setInterval(() => {
       setImageIndex((prev) => (prev + 1) % geoImages.length)
     }, 4000)
-
     return () => clearInterval(interval)
   }, [])
 
@@ -77,7 +65,7 @@ const AnimatedParagraph: React.FC<{ children: React.ReactNode }> = ({ children }
     }
   }, [controls, inView])
 
-  const variants = {
+  const variants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   }
@@ -95,32 +83,78 @@ const AnimatedParagraph: React.FC<{ children: React.ReactNode }> = ({ children }
   )
 }
 
-const AnimatedHeading: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const containerVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.05,
+      when: 'beforeChildren',
+    },
+  },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+}
+
+const letterVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { ease: 'easeOut' },
+  },
+}
+
+interface AnimatedHeadingProps {
+  children: React.ReactNode
+  activeIndex: number
+}
+
+const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({ children, activeIndex }) => {
   const controls = useAnimation()
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 })
 
   useEffect(() => {
-    if (inView) {
-      controls.start('visible')
-    } else {
-      controls.start('hidden')
-    }
-  }, [controls, inView])
+    controls.start('visible')
+  }, [activeIndex, controls])
 
-  const variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  const specialLineBreaks = {
+    'Full Stack Pathway': ['Full Stack', 'Pathway'],
+    'My Background': ['My', 'Background'],
   }
+
+  const lines =
+    typeof children === 'string' && specialLineBreaks[children]
+      ? specialLineBreaks[children]
+      : [typeof children === 'string' ? children : '']
 
   return (
     <motion.h1
-      ref={ref}
       initial="hidden"
       animate={controls}
-      variants={variants}
-      className="text-[9rem] font-light tracking-wide text-teal-600 dark:text-teal-400 text-center mb-[70vh] select-none leading-none"
+      exit="exit"   
+      variants={containerVariants}
+      className="text-[9rem] font-light tracking-wide text-teal-600 dark:text-teal-400 text-center mb-[50vh] mt-[12rem] select-none leading-none"
+      style={{ whiteSpace: 'pre-line' }}
     >
-      {children}
+      {lines.map((line, lineIndex) => {
+        const upperLine = line.toUpperCase();
+        const letters = upperLine.split('').map((l) => (l === ' ' ? '\u00A0' : l));
+
+        return (
+          <div key={lineIndex} style={{ display: 'block', lineHeight: 1.1 }}>
+            {letters.map((letter, i) => (
+              <motion.span
+                key={i}
+                variants={letterVariants}
+                style={{ display: 'inline-block' }}
+                aria-hidden={letter === '\u00A0' ? true : undefined}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </div>
+        )
+      })}
     </motion.h1>
   )
 }
@@ -155,14 +189,8 @@ const FullStackPathway = () => (
 )
 
 const sections = [
-  {
-    title: 'Full Stack Pathway',
-    content: <FullStackPathway />,
-  },
-  {
-    title: 'My Background',
-    content: <MyBackgroundSection />,
-  },
+  { title: 'Full Stack Pathway', content: <FullStackPathway /> },
+  { title: 'My Background', content: <MyBackgroundSection /> },
   {
     title: 'Personal',
     content: (
@@ -217,7 +245,7 @@ const About = () => {
 
   return (
     <section className="font-josefin max-w-5xl mx-auto px-6 pb-20 relative">
-      {/* Sticky Top Tab Navigation with chevrons */}
+      {/* Sticky Top Tab Navigation */}
       <div className="sticky top-0 bg-white dark:bg-gray-900 z-20 border-b border-transparent flex items-center justify-center gap-4 py-4 px-2">
         <button
           onClick={prev}
@@ -253,7 +281,14 @@ const About = () => {
       </div>
 
       {/* Animated Section Heading */}
-      <AnimatedHeading>{sections[activeIndex].title}</AnimatedHeading>
+      <AnimatePresence mode="wait">
+        <AnimatedHeading
+          key={activeIndex}   // triggers remount
+          activeIndex={activeIndex}
+        >
+          {sections[activeIndex].title}
+        </AnimatedHeading>
+      </AnimatePresence>
 
       {/* Section Content */}
       <motion.div
