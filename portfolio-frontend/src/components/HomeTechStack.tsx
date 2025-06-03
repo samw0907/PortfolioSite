@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 const stackItems = [
-  { title: 'Languages & Platforms', content: 'JavaScript, TypeScript, Node.js, HTML, CSS, SQL, Java' },
+  { title: 'Languages & Platforms', content: 'JavaScript, TypeScript, Node.js, HTML, CSS, SQL, Java, Tailwind' },
   { title: 'Frameworks & Libraries', content: 'React, Redux, Express, Apollo Client, Apollo Server, Sequelize, Vite' },
   { title: 'Tools & DevOps', content: 'Docker, GitHub Actions, Fly, Postman, ESLint' },
   { title: 'Databases', content: 'PostgreSQL, MongoDB' },
