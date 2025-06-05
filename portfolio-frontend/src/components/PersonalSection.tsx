@@ -4,15 +4,15 @@ import HCRD from '../assets/HCRD.png'
 const PersonalSection = () => (
   <div className="flex flex-col md:flex-row gap-6 items-start">
     <div className="flex-1 space-y-6">
-      <p className="text-2xl text-gray-700 dark:text-gray-300">
+      <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-300">
         Outside of work, sport has always been a big part of my life.
         I represented my schools in football, field hockey, badminton, and cross-country running.
         These days running has been my main focus, completing two half-marathons and my first full marathon in 2024.
       </p>
-      <p className="text-2xl text-gray-700 dark:text-gray-300">
+      <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-300">
         Recently I've been shifting into triathlon, putting in more time on the bike and in the pool. My next big goal is the Ironman 70.3 Tallinn next year.
       </p>
-      <p className="text-2xl text-gray-700 dark:text-gray-300">
+      <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-300">
         If you're also a runner or triathlete and interested in my times, you can check out my{' '}
         <a
           href="https://www.strava.com/athletes/38491517"
