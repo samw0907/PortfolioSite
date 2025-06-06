@@ -97,18 +97,23 @@ const MyBackgroundSection = () => {
           variants={fadeUpVariants}
         >
           {/* Points */}
-<ul
-  className="flex-1 list-disc list-inside pl-6 space-y-3 text-lg
-    text-teal-900
-    dark:text-gray-300
-  "
-  style={{ textIndent: '-0.75rem' }}
->
-  {points.map((point, i) => (
-    <li key={i}>{point}</li>
-  ))}
-</ul>
-
+          <ul
+            className="flex-1 list-disc list-inside space-y-3 text-lg text-teal-900 dark:text-gray-300"
+              style={{ paddingLeft: 0 }}
+          >
+            {points.map((point, i) => (
+              <li
+                key={i}
+                style={{
+                paddingLeft: '1.2em',
+                textIndent: '-1.2em',
+                }}
+              >
+              {point}
+              </li>
+            ))}
+          </ul>
+          
           {/* Image */}
           <div className="flex-shrink-0 max-w-xs w-full rounded-lg overflow-hidden">
           <img

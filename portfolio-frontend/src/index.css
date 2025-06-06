@@ -105,3 +105,13 @@ body {
 .invisibleUntilAnimate.animate {
   opacity: 1;
 }
+
+ul {
+  list-style-position: inside;
+  padding-left: 0; /* No extra padding on ul */
+}
+
+li {
+  padding-left: 1.2em;   /* indent text */
+  text-indent: -1.2em;   /* pull bullet back */
+}
