@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useAnimation, Variants } from 'framer-motion'
 interface AnimatedHeadingProps {
   children: React.ReactNode
   activeIndex: number
+  onAnimationComplete?: () => void
 }
 
 const containerVariants: Variants = {
@@ -37,7 +38,11 @@ const letterVariants: Variants = {
   },
 }
 
-const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({ children, activeIndex }) => {
+const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
+  children,
+  activeIndex,
+  onAnimationComplete,
+}) => {
   const controls = useAnimation()
   const [underlineStarted, setUnderlineStarted] = useState(false)
 
@@ -49,10 +54,16 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({ children, activeIndex
   useEffect(() => {
     const text = typeof children === 'string' ? children.toUpperCase() : ''
     const lettersCount = text.replace(/\s/g, '').length
-    const timeout = lettersCount * 50 + 350
-    const timer = setTimeout(() => setUnderlineStarted(true), timeout)
+    // Time for letters + 350ms + underline animation duration (600ms)
+    const timeout = lettersCount * 50 + 350 + 600
+
+    const timer = setTimeout(() => {
+      setUnderlineStarted(true)
+      if (onAnimationComplete) onAnimationComplete()
+    }, timeout)
+
     return () => clearTimeout(timer)
-  }, [children])
+  }, [children, onAnimationComplete])
 
   const specialLineBreaks: Record<string, string[]> = {
     'Full Stack Pathway': ['FULL STACK', 'PATHWAY'],
@@ -126,7 +137,8 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({ children, activeIndex
                       left: 0,
                       height: 4,
                       width: '100%',
-                      backgroundImage: 'linear-gradient(to right, transparent, #14b8a6, transparent)',
+                      backgroundImage:
+                        'linear-gradient(to right, transparent, #14b8a6, transparent)',
                       borderRadius: 2,
                       transformOrigin: 'left',
                     }}

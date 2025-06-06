@@ -48,15 +48,25 @@ const FullStackPathway = () => (
 const sections = [
   { title: 'Full Stack Pathway', content: <FullStackPathway /> },
   { title: 'My Background', content: <MyBackgroundSection /> },
-  { title: 'Personal', content: <PersonalSection /> }
+  { title: 'Personal', content: <PersonalSection /> },
 ]
 
 const About = () => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [headingDone, setHeadingDone] = useState(false)
 
-  const next = () => setActiveIndex((prev) => (prev + 1) % sections.length)
-  const prev = () => setActiveIndex((prev) => (prev - 1 + sections.length) % sections.length)
-  const setActive = (index: number) => setActiveIndex(index)
+  const next = () => {
+    setHeadingDone(false)
+    setActiveIndex((prev) => (prev + 1) % sections.length)
+  }
+  const prev = () => {
+    setHeadingDone(false)
+    setActiveIndex((prev) => (prev - 1 + sections.length) % sections.length)
+  }
+  const setActive = (index: number) => {
+    setHeadingDone(false)
+    setActiveIndex(index)
+  }
 
   return (
     <section className="font-josefin max-w-5xl mx-auto px-8 pb-20 relative min-h-[100vh]">
@@ -71,22 +81,29 @@ const About = () => {
       />
 
       {/* Animated Section Heading */}
-      <AnimatePresence mode="wait">
-        <AnimatedHeading key={activeIndex} activeIndex={activeIndex}>
-          {sections[activeIndex].title}
-        </AnimatedHeading>
-      </AnimatePresence>
+      <AnimatedHeading
+        key={activeIndex}
+        activeIndex={activeIndex}
+        onAnimationComplete={() => setHeadingDone(true)}
+      >
+        {sections[activeIndex].title}
+      </AnimatedHeading>
 
       {/* Section Content */}
-      <motion.div
-        key={activeIndex}
-        className="mt-6 mb-36 max-w-5xl mx-auto text-2xl leading-relaxed"
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.4 }}
-      >
-        {sections[activeIndex].content}
-      </motion.div>
+      <AnimatePresence mode="wait">
+        {headingDone && (
+          <motion.div
+            key={activeIndex}
+            className="mt-6 mb-36 max-w-5xl mx-auto text-2xl leading-relaxed"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -30 }}
+            transition={{ duration: 0.4 }}
+          >
+            {sections[activeIndex].content}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Sticky Bottom Tab Navigation */}
       <NavigationTabs

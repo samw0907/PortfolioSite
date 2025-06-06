@@ -43,8 +43,9 @@ const banners = [
     alt: 'Contaminated Groundwater',
     caption: 'Contaminated Groundwater',
     points: [
-      'Onsite surface & groundwater sampling.',
-      'Basic groundwater modelling.',
+      'Onsite surface & groundwater sampling & testing.',
+      'Basic groundwater modelling',
+      'Contaminant plume delineation & risk assessment.',
       'Infiltration testing.',
     ],
   },
@@ -113,7 +114,7 @@ const MyBackgroundSection = () => {
               </li>
             ))}
           </ul>
-          
+
           {/* Image */}
           <div className="flex-shrink-0 max-w-xs w-full rounded-lg overflow-hidden">
           <img
