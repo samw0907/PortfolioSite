@@ -1,50 +1,127 @@
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import Drilling from '../assets/Drilling.png'
+import BgsMap from '../assets/BgsMap.png'
 import Soil from '../assets/Soil.png'
 import ContaminatedSoil from '../assets/ContaminatedSoil.jpeg'
+import ContaminatedWater from '../assets/ContaminatedWater.jpeg'
+import CoalMine from '../assets/CoalMine.jpeg'
+import AnimatedParagraph from './AnimatedParagraph'
 
-const geoImages = [
-  { src: Drilling, alt: 'Drilling Image', caption: 'Drilling & Grouting' },
-  { src: Soil, alt: 'Soil Image', caption: 'Environmental Testing & Remediation' },
-  { src: ContaminatedSoil, alt: 'Contaminated Soil Image', caption: 'Contaminated Soils' },
+const banners = [
+  {
+    image: BgsMap,
+    alt: 'BGS Map',
+    caption: 'British Geological Survey Map',
+    points: [
+      'Interpreting geological survey data and maps.',
+      'Maintaining close communication with clients & contractors to ensure site works run smoothly & prevent unnecessary delays & costs.',
+      'Writing comprehensive Phase I & II reports.',
+      'Costing projects & providing quotes to clients',
+    ],
+  },
+  {
+    image: Soil,
+    alt: 'Soil Image',
+    caption: 'Environmental Testing & Remediation',
+    points: [
+      'Designing intrusive site investigation program for Phase II assessments.',
+      'Undertaking trial pitting & environmental sampling on site.',
+      'Hazardous waste classifications.',
+    ],
+  },
+  {
+    image: ContaminatedSoil,
+    alt: 'Contaminated Soil',
+    caption: 'Contaminated Soils',
+    points: [
+      'Designing & supervising environmental remediation programmes.',
+      'Analysing geotechnical testing results (e.g. shear strength, PSDs).',
+      'Analysing environmental testing results (e.g. heavy metals, fuel oils, PCBs, PAHs, VOCs, asbestos).',
+    ],
+  },
+  {
+    image: ContaminatedWater,
+    alt: 'Contaminated Groundwater',
+    caption: 'Contaminated Groundwater',
+    points: [
+      'Onsite surface & groundwater sampling.',
+      'Basic groundwater modelling.',
+      'Infiltration testing.',
+    ],
+  },
+  {
+    image: CoalMine,
+    alt: 'Abandoned Coal Mine',
+    caption: 'Abandoned Coal Mine',
+    points: [
+      'Interpretation of the stability of shallow abandoned mineworkings & mineshafts',
+      'Supervision of remeidation of unstable minerworkigns, via drilling & high presuure grouting',
+      'Ground gas monitoring & assessments.',
+    ],
+  },
 ]
 
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+}
+
 const MyBackgroundSection = () => {
-  const [imageIndex, setImageIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setImageIndex((prev) => (prev + 1) % geoImages.length)
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
-    <div className="flex flex-col md:flex-row gap-6 items-start">
-      <div className="flex-1 space-y-6">
-        <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-300">
-          I started off in geo-environmental consulting in Glasgow, Scotland after graduating from university.
-          I worked in a small team of five, conducting site investigations for some of the UK's largest house builders.
-          This involved assessing any geo-technical or environmental constraints of a potential site, such as pollution or weak soils.
-          Additionally, old abandoned coal mines were a significant risk and we determined if these were present and, if necessary, supervised the stabilisation measures.
-        </p>
+    <div className="max-w-5xl mx-auto px-4 space-y-10">
+      {/* Intro paragraphs */}
+      <div className="space-y-6">
+        <AnimatedParagraph>
+          I received my BSc with Honours in Earth Science at the University Of Glasgow in 2017, before entering the Geo-Environmental consulting industry with{' '}
+          <a
+            href="https://masonevans.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-teal-600 dark:text-teal-400 underline hover:text-teal-800 dark:hover:text-teal-300"
+          >
+            Mason Evans Partnership
+          </a>.
+        </AnimatedParagraph>
+        <AnimatedParagraph>
+          I worked in a small team of five, conducting site investigations for some of the UK's largest house builders. This involved evaluating the geotechnical & environmental constraints of a site and advising clients on the remediation measures required to meet local government regulations.
+        </AnimatedParagraph>
       </div>
-      <motion.div
-        className="flex-shrink-0 w-full md:w-60 relative"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        <img
-          src={geoImages[imageIndex].src}
-          alt={geoImages[imageIndex].alt}
-          className="rounded-lg shadow-lg object-cover w-full h-40 sm:h-48 md:h-52"
-        />
-        <p className="text-sm text-gray-600 dark:text-gray-400 text-center mt-2">
-          {geoImages[imageIndex].caption}
-        </p>
-      </motion.div>
+
+      {/* Banners */}
+      {banners.map(({ image, alt, caption, points }, idx) => (
+        <motion.div
+          key={idx}
+          className="flex flex-col md:flex-row items-center gap-8 rounded-xl bg-teal-100 dark:bg-teal-900 p-8 shadow-lg"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariants}
+        >
+          {/* Points */}
+<ul
+  className="flex-1 list-disc list-inside pl-6 space-y-3 text-lg
+    text-teal-900
+    dark:text-gray-300
+  "
+  style={{ textIndent: '-0.75rem' }}
+>
+  {points.map((point, i) => (
+    <li key={i}>{point}</li>
+  ))}
+</ul>
+
+          {/* Image */}
+          <div className="flex-shrink-0 max-w-xs w-full rounded-lg overflow-hidden">
+          <img
+            src={image}
+            alt={alt}
+            className="w-full h-48 object-cover rounded-lg"
+          />
+          <p className="text-center text-sm text-teal-800 dark:text-gray-400 mt-2">
+          {caption}
+          </p>
+          </div>
+        </motion.div>
+      ))}
     </div>
   )
 }
