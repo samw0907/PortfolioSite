@@ -59,7 +59,7 @@ const About = () => {
   const setActive = (index: number) => setActiveIndex(index)
 
   return (
-    <section className="font-josefin max-w-5xl mx-auto px-6 pb-20 relative min-h-[100vh]">
+    <section className="font-josefin max-w-5xl mx-auto px-8 pb-20 relative min-h-[100vh]">
       {/* Sticky Top Tab Navigation */}
       <NavigationTabs
         sections={sections}
@@ -80,12 +80,12 @@ const About = () => {
       {/* Section Content */}
       <motion.div
         key={activeIndex}
-        className="mt-5 mb-32"
+        className="mt-6 mb-36 max-w-5xl mx-auto text-2xl leading-relaxed"
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <div className="text-2xl">{sections[activeIndex].content}</div>
+        {sections[activeIndex].content}
       </motion.div>
 
       {/* Sticky Bottom Tab Navigation */}

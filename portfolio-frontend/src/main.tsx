@@ -7,7 +7,9 @@ import './index.css';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <div className="min-h-screen bg-white dark:bg-[#0f172a]">
+        <App />
+      </div>
     </BrowserRouter>
   </StrictMode>
 );

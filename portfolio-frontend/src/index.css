@@ -24,6 +24,18 @@
     }
   }
 
+html, body {
+  @apply bg-white dark:bg-[#0f172a] transition-colors duration-300;
+  color-scheme: light dark;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#root {
+  height: 100%;
+  @apply bg-white dark:bg-[#0f172a];
+}
+
   .animate-scroll-fade {
     animation: scroll-fade 30s linear infinite;
     animation-play-state: running;
@@ -83,4 +95,13 @@ body {
 .underline-container[data-animate='true']::after {
   transform: scaleX(1);
   transition: transform 0.6s ease-out;
+}
+
+.invisibleUntilAnimate {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.invisibleUntilAnimate.animate {
+  opacity: 1;
 }

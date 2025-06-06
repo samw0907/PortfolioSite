@@ -4,7 +4,10 @@ import { loadAll } from '@tsparticles/all';
 import { tsParticles } from '@tsparticles/engine';
 
 const ParticlesBackground: React.FC = () => {
-  const [isDark, setIsDark] = useState(false);
+  // Initialize with correct mode synchronously to avoid flicker on initial render
+  const [isDark, setIsDark] = useState(() => 
+    typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+  );
 
   useEffect(() => {
     loadAll(tsParticles);
@@ -18,8 +21,6 @@ const ParticlesBackground: React.FC = () => {
       attributeFilter: ['class'],
     });
 
-    setIsDark(document.documentElement.classList.contains('dark'));
-
     return () => observer.disconnect();
   }, []);
 
@@ -27,7 +28,7 @@ const ParticlesBackground: React.FC = () => {
     <Particles
       id="tsparticles"
       className="absolute inset-0 z-0"
-      {...({ engine: tsParticles } as any)} // <-- TypeScript-safe override
+      {...({ engine: tsParticles } as any)}
       options={{
         fullScreen: false,
         background: {

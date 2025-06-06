@@ -29,7 +29,7 @@ const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({ children }) => {
       initial="hidden"
       animate={controls}
       variants={variants}
-      className="text-lg leading-[1.8] text-gray-700 dark:text-gray-300"
+      className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300"
       style={{ marginBottom: 0 }}
     >
       {children}
