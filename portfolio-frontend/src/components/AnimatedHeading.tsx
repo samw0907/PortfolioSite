@@ -54,16 +54,14 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
   useEffect(() => {
     const text = typeof children === 'string' ? children.toUpperCase() : ''
     const lettersCount = text.replace(/\s/g, '').length
-    // Time for letters + 350ms + underline animation duration (600ms)
-    const timeout = lettersCount * 50 + 350 + 600
+    const letterDelay = lettersCount * 50 + 350
 
-    const timer = setTimeout(() => {
+    const letterTimer = setTimeout(() => {
       setUnderlineStarted(true)
-      if (onAnimationComplete) onAnimationComplete()
-    }, timeout)
+    }, letterDelay)
 
-    return () => clearTimeout(timer)
-  }, [children, onAnimationComplete])
+    return () => clearTimeout(letterTimer)
+  }, [children])
 
   const specialLineBreaks: Record<string, string[]> = {
     'Full Stack Pathway': ['FULL STACK', 'PATHWAY'],
@@ -103,7 +101,6 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
               animate="visible"
               exit="exit"
             >
-              {/* Letters container with relative position */}
               <motion.span
                 style={{ display: 'inline-block', position: 'relative' }}
                 variants={containerVariants}
@@ -119,7 +116,6 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
                   </motion.span>
                 ))}
 
-                {/* Underline inside text container */}
                 {underlineStarted && (
                   <motion.span
                     aria-hidden="true"
@@ -131,14 +127,18 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
                       duration: 0.6,
                       ease: 'easeOut',
                     }}
+                    onAnimationComplete={() => {
+                      if (onAnimationComplete && lineIndex === lines.length - 1) {
+                        onAnimationComplete()
+                      }
+                    }}
                     style={{
                       position: 'absolute',
                       bottom: 0,
                       left: 0,
                       height: 4,
                       width: '100%',
-                      backgroundImage:
-                        'linear-gradient(to right, transparent, #14b8a6, transparent)',
+                      backgroundImage: 'linear-gradient(to right, transparent, #14b8a6, transparent)',
                       borderRadius: 2,
                       transformOrigin: 'left',
                     }}

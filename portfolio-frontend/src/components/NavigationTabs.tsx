@@ -19,21 +19,45 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
 }) => {
   return (
     <div
-      className={`bg-white dark:bg-gray-900 z-20 border-b border-transparent flex items-center justify-between sm:justify-center gap-4 py-4 px-2 ${className}`}
+      className={`bg-white dark:bg-gray-900 z-20 border-b border-transparent py-3 px-2 ${className}`}
     >
-      {/* Previous button */}
-      <button
-        onClick={prev}
-        className="flex items-center justify-center text-teal-600 hover:text-teal-800 dark:hover:text-teal-300 transition p-2 rounded"
-        aria-label="Previous section"
-      >
-        <ChevronLeft size={36} />
-      </button>
+      {/* MOBILE VIEW: Single tab with tight chevrons */}
+      <div className="flex sm:hidden items-center justify-center gap-2">
+        <button
+          onClick={prev}
+          className="text-teal-600 hover:text-teal-800 dark:hover:text-teal-300 transition p-1"
+          aria-label="Previous section"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
 
-      {/* Tabs area */}
-      <nav className="flex-1 flex justify-center items-center overflow-x-auto no-scrollbar">
-        {/* Full tabs (default font-size on md+) */}
-        <div className="hidden sm:flex md:gap-16 gap-4">
+        <button
+          className="text-sm font-semibold text-teal-600 dark:text-teal-400 px-1"
+          onClick={() => setActive(activeIndex)}
+        >
+          {sections[activeIndex].title}
+        </button>
+
+        <button
+          onClick={next}
+          className="text-teal-600 hover:text-teal-800 dark:hover:text-teal-300 transition p-1"
+          aria-label="Next section"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* DESKTOP VIEW: Full tabs with chevrons spaced wider */}
+      <div className="hidden sm:flex items-center justify-center gap-2 sm:gap-4 md:gap-6">
+        <button
+          onClick={prev}
+          className="text-teal-600 hover:text-teal-800 dark:hover:text-teal-300 transition p-2 md:p-3 mx-2 sm:mx-4 md:mx-6"
+          aria-label="Previous section"
+        >
+          <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+        </button>
+
+        <nav className="flex gap-4 md:gap-16">
           {sections.map((section, index) => (
             <button
               key={section.title}
@@ -50,27 +74,16 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
               {section.title}
             </button>
           ))}
-        </div>
+        </nav>
 
-        {/* Active tab only (mobile view) */}
-        <div className="flex sm:hidden">
-          <button
-            className="whitespace-nowrap font-semibold text-teal-600 dark:text-teal-400 pb-2 text-sm"
-            onClick={() => setActive(activeIndex)}
-          >
-            {sections[activeIndex].title}
-          </button>
-        </div>
-      </nav>
-
-      {/* Next button */}
-      <button
-        onClick={next}
-        className="flex items-center justify-center text-teal-600 hover:text-teal-800 dark:hover:text-teal-300 transition p-2 rounded"
-        aria-label="Next section"
-      >
-        <ChevronRight size={36} />
-      </button>
+        <button
+          onClick={next}
+          className="text-teal-600 hover:text-teal-800 dark:hover:text-teal-300 transition p-2 md:p-3 mx-2 sm:mx-4 md:mx-6"
+          aria-label="Next section"
+        >
+          <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+        </button>
+      </div>
     </div>
   )
 }

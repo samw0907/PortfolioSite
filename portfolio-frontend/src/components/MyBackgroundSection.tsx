@@ -13,15 +13,14 @@ const banners = [
     caption: 'British Geological Survey Map',
     points: [
       'Interpreting geological survey data and maps.',
-      'Maintaining close communication with clients & contractors to ensure site works run smoothly & prevent unnecessary delays & costs.',
-      'Writing comprehensive Phase I & II reports.',
-      'Costing projects & providing quotes to clients',
+      'Maintaining close communication with clients & contractors, ensuring site works run smoothly',
+      'Writing reports, costing projects & providing quotes to clients',
     ],
   },
   {
     image: Soil,
     alt: 'Soil Image',
-    caption: 'Environmental Testing & Remediation',
+    caption: 'Environmental Testing',
     points: [
       'Designing intrusive site investigation program for Phase II assessments.',
       'Undertaking trial pitting & environmental sampling on site.',

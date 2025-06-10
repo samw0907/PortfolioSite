@@ -18,7 +18,7 @@ const PersonalSection = () => (
           href="https://www.strava.com/athletes/38491517"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+          className="text-orange-600 dark:text-orange-400 underline hover:text-orange-800 dark:hover:text-orange-300"
         >
           Strava.
         </a>
@@ -36,7 +36,7 @@ const PersonalSection = () => (
         className="rounded-lg shadow-lg object-cover w-full h-auto"
       />
       <p className="text-sm text-gray-600 dark:text-gray-400 text-center mt-2">
-        Helsinki City Running Day Half-Marathon
+        Helsinki City Running Day
       </p>
     </motion.div>
   </div>
