@@ -1,8 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import AnimatedHeading from '../components/AnimatedHeading'
 import Triswift1L from '../assets/TriSwift1L.png'
 import Triswift1D from '../assets/TriSwift1D.png'
+import Triswift1 from '../assets/TriSwift1.png'
+import Triswift2 from '../assets/TriSwift2.png'
+import Triswift3 from '../assets/TriSwift3.png'
+import Triswift4 from '../assets/TriSwift4.png'
+
+const triswiftGalleryImages = [Triswift1, Triswift2, Triswift3, Triswift4]
 
 const fadeUpVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -12,6 +18,8 @@ const fadeUpVariants = {
 const Projects = () => {
   const [headingDone, setHeadingDone] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [galleryOpen, setGalleryOpen] = useState(false)
+  const [galleryIndex, setGalleryIndex] = useState(0)
 
   useEffect(() => {
     const checkDarkClass = () => {
@@ -32,7 +40,30 @@ const Projects = () => {
     return () => observer.disconnect()
   }, [])
 
-  const triswiftImage = isDarkMode ? Triswift1D : Triswift1L
+  useEffect(() => {
+    document.body.style.overflow = galleryOpen ? 'hidden' : ''
+  }, [galleryOpen])
+
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (!galleryOpen) return
+      if (e.key === 'ArrowRight') {
+        setGalleryIndex((prev) => (prev + 1) % triswiftGalleryImages.length)
+      } else if (e.key === 'ArrowLeft') {
+        setGalleryIndex((prev) => (prev - 1 + triswiftGalleryImages.length) % triswiftGalleryImages.length)
+      } else if (e.key === 'Escape') {
+        setGalleryOpen(false)
+      }
+    },
+    [galleryOpen]
+  )
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleKeyDown])
+
+  const triswiftThumb = isDarkMode ? Triswift1D : Triswift1L
 
   return (
     <section className="font-josefin space-y-8 max-w-4xl mx-auto px-4 pt-10 lg:pt-24">
@@ -46,7 +77,6 @@ const Projects = () => {
         </AnimatedHeading>
       </AnimatePresence>
 
-      {/* Only show content after heading animation completes */}
       <AnimatePresence>
         {headingDone && (
           <motion.div
@@ -84,7 +114,7 @@ const Projects = () => {
                   <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
                     <li>Log and edit swim, bike, run sessions</li>
                     <li>Log Multi-sport session support with transition inputs</li>
-                    <li>Automaticlly generated top 3 Personal Bests for a range of event distances</li>
+                    <li>Automatically generated top 3 Personal Bests for a range of event distances</li>
                     <li>Pace Calculator feature</li>
                     <li>Total distance tracking, displayed with line graphs</li>
                     <li>CI/CD pipeline with Playwright tests and deployment to Fly.io</li>
@@ -113,9 +143,13 @@ const Projects = () => {
 
               <div className="flex-shrink-0 max-w-xs w-full rounded-lg overflow-hidden">
                 <img
-                  src={triswiftImage}
+                  src={triswiftThumb}
                   alt="TriSwift project preview"
-                  className="w-full h-48 object-cover rounded-lg"
+                  className="w-full h-48 object-cover rounded-lg cursor-pointer"
+                  onClick={() => {
+                    setGalleryOpen(true)
+                    setGalleryIndex(0)
+                  }}
                 />
                 <p className="text-center text-sm text-teal-800 dark:text-gray-400 mt-2">
                   TriSwift Preview
@@ -123,8 +157,7 @@ const Projects = () => {
               </div>
             </motion.div>
 
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Coming Soon...</h3>
-            {/* Coming Soon Project */}
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mt-12">Coming Soon...</h3>
             <article className="border rounded shadow p-6 space-y-4 bg-white dark:bg-gray-800">
               <h3 className="text-2xl font-semibold text-teal-600 dark:text-teal-400">MineSecure</h3>
               <p className="text-gray-700 dark:text-gray-300">
@@ -134,6 +167,65 @@ const Projects = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* GALLERY MODAL */}
+      {galleryOpen && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
+          <div className="relative max-w-[90vw] max-h-[90vh]">
+
+            {/* CLOSE BUTTON */}
+            <button
+              className="absolute top-3 right-3 text-white text-3xl bg-black/70 hover:bg-black/90 rounded-full w-10 h-10 flex items-center justify-center z-50"
+              onClick={() => setGalleryOpen(false)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+
+            {/* IMAGE & NAVIGATION */}
+            <div className="relative flex items-center justify-center">
+              {/* LEFT CHEVRON */}
+              <button
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-white text-4xl font-bold bg-black/40 hover:bg-black/60 w-10 h-10 rounded-full z-40"
+                onClick={() =>
+                  setGalleryIndex((galleryIndex - 1 + triswiftGalleryImages.length) % triswiftGalleryImages.length)
+                }
+              >
+                ‹
+              </button>
+
+              {/* IMAGE */}
+              <img
+                src={triswiftGalleryImages[galleryIndex]}
+                alt={`TriSwift gallery ${galleryIndex + 1}`}
+                className="max-h-[90vh] max-w-full object-contain rounded-lg shadow-lg"
+              />
+
+              {/* RIGHT CHEVRON */}
+              <button
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-white text-4xl font-bold bg-black/40 hover:bg-black/60 w-10 h-10 rounded-full z-40"
+                onClick={() =>
+                  setGalleryIndex((galleryIndex + 1) % triswiftGalleryImages.length)
+                }
+              >
+                ›
+              </button>
+
+              {/* DOTS */}
+              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+                {triswiftGalleryImages.map((_, idx) => (
+                  <span
+                    key={idx}
+                    className={`w-3 h-3 rounded-full ${
+                      idx === galleryIndex ? 'bg-black' : 'bg-black/40'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
