@@ -26,14 +26,11 @@ const letterVariants: Variants = {
 
 const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({ text, onComplete, className }) => {
   const controls = useAnimation()
-  const [done, setDone] = useState(false)
   const [animateClass, setAnimateClass] = useState(false)
 
   useEffect(() => {
-    // Add animate class to start fade-in CSS transition immediately
     setAnimateClass(true)
     controls.start('visible').then(() => {
-      setDone(true)
       if (onComplete) onComplete()
     })
   }, [controls, onComplete])

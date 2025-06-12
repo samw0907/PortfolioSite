@@ -12,7 +12,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="bg-gray-100 dark:bg-gray-800 shadow-md sticky top-0 z-50 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90">
+    <header  id="main-navbar" className="bg-gray-100 dark:bg-gray-800 shadow-md sticky top-0 z-50 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center font-josefin">
         <span className="text-xl font-josefin tracking-wide text-gray-900 dark:text-white">
           Sam Williamson

@@ -40,9 +40,20 @@ const Projects = () => {
     return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
-    document.body.style.overflow = galleryOpen ? 'hidden' : ''
-  }, [galleryOpen])
+useEffect(() => {
+  const navbar = document.getElementById('main-navbar')
+  if (navbar) {
+    navbar.style.display = galleryOpen ? 'none' : ''
+  }
+
+  document.body.style.overflow = galleryOpen ? 'hidden' : ''
+
+  return () => {
+    if (navbar) navbar.style.display = ''
+    document.body.style.overflow = ''
+  }
+}, [galleryOpen])
+
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -247,7 +258,7 @@ const Projects = () => {
                   <span
                     key={idx}
                     className={`w-3 h-3 rounded-full ${
-                      idx === galleryIndex ? 'bg-white' : 'bg-white/40'
+                      idx === galleryIndex ? 'bg-gray-700' : 'bg-gray-400'
                     }`}
                   />
                 ))}
