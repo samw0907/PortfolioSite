@@ -86,6 +86,7 @@ const Projects = () => {
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.5 }}
           >
+            {/* TriSwift Banner */}
             <motion.div
               className="flex flex-col md:flex-row items-center gap-8 rounded-xl bg-teal-100 dark:bg-teal-900 p-8 shadow-lg"
               initial="hidden"
@@ -157,13 +158,44 @@ const Projects = () => {
               </div>
             </motion.div>
 
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mt-12">Coming Soon...</h3>
-            <article className="border rounded shadow p-6 space-y-4 bg-white dark:bg-gray-800">
-              <h3 className="text-2xl font-semibold text-teal-600 dark:text-teal-400">MineSecure</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                Utilizing my specialist knowledge of stability assessments of abandoned mines and remediation through high-pressure grouting, I have begun framing out a concept to better automate the tracking of such projects, reducing human error and increasing productivity.
-              </p>
-            </article>
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mt-12 mb-4">
+                Coming Soon...
+              </h3>
+            </div>
+
+            {/* MineSecure Banner */}
+            <motion.div
+              className="flex flex-col md:flex-row items-center gap-8 rounded-xl bg-teal-100 dark:bg-teal-900 p-8 shadow-lg mt-12"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUpVariants}
+            >
+              <div className="flex-1 space-y-4">
+                <h3 className="text-2xl font-semibold text-teal-600 dark:text-teal-400">MineSecure</h3>
+                <p className="text-gray-700 dark:text-gray-300">
+                  A project management tool designed to track progress of mine stabilisation projects.
+                </p>
+                <p>
+                  Built on my professional background in geo-environmental consulting, MineSecure is aimed at 
+                  improving tracking accuracy, minimizing human error, and increasing operational efficiency
+                  across remediation projects.
+                </p>
+
+                <div>
+                  <h4 className="font-semibold text-gray-800 dark:text-gray-200">Planned Features:</h4>
+                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                    <li>Inputs drill log & grout volume data.</li>
+                    <li>Overlay grout grids & site plan layers.</li>
+                    <li>Generate cross-sections along any grid line.</li>
+                    <li>Automatically calculate stability at each point.</li>
+                    <li>Automatically genreate colour-coded dot plots for seam condition & grout volumes.</li>
+                    <li>Admin dashboard with separate project files.</li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -172,7 +204,6 @@ const Projects = () => {
       {galleryOpen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
           <div className="relative max-w-[90vw] max-h-[90vh]">
-
             {/* CLOSE BUTTON */}
             <button
               className="absolute top-3 right-3 text-white text-3xl bg-black/70 hover:bg-black/90 rounded-full w-10 h-10 flex items-center justify-center z-50"
@@ -194,7 +225,6 @@ const Projects = () => {
                 ‹
               </button>
 
-              {/* IMAGE */}
               <img
                 src={triswiftGalleryImages[galleryIndex]}
                 alt={`TriSwift gallery ${galleryIndex + 1}`}
@@ -217,7 +247,7 @@ const Projects = () => {
                   <span
                     key={idx}
                     className={`w-3 h-3 rounded-full ${
-                      idx === galleryIndex ? 'bg-black' : 'bg-black/40'
+                      idx === galleryIndex ? 'bg-white' : 'bg-white/40'
                     }`}
                   />
                 ))}
