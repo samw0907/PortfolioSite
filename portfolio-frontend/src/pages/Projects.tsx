@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import AnimatedHeading from '../components/AnimatedHeading'
-import Triswift1L from '../assets/TriSwift1L.png'
-import Triswift1D from '../assets/TriSwift1D.png'
-import Triswift1 from '../assets/TriSwift1.png'
-import Triswift2 from '../assets/TriSwift2.png'
-import Triswift3 from '../assets/TriSwift3.png'
-import Triswift4 from '../assets/TriSwift4.png'
+import Triswift1L from '../assets/Triswift1L.png'
+import Triswift1D from '../assets/Triswift1D.png'
+import Triswift1 from '../assets/Triswift1.png'
+import Triswift2 from '../assets/Triswift2.png'
+import Triswift3 from '../assets/Triswift3.png'
+import Triswift4 from '../assets/Triswift4.png'
 
 const triswiftGalleryImages = [Triswift1, Triswift2, Triswift3, Triswift4]
 
