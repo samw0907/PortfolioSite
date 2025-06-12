@@ -24,13 +24,14 @@ const DarkModeToggle = () => {
   };
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="px-3 py-1 border border-gray-400 dark:border-gray-600 rounded text-sm transition"
-      aria-label="Toggle Dark Mode"
-    >
-      {isDark ? '🌙 Dark' : '☀️ Light'}
-    </button>
+<button
+  onClick={toggleTheme}
+  className="px-4 py-2 sm:px-3 sm:py-1 border border-gray-400 dark:border-gray-600 rounded text-sm transition"
+  aria-label="Toggle Dark Mode"
+>
+  {isDark ? '🌙 Dark' : '☀️ Light'}
+</button>
+
   );
 };
 

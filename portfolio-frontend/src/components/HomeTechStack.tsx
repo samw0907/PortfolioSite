@@ -15,7 +15,7 @@ const HomeTechStack = () => {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: false, amount: 0.01 }}
-      className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen font-josefin py-14 bg-gray-100 dark:bg-[#0b1120] text-gray-800 dark:text-gray-100 overflow-hidden"
+      className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen font-josefin py-10 sm:py-14 bg-gray-100 dark:bg-[#0b1120] text-gray-800 dark:text-gray-100 overflow-hidden"
     >
       {/* Animated gradient divider at top */}
       <motion.div
@@ -26,7 +26,7 @@ const HomeTechStack = () => {
         className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-transparent to-gray-100 dark:to-[#0b1120] z-0"
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto space-y-16 px-4">
+      <div className="relative z-10 max-w-4xl mx-auto space-y-12 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,26 +34,26 @@ const HomeTechStack = () => {
           viewport={{ once: false }}
           className="text-center"
         >
-          <h2 className="text-4xl font-bold mb-4 text-teal-600 dark:text-teal-400">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-teal-600 dark:text-teal-400">
             My Tech Stack
           </h2>
-          <p className="text-lg max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Here's a breakdown of the languages, frameworks, tools, and platforms I use in my development workflow.
           </p>
         </motion.div>
 
-        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
+        <div className="grid gap-y-10 gap-x-6 sm:grid-cols-2 sm:gap-y-12">
           {stackItems.map(({ title, content }, index) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: false }}
               className="space-y-2"
             >
-              <h3 className="text-2xl font-semibold text-teal-500">{title}</h3>
-              <p>{content}</p>
+              <h3 className="text-xl sm:text-2xl font-semibold text-teal-500">{title}</h3>
+              <p className="text-sm sm:text-base">{content}</p>
             </motion.div>
           ))}
         </div>

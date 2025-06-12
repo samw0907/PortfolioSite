@@ -1,39 +1,41 @@
-import { useEffect, useState } from 'react'
-import { motion, Variants, useAnimation } from 'framer-motion'
+import { useEffect, useState } from 'react';
+import { motion, useAnimation, Variants } from 'framer-motion';
 
 interface HomeAnimatedHeadingsProps {
-  text: string
-  onComplete?: () => void
-  className?: string
+  text: string;
+  onComplete?: () => void;
+  className?: string;
 }
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.05, when: 'beforeChildren' },
+    transition: { staggerChildren: 0.15, when: 'beforeChildren' },
   },
-}
+};
 
-const letterVariants: Variants = {
-  hidden: { opacity: 0, x: -20 },
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { ease: 'easeOut' },
+    y: 0,
+    transition: { ease: 'easeOut', duration: 0.5 },
   },
-}
+};
 
 const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({ text, onComplete, className }) => {
-  const controls = useAnimation()
-  const [animateClass, setAnimateClass] = useState(false)
+  const controls = useAnimation();
+  const [animateClass, setAnimateClass] = useState(false);
 
   useEffect(() => {
-    setAnimateClass(true)
+    setAnimateClass(true);
     controls.start('visible').then(() => {
-      if (onComplete) onComplete()
-    })
-  }, [controls, onComplete])
+      if (onComplete) onComplete();
+    });
+  }, [controls, onComplete]);
+
+  const words = text.split(' ');
 
   return (
     <motion.div
@@ -41,19 +43,35 @@ const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({ text, onCom
       initial="hidden"
       animate={controls}
       variants={containerVariants}
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '0.25rem', // More compact on mobile
+      }}
     >
-      {text.split('').map((char, index) => (
+      {words.map((word, wordIdx) => (
         <motion.span
-          key={index}
-          variants={letterVariants}
-          aria-hidden={char === ' ' ? true : undefined}
-          style={{ display: 'inline-block' }}
+          key={wordIdx}
+          variants={wordVariants}
+          style={{
+            whiteSpace: 'nowrap',
+            display: 'inline-block',
+          }}
         >
-          {char === ' ' ? '\u00A0' : char}
+          {word.split('').map((char, charIdx) => (
+            <span
+              key={charIdx}
+              style={{ display: 'inline-block', flexShrink: 0 }}
+              aria-hidden={char === ' ' ? true : undefined}
+            >
+              {char}
+            </span>
+          ))}
         </motion.span>
       ))}
     </motion.div>
-  )
-}
+  );
+};
 
-export default HomeAnimatedHeadings
+export default HomeAnimatedHeadings;
