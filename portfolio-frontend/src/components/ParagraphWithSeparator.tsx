@@ -25,18 +25,18 @@ const ParagraphWithSeparator: React.FC<ParagraphWithSeparatorProps> = ({ childre
   }, [controls, inView])
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-full px-2 sm:px-4">
       {/* Paragraph content */}
       <div className="w-full">{children}</div>
 
-      {/* Animated teal tapered line separator except after last paragraph */}
+      {/* Animated teal tapered line separator unless it's the last paragraph */}
       {!isLast && (
         <motion.div
           ref={ref}
           initial="hidden"
           animate={controls}
           variants={lineVariants}
-          className="w-1/3 h-[2px] my-10 rounded"
+          className="w-1/2 sm:w-1/3 h-[2px] my-8 sm:my-10 rounded"
           style={{
             backgroundImage: 'linear-gradient(to right, transparent, #14b8a6, transparent)',
           }}

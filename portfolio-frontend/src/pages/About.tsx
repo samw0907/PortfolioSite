@@ -58,10 +58,12 @@ const About = () => {
     setShowContent(false)
     setActiveIndex((prev) => (prev + 1) % sections.length)
   }
+
   const prev = () => {
     setShowContent(false)
     setActiveIndex((prev) => (prev - 1 + sections.length) % sections.length)
   }
+
   const setActive = (index: number) => {
     setShowContent(false)
     setActiveIndex(index)
@@ -72,9 +74,9 @@ const About = () => {
   }
 
   return (
-    <section className="font-josefin max-w-5xl mx-auto px-8 pb-20 relative min-h-[100vh]">
+    <section className="font-josefin max-w-5xl mx-auto px-4 sm:px-8 pb-20 relative min-h-[100vh]">
       {/* Top Nav Tabs */}
-      <div className="sticky top-0 border-b border-transparent z-10">
+      <div className="sticky top-0 border-b border-transparent z-10 bg-white dark:bg-[#0b1120] bg-opacity-90 dark:bg-opacity-90 backdrop-blur">
         <NavigationTabs
           sections={sections}
           activeIndex={activeIndex}
@@ -98,7 +100,7 @@ const About = () => {
         {showContent && (
           <motion.div
             key={activeIndex}
-            className="mt-6 mb-36 max-w-5xl mx-auto text-2xl leading-relaxed"
+            className="mt-6 mb-36 max-w-5xl mx-auto text-lg sm:text-xl leading-relaxed px-2 sm:px-0"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
@@ -113,7 +115,7 @@ const About = () => {
       <AnimatePresence>
         {showContent && (
           <motion.div
-            className="sticky bottom-0 border-t border-transparent mt-10 z-10"
+            className="sticky bottom-0 border-t border-transparent mt-10 z-10 bg-white dark:bg-[#0b1120] bg-opacity-90 dark:bg-opacity-90 backdrop-blur"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
