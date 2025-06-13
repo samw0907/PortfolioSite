@@ -19,9 +19,12 @@ const Navbar = () => {
       className="bg-gray-100 dark:bg-gray-800 shadow-md sticky top-0 z-50 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90"
     >
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between font-josefin">
-        <span className="text-xl tracking-wide text-gray-900 dark:text-white">
+        <Link
+          to="/"
+          className="text-xl tracking-wide text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+        >
           Sam Williamson
-        </span>
+        </Link>
 
         {/* DESKTOP NAV LINKS (visible on lg and up) */}
         <div className="hidden lg:flex items-center gap-6">
