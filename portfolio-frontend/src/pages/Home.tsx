@@ -1,45 +1,45 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import BWPhotoEdit from '../assets/BWPhotoEdit.png'
-import Loader from '../components/Loader'
-import ParticlesBackground from '../components/ParticlesBackground.tsx'
-import HomeTechStack from '../components/HomeTechStack.tsx'
-import HomeAnimatedHeadings from '../components/HomeAnimatedHeadings'
-import Spline3D from '../components/Spline3D'
-import SplineHint from '../components/SplineHint'
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import BWPhotoEdit from '../assets/BWPhotoEdit.png';
+import Loader from '../components/Loader';
+import ParticlesBackground from '../components/ParticlesBackground.tsx';
+import HomeTechStack from '../components/HomeTechStack.tsx';
+import HomeAnimatedHeadings from '../components/HomeAnimatedHeadings';
+import Spline3D from '../components/Spline3D';
+import SplineHint from '../components/SplineHint';
 
 const icons = [
   'github', 'express', 'react', 'js', 'ts', 'nodejs', 'docker',
   'graphql', 'mongo', 'postgres', 'vite', 'jest', 'postman',
-]
+];
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true)
-  const [showTitle, setShowTitle] = useState(false)
-  const [showSubtitle, setShowSubtitle] = useState(false)
-  const [showIcons, setShowIcons] = useState(false)
-  const [showWhatIDo, setShowWhatIDo] = useState(false)
-  const [showParagraph, setShowParagraph] = useState(false)
-  const [showButtons, setShowButtons] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const [showTitle, setShowTitle] = useState(false);
+  const [showSubtitle, setShowSubtitle] = useState(false);
+  const [showIcons, setShowIcons] = useState(false);
+  const [showWhatIDo, setShowWhatIDo] = useState(false);
+  const [showParagraph, setShowParagraph] = useState(false);
+  const [showButtons, setShowButtons] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1200)
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(() => setIsLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (showSubtitle) {
-      setTimeout(() => setShowIcons(true), 400)
-      setTimeout(() => setShowWhatIDo(true), 800)
-      setTimeout(() => setShowParagraph(true), 1200)
-      setTimeout(() => setShowButtons(true), 1600)
+      setTimeout(() => setShowIcons(true), 400);
+      setTimeout(() => setShowWhatIDo(true), 800);
+      setTimeout(() => setShowParagraph(true), 1200);
+      setTimeout(() => setShowButtons(true), 1600);
     }
-  }, [showSubtitle])
+  }, [showSubtitle]);
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <Loader />;
 
   return (
-    <div className="relative flex flex-col min-h-full z-0">
+    <div className="relative flex flex-col min-h-screen w-full z-0 overflow-x-hidden">
       <div className="fixed inset-0 z-0 pointer-events-none">
         <ParticlesBackground />
       </div>
@@ -154,7 +154,6 @@ const Home = () => {
           </motion.div>
         </section>
 
-        {/* ✅ This was previously outside .z-10 div by mistake */}
         <div className="max-w-[1000px] mx-auto w-full px-4">
           <HomeTechStack />
         </div>
@@ -163,7 +162,7 @@ const Home = () => {
       <Spline3D />
       <SplineHint />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
