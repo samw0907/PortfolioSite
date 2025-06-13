@@ -24,19 +24,22 @@
     }
   }
 
-html, body {
-  @apply bg-white dark:bg-[#0f172a] transition-colors duration-300;
-  color-scheme: light dark;
-  height: 100%;
-  width: 100%; /* ✅ ADD THIS */
-  margin: 0;
-  padding: 0;
-}
-#root {
-  height: 100%;
-  width: 100%; /* ✅ ADD THIS */
-  @apply bg-white dark:bg-[#0f172a];
-}
+  html, body {
+    @apply bg-white dark:bg-[#0f172a] transition-colors duration-300;
+    color-scheme: light dark;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100vw;                /* ✅ NEW */
+    overflow-x: hidden;          /* ✅ NEW */
+    font-size: 16px;             /* ✅ NEW: Ensures mobile-friendly scale */
+  }
+
+  #root {
+    height: 100%;
+    width: 100%;                 /* ✅ NEW */
+    @apply bg-white dark:bg-[#0f172a];
+  }
 
   .animate-scroll-fade {
     animation: scroll-fade 30s linear infinite;
@@ -110,10 +113,10 @@ body {
 
 ul {
   list-style-position: inside;
-  padding-left: 0; /* No extra padding on ul */
+  padding-left: 0;
 }
 
 li {
-  padding-left: 1.2em;   /* indent text */
-  text-indent: -1.2em;   /* pull bullet back */
+  padding-left: 1.2em;
+  text-indent: -1.2em;
 }
