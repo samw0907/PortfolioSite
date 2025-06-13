@@ -61,6 +61,7 @@ const Home = () => {
           <div className="px-4 sm:px-6 py-4 rounded-xl bg-white/70 dark:bg-[#0f172a]/70 backdrop-blur-md w-full">
             <HomeAnimatedHeadings
               text="SAM WILLIAMSON"
+              wordGap="1.5rem"
               className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-light tracking-wide text-gray-900 dark:text-white"
               onComplete={() => setShowTitle(true)}
             />
@@ -68,7 +69,7 @@ const Home = () => {
               {showTitle && (
                 <HomeAnimatedHeadings
                   text="FULL STACK DEVELOPER"
-                  className="text-base sm:text-lg md:text-xl text-teal-600 dark:text-teal-400 font-light tracking-wide font-medium mt-2 absolute top-0 left-0 w-full"
+                  className="text-base sm:text-lg md:text-xl text-teal-600 dark:text-teal-400 font-light tracking-wide font-medium mt-2 absolute top-6 left-0 w-full"
                   onComplete={() => setShowSubtitle(true)}
                 />
               )}

@@ -5,6 +5,7 @@ interface HomeAnimatedHeadingsProps {
   text: string;
   onComplete?: () => void;
   className?: string;
+  wordGap?: string;
 }
 
 const containerVariants: Variants = {
@@ -24,7 +25,12 @@ const wordVariants: Variants = {
   },
 };
 
-const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({ text, onComplete, className }) => {
+const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({
+  text,
+  onComplete,
+  className,
+  wordGap = '0.5rem',
+}) => {
   const controls = useAnimation();
   const [animateClass, setAnimateClass] = useState(false);
 
@@ -47,7 +53,8 @@ const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({ text, onCom
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        gap: '0.25rem', // More compact on mobile
+        gap: wordGap,
+        lineHeight: 0.65, // ✅ this now directly affects the heading container
       }}
     >
       {words.map((word, wordIdx) => (
@@ -62,7 +69,7 @@ const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({ text, onCom
           {word.split('').map((char, charIdx) => (
             <span
               key={charIdx}
-              style={{ display: 'inline-block', flexShrink: 0 }}
+              style={{ display: 'inline-block' }}
               aria-hidden={char === ' ' ? true : undefined}
             >
               {char}

@@ -34,7 +34,7 @@ const HomeTechStack = () => {
           viewport={{ once: false }}
           className="text-center"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-teal-600 dark:text-teal-400">
+          <h2 className="text-2xl sm:text-5xl md:text-6xl font-light tracking-wide text-gray-900 dark:text-white text-center mb-12">
             My Tech Stack
           </h2>
           <p className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
