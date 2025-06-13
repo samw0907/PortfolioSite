@@ -30,14 +30,13 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    width: 100vw;                /* ✅ NEW */
-    overflow-x: hidden;          /* ✅ NEW */
-    font-size: 16px;             /* ✅ NEW: Ensures mobile-friendly scale */
+    width: 100vw;
+    overflow-x: hidden;
   }
 
   #root {
     height: 100%;
-    width: 100%;                 /* ✅ NEW */
+    width: 100%;
     @apply bg-white dark:bg-[#0f172a];
   }
 
@@ -74,6 +73,8 @@
 
 body {
   @apply font-josefin;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .underline-container {
