@@ -26,8 +26,8 @@ const Navbar = () => {
           Sam Williamson
         </Link>
 
-        {/* DESKTOP NAV LINKS (visible on lg and up) */}
-        <div className="hidden lg:flex items-center gap-6">
+        {/* DESKTOP NAV LINKS (now visible on md and up) */}
+        <div className="hidden md:flex items-center gap-6">
           {navItems.map(({ to, label }) => (
             <Link
               key={to}
@@ -45,9 +45,9 @@ const Navbar = () => {
           <DarkModeToggle />
         </div>
 
-        {/* MOBILE: Hamburger Icon (visible below lg) */}
+        {/* MOBILE: Hamburger Icon (visible below md) */}
         <button
-          className="lg:hidden text-gray-700 dark:text-gray-300 focus:outline-none"
+          className="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -63,7 +63,7 @@ const Navbar = () => {
 
       {/* MOBILE: Dropdown Menu (visible when open) */}
       {isMenuOpen && (
-        <div className="lg:hidden px-4 pb-4 space-y-2 font-josefin">
+        <div className="md:hidden px-4 pb-4 space-y-2 font-josefin">
           {navItems.map(({ to, label }) => (
             <Link
               key={to}
