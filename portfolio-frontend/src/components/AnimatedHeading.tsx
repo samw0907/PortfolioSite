@@ -92,7 +92,7 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
               style={{
                 display: 'block',
                 position: 'relative',
-                paddingBottom: 8,
+                paddingBottom: 28,
                 marginBottom: lineIndex === 0 ? 10 : 0,
                 maxWidth: '850px',
               }}
@@ -134,9 +134,9 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
                     }}
                     style={{
                       position: 'absolute',
-                      bottom: 0,
+                      bottom: -8,
                       left: 0,
-                      height: 4,
+                      height: 3,
                       width: '100%',
                       backgroundImage: 'linear-gradient(to right, transparent, #14b8a6, transparent)',
                       borderRadius: 2,

@@ -5,6 +5,7 @@ import ContaminatedSoil from '../assets/ContaminatedSoil.jpeg'
 import ContaminatedWater from '../assets/ContaminatedWater.jpeg'
 import CoalMine from '../assets/CoalMine.jpeg'
 import AnimatedParagraph from './AnimatedParagraph'
+import ParagraphWithSeparator from './ParagraphWithSeparator';
 
 const banners = [
   {

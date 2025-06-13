@@ -1,27 +1,27 @@
-import { useEffect } from 'react'
-import { motion, useAnimation, Variants } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { useEffect } from 'react';
+import { motion, useAnimation, Variants } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 interface AnimatedParagraphProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({ children }) => {
-  const controls = useAnimation()
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 })
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
 
   useEffect(() => {
     if (inView) {
-      controls.start('visible')
+      controls.start('visible');
     } else {
-      controls.start('hidden')
+      controls.start('hidden');
     }
-  }, [controls, inView])
+  }, [controls, inView]);
 
   const variants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  }
+  };
 
   return (
     <motion.p
@@ -29,11 +29,11 @@ const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({ children }) => {
       initial="hidden"
       animate={controls}
       variants={variants}
-      className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6 sm:mb-8"
+      className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300"
     >
       {children}
     </motion.p>
-  )
-}
+  );
+};
 
-export default AnimatedParagraph
+export default AnimatedParagraph;
