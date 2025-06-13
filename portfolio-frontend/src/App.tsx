@@ -8,11 +8,11 @@ import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen text-gray-800 dark:text-gray-100 overflow-x-hidden">
+    <div className="flex flex-col min-h-screen w-full text-gray-800 dark:text-gray-100 overflow-x-hidden">
       <Navbar />
 
       {/* Make main grow but not prevent footer from appearing */}
-      <main className="flex-grow">
+      <main className="flex-grow w-full">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

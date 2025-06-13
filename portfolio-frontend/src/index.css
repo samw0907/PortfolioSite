@@ -28,11 +28,13 @@ html, body {
   @apply bg-white dark:bg-[#0f172a] transition-colors duration-300;
   color-scheme: light dark;
   height: 100%;
+  width: 100%; /* ✅ ADD THIS */
   margin: 0;
   padding: 0;
 }
 #root {
   height: 100%;
+  width: 100%; /* ✅ ADD THIS */
   @apply bg-white dark:bg-[#0f172a];
 }
 
