@@ -10,40 +10,44 @@ const banners = [
   {
     image: BgsMap,
     alt: 'BGS Map',
+    heading: 'Geological Analysis & Reporting',
     caption: 'British Geological Survey Map',
     points: [
       'Interpreting geological survey data and maps.',
-      'Maintaining close communication with clients & contractors, ensuring site works run smoothly',
-      'Writing reports, costing projects & providing quotes to clients',
+      'Maintaining close communication with clients & contractors, ensuring site works run smoothly.',
+      'Writing reports, providing quotes to clients.',
     ],
   },
   {
     image: Soil,
     alt: 'Soil Image',
-    caption: 'Environmental Testing',
+    heading: 'Site Investigations',
+    caption: 'Soil Sampling',
     points: [
-      'Designing intrusive site investigation program for Phase II assessments.',
+      'Designing intrusive site investigation programs for Phase II assessments.',
       'Undertaking trial pitting & environmental sampling on site.',
-      'Hazardous waste classifications.',
+      'Hazardous waste analysis & classification.',
     ],
   },
   {
     image: ContaminatedSoil,
     alt: 'Contaminated Soil',
+    heading: 'Environmental & Geotechnical Testing',
     caption: 'Contaminated Soils',
     points: [
       'Designing & supervising environmental remediation programmes.',
       'Analysing geotechnical testing results (e.g. shear strength, PSDs).',
-      'Analysing environmental testing results (e.g. heavy metals, fuel oils, PCBs, PAHs, VOCs, asbestos).',
+      'Analysing environmental testing results (e.g. oils, PCBs, PAHs, VOCs).',
     ],
   },
   {
     image: ContaminatedWater,
     alt: 'Contaminated Groundwater',
+    heading: 'Groundwater Testing & Analysis',
     caption: 'Contaminated Groundwater',
     points: [
       'Onsite surface & groundwater sampling & testing.',
-      'Basic groundwater modelling',
+      'Basic groundwater modelling.',
       'Contaminant plume delineation & risk assessment.',
       'Infiltration testing.',
     ],
@@ -51,14 +55,15 @@ const banners = [
   {
     image: CoalMine,
     alt: 'Abandoned Coal Mine',
+    heading: 'Mine Stability Assessments & Remediation',
     caption: 'Abandoned Coal Mine',
     points: [
-      'Interpretation of the stability of shallow abandoned mineworkings & mineshafts',
-      'Supervision of remeidation of unstable minerworkigns, via drilling & high presuure grouting',
+      'Interpretation of the stability of shallow abandoned mineworkings.',
+      'Supervision of remediation of unstable mineworkings via drilling & high-pressure grouting.',
       'Ground gas monitoring & assessments.',
     ],
   },
-]
+];
 
 const fadeUpVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -67,7 +72,7 @@ const fadeUpVariants = {
 
 const MyBackgroundSection = () => {
   return (
-    <div className="max-w-5xl mx-auto px-4 space-y-10">
+    <div className="max-w-5xl mx-auto px-4 space-y-12">
       {/* Intro paragraphs */}
       <div className="space-y-6">
         <AnimatedParagraph>
@@ -87,43 +92,48 @@ const MyBackgroundSection = () => {
       </div>
 
       {/* Banners */}
-      {banners.map(({ image, alt, caption, points }, idx) => (
+      {banners.map(({ image, alt, heading, caption, points }, idx) => (
         <motion.div
           key={idx}
-          className="flex flex-col md:flex-row items-center gap-8 rounded-xl bg-teal-100 dark:bg-teal-900 p-8 shadow-lg"
+          className="space-y-4 p-6 rounded-xl bg-teal-100 dark:bg-teal-900 shadow-lg"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUpVariants}
         >
-          {/* Points */}
-          <ul
-            className="flex-1 list-disc list-inside space-y-3 text-lg text-teal-900 dark:text-gray-300"
-              style={{ paddingLeft: 0 }}
-          >
-            {points.map((point, i) => (
-              <li
-                key={i}
-                style={{
-                paddingLeft: '1.2em',
-                textIndent: '-1.2em',
-                }}
-              >
-              {point}
-              </li>
-            ))}
-          </ul>
+          {/* Heading */}
+          <h3 className="text-2xl font-semibold text-teal-800 dark:text-teal-200 ">
+            {heading}
+          </h3>
 
-          {/* Image */}
-          <div className="flex-shrink-0 max-w-xs w-full rounded-lg overflow-hidden">
-          <img
-            src={image}
-            alt={alt}
-            className="w-full h-48 object-cover rounded-lg"
-          />
-          <p className="text-center text-sm text-teal-800 dark:text-gray-400 mt-2">
-          {caption}
-          </p>
+          {/* Content Grid */}
+          <div className="flex flex-col md:flex-row items-start gap-8">
+            {/* Points */}
+            <ul className="flex-1 list-disc list-inside space-y-3 text-lg text-teal-900 dark:text-gray-300 px-1">
+              {points.map((point, i) => (
+                <li
+                  key={i}
+                  style={{
+                    paddingLeft: '1.2em',
+                    textIndent: '-1.2em',
+                  }}
+                >
+                  {point}
+                </li>
+              ))}
+            </ul>
+
+            {/* Image */}
+            <div className="flex-shrink-0 max-w-xs w-full mx-auto">
+              <img
+                src={image}
+                alt={alt}
+                className="w-full h-48 object-cover rounded-lg"
+              />
+              <p className="text-center text-sm text-teal-800 dark:text-gray-400 mt-2">
+                {caption}
+              </p>
+            </div>
           </div>
         </motion.div>
       ))}
