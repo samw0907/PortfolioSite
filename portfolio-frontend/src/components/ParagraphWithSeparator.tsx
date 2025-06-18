@@ -1,41 +1,53 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 interface ParagraphWithSeparatorProps {
   children: React.ReactNode;
   isLast?: boolean;
+  delay?: number;
+  onLastComplete?: () => void;
 }
 
 const lineVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  visible: (customDelay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, delay: customDelay },
+  }),
 };
 
 const ParagraphWithSeparator: React.FC<ParagraphWithSeparatorProps> = ({
   children,
   isLast = false,
+  delay = 0,
+  onLastComplete,
 }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   useEffect(() => {
     if (inView) {
-      controls.start('visible');
-    } else {
-      controls.start('hidden');
+      const totalDelay = delay + 0.6; // paragraph delay + animation time
+      controls.start('visible').then(() => {
+        if (onLastComplete) {
+          setTimeout(() => onLastComplete(), totalDelay * 1000);
+        }
+      });
     }
-  }, [controls, inView]);
+  }, [controls, inView, onLastComplete, delay]);
 
   return (
-    <div className={`flex flex-col items-center w-full px-2 sm:px-4`}>
-      {/* Paragraph content */}
+    <div className="flex flex-col items-center w-full px-2 sm:px-4">
+      {/* Paragraph */}
       <div className="w-full mb-6 sm:mb-8">{children}</div>
 
-      {/* Animated teal tapered line separator unless it's the last paragraph */}
+      {/* Separator after a short delay */}
       {!isLast && (
         <motion.div
           ref={ref}
+          custom={delay + 0.6}
           initial="hidden"
           animate={controls}
           variants={lineVariants}

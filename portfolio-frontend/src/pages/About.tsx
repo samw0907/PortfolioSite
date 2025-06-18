@@ -1,58 +1,53 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import AnimatedHeading from '../components/AnimatedHeading'
-import AnimatedParagraph from '../components/AnimatedParagraph'
-import MyBackgroundSection from '../components/MyBackgroundSection'
-import PersonalSection from '../components/PersonalSection'
 import NavigationTabs from '../components/NavigationTabs'
 import ParagraphWithSeparator from '../components/ParagraphWithSeparator'
 
-const FullStackPathway = () => (
-  <>
-    <ParagraphWithSeparator>
-      <AnimatedParagraph>
-        After moving to Finland a few years ago, I focused on learning the language while looking for work in my field of geo-environmental consulting. I landed a six-month contract in the industry, but the role was well below my level of experience. It quickly became clear that without fluent, professional Finnish, progressing in that field would be tough.
-      </AnimatedParagraph>
-    </ParagraphWithSeparator>
+import AnimatedParagraph from '../components/AnimatedParagraph'
+import MyBackgroundSection from '../components/MyBackgroundSection'
+import PersonalSection from '../components/PersonalSection'
 
-    <ParagraphWithSeparator>
-      <AnimatedParagraph>
-        I’ve always been someone who wants to take pride in their work. If I can’t do something well, it’s hard to stay motivated. Since I wasn’t able to work to my full potential, I decided it was time for a change — and jumped into learning web development.
-      </AnimatedParagraph>
-    </ParagraphWithSeparator>
+const FullStackPathway = ({ onComplete }: { onComplete: () => void }) => {
+  const paragraphs = [
+    `After moving to Finland a few years ago, I focused on learning the language while looking for work in my field of geo-environmental consulting. I landed a six-month contract in the industry, but the role was well below my level of experience. It quickly became clear that without fluent, professional Finnish, progressing in that field would be tough.`,
+    `I’ve always been someone who wants to take pride in their work. If I can’t do something well, it’s hard to stay motivated. Since I wasn’t able to work to my full potential, I decided it was time for a change — and jumped into learning web development.`,
+    `I'd been considering the move for a while, especially knowing the tech industry in Finland is more open to English speakers and often doesn’t require a degree in the field. I started with some online coding courses and eventually completed the Helsinki University Full Stack Open in Spring 2025.`,
+    `Self-learning has definitely had its challenges, but the deeper I've got into it, the more I've enjoyed it. There’s something really satisfying about building a site from scratch and watching it come to life. Learning this way has taught me to persevere with problems myself, finding soloutions independantly.`,
+  ]
 
-    <ParagraphWithSeparator>
-      <AnimatedParagraph>
-        I'd been considering the move for a while, especially knowing the tech industry in Finland is more open to English speakers and often doesn’t require a degree in the field. I started with some online coding courses and eventually completed the{' '}
-        <a
-          href="https://fullstackopen.com/en/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-teal-600 dark:text-teal-400 underline hover:text-teal-800 dark:hover:text-teal-300"
-        >
-          Helsinki University Full Stack Open
-        </a>{' '}
-        in Spring 2025.
-      </AnimatedParagraph>
-    </ParagraphWithSeparator>
+  return (
+    <>
+      {paragraphs.map((text, index) => {
+        const delay = index * 0.8
+        const isFirst = index === 0
+        const isLast = index === paragraphs.length - 1
 
-    <ParagraphWithSeparator isLast>
-      <AnimatedParagraph>
-        Self-learning has definitely had its challenges, but the deeper I've got into it, the more I've enjoyed it. There’s something really satisfying about building a site from scratch and watching it come to life. Learning this way has taught me to be resourceful and to figure things out on my own — a skill I now really value.
-      </AnimatedParagraph>
-    </ParagraphWithSeparator>
-  </>
-)
+        return (
+          <ParagraphWithSeparator key={index} delay={delay} isLast={isLast}>
+            <AnimatedParagraph
+              delay={delay}
+              onLastComplete={isFirst ? () => setTimeout(onComplete, 2000) : undefined}
+            >
+              {text}
+            </AnimatedParagraph>
+          </ParagraphWithSeparator>
+        )
+      })}
+    </>
+  )
+}
 
 const sections = [
-  { title: 'Full Stack Pathway', content: <FullStackPathway /> },
-  { title: 'My Background', content: <MyBackgroundSection /> },
-  { title: 'Personal', content: <PersonalSection /> },
+  { title: 'Full Stack Pathway', content: FullStackPathway },
+  { title: 'My Background', content: MyBackgroundSection },
+  { title: 'Personal', content: PersonalSection },
 ]
 
 const About = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [showContent, setShowContent] = useState(false)
+  const [showTabs, setShowTabs] = useState(false)
 
   const next = () => {
     setShowContent(false)
@@ -73,20 +68,40 @@ const About = () => {
     setShowContent(true)
   }
 
+  const handleParagraphsComplete = () => {
+    if (!showTabs) setShowTabs(true)
+  }
+
+  const CurrentContent = sections[activeIndex].content
+
   return (
     <section className="font-josefin max-w-5xl mx-auto px-4 sm:px-8 pb-20 relative min-h-[100vh]">
-      {/* Top Nav Tabs */}
-      <div className="sticky top-0 border-b border-transparent z-10 bg-white dark:bg-[#0b1120] bg-opacity-90 dark:bg-opacity-90 backdrop-blur">
-        <NavigationTabs
-          sections={sections}
-          activeIndex={activeIndex}
-          setActive={setActive}
-          prev={prev}
-          next={next}
-        />
-      </div>
+      {/* PRESERVE NAV SPACE */}
+      <div className="h-14 sm:h-16" />
 
-      {/* Animated Heading */}
+      {/* NAV TABS - fade in 2s after paragraph rendering starts, stay fixed at top */}
+      <AnimatePresence>
+        {showTabs && (
+          <motion.div
+            key="top-nav"
+            className="fixed top-0 left-0 right-0 z-10 bg-white dark:bg-[#0b1120] bg-opacity-90 dark:bg-opacity-90 backdrop-blur border-b border-transparent"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <NavigationTabs
+              sections={sections}
+              activeIndex={activeIndex}
+              setActive={setActive}
+              prev={prev}
+              next={next}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* HEADING */}
       <AnimatedHeading
         key={activeIndex}
         activeIndex={activeIndex}
@@ -95,7 +110,7 @@ const About = () => {
         {sections[activeIndex].title}
       </AnimatedHeading>
 
-      {/* Content */}
+      {/* CONTENT */}
       <AnimatePresence mode="wait">
         {showContent && (
           <motion.div
@@ -106,14 +121,14 @@ const About = () => {
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.4 }}
           >
-            {sections[activeIndex].content}
+            <CurrentContent onComplete={handleParagraphsComplete} />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Bottom Nav Tabs */}
+      {/* BOTTOM NAV TABS */}
       <AnimatePresence>
-        {showContent && (
+        {showTabs && (
           <motion.div
             className="sticky bottom-0 border-t border-transparent mt-10 z-10 bg-white dark:bg-[#0b1120] bg-opacity-90 dark:bg-opacity-90 backdrop-blur"
             initial={{ opacity: 0 }}
