@@ -124,12 +124,12 @@ useEffect(() => {
                 <div>
                   <h4 className="font-semibold text-gray-800 dark:text-gray-200">Features:</h4>
                   <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
-                    <li>Log and edit swim, bike, run sessions</li>
-                    <li>Log Multi-sport session support with transition inputs</li>
-                    <li>Automatically generated top 3 Personal Bests for a range of event distances</li>
-                    <li>Pace Calculator feature</li>
-                    <li>Total distance tracking, displayed with line graphs</li>
-                    <li>CI/CD pipeline with Playwright tests and deployment to Fly.io</li>
+                    <li>Log and edit swim, bike, run sessions.</li>
+                    <li>Log Multi-sport session support with transition inputs.</li>
+                    <li>Automatically generated top 3 Personal Bests for a range of event distances.</li>
+                    <li>Pace Calculator feature.</li>
+                    <li>Total distance tracking, displayed with line graphs.</li>
+                    <li>CI/CD pipeline with Playwright tests and deployment to Fly.io.</li>
                   </ul>
                 </div>
 
