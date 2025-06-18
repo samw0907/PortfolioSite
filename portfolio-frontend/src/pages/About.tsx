@@ -51,16 +51,19 @@ const About = () => {
 
   const next = () => {
     setShowContent(false)
+    setShowTabs(false)
     setActiveIndex((prev) => (prev + 1) % sections.length)
   }
 
   const prev = () => {
     setShowContent(false)
+    setShowTabs(false)
     setActiveIndex((prev) => (prev - 1 + sections.length) % sections.length)
   }
 
   const setActive = (index: number) => {
     setShowContent(false)
+    setShowTabs(false)
     setActiveIndex(index)
   }
 
@@ -69,39 +72,36 @@ const About = () => {
   }
 
   const handleParagraphsComplete = () => {
-    if (!showTabs) setShowTabs(true)
+    setShowTabs(true)
   }
 
   const CurrentContent = sections[activeIndex].content
 
   return (
     <section className="font-josefin max-w-5xl mx-auto px-4 sm:px-8 pb-20 relative min-h-[100vh]">
-      {/* PRESERVE NAV SPACE */}
+      {/* Reserved vertical space to avoid pushing on fade-in */}
       <div className="h-14 sm:h-16" />
 
-      {/* NAV TABS - fade in 2s after paragraph rendering starts, stay fixed at top */}
-      <AnimatePresence>
-        {showTabs && (
-          <motion.div
-            key="top-nav"
-            className="fixed top-0 left-0 right-0 z-10 bg-white dark:bg-[#0b1120] bg-opacity-90 dark:bg-opacity-90 backdrop-blur border-b border-transparent"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <NavigationTabs
-              sections={sections}
-              activeIndex={activeIndex}
-              setActive={setActive}
-              prev={prev}
-              next={next}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+{/* Sticky nav tabs – visible immediately and stay fixed on scroll */}
+<div className="sticky top-0 z-10">
+  <motion.div
+    className="bg-white dark:bg-[#0b1120] bg-opacity-90 dark:bg-opacity-90 backdrop-blur border-b border-transparent"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: showTabs ? 1 : 0 }}
+    transition={{ duration: 0.6, delay: 0.1 }}
+  >
+    <NavigationTabs
+      sections={sections}
+      activeIndex={activeIndex}
+      setActive={setActive}
+      prev={prev}
+      next={next}
+    />
+  </motion.div>
+</div>
 
-      {/* HEADING */}
+
+      {/* Animated heading */}
       <AnimatedHeading
         key={activeIndex}
         activeIndex={activeIndex}
@@ -110,7 +110,7 @@ const About = () => {
         {sections[activeIndex].title}
       </AnimatedHeading>
 
-      {/* CONTENT */}
+      {/* Section content */}
       <AnimatePresence mode="wait">
         {showContent && (
           <motion.div
@@ -122,27 +122,6 @@ const About = () => {
             transition={{ duration: 0.4 }}
           >
             <CurrentContent onComplete={handleParagraphsComplete} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* BOTTOM NAV TABS */}
-      <AnimatePresence>
-        {showTabs && (
-          <motion.div
-            className="sticky bottom-0 border-t border-transparent mt-10 z-10 bg-white dark:bg-[#0b1120] bg-opacity-90 dark:bg-opacity-90 backdrop-blur"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <NavigationTabs
-              sections={sections}
-              activeIndex={activeIndex}
-              setActive={setActive}
-              prev={prev}
-              next={next}
-            />
           </motion.div>
         )}
       </AnimatePresence>
