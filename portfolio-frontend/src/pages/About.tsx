@@ -40,9 +40,10 @@ const FullStackPathway = ({ onComplete }: { onComplete: () => void }) => {
   )
 }
 
+// ✅ FIXED TYPE:
 type Section = {
   title: string
-  content: (props: { onComplete: () => void }) => JSX.Element
+  content: React.ComponentType<{ onComplete: () => void }>
 }
 
 const sections: Section[] = [
