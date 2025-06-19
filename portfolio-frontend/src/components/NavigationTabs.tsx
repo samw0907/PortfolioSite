@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface NavigationTabsProps {
-  sections: { title: string; content: React.ReactNode }[]
+  sections: { title: string }[]
   activeIndex: number
   setActive: (index: number) => void
   prev: () => void
