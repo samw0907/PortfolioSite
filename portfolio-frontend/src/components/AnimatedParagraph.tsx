@@ -39,7 +39,7 @@ const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({
       initial="hidden"
       animate={controls}
       variants={variants}
-      className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+      className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-200"
     >
       {children}
     </motion.p>

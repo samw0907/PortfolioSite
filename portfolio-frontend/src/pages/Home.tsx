@@ -69,7 +69,7 @@ const Home = () => {
               {showTitle && (
                 <HomeAnimatedHeadings
                   text="FULL STACK DEVELOPER"
-                  className="text-base sm:text-lg md:text-xl text-teal-600 dark:text-teal-400 font-light tracking-wide font-medium mt-2 absolute top-6 left-0 w-full"
+                  className="text-base sm:text-lg md:text-xl text-teal-600 dark:text-teal-400 font-light tracking-wide font-medium mt-2 absolute top-3.5 left-0 w-full"
                   onComplete={() => setShowSubtitle(true)}
                 />
               )}
@@ -119,7 +119,7 @@ const Home = () => {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="max-w-xl mx-auto mt-2 px-4 sm:px-0"
           >
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-200 leading-relaxed">
               I build web apps that are clean and simple to use. I enjoy learning new tools and finding better
               ways to solve real problems with useful apps.
             </p>
@@ -155,13 +155,12 @@ const Home = () => {
           </motion.div>
         </section>
 
-        <div className="max-w-[1000px] mx-auto w-full px-4">
+        <div className="w-full overflow-x-hidden">
           <HomeTechStack />
+          <Spline3D />
+          <SplineHint />
         </div>
       </div>
-
-      <Spline3D />
-      <SplineHint />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import HCRD from '../assets/HCRD.png'
 const PersonalSection = () => (
   <div className="flex flex-col md:flex-row gap-6 items-start">
     <div className="flex-1 space-y-6">
-      <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-300">
+      <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-200">
         Outside of work, sport has always been a big part of my life.
         I represented my schools in football, field hockey, badminton, and cross-country running.
         These days running has been my main focus, completing two half-marathons and my first full marathon in 2024.

@@ -31,12 +31,21 @@ const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({
 }) => {
   const controls = useAnimation();
   const [animateClass, setAnimateClass] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setAnimateClass(true);
     controls.start('visible').then(() => {
       if (onComplete) onComplete();
     });
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [controls, onComplete]);
 
   return (
@@ -49,23 +58,45 @@ const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        lineHeight: 0.65,
         letterSpacing: 'normal',
+        lineHeight: '0.65',
       }}
     >
-      {text.split('').map((char, idx) => (
-        <motion.span
-          key={idx}
-          variants={letterVariants}
-          style={{
-            whiteSpace: 'pre', // preserves spaces
-            display: 'inline-block',
-          }}
-          aria-hidden={char === ' ' ? true : undefined}
-        >
-          {char}
-        </motion.span>
-      ))}
+      {text.split(' ').map((word, wordIndex) => {
+        const isSamWilliamson = text === 'SAM WILLIAMSON';
+        const customMargin =
+          isSamWilliamson && wordIndex === 0
+            ? '1.5rem'
+            : !isSamWilliamson && isMobile
+            ? '0.5rem' // ✅ slightly wider than before, but still reduced for mobile
+            : '0.75rem';
+
+        return (
+          <span
+            key={wordIndex}
+            style={{
+              display: 'inline-block',
+              whiteSpace: 'nowrap',
+              marginRight: wordIndex < text.split(' ').length - 1 ? customMargin : 0,
+              marginBottom: wordIndex === 0 && isSamWilliamson ? '0.4em' : 0,
+            }}
+          >
+            {word.split('').map((char, idx) => (
+              <motion.span
+                key={idx}
+                variants={letterVariants}
+                style={{
+                  whiteSpace: 'pre',
+                  display: 'inline-block',
+                }}
+                aria-hidden={char === ' ' ? true : undefined}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </span>
+        );
+      })}
     </motion.div>
   );
 };

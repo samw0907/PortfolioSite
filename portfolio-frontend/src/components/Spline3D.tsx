@@ -20,15 +20,20 @@ const Spline3D = () => {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full h-[300px] sm:h-[400px] relative z-10"
-      style={{
-        WebkitTapHighlightColor: 'transparent',
-        touchAction: 'none', // important for pointer events
-      }}
-    >
-      <Spline scene="https://prod.spline.design/D2CC6Aw37W8fxD2t/scene.splinecode" />
+    <div className="w-full bg-gray-100 dark:bg-[#0b1120] overflow-hidden">
+      <div
+        ref={containerRef}
+        className="max-w-7xl mx-auto px-4 sm:px-6 w-full h-[300px] sm:h-[400px] relative z-10 overflow-hidden"
+        style={{
+          WebkitTapHighlightColor: 'transparent',
+          touchAction: 'none',
+        }}
+      >
+        {/* Hard cap for layout control */}
+        <div className="w-full h-full overflow-hidden">
+          <Spline scene="https://prod.spline.design/D2CC6Aw37W8fxD2t/scene.splinecode" />
+        </div>
+      </div>
     </div>
   );
 };

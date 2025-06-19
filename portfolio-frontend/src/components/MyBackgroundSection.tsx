@@ -109,7 +109,7 @@ const MyBackgroundSection = () => {
           {/* Content Grid */}
           <div className="flex flex-col md:flex-row items-start gap-8">
             {/* Points */}
-            <ul className="flex-1 list-disc list-inside space-y-3 text-lg text-teal-900 dark:text-gray-300 px-1">
+            <ul className="flex-1 list-disc list-inside space-y-3 text-lg text-teal-900 dark:text-gray-200 px-1">
               {points.map((point, i) => (
                 <li
                   key={i}
