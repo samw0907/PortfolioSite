@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
-import { motion, useAnimation, Variants } from 'framer-motion';
+import { useEffect, useState } from 'react'
+import { motion, useAnimation, Variants } from 'framer-motion'
 
 interface HomeAnimatedHeadingsProps {
-  text: string;
-  onComplete?: () => void;
-  className?: string;
+  text: string
+  onComplete?: () => void
+  className?: string
+  wordGap?: string
 }
 
 const containerVariants: Variants = {
@@ -13,7 +14,7 @@ const containerVariants: Variants = {
     opacity: 1,
     transition: { staggerChildren: 0.05, when: 'beforeChildren' },
   },
-};
+}
 
 const letterVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -22,31 +23,32 @@ const letterVariants: Variants = {
     y: 0,
     transition: { ease: 'easeOut', duration: 0.5 },
   },
-};
+}
 
 const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({
   text,
   onComplete,
   className,
+  wordGap,
 }) => {
-  const controls = useAnimation();
-  const [animateClass, setAnimateClass] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const controls = useAnimation()
+  const [animateClass, setAnimateClass] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    setAnimateClass(true);
+    setAnimateClass(true)
     controls.start('visible').then(() => {
-      if (onComplete) onComplete();
-    });
+      if (onComplete) onComplete()
+    })
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
+      setIsMobile(window.innerWidth < 640)
+    }
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [controls, onComplete]);
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [controls, onComplete])
 
   return (
     <motion.div
@@ -63,13 +65,14 @@ const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({
       }}
     >
       {text.split(' ').map((word, wordIndex) => {
-        const isSamWilliamson = text === 'SAM WILLIAMSON';
+        const isSamWilliamson = text === 'SAM WILLIAMSON'
         const customMargin =
-          isSamWilliamson && wordIndex === 0
+          wordGap ||
+          (isSamWilliamson && wordIndex === 0
             ? '1.5rem'
             : !isSamWilliamson && isMobile
-            ? '0.5rem' // ✅ slightly wider than before, but still reduced for mobile
-            : '0.75rem';
+            ? '0.5rem'
+            : '0.75rem')
 
         return (
           <span
@@ -95,10 +98,10 @@ const HomeAnimatedHeadings: React.FC<HomeAnimatedHeadingsProps> = ({
               </motion.span>
             ))}
           </span>
-        );
+        )
       })}
     </motion.div>
-  );
-};
+  )
+}
 
-export default HomeAnimatedHeadings;
+export default HomeAnimatedHeadings

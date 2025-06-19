@@ -40,7 +40,12 @@ const FullStackPathway = ({ onComplete }: { onComplete: () => void }) => {
   )
 }
 
-const sections = [
+type Section = {
+  title: string
+  content: (props: { onComplete: () => void }) => JSX.Element
+}
+
+const sections: Section[] = [
   { title: 'Full Stack Pathway', content: FullStackPathway },
   { title: 'My Background', content: MyBackgroundSection },
   { title: 'Personal', content: PersonalSection },
@@ -61,19 +66,17 @@ const About = () => {
     setActiveIndex((prev) => (prev - 1 + sections.length) % sections.length)
   }
 
-const setActive = (index: number) => {
-  if (index === activeIndex) return;
-  setShowContent(false)
-  setActiveIndex(index)
-}
-
+  const setActive = (index: number) => {
+    if (index === activeIndex) return
+    setShowContent(false)
+    setActiveIndex(index)
+  }
 
   const handleHeadingAnimationComplete = () => {
     setShowContent(true)
   }
 
   const handleParagraphsComplete = () => {
-    // Trigger fade-in 1s after first paragraph starts
     setTimeout(() => setShowTabs(true), 0)
   }
 
@@ -81,7 +84,6 @@ const setActive = (index: number) => {
 
   return (
     <section className="font-josefin max-w-5xl mx-auto px-4 sm:px-8 pb-20 relative min-h-[100vh]">
-      {/* Sticky wrapper is always present to reserve space */}
       <div className="sticky top-[60px] z-40 h-[56px] sm:h-[64px]">
         <AnimatePresence>
           {showTabs && (
@@ -104,7 +106,6 @@ const setActive = (index: number) => {
         </AnimatePresence>
       </div>
 
-      {/* Animated heading */}
       <AnimatedHeading
         key={activeIndex}
         activeIndex={activeIndex}
@@ -113,7 +114,6 @@ const setActive = (index: number) => {
         {sections[activeIndex].title}
       </AnimatedHeading>
 
-      {/* Section content */}
       <AnimatePresence mode="wait">
         {showContent && (
           <motion.div
