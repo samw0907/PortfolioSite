@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 
 interface ParagraphWithSeparatorProps {
   children: React.ReactNode;
@@ -25,28 +24,24 @@ const ParagraphWithSeparator: React.FC<ParagraphWithSeparatorProps> = ({
   onLastComplete,
 }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   useEffect(() => {
-    if (inView) {
-      const totalDelay = delay + 0.6; // paragraph delay + animation time
-      controls.start('visible').then(() => {
-        if (onLastComplete) {
-          setTimeout(() => onLastComplete(), totalDelay * 1000);
-        }
-      });
-    }
-  }, [controls, inView, onLastComplete, delay]);
+    const totalDelay = delay + 0.6; // match paragraph + animation duration
+    controls.start('visible').then(() => {
+      if (onLastComplete) {
+        setTimeout(() => onLastComplete(), totalDelay * 1000);
+      }
+    });
+  }, [controls, onLastComplete, delay]);
 
   return (
     <div className="flex flex-col items-center w-full px-2 sm:px-4">
       {/* Paragraph */}
       <div className="w-full mb-6 sm:mb-8">{children}</div>
 
-      {/* Separator after a short delay */}
+      {/* Separator */}
       {!isLast && (
         <motion.div
-          ref={ref}
           custom={delay + 0.6}
           initial="hidden"
           animate={controls}

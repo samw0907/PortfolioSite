@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 
 interface AnimatedParagraphProps {
   children: React.ReactNode;
@@ -8,24 +7,20 @@ interface AnimatedParagraphProps {
   onLastComplete?: () => void;
 }
 
-const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({ children, delay = 0, onLastComplete }) => {
+const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({
+  children,
+  delay = 0,
+  onLastComplete,
+}) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   useEffect(() => {
-    let fallback: NodeJS.Timeout;
-
-    if (inView) {
-      controls.start('visible').then(() => {
-        // Allow animation to visibly finish, then call onLastComplete
-        fallback = setTimeout(() => {
-          if (onLastComplete) onLastComplete();
-        }, 600); // match animation duration
-      });
-    }
-
-    return () => clearTimeout(fallback);
-  }, [controls, inView, onLastComplete]);
+    controls.start('visible').then(() => {
+      if (onLastComplete) {
+        setTimeout(onLastComplete, 600); // match animation duration
+      }
+    });
+  }, [controls, onLastComplete]);
 
   const variants: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -41,7 +36,6 @@ const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({ children, delay =
 
   return (
     <motion.p
-      ref={ref}
       initial="hidden"
       animate={controls}
       variants={variants}

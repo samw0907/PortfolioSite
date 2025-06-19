@@ -15,12 +15,10 @@ const NavigationTabs: React.FC<NavigationTabsProps> = ({
   setActive,
   prev,
   next,
-  className = '',
 }) => {
   return (
-    <div
-      className={`bg-white dark:bg-gray-900 z-20 border-b border-transparent py-3 px-2 ${className}`}
-    >
+<div className="bg-white dark:bg-gray-900 z-20 border-b border-transparent pt-4 pb-0.1 px-2">
+
       {/* MOBILE VIEW: Single tab with tight chevrons */}
       <div className="flex sm:hidden items-center justify-center gap-2">
         <button

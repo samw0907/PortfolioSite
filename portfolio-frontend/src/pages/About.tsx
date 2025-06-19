@@ -27,7 +27,9 @@ const FullStackPathway = ({ onComplete }: { onComplete: () => void }) => {
           <ParagraphWithSeparator key={index} delay={delay} isLast={isLast}>
             <AnimatedParagraph
               delay={delay}
-              onLastComplete={isFirst ? () => setTimeout(onComplete, 2000) : undefined}
+              onLastComplete={
+                isFirst ? () => setTimeout(onComplete, 1) : undefined
+              }
             >
               {text}
             </AnimatedParagraph>
@@ -47,7 +49,7 @@ const sections = [
 const About = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [showContent, setShowContent] = useState(false)
-  const [hasTabsMounted, setHasTabsMounted] = useState(false)
+  const [showTabs, setShowTabs] = useState(false)
 
   const next = () => {
     setShowContent(false)
@@ -59,41 +61,50 @@ const About = () => {
     setActiveIndex((prev) => (prev - 1 + sections.length) % sections.length)
   }
 
-  const setActive = (index: number) => {
-    setShowContent(false)
-    setActiveIndex(index)
-  }
+const setActive = (index: number) => {
+  if (index === activeIndex) return;
+  setShowContent(false)
+  setActiveIndex(index)
+}
+
 
   const handleHeadingAnimationComplete = () => {
     setShowContent(true)
   }
 
   const handleParagraphsComplete = () => {
-    if (!hasTabsMounted) {
-      setHasTabsMounted(true)
-    }
+    // Trigger fade-in 1s after first paragraph starts
+    setTimeout(() => setShowTabs(true), 0)
   }
 
   const CurrentContent = sections[activeIndex].content
 
   return (
     <section className="font-josefin max-w-5xl mx-auto px-4 sm:px-8 pb-20 relative min-h-[100vh]">
-      {/* ✅ Sticky nav tabs immediately after top navbar */}
-      {hasTabsMounted && (
-        <div className="sticky top-[64px] z-40"> {/* Adjust this to match actual Navbar height */}
-          <div className="bg-white dark:bg-[#0b1120] bg-opacity-90 dark:bg-opacity-90 backdrop-blur border-b border-transparent">
-            <NavigationTabs
-              sections={sections}
-              activeIndex={activeIndex}
-              setActive={setActive}
-              prev={prev}
-              next={next}
-            />
-          </div>
-        </div>
-      )}
+      {/* Sticky wrapper is always present to reserve space */}
+      <div className="sticky top-[60px] z-40 h-[56px] sm:h-[64px]">
+        <AnimatePresence>
+          {showTabs && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 bg-white dark:bg-[#0b1120] dark:bg-opacity-90 backdrop-blur border-t border-b border-transparent border-white dark:border-[#0b1120]"
+            >
+              <NavigationTabs
+                sections={sections}
+                activeIndex={activeIndex}
+                setActive={setActive}
+                prev={prev}
+                next={next}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
-      {/* Animated heading (comes AFTER tabs) */}
+      {/* Animated heading */}
       <AnimatedHeading
         key={activeIndex}
         activeIndex={activeIndex}
