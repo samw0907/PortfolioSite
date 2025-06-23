@@ -7,7 +7,7 @@ const PersonalSection = () => (
       <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-200">
         Outside of work, sport has always been a big part of my life.
         I represented my schools in football, field hockey, badminton, and cross-country running.
-        These days running has been my main focus, completing two half-marathons and my first full marathon in 2024.
+        In recent years, running has been my main focus and I ran two half-marathons and my first full marathon in 2024.
       </p>
       <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-300">
         Recently I've been shifting into triathlon, putting in more time on the bike and in the pool. My next big goal is the Ironman 70.3 Tallinn next year.
