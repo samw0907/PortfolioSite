@@ -40,7 +40,6 @@ const FullStackPathway = ({ onComplete }: { onComplete: () => void }) => {
   )
 }
 
-// ✅ FIXED TYPE:
 type Section = {
   title: string
   content: React.ComponentType<{ onComplete: () => void }>
@@ -57,21 +56,28 @@ const About = () => {
   const [showContent, setShowContent] = useState(false)
   const [showTabs, setShowTabs] = useState(false)
 
-  const next = () => {
-    setShowContent(false)
-    setActiveIndex((prev) => (prev + 1) % sections.length)
-  }
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-  const prev = () => {
-    setShowContent(false)
-    setActiveIndex((prev) => (prev - 1 + sections.length) % sections.length)
-  }
+const next = () => {
+  setShowContent(false);
+  setActiveIndex((prev) => (prev + 1) % sections.length);
+  scrollToTop();
+}
 
-  const setActive = (index: number) => {
-    if (index === activeIndex) return
-    setShowContent(false)
-    setActiveIndex(index)
-  }
+const prev = () => {
+  setShowContent(false);
+  setActiveIndex((prev) => (prev - 1 + sections.length) % sections.length);
+  scrollToTop();
+}
+
+const setActive = (index: number) => {
+  if (index === activeIndex) return;
+  setShowContent(false);
+  setActiveIndex(index);
+  scrollToTop();
+}
 
   const handleHeadingAnimationComplete = () => {
     setShowContent(true)
@@ -84,7 +90,7 @@ const About = () => {
   const CurrentContent = sections[activeIndex].content
 
   return (
-    <section className="font-josefin max-w-5xl mx-auto px-4 sm:px-8 pb-20 relative min-h-[100vh]">
+    <section className="font-josefin max-w-5xl mx-auto px-4 sm:px-8 pb-1 relative min-h-[100vh]">
       <div className="sticky top-[60px] z-40 h-[56px] sm:h-[64px]">
         <AnimatePresence>
           {showTabs && (
@@ -119,7 +125,7 @@ const About = () => {
         {showContent && (
           <motion.div
             key={activeIndex}
-            className="mt-6 mb-36 max-w-5xl mx-auto text-lg sm:text-xl leading-relaxed px-2 sm:px-0"
+            className="mt-6 mb-12 max-w-5xl mx-auto text-lg sm:text-xl leading-relaxed px-2 sm:px-0"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}

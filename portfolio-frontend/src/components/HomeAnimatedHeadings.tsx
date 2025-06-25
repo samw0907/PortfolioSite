@@ -12,7 +12,7 @@ const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.05, when: 'beforeChildren' },
+    transition: { staggerChildren: 0.035, when: 'beforeChildren' }, // faster stagger
   },
 }
 
@@ -21,7 +21,7 @@ const letterVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { ease: 'easeOut', duration: 0.5 },
+    transition: { ease: 'easeOut', duration: 0.35 }, // faster letter animation
   },
 }
 

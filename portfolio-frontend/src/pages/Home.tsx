@@ -89,7 +89,7 @@ const Home = () => {
                 maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
               }}
             >
-              <div className="flex gap-4 animate-scroll-fade group-hover:[animation-play-state:paused]">
+              <div className="flex gap-4 animate-scroll-fade">
                 {icons.concat(icons).map((icon, index) => (
                   <img
                     key={index}
