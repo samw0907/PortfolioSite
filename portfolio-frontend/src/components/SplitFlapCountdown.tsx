@@ -12,14 +12,22 @@ const calculateCountdown = (targetDate: string) => {
 
 const FlipUnit = ({ value, label }: { value: number; label: string }) => {
   const [prev, setPrev] = useState(value)
-  const [flipping, setFlipping] = useState(false)
+  const [flippingIndexes, setFlippingIndexes] = useState<number[]>([])
 
   useEffect(() => {
-    if (value !== prev) {
-      setFlipping(true)
+    const paddedValue = String(value).padStart(2, '0')
+    const paddedPrev = String(prev).padStart(2, '0')
+
+    const newFlippingIndexes = paddedValue
+      .split('')
+      .map((char, i) => (char !== paddedPrev[i] ? i : -1))
+      .filter(i => i !== -1)
+
+    if (newFlippingIndexes.length > 0) {
+      setFlippingIndexes(newFlippingIndexes)
       const timeout = setTimeout(() => {
         setPrev(value)
-        setFlipping(false)
+        setFlippingIndexes([])
       }, 600)
       return () => clearTimeout(timeout)
     }
@@ -29,29 +37,34 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
   const paddedPrev = String(prev).padStart(2, '0')
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex gap-1">
+    <div className="flex flex-col items-center font-splitflap">
+      <div className="flex gap-[0.2em] perspective-[40em]">
         {paddedValue.split('').map((char, idx) => {
           const prevChar = paddedPrev[idx]
+          const isFlipping = flippingIndexes.includes(idx)
+
           return (
             <div
               key={idx}
-              className="relative w-[40px] h-[60px] perspective-[800px] text-orange-400 font-mono text-4xl"
+              className="relative w-[0.6em] h-[1.1em] text-orange-400 text-[3em] leading-[0.1em] tracking-widest"
             >
-              {/* Static Top Half - now shows top part */}
-              <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-md bg-black border border-orange-500 flex items-start justify-center z-10">
-                <div className="h-[75%] mt-[8.5px]">{char}</div>
+              {/* Static Top Half */}
+              <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-md bg-black border border-orange-500 flex items-start justify-center z-10 shadow-inner">
+                <div className=" w-full mt-[0.45em] text-center drop-shadow-[0_1px_1px_rgba(255,115,0,0.5)]">
+                  {char}
+                </div>
               </div>
 
-              {/* Static Bottom Half - now shows bottom part */}
-              <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-md bg-black border border-orange-500 border-t-0 flex items-end justify-center z-10">
-                <div className="h-[-75%] mb-[8.5px]">{char}</div>
+              {/* Static Bottom Half */}
+              <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-md bg-black border border-orange-500 border-t-0 flex items-end justify-center z-10 shadow-inner">
+                <div className="w-full mb-[0.55em] text-center drop-shadow-[0_1px_1px_rgba(255,115,0,0.5)]">
+                  {char}
+                </div>
               </div>
 
               {/* Animated Flip */}
-              {flipping && (
+              {isFlipping && (
                 <>
-                  {/* Outgoing Top Half Flip */}
                   <motion.div
                     className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-md bg-black border border-orange-500 flex items-start justify-center z-20"
                     initial={{ rotateX: 0 }}
@@ -59,10 +72,11 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
                     style={{ transformOrigin: 'bottom' }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="h-[75%] mt-[3.5px]">{prevChar}</div>
+                    <div className=" w-full mt-[0.45em] text-center">
+                      {prevChar}
+                    </div>
                   </motion.div>
 
-                  {/* Incoming Bottom Half Flip */}
                   <motion.div
                     className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-md bg-black border border-orange-500 border-t-0 flex items-end justify-center z-20"
                     initial={{ rotateX: 90 }}
@@ -70,7 +84,9 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
                     style={{ transformOrigin: 'top' }}
                     transition={{ duration: 0.3, delay: 0.3 }}
                   >
-                    <div className="h-[-75%] mb-[8.5px]">{char}</div>
+                    <div className=" w-full mb-[0.55em] text-center">
+                      {char}
+                    </div>
                   </motion.div>
                 </>
               )}
@@ -78,7 +94,9 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
           )
         })}
       </div>
-      <span className="text-xs text-orange-200 mt-1 uppercase">{label}</span>
+      <span className="text-[0.6em] text-orange-200 mt-[0.25em] uppercase tracking-wider">
+        {label}
+      </span>
     </div>
   )
 }
@@ -94,7 +112,7 @@ const SplitFlapCountdown = () => {
   }, [])
 
   return (
-    <div className="flex justify-center gap-4">
+    <div className="w-full max-w-[500px] mx-auto flex flex-nowrap justify-center items-center gap-x-[1em] text-[clamp(0.75em,3.5vw,1.2em)] overflow-hidden">
       <FlipUnit value={countdown.days} label="Days" />
       <FlipUnit value={countdown.hours} label="Hrs" />
       <FlipUnit value={countdown.minutes} label="Min" />

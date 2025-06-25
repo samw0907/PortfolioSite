@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 @tailwind base;
@@ -159,4 +160,15 @@ li {
 
 .perspective-\[1000px\] {
   perspective: 1000px;
+}
+
+.panel-background {
+  background: repeating-linear-gradient(
+    to bottom,
+    #111 0px,
+    #111 20px,
+    #0f0f0f 20px,
+    #0f0f0f 40px
+  );
+  background-size: cover;
 }

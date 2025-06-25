@@ -8,6 +8,7 @@ export default {
         heading: ['Poppins', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
         josefin: ['Josefin Sans', 'sans-serif'],
+        splitflap: ['VT323', 'monospace'],
       },
       colors: {
         teal: {
