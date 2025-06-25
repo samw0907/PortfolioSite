@@ -107,7 +107,7 @@ useEffect(() => {
             >
               <div className="flex-1 space-y-4">
                 <h3 className="text-2xl font-semibold text-teal-600 dark:text-teal-400">TriSwift</h3>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 dark:text-gray-200">
                   An activity tracking app built specifically for triathletes.
                 </p>
                 <p>
@@ -116,14 +116,14 @@ useEffect(() => {
 
                 <div>
                   <h4 className="font-semibold text-gray-800 dark:text-gray-200">Tech Stack:</h4>
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <p className="text-gray-700 dark:text-gray-200">
                     React · TypeScript · Node.js · Express · PostgreSQL · GraphQL · REST API · Docker · Fly.io · GitHub Actions (CI/CD)
                   </p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-gray-800 dark:text-gray-200">Features:</h4>
-                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1">
                     <li>Log and edit swim, bike, run sessions.</li>
                     <li>Log Multi-sport session support with transition inputs.</li>
                     <li>Automatically generated top 3 Personal Bests for a range of event distances.</li>
@@ -133,7 +133,7 @@ useEffect(() => {
                   </ul>
                 </div>
 
-                <div className="flex gap-4 mt-4">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-4">
                   <a
                     href="https://github.com/samw0907/TriSwift"
                     target="_blank"
@@ -185,7 +185,7 @@ useEffect(() => {
             >
               <div className="flex-1 space-y-4">
                 <h3 className="text-2xl font-semibold text-teal-600 dark:text-teal-400">MineSecure</h3>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 dark:text-gray-200">
                   A project management tool designed to track progress of mine stabilisation projects.
                 </p>
                 <p>
@@ -196,7 +196,7 @@ useEffect(() => {
 
                 <div>
                   <h4 className="font-semibold text-gray-800 dark:text-gray-200">Planned Features:</h4>
-                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1">
                     <li>Inputs drill log & grout volume data.</li>
                     <li>Overlay grout grids & site plan layers.</li>
                     <li>Generate cross-sections along any grid line.</li>

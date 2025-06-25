@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Fix for mobile zoom issues and consistent scaling */
 html {
   @apply text-base antialiased;
   font-size: 100%;
@@ -67,6 +68,7 @@ body {
   }
 }
 
+/* Component styles */
 @layer components {
   .underline-from-left {
     position: relative;
@@ -85,6 +87,19 @@ body {
 
   .underline-from-left:hover::after {
     width: 100%;
+  }
+
+  .digital-clock-container {
+    @apply bg-black rounded-xl p-6 shadow-lg;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .digital-clock-display {
+    @apply flex items-center justify-center space-x-2;
+  }
+
+  .colon {
+    @apply text-white text-4xl;
   }
 }
 
@@ -132,4 +147,16 @@ ul {
 li {
   padding-left: 1.2em;
   text-indent: -1.2em;
+}
+
+.perspective {
+  perspective: 800px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-\[1000px\] {
+  perspective: 1000px;
 }

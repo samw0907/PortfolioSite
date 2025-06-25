@@ -38,7 +38,7 @@ const Contact = () => {
   return (
     <section className="font-josefin pt-16 pb-10 px-4 sm:px-6 max-w-xl mx-auto space-y-6">
       <h2 className="text-3xl font-bold">Contact</h2>
-      <p className="text-gray-700 dark:text-gray-300">
+      <p className="text-gray-700 dark:text-gray-200">
         Feel free to reach out via email or connect on LinkedIn.
       </p>
       <ul className="space-y-1">
@@ -64,7 +64,7 @@ const Contact = () => {
         </li>
       </ul>
 
-      <p className="text-gray-700 dark:text-gray-300">
+      <p className="text-gray-700 dark:text-gray-200">
         Prefer a direct message? Fill out the form below and I’ll get back to you via email as soon as possible.
       </p>
 
