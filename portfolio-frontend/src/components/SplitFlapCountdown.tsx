@@ -37,8 +37,8 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
   const paddedPrev = String(prev).padStart(2, '0')
 
   return (
-    <div className="flex flex-col items-center font-splitflap">
-      <div className="flex gap-[0.2em] perspective-[40em]">
+    <div className="flex flex-col items-center font-mono">
+      <div className="flex gap-[0.2em] perspective-[60em]">
         {paddedValue.split('').map((char, idx) => {
           const prevChar = paddedPrev[idx]
           const isFlipping = flippingIndexes.includes(idx)
@@ -46,18 +46,18 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
           return (
             <div
               key={idx}
-              className="relative w-[0.6em] h-[1.1em] text-orange-400 text-[3em] leading-[0.1em] tracking-widest"
+              className="relative w-[0.75em] h-[1.3em] text-white text-[3.2em] leading-[0.1em] tracking-widest"
             >
               {/* Static Top Half */}
-              <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-md bg-black border border-orange-500 flex items-start justify-center z-10 shadow-inner">
-                <div className=" w-full mt-[0.45em] text-center drop-shadow-[0_1px_1px_rgba(255,115,0,0.5)]">
+              <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm bg-[#121212] border-b-[1px] border-white flex items-start justify-center z-10 shadow-inner">
+                <div className="w-full mt-[0.55em] text-center">
                   {char}
                 </div>
               </div>
 
               {/* Static Bottom Half */}
-              <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-md bg-black border border-orange-500 border-t-0 flex items-end justify-center z-10 shadow-inner">
-                <div className="w-full mb-[0.55em] text-center drop-shadow-[0_1px_1px_rgba(255,115,0,0.5)]">
+              <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-sm bg-[#101010] border-t-[1px] border-white flex items-end justify-center z-10 shadow-inner">
+                <div className="w-full mb-[0.65em] text-center">
                   {char}
                 </div>
               </div>
@@ -66,25 +66,25 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
               {isFlipping && (
                 <>
                   <motion.div
-                    className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-md bg-black border border-orange-500 flex items-start justify-center z-20"
+                    className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm bg-black border-b-[1px] border-white flex items-start justify-center z-20"
                     initial={{ rotateX: 0 }}
                     animate={{ rotateX: -90 }}
                     style={{ transformOrigin: 'bottom' }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className=" w-full mt-[0.45em] text-center">
+                    <div className="w-full mt-[0.45em] text-center">
                       {prevChar}
                     </div>
                   </motion.div>
 
                   <motion.div
-                    className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-md bg-black border border-orange-500 border-t-0 flex items-end justify-center z-20"
+                    className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-sm bg-black border-t-[1px] border-white flex items-end justify-center z-20"
                     initial={{ rotateX: 90 }}
                     animate={{ rotateX: 0 }}
                     style={{ transformOrigin: 'top' }}
                     transition={{ duration: 0.3, delay: 0.3 }}
                   >
-                    <div className=" w-full mb-[0.55em] text-center">
+                    <div className="w-full mb-[0.55em] text-center">
                       {char}
                     </div>
                   </motion.div>
@@ -94,7 +94,7 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
           )
         })}
       </div>
-      <span className="text-[0.6em] text-orange-200 mt-[0.25em] uppercase tracking-wider">
+      <span className="text-[0.55em] text-white mt-[0.3em] uppercase tracking-wider">
         {label}
       </span>
     </div>

@@ -30,13 +30,11 @@ body {
   flex-direction: column;
 }
 
-/* Restore smooth scrolling and interactions */
 * {
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
 }
 
-/* Home animation keyframes */
 @layer utilities {
   @keyframes scroll-fade {
     0% {
@@ -67,9 +65,19 @@ body {
   .pause-on-hover:hover .animate-scroll-fade {
     animation-play-state: paused;
   }
+
+  .panel-background {
+    background: repeating-linear-gradient(
+      to bottom,
+      #000000 0px,
+      #000000 20px,
+      #222222 20px,
+      #222222 40px
+    );
+    background-size: cover;
+  }
 }
 
-/* Component styles */
 @layer components {
   .underline-from-left {
     position: relative;
@@ -160,15 +168,4 @@ li {
 
 .perspective-\[1000px\] {
   perspective: 1000px;
-}
-
-.panel-background {
-  background: repeating-linear-gradient(
-    to bottom,
-    #111 0px,
-    #111 20px,
-    #0f0f0f 20px,
-    #0f0f0f 40px
-  );
-  background-size: cover;
 }
