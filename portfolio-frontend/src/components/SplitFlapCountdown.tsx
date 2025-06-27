@@ -37,8 +37,8 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
   const paddedPrev = String(prev).padStart(2, '0')
 
   return (
-    <div className="flex flex-col items-center font-mono">
-      <div className="flex gap-[0.2em] perspective-[60em]">
+    <div className="flex flex-col items-center font-mono min-w-[3.5rem]">
+      <div className="flex gap-[0.25em] perspective-[60em]">
         {paddedValue.split('').map((char, idx) => {
           const prevChar = paddedPrev[idx]
           const isFlipping = flippingIndexes.includes(idx)
@@ -46,47 +46,39 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
           return (
             <div
               key={idx}
-              className="relative w-[0.75em] h-[1.3em] text-white text-[3.2em] leading-[0.1em] tracking-widest"
+              className="relative w-[0.9em] h-[1.3em] text-white text-[min(2.8em,5.5vw)] leading-[0.1em] tracking-widest"
             >
               {/* Static Top Half */}
-              <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm bg-[#121212] border-b-[1px] border-white flex items-start justify-center z-10 shadow-inner">
-                <div className="w-full mt-[0.55em] text-center">
-                  {char}
-                </div>
+              <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm bg-[#121212] border-b border-white border-b-[0.25px] sm:border-b-[1px] flex items-start justify-center z-10 shadow-inner">
+                <div className="w-full mt-[0.55em] text-center">{char}</div>
               </div>
 
               {/* Static Bottom Half */}
-              <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-sm bg-[#101010] border-t-[1px] border-white flex items-end justify-center z-10 shadow-inner">
-                <div className="w-full mb-[0.65em] text-center">
-                  {char}
-                </div>
+              <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-sm bg-[#101010] border-t border-white border-t-[0.25px] sm:border-t-[1px] flex items-end justify-center z-10 shadow-inner">
+                <div className="w-full mb-[0.65em] text-center">{char}</div>
               </div>
 
               {/* Animated Flip */}
               {isFlipping && (
                 <>
                   <motion.div
-                    className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm bg-black border-b-[1px] border-white flex items-start justify-center z-20"
+                    className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm bg-black border-b border-white border-b-[0.25px] sm:border-b-[1px] flex items-start justify-center z-20"
                     initial={{ rotateX: 0 }}
                     animate={{ rotateX: -90 }}
                     style={{ transformOrigin: 'bottom' }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="w-full mt-[0.45em] text-center">
-                      {prevChar}
-                    </div>
+                    <div className="w-full mt-[0.55em] text-center">{prevChar}</div>
                   </motion.div>
 
                   <motion.div
-                    className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-sm bg-black border-t-[1px] border-white flex items-end justify-center z-20"
+                    className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-sm bg-black border-t border-white border-t-[0.25px] sm:border-t-[1px] flex items-end justify-center z-20"
                     initial={{ rotateX: 90 }}
                     animate={{ rotateX: 0 }}
                     style={{ transformOrigin: 'top' }}
                     transition={{ duration: 0.3, delay: 0.3 }}
                   >
-                    <div className="w-full mb-[0.55em] text-center">
-                      {char}
-                    </div>
+                    <div className="w-full mb-[0.65em] text-center">{char}</div>
                   </motion.div>
                 </>
               )}
@@ -112,11 +104,15 @@ const SplitFlapCountdown = () => {
   }, [])
 
   return (
-    <div className="w-full max-w-[500px] mx-auto flex flex-nowrap justify-center items-center gap-x-[1em] text-[clamp(0.75em,3.5vw,1.2em)] overflow-hidden">
-      <FlipUnit value={countdown.days} label="Days" />
-      <FlipUnit value={countdown.hours} label="Hrs" />
-      <FlipUnit value={countdown.minutes} label="Min" />
-      <FlipUnit value={countdown.seconds} label="Sec" />
+    <div className="w-full px-4 sm:px-6 md:px-8">
+      <div className="max-w-full mx-auto overflow-x-auto scrollbar-hide">
+        <div className="w-max flex flex-nowrap justify-start items-center gap-x-[1em] text-[1em]">
+          <FlipUnit value={countdown.days} label="Days" />
+          <FlipUnit value={countdown.hours} label="Hrs" />
+          <FlipUnit value={countdown.minutes} label="Min" />
+          <FlipUnit value={countdown.seconds} label="Sec" />
+        </div>
+      </div>
     </div>
   )
 }

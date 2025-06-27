@@ -169,3 +169,10 @@ li {
 .perspective-\[1000px\] {
   perspective: 1000px;
 }
+
+@media (max-width: 640px) {
+  .thin-fold-line {
+    transform: scaleY(0.5);
+    transform-origin: center;
+  }
+}
