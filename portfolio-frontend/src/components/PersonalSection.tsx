@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import HCRD from '../assets/HCRD.png'
 import SplitFlapCountdown from '../components/SplitFlapCountdown'
+import StravaStats from '../components/StravaStats'
 
 const calculateCountdown = (targetDate: string) => {
   const total = new Date(targetDate).getTime() - new Date().getTime()
@@ -69,6 +70,8 @@ const PersonalSection = () => {
           </p>
         </motion.div>
       </div>
+
+      <StravaStats />
 
       <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 px-2 sm:px-0">
         <div className="panel-background dark:!bg-black border-4 border-orange-500 rounded-xl px-6 py-6 text-center font-splitflap tracking-widest">

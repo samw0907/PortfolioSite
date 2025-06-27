@@ -15,13 +15,11 @@ export const refreshStravaToken = async () => {
     })
 
     const { access_token, expires_at } = response.data
-
-    // Optionally: Save the new token + expiry somewhere secure or log it
     console.log('Refreshed Strava Access Token:', access_token)
 
-    return { access_token, expires_at }
+    return access_token
   } catch (error) {
-    console.error('Error refreshing Strava token:', error)
+    console.error('Error refreshing Strava token:', error.response?.data || error.message)
     throw error
   }
 }
