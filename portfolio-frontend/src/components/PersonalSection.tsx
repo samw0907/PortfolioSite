@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import HCRD from '../assets/HCRD.png'
 import SplitFlapCountdown from '../components/SplitFlapCountdown'
