@@ -45,62 +45,63 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
 
           return (
             <div
-  key={idx}
-  className="relative w-[0.9em] h-[1.3em] text-black dark:text-white text-[min(2.8em,5.5vw)] leading-[0.1em] tracking-widest border border-neutral-300 dark:border-neutral-600 rounded-sm"
->
-  {/* Static Top Half */}
-  <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden 
-    rounded-t-sm bg-[#eeeeee] dark:bg-[#121212] 
-    border-b[0.5px] border-black dark:border-white 
-    scale-y-[1] sm:scale-y-100 
-    flex items-start justify-center z-10 shadow-inner"
-  >
-    <div className="w-full mt-[0.55em] pl-[0.09em] text-center">{char}</div>
-  </div>
+              key={idx}
+              className="relative w-[0.9em] h-[1.3em] text-black dark:text-white text-[min(2.8em,5.5vw)] leading-[0.1em] tracking-widest border border-neutral-300 dark:border-neutral-600 rounded-sm"
+            >
+              {/* Static Top Half */}
+              <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden 
+                rounded-t-sm bg-[#eeeeee] dark:bg-[#121212] 
+                border-b-[0.5px] border-black dark:border-white 
+                scale-y-[1] sm:scale-y-100 
+                flex items-start justify-center z-10 shadow-inner"
+              >
+                <div className="w-full mt-[0.55em] pl-[0.09em] text-center">{char}</div>
+              </div>
 
-  {/* Static Bottom Half */}
-  <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden 
-    rounded-b-sm bg-[#e0e0e0] dark:bg-[#101010] 
-    border-t border-black dark:border-white 
-    scale-y-[1.1] sm:scale-y-100 
-    flex items-end justify-center z-10 shadow-inner"
-  >
-    <div className="w-full mb-[0.6em] pl-[0.08em] text-center">{char}</div>
-  </div>
+              {/* Static Bottom Half */}
+              <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden 
+                rounded-b-sm bg-[#e0e0e0] dark:bg-[#101010] 
+                border-t border-black dark:border-white 
+                scale-y-[1.1] sm:scale-y-100 
+                flex items-end justify-center z-10 shadow-inner"
+              >
+                <div className="w-full mb-[0.6em] pl-[0.08em] text-center">{char}</div>
+              </div>
 
-  {/* Animated Flip */}
-  {isFlipping && (
-    <>
-      <motion.div
-        className="absolute top-0 left-0 w-full h-1/2 overflow-hidden 
-          rounded-t-sm bg-[#cccccc] dark:bg-black 
-          border-b-[0.5px] border-black dark:border-white 
-          scale-y-[1.3] sm:scale-y-100 
-          flex items-start justify-center z-20"
-        initial={{ rotateX: 0 }}
-        animate={{ rotateX: -90 }}
-        style={{ transformOrigin: 'bottom' }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="w-full mt-[0.55em] pl-[0.09em] text-center">{prevChar}</div>
-      </motion.div>
+              {/* Animated Flip */}
+              {isFlipping && (
+                <>
+                  {/* Animated Top Half */}
+                  <motion.div
+                    className="absolute top-0 left-0 w-full h-1/2 overflow-hidden 
+                      rounded-t-sm bg-[#cccccc] dark:bg-black 
+                      border-b-[0.5px] border-black dark:border-white 
+                      scale-y-[1.3] sm:scale-y-100 
+                      flex items-start justify-center z-20"
+                    initial={{ rotateX: 0 }}
+                    animate={{ rotateX: -90 }}
+                    style={{ transformOrigin: 'bottom' }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="w-full mt-[0.55em] pl-[0.09em] text-center">{prevChar}</div>
+                  </motion.div>
 
-      <motion.div
-        className="absolute top-0 left-0 w-full h-1/2 overflow-hidden 
-          rounded-t-sm bg-[#cccccc] dark:bg-black 
-          border-b-[0.5px] border-black dark:border-white 
-          flex items-start justify-center z-20"
-        initial={{ rotateX: 0 }}
-        animate={{ rotateX: -90 }}
-        style={{ transformOrigin: 'bottom' }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="w-full mt-[0.55em] pl-[0.09em] text-center">{prevChar}</div>
-      </motion.div>
-    </>
-  )}
-</div>
-
+                  {/* Animated Bottom Half */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden 
+                      rounded-b-sm bg-[#e0e0e0] dark:bg-[#101010] 
+                      border-t-[0.5px] border-black dark:border-white 
+                      flex items-end justify-center z-20"
+                    initial={{ rotateX: 90 }}
+                    animate={{ rotateX: 0 }}
+                    style={{ transformOrigin: 'top' }}
+                    transition={{ duration: 0.3, delay: 0.3 }}
+                  >
+                    <div className="w-full mb-[0.6em] pl-[0.08em] text-center">{char}</div>
+                  </motion.div>
+                </>
+              )}
+            </div>
           )
         })}
       </div>
