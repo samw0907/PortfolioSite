@@ -55,7 +55,7 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
                 scale-y-[1] sm:scale-y-100 
                 flex items-start justify-center z-10 shadow-inner"
               >
-                <div className="w-full mt-[0.55em] pl-[0.09em] text-center">{char}</div>
+                <div className="w-full mt-[0.45em] sm:mt-[0.55em]  pl-[0.09em] text-center">{char}</div>
               </div>
 
               {/* Static Bottom Half */}
