@@ -4,21 +4,9 @@ import HCRD from '../assets/HCRD.png'
 import SplitFlapCountdown from '../components/SplitFlapCountdown'
 import StravaStats from '../components/StravaStats'
 
-const calculateCountdown = (targetDate: string) => {
-  const total = new Date(targetDate).getTime() - new Date().getTime()
-  const seconds = Math.floor((total / 1000) % 60)
-  const minutes = Math.floor((total / 1000 / 60) % 60)
-  const hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-  const days = Math.floor(total / (1000 * 60 * 60 * 24))
-  return { total, days, hours, minutes, seconds }
-}
-
 const PersonalSection = () => {
-  const [countdown, setCountdown] = useState(calculateCountdown('2026-08-22T07:00:00'))
-
   useEffect(() => {
     const timer = setInterval(() => {
-      setCountdown(calculateCountdown('2026-08-22T07:00:00'))
     }, 1000)
     return () => clearInterval(timer)
   }, [])
@@ -39,7 +27,8 @@ const PersonalSection = () => {
               className="text-orange-600 dark:text-orange-400 underline hover:text-orange-800 dark:hover:text-orange-300"
             >
               Ironman 70.3 Tallinn
-            </a>{' '}in August 2026.
+            </a>{' '}
+            in August 2026.
           </p>
           <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-300">
             If you're also a runner or triathlete and interested in my times, you can check out my{' '}
