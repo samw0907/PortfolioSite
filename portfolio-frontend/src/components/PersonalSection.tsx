@@ -72,7 +72,7 @@ const PersonalSection = () => {
 
       <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 px-2 sm:px-0">
         <div className="panel-background dark:!bg-black border-4 border-orange-500 rounded-xl px-6 py-6 text-center font-splitflap tracking-widest">
-          <h4 className="text-xl font-bold text-white uppercase mb-4">
+          <h4 className="text-xl font-bold text-black dark:text-white uppercase mb-4">
             IRONMAN 70.3 TALLINN COUNTDOWN
           </h4>
           <SplitFlapCountdown />

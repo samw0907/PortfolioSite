@@ -46,15 +46,25 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
           return (
             <div
               key={idx}
-              className="relative w-[0.9em] h-[1.3em] text-white text-[min(2.8em,5.5vw)] leading-[0.1em] tracking-widest"
+              className="relative w-[0.9em] h-[1.3em] text-black dark:text-white text-[min(2.8em,5.5vw)] leading-[0.1em] tracking-widest"
             >
               {/* Static Top Half */}
-              <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm bg-[#121212] border-b border-white border-b-[0.25px] sm:border-b-[1px] flex items-start justify-center z-10 shadow-inner">
+              <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm 
+                bg-[#eeeeee] dark:bg-[#121212] 
+                border-b border-black dark:border-white 
+                scale-y-[1] sm:scale-y-100 
+                flex items-start justify-center z-10 shadow-inner"
+              >
                 <div className="w-full mt-[0.55em] text-center">{char}</div>
               </div>
 
               {/* Static Bottom Half */}
-              <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-sm bg-[#101010] border-t border-white border-t-[0.25px] sm:border-t-[1px] flex items-end justify-center z-10 shadow-inner">
+              <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-sm 
+                bg-[#e0e0e0] dark:bg-[#101010] 
+                border-t border-black dark:border-white 
+                scale-y-[1.1] sm:scale-y-100 
+                flex items-end justify-center z-10 shadow-inner"
+              >
                 <div className="w-full mb-[0.65em] text-center">{char}</div>
               </div>
 
@@ -62,7 +72,11 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
               {isFlipping && (
                 <>
                   <motion.div
-                    className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm bg-black border-b border-white border-b-[0.25px] sm:border-b-[1px] flex items-start justify-center z-20"
+                    className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm 
+                      bg-[#cccccc] dark:bg-black 
+                      border-b border-black dark:border-white 
+                      scale-y-[1.3] sm:scale-y-100 
+                      flex items-start justify-center z-20"
                     initial={{ rotateX: 0 }}
                     animate={{ rotateX: -90 }}
                     style={{ transformOrigin: 'bottom' }}
@@ -72,13 +86,17 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
                   </motion.div>
 
                   <motion.div
-                    className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden rounded-b-sm bg-black border-t border-white border-t-[0.25px] sm:border-t-[1px] flex items-end justify-center z-20"
-                    initial={{ rotateX: 90 }}
-                    animate={{ rotateX: 0 }}
-                    style={{ transformOrigin: 'top' }}
-                    transition={{ duration: 0.3, delay: 0.3 }}
+                    className="absolute top-0 left-0 w-full h-1/2 overflow-hidden rounded-t-sm 
+                      bg-[#cccccc] dark:bg-black 
+                      border-b border-black dark:border-white 
+                      border-b-[0.25px] sm:border-b-[1px] 
+                      flex items-start justify-center z-20"
+                    initial={{ rotateX: 0 }}
+                    animate={{ rotateX: -90 }}
+                    style={{ transformOrigin: 'bottom' }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <div className="w-full mb-[0.65em] text-center">{char}</div>
+                    <div className="w-full mt-[0.55em] text-center">{prevChar}</div>
                   </motion.div>
                 </>
               )}
@@ -86,7 +104,7 @@ const FlipUnit = ({ value, label }: { value: number; label: string }) => {
           )
         })}
       </div>
-      <span className="text-[0.55em] text-white mt-[0.3em] uppercase tracking-wider">
+      <span className="text-[0.55em] text-black dark:text-white mt-[0.3em] uppercase tracking-wider">
         {label}
       </span>
     </div>
