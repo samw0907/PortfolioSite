@@ -1,6 +1,4 @@
 import { useEffect } from 'react'
-import { motion } from 'framer-motion'
-import HCRD from '../assets/HCRD.png'
 import SplitFlapCountdown from '../components/SplitFlapCountdown'
 import StravaStats from '../components/StravaStats'
 
@@ -42,22 +40,6 @@ const PersonalSection = () => {
             </a>
           </p>
         </div>
-
-        <motion.div
-          className="flex-shrink-0 w-full md:w-60"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <img
-            src={HCRD}
-            alt="HCRD Site Image"
-            className="rounded-lg shadow-lg object-cover w-full h-auto"
-          />
-          <p className="text-sm text-gray-600 dark:text-gray-400 text-center mt-2">
-            Helsinki City Running Day
-          </p>
-        </motion.div>
       </div>
 
       <StravaStats />
