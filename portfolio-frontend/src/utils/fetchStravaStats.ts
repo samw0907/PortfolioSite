@@ -1,11 +1,9 @@
 export const fetchStravaStats = async () => {
-  const isProd = import.meta.env.PROD
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
 
-  const baseUrl = isProd
-    ? 'https://api.samwilliamson.dev'
-    : window.location.hostname === 'localhost'
-      ? 'http://localhost:3001'        
-      : 'http://192.168.1.42:3001'     
+  const baseUrl = isLocal
+    ? 'http://192.168.38.109:3001'
+    : 'https://api.samwilliamson.dev'
 
   try {
     const response = await fetch(`${baseUrl}/api/strava/stats`)
