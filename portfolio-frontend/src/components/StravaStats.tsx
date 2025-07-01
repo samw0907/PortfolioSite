@@ -45,12 +45,12 @@ export default function StravaStats() {
         Strava Stats
       </h2>
 
-      {/* Smaller Strava button */}
+      {/* Top-right button (hidden on small screens) */}
       <a
         href="https://www.strava.com/athletes/38491517"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute top-6 right-6 px-3 py-1.5 rounded-full bg-orange-600 text-white text-xs sm:text-sm font-medium tracking-wide shadow-sm hover:bg-orange-700 dark:hover:bg-orange-500 transition-colors"
+        className="hidden sm:block absolute top-6 right-6 px-3 py-1.5 rounded-full bg-orange-600 text-white text-xs sm:text-sm font-medium tracking-wide shadow-sm hover:bg-orange-700 dark:hover:bg-orange-500 transition-colors"
       >
         My Strava
       </a>
@@ -75,7 +75,7 @@ export default function StravaStats() {
 
       {/* Table */}
       <div className="overflow-x-auto rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900">
-        <table className="w-full text-base text-center border-collapse table-fixed">
+        <table className="w-full text-sm sm:text-base text-center border-collapse table-fixed">
           <thead className="bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
             <tr>
               <th className="py-3 px-4 text-left font-semibold">Metric</th>
@@ -84,7 +84,7 @@ export default function StravaStats() {
               <th className="font-semibold min-w-[5ch]">Swim</th>
             </tr>
           </thead>
-          <tbody className="text-gray-800 dark:text-gray-100 font-josefin">
+          <tbody className="text-gray-800 dark:text-gray-100 font-josefin text-xs sm:text-sm md:text-base">
             <tr className="even:bg-gray-50 dark:even:bg-gray-800">
               <td className="py-3 px-4 text-left font-medium">Activities</td>
               <td className="min-w-[5ch]">{data.run.count}</td>
@@ -111,6 +111,18 @@ export default function StravaStats() {
             </tr>
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile-only button below table */}
+      <div className="sm:hidden flex justify-center mt-6">
+        <a
+          href="https://www.strava.com/athletes/38491517"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-3 py-1.5 rounded-full bg-orange-600 text-white text-xs font-medium tracking-wide shadow-sm hover:bg-orange-700 dark:hover:bg-orange-500 transition-colors"
+        >
+          My Strava
+        </a>
       </div>
     </div>
   )

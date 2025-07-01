@@ -93,13 +93,7 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
           return (
             <motion.div
               key={lineIndex}
-              style={{
-                display: 'block',
-                position: 'relative',
-                paddingBottom: 28,
-                marginBottom: lineIndex === 0 ? 10 : 0,
-                maxWidth: '850px',
-              }}
+              className="relative pb-7 mb-2 max-w-[850px] mx-auto"
               variants={lineContainerVariants}
               initial="hidden"
               animate="visible"
