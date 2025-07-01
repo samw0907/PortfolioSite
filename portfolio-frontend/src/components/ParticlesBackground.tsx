@@ -4,8 +4,7 @@ import { loadAll } from '@tsparticles/all';
 import { tsParticles } from '@tsparticles/engine';
 
 const ParticlesBackground: React.FC = () => {
-  // Initialize with correct mode synchronously to avoid flicker on initial render
-  const [isDark, setIsDark] = useState(() => 
+  const [isDark, setIsDark] = useState(() =>
     typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
   );
 
@@ -31,6 +30,7 @@ const ParticlesBackground: React.FC = () => {
       {...({ engine: tsParticles } as any)}
       options={{
         fullScreen: false,
+        fpsLimit: 30, // ✅ Added for consistent animation speed
         background: {
           color: { value: isDark ? '#0f172a' : '#ffffff' },
         },
