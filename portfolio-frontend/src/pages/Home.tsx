@@ -79,7 +79,7 @@ const Home = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={showIcons ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
             className="w-full"
           >
             <div
@@ -105,7 +105,7 @@ const Home = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={showWhatIDo ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
             className="px-6 sm:px-8 py-6 rounded-xl bg-white/70 dark:bg-[#0f172a]/70 backdrop-blur-md text-center mt-6"
           >
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 leading-snug">
@@ -116,7 +116,7 @@ const Home = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={showParagraph ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
             className="max-w-xl mx-auto mt-2 px-4 sm:px-0"
           >
             <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-200 leading-relaxed">
@@ -129,7 +129,7 @@ const Home = () => {
             className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={showButtons ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
           >
             <a
               href="/projects"

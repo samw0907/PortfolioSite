@@ -13,20 +13,20 @@ const containerVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.035,
       when: 'beforeChildren',
     },
   },
-  exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.1 } },
 }
 
 const lineContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.6 },
+    transition: { duration: 0.2 },
   },
-  exit: { opacity: 0, transition: { duration: 0.3 } },
+  exit: { opacity: 0, transition: { duration: 0.1 } },
 }
 
 const letterVariants: Variants = {
@@ -54,7 +54,7 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
   useEffect(() => {
     const text = typeof children === 'string' ? children.toUpperCase() : ''
     const lettersCount = text.replace(/\s/g, '').length
-    const letterDelay = lettersCount * 50 + 350
+    const letterDelay = lettersCount * 35 + 250
 
     const letterTimer = setTimeout(() => {
       setUnderlineStarted(true)
@@ -83,7 +83,7 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
       style={{
         whiteSpace: 'pre-line',
         wordBreak: 'normal',
-        wordSpacing: '0.5rem', // ⬅️ This controls spacing between words
+        wordSpacing: '0.5rem',
       }}
     >
       <AnimatePresence mode="popLayout">
@@ -128,7 +128,7 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
                     exit={{ scaleX: 0 }}
                     transition={{
                       delay: lineIndex * 0.6,
-                      duration: 0.6,
+                      duration: 0.3,
                       ease: 'easeOut',
                     }}
                     onAnimationComplete={() => {

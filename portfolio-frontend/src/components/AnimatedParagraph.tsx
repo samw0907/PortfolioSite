@@ -17,7 +17,7 @@ const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({
   useEffect(() => {
     controls.start('visible').then(() => {
       if (onLastComplete) {
-        setTimeout(onLastComplete, 600); // match animation duration
+        setTimeout(onLastComplete, 300);
       }
     });
   }, [controls, onLastComplete]);
@@ -28,7 +28,7 @@ const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         delay,
       },
     },
