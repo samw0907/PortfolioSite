@@ -70,23 +70,24 @@ body {
   @apply bg-white dark:bg-black;
   background: repeating-linear-gradient(
     to bottom,
-    #f5f5f5 0px,
-    #f5f5f5 20px,
-    #e5e5e5 20px,
-    #e5e5e5 40px
+    #fefefe 0px,
+    #fefefe 18px,
+    #f3f4f6 18px,
+    #f3f4f6 36px
   );
-  background-size: cover;
 }
 
 .dark .panel-background {
   background: repeating-linear-gradient(
     to bottom,
-    #000000 0px,
-    #000000 20px,
-    #222222 20px,
-    #222222 40px
+    #0f172a 0px,
+    #0f172a 18px,
+    #1e293b 18px,
+    #1e293b 36px
   );
 }
+
+
 }
 
 @layer components {

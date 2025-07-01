@@ -4,8 +4,7 @@ import StravaStats from '../components/StravaStats'
 
 const PersonalSection = () => {
   useEffect(() => {
-    const timer = setInterval(() => {
-    }, 1000)
+    const timer = setInterval(() => {}, 1000)
     return () => clearInterval(timer)
   }, [])
 
@@ -28,25 +27,15 @@ const PersonalSection = () => {
             </a>{' '}
             in August 2026.
           </p>
-          <p className="text-lg leading-[1.8] text-gray-700 dark:text-gray-300">
-            If you're also a runner or triathlete and interested in my times, you can check out my{' '}
-            <a
-              href="https://www.strava.com/athletes/38491517"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-orange-600 dark:text-orange-400 underline hover:text-orange-800 dark:hover:text-orange-300"
-            >
-              Strava.
-            </a>
-          </p>
         </div>
       </div>
 
       <StravaStats />
 
       <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 px-2 sm:px-0">
-        <div className="panel-background dark:!bg-black border-4 border-orange-500 rounded-xl px-6 py-6 text-center font-splitflap tracking-widest">
-          <h4 className="text-xxl font-bold text-black dark:text-white uppercase mb-4">
+        <div className="panel-background rounded-xl px-6 py-6 text-center tracking-widest border-2 border-orange-500 
+          bg-gray-50 dark:bg-gray-800">
+          <h4 className="font-josefin tracking-wide text-gray-900 dark:text-white uppercase mb-4">
             IRONMAN 70.3 TALLINN COUNTDOWN
           </h4>
           <SplitFlapCountdown />

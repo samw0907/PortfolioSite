@@ -40,10 +40,20 @@ export default function StravaStats() {
   const data = stats[activeTab]
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-6 py-8 rounded-2xl bg-gray-100 dark:bg-[#0b1120] shadow-xl border border-orange-500 font-josefin">
+    <div className="relative w-full max-w-4xl mx-auto px-6 py-8 rounded-2xl bg-gray-100 dark:bg-[#0b1120] shadow-xl border-2 border-orange-500 font-josefin">
       <h2 className="text-2xl sm:text-4xl font-light text-center mb-6 text-gray-800 dark:text-white tracking-wide uppercase">
         Strava Stats
       </h2>
+
+      {/* Smaller Strava button */}
+      <a
+        href="https://www.strava.com/athletes/38491517"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute top-6 right-6 px-3 py-1.5 rounded-full bg-orange-600 text-white text-xs sm:text-sm font-medium tracking-wide shadow-sm hover:bg-orange-700 dark:hover:bg-orange-500 transition-colors"
+      >
+        My Strava
+      </a>
 
       {/* Tabs */}
       <div className="flex justify-center gap-4 mb-6 flex-wrap">
