@@ -8,6 +8,8 @@ const ParticlesBackground: React.FC = () => {
     typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
   );
 
+  const [particleSpeed, setParticleSpeed] = useState(0.6); // default for desktop
+
   useEffect(() => {
     loadAll(tsParticles);
 
@@ -20,7 +22,17 @@ const ParticlesBackground: React.FC = () => {
       attributeFilter: ['class'],
     });
 
-    return () => observer.disconnect();
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 640;
+      setParticleSpeed(isMobile ? 0.3 : 0.6); // ⬅️ reduce speed on mobile
+    };
+
+    handleResize(); // run on mount
+    window.addEventListener('resize', handleResize);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const memoizedParticles = useMemo(() => (
@@ -30,7 +42,7 @@ const ParticlesBackground: React.FC = () => {
       {...({ engine: tsParticles } as any)}
       options={{
         fullScreen: false,
-        fpsLimit: 30, // ✅ Added for consistent animation speed
+        fpsLimit: 30,
         background: {
           color: { value: isDark ? '#0f172a' : '#ffffff' },
         },
@@ -59,7 +71,7 @@ const ParticlesBackground: React.FC = () => {
           },
           move: {
             enable: true,
-            speed: 0.6,
+            speed: particleSpeed, // ⬅️ dynamic value based on screen size
             outModes: { default: 'out' },
           },
           links: {
@@ -72,7 +84,7 @@ const ParticlesBackground: React.FC = () => {
         },
       }}
     />
-  ), [isDark]);
+  ), [isDark, particleSpeed]);
 
   return memoizedParticles;
 };
