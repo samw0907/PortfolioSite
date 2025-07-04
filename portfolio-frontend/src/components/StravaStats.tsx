@@ -113,7 +113,6 @@ export default function StravaStats() {
         </table>
       </div>
 
-      {/* Mobile-only button below table */}
       <div className="sm:hidden flex justify-center mt-6">
         <a
           href="https://www.strava.com/athletes/38491517"
