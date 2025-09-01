@@ -7,8 +7,9 @@ import Triswift1 from '../assets/Triswift1.png'
 import Triswift2 from '../assets/Triswift2.png'
 import Triswift3 from '../assets/Triswift3.png'
 import Triswift4 from '../assets/Triswift4.png'
+import Triswift5 from '../assets/Triswift5.png'
 
-const triswiftGalleryImages = [Triswift1, Triswift2, Triswift3, Triswift4]
+const triswiftGalleryImages = [Triswift1, Triswift2, Triswift3, Triswift4, Triswift5]
 
 const fadeUpVariants = {
   hidden: { opacity: 0, y: 30 },
