@@ -32,9 +32,8 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen w-full text-gray-900 dark:text-gray-100 bg-white dark:bg-[#0f172a]">
+      <div className="flex flex-col min-h-screen w-full">
         <Navbar />
-
         <main className="flex-grow w-full">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -44,7 +43,6 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-
         <Footer />
       </div>
     </>

@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------------------------------------------ */
+/* Theme tokens (CSS variables)                                        */
+/* ------------------------------------------------------------------ */
+
+:root {
+  /* Core surfaces */
+  --bg: 250 250 249;        /* near-white, warm */
+  --surface: 255 255 255;   /* pure white surface */
+  --surface-2: 245 245 244; /* slight contrast surface */
+
+  /* Text */
+  --text: 17 24 39;         /* gray-900 */
+  --muted: 75 85 99;        /* gray-600 */
+
+  /* Borders */
+  --border: 0 0 0;          /* use with low alpha */
+
+  /* Accent (easy to change later) */
+  --accent: 59 130 246;     /* blue-500 */
+  --accent-2: 37 99 235;    /* blue-600 */
+}
+
+.dark {
+  /* Core surfaces */
+  --bg: 10 10 10;           /* near-black */
+  --surface: 16 16 16;      /* charcoal */
+  --surface-2: 22 22 22;    /* slightly lifted */
+
+  /* Text */
+  --text: 245 245 245;      /* near-white */
+  --muted: 163 163 163;     /* gray-400 */
+
+  /* Borders */
+  --border: 255 255 255;
+
+  /* Accent stays the same (works well on dark) */
+  --accent: 59 130 246;
+  --accent-2: 37 99 235;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                               */
+/* ------------------------------------------------------------------ */
+
 html {
   @apply antialiased;
   font-size: 100%;
@@ -12,18 +56,30 @@ html {
 }
 
 body {
-  @apply bg-white dark:bg-[#0f172a] text-gray-900 dark:text-gray-100;
-  @apply font-body;
   margin: 0;
   padding: 0;
   min-height: 100%;
   width: 100%;
   overflow-x: hidden;
+
+  @apply font-body;
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
 }
 
 #root {
   min-height: 100%;
 }
+
+/* No global smooth scroll. It often feels “cheap” for editorial minimal.
+   If you want it later, do it intentionally on specific interactions. */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ------------------------------------------------------------------ */
+/* Components / primitives                                             */
+/* ------------------------------------------------------------------ */
 
 @layer components {
   .container-max {
@@ -39,90 +95,98 @@ body {
   }
 
   .divider {
-    @apply my-12 border-t border-black/10 dark:border-white/10;
+    border-top: 1px solid rgb(var(--border) / 0.10);
+    @apply my-12;
   }
 
   .kicker {
-    @apply text-xs uppercase tracking-[0.24em] text-gray-500 dark:text-gray-400;
+    @apply text-xs uppercase tracking-[0.24em];
+    color: rgb(var(--muted));
   }
 
   .hero-title {
     @apply mt-3 font-display font-semibold uppercase;
-    @apply tracking-[-0.01em] sm:tracking-[-0.02em];
-    @apply text-gray-900 dark:text-white;
+    @apply tracking-[-0.02em];
     @apply text-5xl sm:text-6xl md:text-7xl leading-[0.92];
+    color: rgb(var(--text));
   }
 
   .page-title {
     @apply mt-3 font-display font-semibold;
-    @apply tracking-[-0.01em] sm:tracking-[-0.02em];
-    @apply text-gray-900 dark:text-white;
+    @apply tracking-[-0.02em];
     @apply text-4xl sm:text-5xl md:text-6xl leading-tight;
+    color: rgb(var(--text));
   }
 
   .lead {
-    @apply mt-6 text-base sm:text-lg text-gray-700 dark:text-gray-200 leading-relaxed;
+    @apply mt-6 text-base sm:text-lg leading-relaxed;
+    color: rgb(var(--muted));
   }
 
   .card {
-    @apply rounded-2xl border border-black/10 dark:border-white/10;
-    @apply bg-white dark:bg-white/5;
-    @apply p-6 sm:p-8;
+    @apply rounded-2xl p-6 sm:p-8;
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border) / 0.10);
   }
 
-  .card-title {
-    @apply font-display text-xl sm:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white;
-  }
-
-  .card-text {
-    @apply mt-3 text-sm sm:text-base text-gray-700 dark:text-gray-200 leading-relaxed;
+  .card-subtle {
+    @apply rounded-2xl p-6 sm:p-8;
+    background: rgb(var(--surface-2));
+    border: 1px solid rgb(var(--border) / 0.08);
   }
 
   .btn {
     @apply inline-flex items-center justify-center rounded-xl px-5 py-3;
     @apply text-xs sm:text-sm uppercase tracking-[0.18em] font-semibold;
-    @apply transition hover:opacity-85;
+    @apply transition hover:opacity-90;
     @apply font-display;
   }
 
   .btn-primary {
-    @apply bg-gray-900 text-white dark:bg-white dark:text-gray-900;
+    background: rgb(var(--text));
+    color: rgb(var(--bg));
   }
 
   .btn-secondary {
-    @apply border border-black/15 dark:border-white/15;
-    @apply text-gray-900 dark:text-white bg-transparent;
+    background: transparent;
+    border: 1px solid rgb(var(--border) / 0.18);
+    color: rgb(var(--text));
+  }
+
+  .btn-accent {
+    background: rgb(var(--accent));
+    color: white;
+  }
+
+  .btn-accent:hover {
+    background: rgb(var(--accent-2));
   }
 
   .link {
     @apply font-display text-xs sm:text-sm uppercase tracking-[0.18em] font-semibold;
-    @apply text-gray-900 dark:text-white;
-    @apply underline underline-offset-4 decoration-black/30 dark:decoration-white/30;
+    color: rgb(var(--text));
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--border) / 0.25);
+    text-underline-offset: 6px;
     @apply hover:opacity-80 transition;
   }
 
   .tag {
     @apply font-display text-[11px] uppercase tracking-[0.16em];
     @apply px-3 py-1 rounded-full;
-    @apply border border-black/10 dark:border-white/10 text-gray-700 dark:text-gray-200;
+    border: 1px solid rgb(var(--border) / 0.10);
+    color: rgb(var(--muted));
+    background: rgb(var(--surface));
   }
 
   .input {
-    @apply w-full rounded-xl border border-black/10 dark:border-white/10;
-    @apply bg-white dark:bg-[#0f172a];
-    @apply px-4 py-3 text-sm text-gray-900 dark:text-gray-100 outline-none;
-    @apply focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20;
+    @apply w-full rounded-xl px-4 py-3 text-sm outline-none;
+    background: rgb(var(--surface));
+    color: rgb(var(--text));
+    border: 1px solid rgb(var(--border) / 0.12);
   }
 
-  .stat {
-    @apply rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 p-4;
-  }
-
-  .stat-label {
-    @apply text-xs uppercase tracking-[0.22em] text-gray-500 dark:text-gray-400;
-  }
-
-  .stat-value {
-    @apply mt-2 font-display text-sm font-semibold tracking-tight text-gray-900 dark:text-white;
+  .input:focus {
+    box-shadow: 0 0 0 3px rgb(var(--border) / 0.12);
   }
 }

@@ -1,96 +1,116 @@
-import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
 
 const navItems = [
   { to: "/", label: "Home" },
-  { to: "/projects", label: "Projects" },
   { to: "/about", label: "About" },
+  { to: "/projects", label: "Projects" },
   { to: "/contact", label: "Contact" },
 ];
 
-export default function Navbar() {
+const Navbar = () => {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  const isActive = (to: string) => location.pathname === to;
 
   return (
     <header
       id="main-navbar"
-      className="sticky top-0 z-50 border-b border-black/10 dark:border-white/10 bg-white/80 dark:bg-[#0f172a]/80 backdrop-blur"
+      className="sticky top-0 z-50 w-full backdrop-blur"
+      style={{
+        background: "rgb(var(--surface) / 0.85)",
+        borderBottom: "1px solid rgb(var(--border) / 0.10)",
+      }}
     >
-      <div className="container-max flex items-center justify-between py-4">
-        <Link
-          to="/"
-          className="font-josefin tracking-[0.18em] uppercase text-sm sm:text-base text-gray-900 dark:text-white hover:opacity-80 transition"
-        >
-          Sam Williamson
-        </Link>
+      <div className="container-max">
+        <div className="flex items-center justify-between py-4">
+          <Link
+            to="/"
+            className="font-display text-sm sm:text-base uppercase tracking-[0.18em] font-semibold"
+            style={{ color: "rgb(var(--text))" }}
+            aria-label="Go to home"
+          >
+            Sam Williamson
+          </Link>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
-          <nav className="flex items-center gap-6">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  [
-                    "text-sm tracking-wide uppercase font-medium transition",
-                    "hover:opacity-80",
-                    isActive
-                      ? "text-gray-900 dark:text-white"
-                      : "text-gray-600 dark:text-gray-300",
-                  ].join(" ")
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
+          {/* Desktop */}
+          <div className="hidden md:flex items-center gap-6">
+            <nav className="flex items-center gap-6">
+              {navItems.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="font-display text-xs uppercase tracking-[0.18em] font-semibold transition"
+                  style={{
+                    color: isActive(item.to)
+                      ? "rgb(var(--text))"
+                      : "rgb(var(--muted))",
+                    textDecoration: isActive(item.to) ? "underline" : "none",
+                    textUnderlineOffset: isActive(item.to) ? "8px" : undefined,
+                    textDecorationColor: "rgb(var(--border) / 0.25)",
+                  }}
+                  aria-current={isActive(item.to) ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
 
-          <div className="pl-2 border-l border-black/10 dark:border-white/10">
             <DarkModeToggle />
           </div>
+
+          {/* Mobile toggle */}
+          <button
+            type="button"
+            className="md:hidden btn btn-secondary px-4 py-2"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? "Close" : "Menu"}
+          </button>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-black/10 dark:border-white/10 text-gray-800 dark:text-gray-100"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          <span className="text-lg">{open ? "×" : "≡"}</span>
-        </button>
-      </div>
+        {/* Mobile menu */}
+        {open && (
+          <div className="md:hidden pb-5">
+            <div className="card p-5">
+              <nav className="flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    className="font-display text-sm uppercase tracking-[0.18em] font-semibold transition"
+                    style={{
+                      color: isActive(item.to)
+                        ? "rgb(var(--text))"
+                        : "rgb(var(--muted))",
+                      textDecoration: isActive(item.to) ? "underline" : "none",
+                      textUnderlineOffset: isActive(item.to) ? "8px" : undefined,
+                      textDecorationColor: "rgb(var(--border) / 25)",
+                    }}
+                    aria-current={isActive(item.to) ? "page" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden border-t border-black/10 dark:border-white/10 bg-white dark:bg-[#0f172a]">
-          <div className="container-max py-4 flex flex-col gap-3">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  [
-                    "py-2 text-sm tracking-wide uppercase font-medium",
-                    isActive
-                      ? "text-gray-900 dark:text-white"
-                      : "text-gray-600 dark:text-gray-300",
-                  ].join(" ")
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-
-            <div className="pt-2">
-              <DarkModeToggle />
+              <div className="mt-6">
+                <DarkModeToggle />
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
-}
+};
+
+export default Navbar;
