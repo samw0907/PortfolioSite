@@ -2,49 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ------------------------------------------------------------------ */
-/* Theme tokens (CSS variables)                                        */
-/* ------------------------------------------------------------------ */
-
 :root {
-  /* Core surfaces */
-  --bg: 250 250 249;        /* near-white, warm */
-  --surface: 255 255 255;   /* pure white surface */
-  --surface-2: 245 245 244; /* slight contrast surface */
+  --bg: 250 250 249;
+  --surface: 255 255 255;
+  --surface-2: 245 245 244;
 
-  /* Text */
-  --text: 17 24 39;         /* gray-900 */
-  --muted: 75 85 99;        /* gray-600 */
+  --text: 17 24 39;
+  --muted: 75 85 99;
 
-  /* Borders */
-  --border: 0 0 0;          /* use with low alpha */
+  --border: 0 0 0;
 
-  /* Accent (easy to change later) */
-  --accent: 59 130 246;     /* blue-500 */
-  --accent-2: 37 99 235;    /* blue-600 */
-}
-
-.dark {
-  /* Core surfaces */
-  --bg: 10 10 10;           /* near-black */
-  --surface: 16 16 16;      /* charcoal */
-  --surface-2: 22 22 22;    /* slightly lifted */
-
-  /* Text */
-  --text: 245 245 245;      /* near-white */
-  --muted: 163 163 163;     /* gray-400 */
-
-  /* Borders */
-  --border: 255 255 255;
-
-  /* Accent stays the same (works well on dark) */
   --accent: 59 130 246;
   --accent-2: 37 99 235;
 }
 
-/* ------------------------------------------------------------------ */
-/* Base                                                               */
-/* ------------------------------------------------------------------ */
+.dark {
+  --bg: 10 10 10;
+  --surface: 16 16 16;
+  --surface-2: 22 22 22;
+
+  --text: 245 245 245;
+  --muted: 163 163 163;
+
+  --border: 255 255 255;
+
+  --accent: 59 130 246;
+  --accent-2: 37 99 235;
+}
 
 html {
   @apply antialiased;
@@ -62,24 +46,21 @@ body {
   width: 100%;
   overflow-x: hidden;
 
-  @apply font-body;
-  background: rgb(var(--bg));
-  color: rgb(var(--text));
+  @apply font-body bg-bg text-text;
 }
 
 #root {
   min-height: 100%;
 }
 
-/* No global smooth scroll. It often feels “cheap” for editorial minimal.
-   If you want it later, do it intentionally on specific interactions. */
+/* No global smooth scroll. Keep it intentional. */
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* ------------------------------------------------------------------ */
-/* Components / primitives                                             */
-/* ------------------------------------------------------------------ */
+::selection {
+  background: rgb(var(--accent) / 0.25);
+}
 
 @layer components {
   .container-max {
@@ -101,92 +82,96 @@ body {
 
   .kicker {
     @apply text-xs uppercase tracking-[0.24em];
-    color: rgb(var(--muted));
+    @apply text-muted;
   }
 
   .hero-title {
     @apply mt-3 font-display font-semibold uppercase;
     @apply tracking-[-0.02em];
     @apply text-5xl sm:text-6xl md:text-7xl leading-[0.92];
-    color: rgb(var(--text));
+    @apply text-text;
   }
 
   .page-title {
     @apply mt-3 font-display font-semibold;
     @apply tracking-[-0.02em];
     @apply text-4xl sm:text-5xl md:text-6xl leading-tight;
-    color: rgb(var(--text));
+    @apply text-text;
   }
 
   .lead {
     @apply mt-6 text-base sm:text-lg leading-relaxed;
-    color: rgb(var(--muted));
+    @apply text-muted;
   }
 
   .card {
-    @apply rounded-2xl p-6 sm:p-8;
-    background: rgb(var(--surface));
+    @apply rounded-2xl p-6 sm:p-8 bg-surface;
     border: 1px solid rgb(var(--border) / 0.10);
   }
 
   .card-subtle {
-    @apply rounded-2xl p-6 sm:p-8;
-    background: rgb(var(--surface-2));
+    @apply rounded-2xl p-6 sm:p-8 bg-surface-2;
     border: 1px solid rgb(var(--border) / 0.08);
   }
 
   .btn {
     @apply inline-flex items-center justify-center rounded-xl px-5 py-3;
     @apply text-xs sm:text-sm uppercase tracking-[0.18em] font-semibold;
-    @apply transition hover:opacity-90;
     @apply font-display;
+    @apply transition-colors duration-200;
   }
 
   .btn-primary {
-    background: rgb(var(--text));
-    color: rgb(var(--bg));
+    @apply bg-text text-bg;
+  }
+
+  .btn-primary:hover {
+    background: rgb(var(--text) / 0.90);
   }
 
   .btn-secondary {
-    background: transparent;
+    @apply bg-transparent text-text;
     border: 1px solid rgb(var(--border) / 0.18);
-    color: rgb(var(--text));
+  }
+
+  .btn-secondary:hover {
+    background: rgb(var(--border) / 0.06);
   }
 
   .btn-accent {
-    background: rgb(var(--accent));
-    color: white;
+    @apply bg-accent text-white;
   }
 
   .btn-accent:hover {
-    background: rgb(var(--accent-2));
+    @apply bg-accent-2;
   }
 
   .link {
     @apply font-display text-xs sm:text-sm uppercase tracking-[0.18em] font-semibold;
-    color: rgb(var(--text));
+    @apply text-text transition-opacity;
     text-decoration: underline;
     text-decoration-color: rgb(var(--border) / 0.25);
     text-underline-offset: 6px;
-    @apply hover:opacity-80 transition;
+  }
+
+  .link:hover {
+    opacity: 0.8;
+    text-decoration-color: rgb(var(--border) / 0.40);
   }
 
   .tag {
     @apply font-display text-[11px] uppercase tracking-[0.16em];
-    @apply px-3 py-1 rounded-full;
+    @apply px-3 py-1 rounded-full bg-surface text-muted;
     border: 1px solid rgb(var(--border) / 0.10);
-    color: rgb(var(--muted));
-    background: rgb(var(--surface));
   }
 
   .input {
-    @apply w-full rounded-xl px-4 py-3 text-sm outline-none;
-    background: rgb(var(--surface));
-    color: rgb(var(--text));
+    @apply w-full rounded-xl px-4 py-3 text-sm outline-none bg-surface text-text;
     border: 1px solid rgb(var(--border) / 0.12);
   }
 
   .input:focus {
-    box-shadow: 0 0 0 3px rgb(var(--border) / 0.12);
+    box-shadow: 0 0 0 3px rgb(var(--accent) / 0.25);
+    border-color: rgb(var(--accent) / 0.45);
   }
 }
