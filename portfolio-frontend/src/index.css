@@ -174,4 +174,31 @@ body {
     box-shadow: 0 0 0 3px rgb(var(--accent) / 0.25);
     border-color: rgb(var(--accent) / 0.45);
   }
+
+  .card-title {
+    @apply font-display font-semibold tracking-[-0.02em];
+    @apply text-xl sm:text-2xl;
+    color: rgb(var(--text));
+  }
+
+  .card-text {
+    @apply mt-3 text-sm sm:text-base leading-relaxed;
+    color: rgb(var(--muted));
+  }
+
+  .stat {
+    @apply rounded-2xl p-4;
+    background: rgb(var(--surface-2));
+    border: 1px solid rgb(var(--border) / 0.08);
+  }
+
+  .stat-label {
+    @apply font-display text-[11px] uppercase tracking-[0.16em];
+    color: rgb(var(--muted));
+  }
+
+  .stat-value {
+    @apply mt-2 font-display text-sm sm:text-base font-semibold;
+    color: rgb(var(--text));
+  }
 }
