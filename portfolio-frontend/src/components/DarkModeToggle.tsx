@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 
 const DarkModeToggle = () => {
   const [isDark, setIsDark] = useState(false);
@@ -30,7 +31,16 @@ const DarkModeToggle = () => {
       className="btn btn-secondary px-4 py-2"
       aria-label="Toggle color theme"
     >
-      {isDark ? "Dark" : "Light"}
+      <span className="flex items-center gap-2">
+        {isDark ? (
+          <Moon className="w-4 h-4" aria-hidden />
+        ) : (
+          <Sun className="w-4 h-4" aria-hidden />
+        )}
+        <span className="hidden sm:inline">
+          {isDark ? "Dark" : "Light"}
+        </span>
+      </span>
     </button>
   );
 };
