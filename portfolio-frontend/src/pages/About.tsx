@@ -13,7 +13,7 @@ export default function About() {
                 and a strong interest in building clean, well-structured web applications.
               </p>
 
-              <div className="mt-8 space-y-5 text-base text-gray-700 dark:text-gray-200 leading-relaxed">
+              <div className="prose">
                 <p>
                   After moving to Finland, I initially focused on continuing my work in geo-environmental consulting.
                   It became clear that progressing in the field would be difficult without fluent professional Finnish,
@@ -29,7 +29,7 @@ export default function About() {
             <div className="lg:col-span-5">
               <div className="card">
                 <h2 className="card-title">Strengths</h2>
-                <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-2">
+                <ul className="list-clean mt-4">
                   <li>Clear communication and stakeholder management from consulting</li>
                   <li>Strong bias toward clean structure and maintainable code</li>
                   <li>Comfortable across frontend, backend, databases, and deployment</li>
@@ -47,7 +47,6 @@ export default function About() {
 
           <div className="divider" />
 
-          {/* Personal - keep this simple for now (Strava + countdown can come back later) */}
           <div className="card">
             <p className="kicker">Personal</p>
             <h2 className="card-title">Sport</h2>
