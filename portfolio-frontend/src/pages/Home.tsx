@@ -5,105 +5,152 @@ export default function Home() {
     <div className="page">
       <section className="section">
         <div className="container-max">
-          <div className="grid gap-10 lg:grid-cols-12 items-start">
-            {/* Hero */}
-            <div className="lg:col-span-8">
-              <p className="kicker">Full-stack developer</p>
+          <div
+            className="pb-10 sm:pb-14"
+            style={{
+              borderBottom: "1px solid rgb(var(--border) / 0.10)",
+            }}
+          >
+            <div className="grid gap-10 lg:grid-cols-12 items-start">
+              {/* Hero */}
+              <div className="lg:col-span-8">
+                <p className="kicker">Full-stack developer</p>
 
-              <h1 className="hero-title">
-                Sam
-                <br />
-                Williamson
-              </h1>
-
-              <p className="lead max-w-2xl">
-                Full-stack developer with a consulting background. AWS &amp; PSM
-                certified. I build clean, practical web apps with a focus on
-                clarity and usability.
-              </p>
-
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Link to="/projects" className="btn btn-primary">
-                  View projects
-                </Link>
-                <a
-                  href="/assets/SamWilliamsonCV.pdf"
-                  download
-                  className="btn btn-secondary"
+                <h1
+                  className="mt-3 font-display font-semibold uppercase"
+                  style={{
+                    color: "rgb(var(--text))",
+                    letterSpacing: "-0.02em",
+                    lineHeight: 0.92,
+                    fontSize: "clamp(3.1rem, 5.2vw, 5.2rem)",
+                  }}
                 >
-                  Download CV
-                </a>
-              </div>
+                  Sam
+                  <br />
+                  Williamson
+                </h1>
 
-              {/* Proof row */}
-              <div className="mt-10 grid gap-3 sm:grid-cols-3 max-w-2xl">
-                <div className="stat">
-                  <div className="stat-label">Certifications</div>
-                  <div className="stat-value">AWS SAA · PSM I</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-label">Core stack</div>
-                  <div className="stat-value">React · TypeScript · Node</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-label">Based</div>
-                  <div className="stat-value">Helsinki</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right column */}
-            <div className="lg:col-span-4">
-              <div className="card">
-                <h2 className="card-title">Now</h2>
-                <p className="card-text">
-                  Building portfolio-ready projects with modern tooling:
-                  TypeScript, testing, CI/CD, and clean UI structure. Always
-                  optimizing for readability and maintainability.
+                <p className="lead max-w-2xl">
+                  Full-stack developer with a consulting background. AWS &amp;
+                  PSM certified. I build clean, practical web apps with a focus
+                  on clarity and usability.
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-2">
-                  <span className="tag">TypeScript</span>
-                  <span className="tag">Testing</span>
-                  <span className="tag">CI/CD</span>
-                </div>
-
-                <div className="mt-6">
-                  <Link to="/about" className="link">
-                    More about me
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  <Link to="/projects" className="btn btn-primary">
+                    View projects
                   </Link>
+                  <a
+                    href="/assets/SamWilliamsonCV.pdf"
+                    download
+                    className="btn btn-secondary"
+                  >
+                    Download CV
+                  </a>
+                </div>
+
+                {/* Proof row */}
+                <div className="mt-10 grid gap-3 sm:grid-cols-3 max-w-2xl">
+                  <div
+                    className="rounded-2xl p-4"
+                    style={{
+                      background: "rgb(var(--surface))",
+                      border: "1px solid rgb(var(--border) / 0.10)",
+                    }}
+                  >
+                    <div className="kicker">Certifications</div>
+                    <div
+                      className="mt-2 font-display text-sm uppercase tracking-[0.14em]"
+                      style={{ color: "rgb(var(--text))" }}
+                    >
+                      AWS SAA · PSM I
+                    </div>
+                  </div>
+
+                  <div
+                    className="rounded-2xl p-4"
+                    style={{
+                      background: "rgb(var(--surface))",
+                      border: "1px solid rgb(var(--border) / 0.10)",
+                    }}
+                  >
+                    <div className="kicker">Core stack</div>
+                    <div
+                      className="mt-2 font-display text-sm uppercase tracking-[0.14em]"
+                      style={{ color: "rgb(var(--text))" }}
+                    >
+                      React · TypeScript · Node
+                    </div>
+                  </div>
+
+                  <div
+                    className="rounded-2xl p-4"
+                    style={{
+                      background: "rgb(var(--surface))",
+                      border: "1px solid rgb(var(--border) / 0.10)",
+                    }}
+                  >
+                    <div className="kicker">Based</div>
+                    <div
+                      className="mt-2 font-display text-sm uppercase tracking-[0.14em]"
+                      style={{ color: "rgb(var(--text))" }}
+                    >
+                      Helsinki
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-6 card-subtle">
-                <h2 className="card-title">Links</h2>
-                <p className="card-text">
-                  Selected profiles and contact.
-                </p>
+              {/* Right column */}
+              <div className="lg:col-span-4">
+                <div className="card">
+                  <p className="kicker">Focus</p>
+                  <h2 className="card-title">Now</h2>
+                  <p className="card-text">
+                    Building portfolio-ready projects with modern tooling:
+                    TypeScript, testing, CI/CD, and clean UI structure. Always
+                    optimizing for readability and maintainability.
+                  </p>
 
-                <div className="mt-4 flex flex-col gap-2">
-                  <a
-                    className="link"
-                    href="https://github.com/samw0907"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    className="link"
-                    href="https://www.linkedin.com/in/sam-williamson-739530146/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    LinkedIn
-                  </a>
-                  <a
-                    className="link"
-                    href="mailto:swilliamson_0907@outlook.com"
-                  >
-                    Email
-                  </a>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <span className="tag">TypeScript</span>
+                    <span className="tag">Testing</span>
+                    <span className="tag">CI/CD</span>
+                  </div>
+
+                  <div className="mt-6">
+                    <Link to="/about" className="link">
+                      More about me
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="mt-6 card-subtle">
+                  <p className="kicker">Links</p>
+                  <h2 className="card-title">Profiles</h2>
+                  <p className="card-text">Selected profiles and contact.</p>
+
+                  <div className="mt-5 flex flex-col gap-3">
+                    <a
+                      className="link"
+                      href="https://github.com/samw0907"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      GitHub
+                    </a>
+                    <a
+                      className="link"
+                      href="https://www.linkedin.com/in/sam-williamson-739530146/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      LinkedIn
+                    </a>
+                    <a className="link" href="mailto:swilliamson_0907@outlook.com">
+                      Email
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
