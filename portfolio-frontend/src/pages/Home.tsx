@@ -1,42 +1,74 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const heroRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+
+    const setSpot = (clientX: number, clientY: number) => {
+      const rect = el.getBoundingClientRect();
+      const x = ((clientX - rect.left) / rect.width) * 100;
+      const y = ((clientY - rect.top) / rect.height) * 100;
+
+      const clampedX = Math.max(0, Math.min(100, x));
+      const clampedY = Math.max(0, Math.min(100, y));
+
+      el.style.setProperty("--mx", `${clampedX}%`);
+      el.style.setProperty("--my", `${clampedY}%`);
+    };
+
+    const onMouseMove = (e: MouseEvent) => setSpot(e.clientX, e.clientY);
+    const onTouchMove = (e: TouchEvent) => {
+      if (!e.touches.length) return;
+      setSpot(e.touches[0].clientX, e.touches[0].clientY);
+    };
+
+    // Default “nice” starting position so it looks good without interaction
+    el.style.setProperty("--mx", "34%");
+    el.style.setProperty("--my", "42%");
+
+    el.addEventListener("mousemove", onMouseMove);
+    el.addEventListener("touchmove", onTouchMove, { passive: true });
+
+    return () => {
+      el.removeEventListener("mousemove", onMouseMove);
+      el.removeEventListener("touchmove", onTouchMove);
+    };
+  }, []);
+
   return (
     <div className="page">
       <section className="section">
         <div className="container-max">
-          <div
-            className="pb-10 sm:pb-14"
-            style={{
-              borderBottom: "1px solid rgb(var(--border) / 0.10)",
-            }}
-          >
-            <div className="grid gap-10 lg:grid-cols-12 items-start">
-              {/* Hero */}
-              <div className="lg:col-span-8">
+          {/* HERO (no new sections; just stronger hierarchy + shapes) */}
+          <div ref={heroRef} className="hero-frame">
+            {/* Background shapes */}
+            <div className="hero-bg" aria-hidden="true">
+              <div className="hero-slab" />
+              <div className="hero-slab-2" />
+              <div className="hero-noise" />
+            </div>
+
+            <div className="hero-grid">
+              {/* Left: Typography hero */}
+              <div className="hero-left">
                 <p className="kicker">Full-stack developer</p>
 
-                <h1
-                  className="mt-3 font-display font-semibold uppercase"
-                  style={{
-                    color: "rgb(var(--text))",
-                    letterSpacing: "-0.02em",
-                    lineHeight: 0.92,
-                    fontSize: "clamp(3.1rem, 5.2vw, 5.2rem)",
-                  }}
-                >
-                  Sam
-                  <br />
-                  Williamson
+                <h1 className="hero-title-strong">
+                  <span className="hero-title-outline">Sam Williamson</span>
+                  <span className="hero-title-spot hero-spotlight">Sam</span>
+                  <span className="hero-title-spot hero-spotlight">Williamson</span>
                 </h1>
 
-                <p className="lead max-w-2xl">
-                  Full-stack developer with a consulting background. AWS &amp;
-                  PSM certified. I build clean, practical web apps with a focus
-                  on clarity and usability.
+                <p className="lead hero-lead">
+                  Full-stack developer with a consulting background. AWS &amp; PSM certified.
+                  I build clean, practical web apps with a focus on clarity and usability.
                 </p>
 
-                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <div className="hero-cta">
                   <Link to="/projects" className="btn btn-primary">
                     View projects
                   </Link>
@@ -49,88 +81,57 @@ export default function Home() {
                   </a>
                 </div>
 
-                {/* Proof row */}
-                <div className="mt-10 grid gap-3 sm:grid-cols-3 max-w-2xl">
-                  <div
-                    className="rounded-2xl p-4"
-                    style={{
-                      background: "rgb(var(--surface))",
-                      border: "1px solid rgb(var(--border) / 0.10)",
-                    }}
-                  >
-                    <div className="kicker">Certifications</div>
-                    <div
-                      className="mt-2 font-display text-sm uppercase tracking-[0.14em]"
-                      style={{ color: "rgb(var(--text))" }}
-                    >
-                      AWS SAA · PSM I
-                    </div>
+                {/* Proof line (no boxes) */}
+                <dl className="hero-proof" aria-label="Quick facts">
+                  <div className="hero-proof-item">
+                    <dt className="hero-proof-label">Certifications</dt>
+                    <dd className="hero-proof-value">AWS SAA · PSM I</dd>
                   </div>
 
-                  <div
-                    className="rounded-2xl p-4"
-                    style={{
-                      background: "rgb(var(--surface))",
-                      border: "1px solid rgb(var(--border) / 0.10)",
-                    }}
-                  >
-                    <div className="kicker">Core stack</div>
-                    <div
-                      className="mt-2 font-display text-sm uppercase tracking-[0.14em]"
-                      style={{ color: "rgb(var(--text))" }}
-                    >
-                      React · TypeScript · Node
-                    </div>
+                  <div className="hero-proof-divider" aria-hidden="true" />
+
+                  <div className="hero-proof-item">
+                    <dt className="hero-proof-label">Core stack</dt>
+                    <dd className="hero-proof-value">React · TypeScript · Node</dd>
                   </div>
 
-                  <div
-                    className="rounded-2xl p-4"
-                    style={{
-                      background: "rgb(var(--surface))",
-                      border: "1px solid rgb(var(--border) / 0.10)",
-                    }}
-                  >
-                    <div className="kicker">Based</div>
-                    <div
-                      className="mt-2 font-display text-sm uppercase tracking-[0.14em]"
-                      style={{ color: "rgb(var(--text))" }}
-                    >
-                      Helsinki
-                    </div>
+                  <div className="hero-proof-divider" aria-hidden="true" />
+
+                  <div className="hero-proof-item">
+                    <dt className="hero-proof-label">Based</dt>
+                    <dd className="hero-proof-value">Helsinki</dd>
                   </div>
-                </div>
+                </dl>
               </div>
 
-              {/* Right column */}
-              <div className="lg:col-span-4">
-                <div className="card">
+              {/* Right: Editorial sidebar (no cards) */}
+              <aside className="hero-right" aria-label="Quick links and focus">
+                <div className="hero-side-block">
                   <p className="kicker">Focus</p>
-                  <h2 className="card-title">Now</h2>
-                  <p className="card-text">
-                    Building portfolio-ready projects with modern tooling:
-                    TypeScript, testing, CI/CD, and clean UI structure. Always
-                    optimizing for readability and maintainability.
+                  <h2 className="hero-side-title">Now</h2>
+                  <p className="hero-side-text">
+                    Building portfolio-ready projects with modern tooling: TypeScript, testing,
+                    CI/CD, and clean UI structure. Optimizing for readability and maintainability.
                   </p>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
+                  <div className="hero-side-tags">
                     <span className="tag">TypeScript</span>
                     <span className="tag">Testing</span>
                     <span className="tag">CI/CD</span>
                   </div>
 
-                  <div className="mt-6">
+                  <div className="hero-side-links">
                     <Link to="/about" className="link">
                       More about me
                     </Link>
                   </div>
                 </div>
 
-                <div className="mt-6 card-subtle">
+                <div className="hero-side-block hero-side-block-subtle">
                   <p className="kicker">Links</p>
-                  <h2 className="card-title">Profiles</h2>
-                  <p className="card-text">Selected profiles and contact.</p>
+                  <h2 className="hero-side-title">Profiles</h2>
 
-                  <div className="mt-5 flex flex-col gap-3">
+                  <div className="hero-side-links">
                     <a
                       className="link"
                       href="https://github.com/samw0907"
@@ -152,13 +153,13 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-              </div>
+              </aside>
             </div>
           </div>
 
           <div className="divider" />
 
-          {/* Selected work preview */}
+          {/* Keep existing content (no new sections) */}
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="card">
               <p className="kicker">Featured</p>
