@@ -12,8 +12,10 @@
 
   --border: 0 0 0;          /* use with low alpha */
 
+  /* LOUD: push accent brighter and punchier */
   --accent: 59 130 246;     /* blue-500 */
   --accent-2: 37 99 235;    /* blue-600 */
+  --accent-3: 96 165 250;   /* blue-400 (for glow) */
 }
 
 .dark {
@@ -28,6 +30,7 @@
 
   --accent: 59 130 246;
   --accent-2: 37 99 235;
+  --accent-3: 96 165 250;
 }
 
 html {
@@ -80,13 +83,6 @@ body {
   .kicker {
     @apply text-xs uppercase tracking-[0.24em];
     color: rgb(var(--muted));
-  }
-
-  .hero-title {
-    @apply mt-3 font-display font-semibold uppercase;
-    @apply tracking-[-0.02em];
-    @apply text-5xl sm:text-6xl md:text-7xl leading-[0.92];
-    color: rgb(var(--text));
   }
 
   .page-title {
@@ -180,12 +176,12 @@ body {
   }
 
   /* ------------------------------------------------------------ */
-  /* HERO: editorial / magazine shapes + spotlight typography      */
+  /* HERO: LOUD + INK                                              */
   /* ------------------------------------------------------------ */
 
   .hero-frame {
     @apply relative overflow-hidden rounded-[28px];
-    border: 1px solid rgb(var(--border) / 0.10);
+    border: 1px solid rgb(var(--border) / 0.12);
     background: rgb(var(--surface));
   }
 
@@ -193,41 +189,61 @@ body {
     @apply absolute inset-0 pointer-events-none;
   }
 
+  /* INK slabs: darker and higher contrast, even in light mode */
   .hero-slab {
     position: absolute;
-    inset: -20% -10% auto auto;
-    width: min(560px, 55vw);
-    height: min(560px, 55vw);
-    background: rgb(var(--surface-2));
-    border: 1px solid rgb(var(--border) / 0.08);
+    inset: -18% -10% auto auto;
+    width: min(600px, 56vw);
+    height: min(600px, 56vw);
+
+    background: rgb(var(--text) / 0.06);
+    border: 1px solid rgb(var(--border) / 0.14);
+
     transform: rotate(-12deg);
     border-radius: 36px;
     clip-path: polygon(6% 12%, 96% 0%, 100% 88%, 12% 100%);
-    opacity: 0.95;
+    opacity: 1;
   }
 
   .hero-slab-2 {
     position: absolute;
-    left: -10%;
-    bottom: -30%;
-    width: min(520px, 60vw);
-    height: min(520px, 60vw);
-    background: rgb(var(--surface-2));
-    border: 1px solid rgb(var(--border) / 0.08);
+    left: -12%;
+    bottom: -34%;
+    width: min(560px, 62vw);
+    height: min(560px, 62vw);
+
+    background: rgb(var(--text) / 0.045);
+    border: 1px solid rgb(var(--border) / 0.12);
+
     transform: rotate(18deg);
     border-radius: 40px;
     clip-path: polygon(0% 10%, 88% 0%, 100% 78%, 10% 100%);
-    opacity: 0.55;
+    opacity: 1;
+  }
+
+  /* Optional: extra “ink wash” behind spotlight */
+  .hero-spot-glow {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    background:
+      radial-gradient(
+        circle at var(--mx, 40%) var(--my, 34%),
+        rgb(var(--accent-3) / 0.25) 0%,
+        rgb(var(--accent) / 0.16) 20%,
+        transparent 52%
+      );
+    filter: blur(2px);
   }
 
   .hero-noise {
     position: absolute;
     inset: 0;
-    opacity: 0.07;
+    opacity: 0.10;
     background-image:
-      radial-gradient(circle at 20% 10%, rgb(var(--border) / 0.18) 0 1px, transparent 1px),
-      radial-gradient(circle at 80% 30%, rgb(var(--border) / 0.14) 0 1px, transparent 1px),
-      radial-gradient(circle at 30% 80%, rgb(var(--border) / 0.12) 0 1px, transparent 1px);
+      radial-gradient(circle at 20% 10%, rgb(var(--border) / 0.22) 0 1px, transparent 1px),
+      radial-gradient(circle at 80% 30%, rgb(var(--border) / 0.18) 0 1px, transparent 1px),
+      radial-gradient(circle at 30% 80%, rgb(var(--border) / 0.16) 0 1px, transparent 1px);
     background-size: 90px 90px, 120px 120px, 140px 140px;
     background-position: 0 0, 30px 40px, 20px 10px;
   }
@@ -247,43 +263,43 @@ body {
 
   .hero-title-strong {
     @apply mt-4;
-    line-height: 0.88;
+    line-height: 0.86; /* louder */
   }
 
-  /* Outline “poster” layer behind */
+  /* Bigger outline + more visible stroke */
   .hero-title-outline {
     @apply block font-display font-semibold uppercase;
-    font-size: clamp(3.2rem, 5.8vw, 5.8rem);
-    letter-spacing: -0.03em;
+    font-size: clamp(3.4rem, 6.2vw, 6.2rem);
+    letter-spacing: -0.035em;
     color: transparent;
-    -webkit-text-stroke: 1px rgb(var(--border) / 0.22);
-    opacity: 0.9;
+    -webkit-text-stroke: 1.2px rgb(var(--border) / 0.28);
+    opacity: 1;
     user-select: none;
   }
 
-  /* Foreground lines (spotlight affects fill) */
+  /* Foreground */
   .hero-title-spot {
     @apply block font-display font-semibold uppercase;
-    font-size: clamp(3.2rem, 5.8vw, 5.8rem);
-    letter-spacing: -0.03em;
-    margin-top: -0.18em;
+    font-size: clamp(3.4rem, 6.2vw, 6.2rem);
+    letter-spacing: -0.035em;
+    margin-top: -0.20em;
     color: rgb(var(--text));
   }
 
-  /* Spotlight: radial gradient applied to text fill */
+  /* LOUD spotlight: larger, brighter, higher contrast */
   .hero-spotlight {
     color: transparent;
     background-image:
       radial-gradient(
-        circle at var(--mx, 35%) var(--my, 40%),
+        circle at var(--mx, 40%) var(--my, 34%),
         rgb(var(--accent)) 0%,
-        rgb(var(--accent)) 20%,
-        rgb(var(--text)) 46%,
+        rgb(var(--accent)) 28%,
+        rgb(var(--text)) 56%,
         rgb(var(--text)) 100%
       );
     -webkit-background-clip: text;
     background-clip: text;
-    filter: saturate(1.05);
+    filter: saturate(1.25) contrast(1.08);
   }
 
   .hero-lead {
@@ -294,11 +310,10 @@ body {
     @apply mt-9 flex flex-col sm:flex-row gap-3;
   }
 
-  /* Proof row: editorial divider style, no cards */
   .hero-proof {
     @apply mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6;
     padding-top: 14px;
-    border-top: 1px solid rgb(var(--border) / 0.10);
+    border-top: 1px solid rgb(var(--border) / 0.14);
     max-width: 42rem;
   }
 
@@ -320,21 +335,13 @@ body {
     display: none;
     width: 1px;
     height: 34px;
-    background: rgb(var(--border) / 0.12);
+    background: rgb(var(--border) / 0.18);
   }
 
   @media (min-width: 640px) {
     .hero-proof-divider {
       display: block;
     }
-  }
-
-  .hero-side-block {
-    padding-top: 2px;
-  }
-
-  .hero-side-block-subtle {
-    padding-top: 0;
   }
 
   .hero-side-title {

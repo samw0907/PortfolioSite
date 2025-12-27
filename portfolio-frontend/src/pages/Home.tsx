@@ -20,22 +20,53 @@ export default function Home() {
       el.style.setProperty("--my", `${clampedY}%`);
     };
 
+    // Strong starting position (looks intentional on load)
+    el.style.setProperty("--mx", "40%");
+    el.style.setProperty("--my", "34%");
+
     const onMouseMove = (e: MouseEvent) => setSpot(e.clientX, e.clientY);
     const onTouchMove = (e: TouchEvent) => {
       if (!e.touches.length) return;
       setSpot(e.touches[0].clientX, e.touches[0].clientY);
     };
 
-    // Default “nice” starting position so it looks good without interaction
-    el.style.setProperty("--mx", "34%");
-    el.style.setProperty("--my", "42%");
+    // Idle drift (keeps it “alive” even without interaction)
+    let raf = 0;
+    let t = 0;
+    let userInteracted = false;
 
-    el.addEventListener("mousemove", onMouseMove);
-    el.addEventListener("touchmove", onTouchMove, { passive: true });
+    const drift = () => {
+      if (!userInteracted) {
+        t += 0.006;
+        const x = 42 + Math.sin(t) * 10;
+        const y = 36 + Math.cos(t * 0.9) * 7;
+        el.style.setProperty("--mx", `${x}%`);
+        el.style.setProperty("--my", `${y}%`);
+      }
+      raf = requestAnimationFrame(drift);
+    };
+
+    const markInteracted = () => {
+      userInteracted = true;
+      window.setTimeout(() => {
+        userInteracted = false;
+      }, 2500);
+    };
+
+    el.addEventListener("mousemove", (e) => {
+      markInteracted();
+      onMouseMove(e);
+    });
+
+    el.addEventListener("touchmove", (e) => {
+      markInteracted();
+      onTouchMove(e);
+    }, { passive: true });
+
+    raf = requestAnimationFrame(drift);
 
     return () => {
-      el.removeEventListener("mousemove", onMouseMove);
-      el.removeEventListener("touchmove", onTouchMove);
+      cancelAnimationFrame(raf);
     };
   }, []);
 
@@ -43,17 +74,15 @@ export default function Home() {
     <div className="page">
       <section className="section">
         <div className="container-max">
-          {/* HERO (no new sections; just stronger hierarchy + shapes) */}
           <div ref={heroRef} className="hero-frame">
-            {/* Background shapes */}
             <div className="hero-bg" aria-hidden="true">
               <div className="hero-slab" />
               <div className="hero-slab-2" />
+              <div className="hero-spot-glow" />
               <div className="hero-noise" />
             </div>
 
             <div className="hero-grid">
-              {/* Left: Typography hero */}
               <div className="hero-left">
                 <p className="kicker">Full-stack developer</p>
 
@@ -81,7 +110,6 @@ export default function Home() {
                   </a>
                 </div>
 
-                {/* Proof line (no boxes) */}
                 <dl className="hero-proof" aria-label="Quick facts">
                   <div className="hero-proof-item">
                     <dt className="hero-proof-label">Certifications</dt>
@@ -104,7 +132,6 @@ export default function Home() {
                 </dl>
               </div>
 
-              {/* Right: Editorial sidebar (no cards) */}
               <aside className="hero-right" aria-label="Quick links and focus">
                 <div className="hero-side-block">
                   <p className="kicker">Focus</p>
@@ -159,7 +186,6 @@ export default function Home() {
 
           <div className="divider" />
 
-          {/* Keep existing content (no new sections) */}
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="card">
               <p className="kicker">Featured</p>
