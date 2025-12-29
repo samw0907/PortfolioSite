@@ -1,8 +1,5 @@
 /* src/index.css */
 
-/* ----------------------------- */
-/* Design tokens                 */
-/* ----------------------------- */
 :root {
   --bg: 250 250 249;
   --surface: 255 255 255;
@@ -15,6 +12,8 @@
 
   --accent: 59 130 246;
   --accent-2: 37 99 235;
+
+  --accent-warm: 245 91 66
 
   --nav-h: 76px;
 }
@@ -31,6 +30,8 @@
 
   --accent: 59 130 246;
   --accent-2: 37 99 235;
+
+  --accent-warm: 245 91 66;
 }
 
 html {
@@ -68,9 +69,6 @@ body {
   box-sizing: border-box;
 }
 
-/* ----------------------------- */
-/* Layout shell                  */
-/* ----------------------------- */
 .app-shell {
   min-height: 100vh;
   width: 100%;
@@ -97,13 +95,9 @@ body {
   scroll-margin-top: var(--nav-h);
 }
 
-/* ----------------------------- */
-/* Shared primitives             */
-/* ----------------------------- */
 .container-max {
   width: 100%;
-  max-width: 72rem; /* ~6xl */
-  margin: 0 auto;
+  max-width: 72rem;
   padding: 0 16px;
 }
 
@@ -249,15 +243,14 @@ body {
   color: rgb(var(--text));
 }
 
-/* Dark mode toggle (restores old icon sizing + alignment without Tailwind) */
 .dark-toggle {
-  padding: 10px 16px; /* matches your previous "px-4 py-2" feel */
+  padding: 10px 16px;
 }
 
 .dark-toggle-inner {
   display: inline-flex;
   align-items: center;
-  gap: 8px; /* matches prior gap-2 */
+  gap: 8px;
 }
 
 .dark-toggle-icon {
@@ -353,9 +346,6 @@ body {
   color: rgb(var(--muted));
 }
 
-/* ----------------------------- */
-/* Navbar                        */
-/* ----------------------------- */
 .navbar {
   position: sticky;
   top: 0;
@@ -457,9 +447,6 @@ body {
   margin-top: 24px;
 }
 
-/* ----------------------------- */
-/* HERO shapes (your existing)   */
-/* ----------------------------- */
 .hero-frame {
   position: relative;
   overflow: hidden;
@@ -479,8 +466,17 @@ body {
   inset: -20% -10% auto auto;
   width: min(560px, 55vw);
   height: min(560px, 55vw);
-  background: rgb(var(--surface-2));
-  border: 1px solid rgb(var(--border) / 0.08);
+  background:
+    linear-gradient(
+      135deg,
+      rgb(var(--accent) / 0.55) 0%,
+      rgb(var(--accent-2) / 0.45) 100%
+    );
+
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow:
+    0 22px 60px rgb(var(--accent) / 0.25);
+  
   transform: rotate(-12deg);
   border-radius: 36px;
   clip-path: polygon(6% 12%, 96% 0%, 100% 88%, 12% 100%);
@@ -493,12 +489,21 @@ body {
   bottom: -30%;
   width: min(520px, 60vw);
   height: min(520px, 60vw);
-  background: rgb(var(--surface-2));
-  border: 1px solid rgb(var(--border) / 0.08);
+  background:
+    linear-gradient(
+      135deg,
+      rgb(var(--accent-warm) / 0.45) 0%,
+      rgb(var(--accent-warm) / 0.35) 100%
+    );
+
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow:
+    0 20px 52px rgb(var(--accent-warm) / 0.22);
+  
   transform: rotate(18deg);
   border-radius: 40px;
   clip-path: polygon(0% 10%, 88% 0%, 100% 78%, 10% 100%);
-  opacity: 0.55;
+  opacity: 0.75;
 }
 
 .hero-noise {
@@ -588,13 +593,29 @@ body {
     radial-gradient(
       circle at var(--mx, 35%) var(--my, 40%),
       rgb(var(--accent)) 0%,
-      rgb(var(--accent)) 20%,
-      rgb(var(--text)) 46%,
+      rgb(var(--accent)) 14%,
+      rgb(var(--text)) 36%,
       rgb(var(--text)) 100%
     );
   -webkit-background-clip: text;
   background-clip: text;
-  filter: saturate(1.05);
+  filter: saturate(1.02);
+}
+
+.hero-spot-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at var(--mx, 40%) var(--my, 34%),
+      rgb(var(--accent) / 0.12) 0%,
+      rgb(var(--accent) / 0.06) 22%,
+      transparent 60%
+    );
+
+  opacity: 1;
 }
 
 .hero-lead {
@@ -634,18 +655,18 @@ body {
 }
 
 .hero-proof-label {
-  font-size: 11px;
+  font-size: 10.5px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: rgb(var(--muted));
 }
 
 .hero-proof-value {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-weight: 700;
+  font-weight: 500;
   color: rgb(var(--text));
 }
 

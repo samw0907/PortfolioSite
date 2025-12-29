@@ -122,12 +122,6 @@ export default function Home() {
     };
   }, []);
 
-  // ABOUT RAIL wheel interception:
-  // - Only on desktop (not narrow / not coarse pointer).
-  // - Only when the sticky rail is on-screen.
-  // - Converts vertical wheel into horizontal movement while NOT at ends.
-  // - Allows normal scroll up/down when at the edges.
-  // - Hold Alt to force normal vertical scroll anytime.
   useEffect(() => {
     const wrap = railWrapRef.current;
     const sticky = railStickyRef.current;
@@ -153,14 +147,12 @@ export default function Home() {
 
     const isStickyInControl = () => {
       const rect = sticky.getBoundingClientRect();
-      // When sticky is sitting under the navbar and still has room below
       return rect.top <= NAV_OFFSET + 6 && rect.bottom >= NAV_OFFSET + 220;
     };
 
     const onWheel = (e: WheelEvent) => {
       if (!isStickyInControl()) return;
 
-      // Escape hatch: Alt = normal vertical scroll
       if (e.altKey) return;
 
       const maxLeft = scroller.scrollWidth - scroller.clientWidth;
@@ -169,13 +161,10 @@ export default function Home() {
       const atStart = scroller.scrollLeft <= 0;
       const atEnd = scroller.scrollLeft >= maxLeft - 1;
 
-      // Prefer horizontal intent if user is already doing it
       const dominant = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
 
-      // If trying to scroll OUT of the rail at edges, let normal scroll happen.
       if ((atStart && dominant < 0) || (atEnd && dominant > 0)) return;
 
-      // Otherwise hijack and scroll sideways
       e.preventDefault();
       scroller.scrollLeft += dominant;
       updateActivePanel();
@@ -183,7 +172,6 @@ export default function Home() {
 
     const onScroll = () => updateActivePanel();
 
-    // Attach wheel to window so it works even if the cursor isn't directly over the scroller
     window.addEventListener("wheel", onWheel, { passive: false });
     scroller.addEventListener("scroll", onScroll, { passive: true });
 
@@ -208,9 +196,6 @@ export default function Home() {
     <div className="page">
       <section className="section">
         <div className="container-max">
-          {/* ------------------------------------------------------------ */}
-          {/* HERO                                                        */}
-          {/* ------------------------------------------------------------ */}
           <div ref={heroRef} className="hero-frame">
             <div className="hero-bg" aria-hidden="true">
               <div className="hero-slab" />
