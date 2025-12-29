@@ -3,10 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
 
 const navItems = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/projects", label: "Projects" },
-  { to: "/contact", label: "Contact" },
+  { to: "/#about", label: "About" },
+  { to: "/#projects", label: "Projects" },
+  { to: "/#contact", label: "Contact" },
 ];
 
 const Navbar = () => {
@@ -15,20 +14,25 @@ const Navbar = () => {
 
   useEffect(() => {
     setOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
-  const isActive = (to: string) => location.pathname === to;
+  const isActive = (hash: string) => location.pathname === "/" && location.hash === hash;
 
   return (
     <header
       id="main-navbar"
-      className="sticky top-0 z-50 w-full backdrop-blur bg-surface/85 border-b border-border/10"
+      className="sticky top-0 z-50 w-full backdrop-blur"
+      style={{
+        background: "rgb(var(--surface) / 0.85)",
+        borderBottom: "1px solid rgb(var(--border) / 0.10)",
+      }}
     >
       <div className="container-max">
         <div className="flex items-center justify-between py-4">
           <Link
             to="/"
-            className="font-display text-sm sm:text-base uppercase tracking-[0.18em] font-semibold text-text"
+            className="font-display text-sm sm:text-base uppercase tracking-[0.18em] font-semibold"
+            style={{ color: "rgb(var(--text))" }}
             aria-label="Go to home"
           >
             Sam Williamson
@@ -38,20 +42,19 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-6">
             <nav className="flex items-center gap-6">
               {navItems.map((item) => {
-                const active = isActive(item.to);
-
+                const hash = item.to.replace("/#", "#");
                 return (
                   <Link
                     key={item.to}
                     to={item.to}
-                    className={`font-display text-xs uppercase tracking-[0.18em] font-semibold transition-opacity hover:opacity-80 ${
-                      active ? "text-text underline" : "text-muted"
-                    }`}
+                    className="font-display text-xs uppercase tracking-[0.18em] font-semibold transition"
                     style={{
-                      textUnderlineOffset: active ? "8px" : undefined,
+                      color: isActive(hash) ? "rgb(var(--text))" : "rgb(var(--muted))",
+                      textDecoration: isActive(hash) ? "underline" : "none",
+                      textUnderlineOffset: isActive(hash) ? "8px" : undefined,
                       textDecorationColor: "rgb(var(--border) / 0.25)",
                     }}
-                    aria-current={active ? "page" : undefined}
+                    aria-current={isActive(hash) ? "page" : undefined}
                   >
                     {item.label}
                   </Link>
@@ -80,20 +83,19 @@ const Navbar = () => {
             <div className="card p-5">
               <nav className="flex flex-col gap-4">
                 {navItems.map((item) => {
-                  const active = isActive(item.to);
-
+                  const hash = item.to.replace("/#", "#");
                   return (
                     <Link
                       key={item.to}
                       to={item.to}
-                      className={`font-display text-sm uppercase tracking-[0.18em] font-semibold transition-opacity hover:opacity-80 ${
-                        active ? "text-text underline" : "text-muted"
-                      }`}
+                      className="font-display text-sm uppercase tracking-[0.18em] font-semibold transition"
                       style={{
-                        textUnderlineOffset: active ? "8px" : undefined,
+                        color: isActive(hash) ? "rgb(var(--text))" : "rgb(var(--muted))",
+                        textDecoration: isActive(hash) ? "underline" : "none",
+                        textUnderlineOffset: isActive(hash) ? "8px" : undefined,
                         textDecorationColor: "rgb(var(--border) / 0.25)",
                       }}
-                      aria-current={active ? "page" : undefined}
+                      aria-current={isActive(hash) ? "page" : undefined}
                     >
                       {item.label}
                     </Link>

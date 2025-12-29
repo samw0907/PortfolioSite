@@ -1,189 +1,160 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
 
 export default function Home() {
-  const heroRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-
-    const setSpot = (clientX: number, clientY: number) => {
-      const rect = el.getBoundingClientRect();
-      const x = ((clientX - rect.left) / rect.width) * 100;
-      const y = ((clientY - rect.top) / rect.height) * 100;
-
-      const clampedX = Math.max(0, Math.min(100, x));
-      const clampedY = Math.max(0, Math.min(100, y));
-
-      el.style.setProperty("--mx", `${clampedX}%`);
-      el.style.setProperty("--my", `${clampedY}%`);
-    };
-
-    // Strong starting position (looks intentional on load)
-    el.style.setProperty("--mx", "40%");
-    el.style.setProperty("--my", "34%");
-
-    const onMouseMove = (e: MouseEvent) => setSpot(e.clientX, e.clientY);
-    const onTouchMove = (e: TouchEvent) => {
-      if (!e.touches.length) return;
-      setSpot(e.touches[0].clientX, e.touches[0].clientY);
-    };
-
-    // Idle drift (keeps it “alive” even without interaction)
-    let raf = 0;
-    let t = 0;
-    let userInteracted = false;
-
-    const drift = () => {
-      if (!userInteracted) {
-        t += 0.006;
-        const x = 42 + Math.sin(t) * 10;
-        const y = 36 + Math.cos(t * 0.9) * 7;
-        el.style.setProperty("--mx", `${x}%`);
-        el.style.setProperty("--my", `${y}%`);
-      }
-      raf = requestAnimationFrame(drift);
-    };
-
-    const markInteracted = () => {
-      userInteracted = true;
-      window.setTimeout(() => {
-        userInteracted = false;
-      }, 2500);
-    };
-
-    el.addEventListener("mousemove", (e) => {
-      markInteracted();
-      onMouseMove(e);
-    });
-
-    el.addEventListener("touchmove", (e) => {
-      markInteracted();
-      onTouchMove(e);
-    }, { passive: true });
-
-    raf = requestAnimationFrame(drift);
-
-    return () => {
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
   return (
     <div className="page">
       <section className="section">
         <div className="container-max">
-          <div ref={heroRef} className="hero-frame">
-            <div className="hero-bg" aria-hidden="true">
-              <div className="hero-slab" />
-              <div className="hero-slab-2" />
-              <div className="hero-spot-glow" />
-              <div className="hero-noise" />
-            </div>
+          {/* HERO BLOCK */}
+          <div className="hero-divider pb-10 sm:pb-14">
+            <div className="grid gap-10 lg:grid-cols-12 items-start">
+              {/* Left: hero copy */}
+              <div className="lg:col-span-8">
+                <div className="hero-panel">
+                  {/* Decorative diagonals */}
+                  <div className="hero-diagonal hero-diagonal--a" />
+                  <div className="hero-diagonal hero-diagonal--b" />
 
-            <div className="hero-grid">
-              <div className="hero-left">
-                <p className="kicker">Full-stack developer</p>
+                  <p className="kicker">Full-stack developer</p>
 
-                <h1 className="hero-title-strong">
-                  <span className="hero-title-outline">Sam Williamson</span>
-                  <span className="hero-title-spot hero-spotlight">Sam</span>
-                  <span className="hero-title-spot hero-spotlight">Williamson</span>
-                </h1>
+                  {/* Accent row */}
+                  <div className="mt-4 hero-accent-row">
+                    <span className="hero-accent-bar" />
+                    <span className="hero-accent-slash" />
+                    <span
+                      className="kicker"
+                      style={{ margin: 0, color: "rgb(var(--muted))" }}
+                    >
+                      AWS SAA · PSM I
+                    </span>
+                  </div>
 
-                <p className="lead hero-lead">
-                  Full-stack developer with a consulting background. AWS &amp; PSM certified.
-                  I build clean, practical web apps with a focus on clarity and usability.
-                </p>
-
-                <div className="hero-cta">
-                  <Link to="/projects" className="btn btn-primary">
-                    View projects
-                  </Link>
-                  <a
-                    href="/assets/SamWilliamsonCV.pdf"
-                    download
-                    className="btn btn-secondary"
+                  {/* Name */}
+                  <h1
+                    className="mt-6 font-display font-semibold uppercase hero-title--impact"
+                    style={{
+                      color: "rgb(var(--text))",
+                      letterSpacing: "-0.03em",
+                      lineHeight: 0.9,
+                      fontSize: "clamp(3.4rem, 6.4vw, 6.2rem)",
+                    }}
                   >
-                    Download CV
-                  </a>
-                </div>
+                    Sam
+                    <br />
+                    Williamson
+                  </h1>
 
-                <dl className="hero-proof" aria-label="Quick facts">
-                  <div className="hero-proof-item">
-                    <dt className="hero-proof-label">Certifications</dt>
-                    <dd className="hero-proof-value">AWS SAA · PSM I</dd>
-                  </div>
-
-                  <div className="hero-proof-divider" aria-hidden="true" />
-
-                  <div className="hero-proof-item">
-                    <dt className="hero-proof-label">Core stack</dt>
-                    <dd className="hero-proof-value">React · TypeScript · Node</dd>
-                  </div>
-
-                  <div className="hero-proof-divider" aria-hidden="true" />
-
-                  <div className="hero-proof-item">
-                    <dt className="hero-proof-label">Based</dt>
-                    <dd className="hero-proof-value">Helsinki</dd>
-                  </div>
-                </dl>
-              </div>
-
-              <aside className="hero-right" aria-label="Quick links and focus">
-                <div className="hero-side-block">
-                  <p className="kicker">Focus</p>
-                  <h2 className="hero-side-title">Now</h2>
-                  <p className="hero-side-text">
-                    Building portfolio-ready projects with modern tooling: TypeScript, testing,
-                    CI/CD, and clean UI structure. Optimizing for readability and maintainability.
+                  {/* Lead */}
+                  <p className="lead max-w-2xl">
+                    Full-stack developer with a consulting background. AWS &amp;
+                    PSM certified. I build clean, practical web apps with a focus
+                    on clarity and usability.
                   </p>
 
-                  <div className="hero-side-tags">
+                  {/* CTAs */}
+                  <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                    <Link to="/projects" className="btn btn-primary">
+                      View projects
+                    </Link>
+                    <a
+                      href="/assets/SamWilliamsonCV.pdf"
+                      download
+                      className="btn btn-secondary"
+                    >
+                      Download CV
+                    </a>
+                  </div>
+
+                  {/* Proof row (same style you liked) */}
+                  <div className="mt-10 rule-row">
+                    <div className="rule-item">
+                      <div className="rule-label">Certifications</div>
+                      <div className="rule-value">AWS SAA · PSM I</div>
+                    </div>
+
+                    <div className="rule-divider" />
+
+                    <div className="rule-item">
+                      <div className="rule-label">Core stack</div>
+                      <div className="rule-value">React · TypeScript · Node</div>
+                    </div>
+
+                    <div className="rule-divider" />
+
+                    <div className="rule-item">
+                      <div className="rule-label">Based</div>
+                      <div className="rule-value">Helsinki</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: keep your current cards, but consistent spacing */}
+              <div className="lg:col-span-4">
+                <div className="card">
+                  <p className="kicker">Focus</p>
+                  <h2 className="card-title">Now</h2>
+                  <p className="card-text">
+                    Building portfolio-ready projects with modern tooling:
+                    TypeScript, testing, CI/CD, and clean UI structure. Always
+                    optimizing for readability and maintainability.
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
                     <span className="tag">TypeScript</span>
                     <span className="tag">Testing</span>
                     <span className="tag">CI/CD</span>
                   </div>
 
-                  <div className="hero-side-links">
+                  <div className="mt-6">
                     <Link to="/about" className="link">
                       More about me
                     </Link>
                   </div>
                 </div>
 
-                <div className="hero-side-block hero-side-block-subtle">
+                <div className="mt-6 card-subtle">
                   <p className="kicker">Links</p>
-                  <h2 className="hero-side-title">Profiles</h2>
+                  <h2 className="card-title">Profiles</h2>
+                  <p className="card-text">Selected profiles and contact.</p>
 
-                  <div className="hero-side-links">
+                  {/* Reuse the “rule row” look you liked */}
+                  <div className="mt-6 rule-row rule-row--links">
                     <a
-                      className="link"
+                      className="rule-link"
                       href="https://github.com/samw0907"
                       target="_blank"
                       rel="noreferrer"
                     >
                       GitHub
                     </a>
+
+                    <div className="rule-divider" />
+
                     <a
-                      className="link"
+                      className="rule-link"
                       href="https://www.linkedin.com/in/sam-williamson-739530146/"
                       target="_blank"
                       rel="noreferrer"
                     >
                       LinkedIn
                     </a>
-                    <a className="link" href="mailto:swilliamson_0907@outlook.com">
+
+                    <div className="rule-divider" />
+
+                    <a
+                      className="rule-link"
+                      href="mailto:swilliamson_0907@outlook.com"
+                    >
                       Email
                     </a>
                   </div>
                 </div>
-              </aside>
+              </div>
             </div>
           </div>
 
+          {/* The rest of Home stays as-is */}
           <div className="divider" />
 
           <div className="grid gap-6 lg:grid-cols-2">
@@ -220,4 +191,3 @@ export default function Home() {
     </div>
   );
 }
-
