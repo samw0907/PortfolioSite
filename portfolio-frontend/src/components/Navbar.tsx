@@ -1,63 +1,93 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+// src/components/Navbar.tsx
+import { useEffect, useMemo, useState } from "react";
 import DarkModeToggle from "./DarkModeToggle";
 
-const navItems = [
-  { to: "/#about", label: "About" },
-  { to: "/#projects", label: "Projects" },
-  { to: "/#contact", label: "Contact" },
+type NavItem = {
+  href: string;
+  label: string;
+  id: string;
+};
+
+const navItems: NavItem[] = [
+  { href: "#home", label: "Home", id: "home" },
+  { href: "#about", label: "About", id: "about" },
+  { href: "#projects", label: "Projects", id: "projects" },
+  { href: "#contact", label: "Contact", id: "contact" },
 ];
 
+function scrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 const Navbar = () => {
-  const location = useLocation();
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string>("home");
+
+  const ids = useMemo(() => navItems.map((n) => n.id), []);
 
   useEffect(() => {
-    setOpen(false);
-  }, [location.pathname, location.hash]);
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
 
-  const isActive = (hash: string) => location.pathname === "/" && location.hash === hash;
+    if (!sections.length) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+
+        const id = visible?.target?.id;
+        if (id) setActiveId(id);
+      },
+      {
+        root: null,
+        threshold: [0.2, 0.35, 0.5, 0.7],
+      }
+    );
+
+    sections.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
+  }, [ids]);
+
+  const onNavClick = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setOpen(false);
+    scrollToId(id);
+    history.replaceState(null, "", `#${id}`);
+  };
 
   return (
-    <header
-      id="main-navbar"
-      className="sticky top-0 z-50 w-full backdrop-blur"
-      style={{
-        background: "rgb(var(--surface) / 0.85)",
-        borderBottom: "1px solid rgb(var(--border) / 0.10)",
-      }}
-    >
+    <header id="main-navbar" className="navbar">
       <div className="container-max">
-        <div className="flex items-center justify-between py-4">
-          <Link
-            to="/"
-            className="font-display text-sm sm:text-base uppercase tracking-[0.18em] font-semibold"
-            style={{ color: "rgb(var(--text))" }}
+        <div className="navbar-row">
+          <a
+            href="#home"
+            onClick={onNavClick("home")}
+            className="navbar-brand"
             aria-label="Go to home"
           >
             Sam Williamson
-          </Link>
+          </a>
 
-          {/* Desktop */}
-          <div className="hidden md:flex items-center gap-6">
-            <nav className="flex items-center gap-6">
+          <div className="navbar-desktop">
+            <nav className="navbar-nav" aria-label="Primary">
               {navItems.map((item) => {
-                const hash = item.to.replace("/#", "#");
+                const active = activeId === item.id;
+
                 return (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    className="font-display text-xs uppercase tracking-[0.18em] font-semibold transition"
-                    style={{
-                      color: isActive(hash) ? "rgb(var(--text))" : "rgb(var(--muted))",
-                      textDecoration: isActive(hash) ? "underline" : "none",
-                      textUnderlineOffset: isActive(hash) ? "8px" : undefined,
-                      textDecorationColor: "rgb(var(--border) / 0.25)",
-                    }}
-                    aria-current={isActive(hash) ? "page" : undefined}
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    onClick={onNavClick(item.id)}
+                    className={`navbar-link ${active ? "is-active" : ""}`}
+                    aria-current={active ? "page" : undefined}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 );
               })}
             </nav>
@@ -65,10 +95,9 @@ const Navbar = () => {
             <DarkModeToggle />
           </div>
 
-          {/* Mobile toggle */}
           <button
             type="button"
-            className="md:hidden btn btn-secondary px-4 py-2"
+            className="navbar-mobile-toggle btn btn-secondary"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -77,33 +106,28 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile menu */}
         {open && (
-          <div className="md:hidden pb-5">
-            <div className="card p-5">
-              <nav className="flex flex-col gap-4">
+          <div className="navbar-mobile">
+            <div className="card navbar-mobile-card">
+              <nav className="navbar-mobile-nav" aria-label="Mobile">
                 {navItems.map((item) => {
-                  const hash = item.to.replace("/#", "#");
+                  const active = activeId === item.id;
+
                   return (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      className="font-display text-sm uppercase tracking-[0.18em] font-semibold transition"
-                      style={{
-                        color: isActive(hash) ? "rgb(var(--text))" : "rgb(var(--muted))",
-                        textDecoration: isActive(hash) ? "underline" : "none",
-                        textUnderlineOffset: isActive(hash) ? "8px" : undefined,
-                        textDecorationColor: "rgb(var(--border) / 0.25)",
-                      }}
-                      aria-current={isActive(hash) ? "page" : undefined}
+                    <a
+                      key={item.id}
+                      href={item.href}
+                      onClick={onNavClick(item.id)}
+                      className={`navbar-link navbar-link-lg ${active ? "is-active" : ""}`}
+                      aria-current={active ? "page" : undefined}
                     >
                       {item.label}
-                    </Link>
+                    </a>
                   );
                 })}
               </nav>
 
-              <div className="mt-6">
+              <div className="navbar-mobile-toggle-row">
                 <DarkModeToggle />
               </div>
             </div>

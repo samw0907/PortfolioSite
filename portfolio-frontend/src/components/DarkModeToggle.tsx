@@ -28,18 +28,12 @@ const DarkModeToggle = () => {
     <button
       type="button"
       onClick={toggleTheme}
-      className="btn btn-secondary px-4 py-2"
+      className="btn btn-secondary dark-toggle"
       aria-label="Toggle color theme"
     >
-      <span className="flex items-center gap-2">
-        {isDark ? (
-          <Moon className="w-4 h-4" aria-hidden />
-        ) : (
-          <Sun className="w-4 h-4" aria-hidden />
-        )}
-        <span className="hidden sm:inline">
-          {isDark ? "Dark" : "Light"}
-        </span>
+      <span className="dark-toggle-inner">
+        {isDark ? <Moon className="dark-toggle-icon" aria-hidden /> : <Sun className="dark-toggle-icon" aria-hidden />}
+        <span className="dark-toggle-label">{isDark ? "Dark" : "Light"}</span>
       </span>
     </button>
   );

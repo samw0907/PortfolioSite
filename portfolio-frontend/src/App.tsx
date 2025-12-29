@@ -1,50 +1,36 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
+// src/App.tsx
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
-    <>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen w-full">
-        <Navbar />
+    <div className="app-shell">
+      <Navbar />
 
-        <main className="flex-grow w-full">
-          <Routes>
-            <Route path="/" element={<Home />} />
+      <main className="app-main">
+        <section id="home" className="section section-anchor">
+          <Home />
+        </section>
 
-            {/* Legacy routes -> redirect to single-page sections */}
-            <Route path="/about" element={<Navigate to="/#about" replace />} />
-            <Route
-              path="/projects"
-              element={<Navigate to="/#projects" replace />}
-            />
-            <Route
-              path="/contact"
-              element={<Navigate to="/#contact" replace />}
-            />
+        <section id="about" className="section section-anchor">
+          <About />
+        </section>
 
-            <Route
-              path="*"
-              element={
-                <div className="container-max py-20">
-                  <div className="card text-center">
-                    <h1 className="card-title">404 - Page Not Found</h1>
-                    <p className="card-text mt-3">
-                      The page you are looking for does not exist.
-                    </p>
-                  </div>
-                </div>
-              }
-            />
-          </Routes>
-        </main>
+        <section id="projects" className="section section-anchor">
+          <Projects />
+        </section>
 
-        <Footer />
-      </div>
-    </>
+        <section id="contact" className="section section-anchor">
+          <Contact />
+        </section>
+      </main>
+
+      <Footer />
+    </div>
   );
 }
 
