@@ -245,9 +245,7 @@ export default function Home() {
                       <dd className="hero-proof-value">Espoo</dd>
                     </div>
                   </dl>
-                </div>
 
-                <aside className="hero-right" aria-label="Profile links">
                   <dl className="hero-proof hero-proof--links" aria-label="Profile links">
                     <div className="hero-proof-item">
                       <dt className="hero-proof-label">GitHub</dt>
@@ -274,7 +272,9 @@ export default function Home() {
                       </dd>
                     </div>
                   </dl>
-                </aside>
+                </div>
+
+                <div className="hero-right" aria-hidden="true" />
               </div>
             </div>
           </div>
