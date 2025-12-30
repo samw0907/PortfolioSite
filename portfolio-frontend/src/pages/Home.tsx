@@ -251,27 +251,6 @@ export default function Home() {
               </div>
 
               <aside className="hero-right" aria-label="Quick links and focus">
-                <div className="card">
-                  <p className="kicker">Focus</p>
-                  <h2 className="hero-side-title">Now</h2>
-                  <p className="hero-side-text">
-                    Building portfolio-ready projects with modern tooling: TypeScript, testing,
-                    CI/CD, and clean UI structure. Optimizing for readability and maintainability.
-                  </p>
-
-                  <div className="hero-side-tags">
-                    <span className="tag">TypeScript</span>
-                    <span className="tag">Testing</span>
-                    <span className="tag">CI/CD</span>
-                  </div>
-
-                  <div className="hero-side-links">
-                    <a className="link" href="#about">
-                      More about me
-                    </a>
-                  </div>
-                </div>
-
                 <div className="card-subtle">
                   <p className="kicker">Links</p>
                   <h2 className="hero-side-title">Profiles</h2>
