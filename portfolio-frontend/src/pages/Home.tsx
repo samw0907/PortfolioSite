@@ -11,7 +11,6 @@ type RailPanel = {
 export default function Home() {
   const heroRef = useRef<HTMLDivElement | null>(null);
 
-  // About Rail refs
   const railWrapRef = useRef<HTMLDivElement | null>(null);
   const railStickyRef = useRef<HTMLDivElement | null>(null);
   const railScrollerRef = useRef<HTMLDivElement | null>(null);
@@ -77,7 +76,6 @@ export default function Home() {
     []
   );
 
-  // HERO spotlight tracking
   useEffect(() => {
     const el = heroRef.current;
     if (!el) return;
@@ -109,9 +107,7 @@ export default function Home() {
       lastX = e.clientX;
       lastY = e.clientY;
 
-      if (rafId === null) {
-        rafId = window.requestAnimationFrame(applySpot);
-      }
+      if (rafId === null) rafId = window.requestAnimationFrame(applySpot);
     };
 
     el.addEventListener("pointermove", onPointerMove, { passive: true });
@@ -152,7 +148,6 @@ export default function Home() {
 
     const onWheel = (e: WheelEvent) => {
       if (!isStickyInControl()) return;
-
       if (e.altKey) return;
 
       const maxLeft = scroller.scrollWidth - scroller.clientWidth;
@@ -195,7 +190,7 @@ export default function Home() {
   return (
     <div className="page">
       <section className="section">
-        <div className="container-max">
+        <div className="full-bleed">
           <div ref={heroRef} className="hero-frame">
             <div className="hero-bg" aria-hidden="true">
               <div className="hero-slab" />
@@ -204,93 +199,92 @@ export default function Home() {
               <div className="hero-noise" />
             </div>
 
-            <div className="hero-grid">
-              <div className="hero-left">
-                <p className="kicker">Full-stack developer</p>
+            <div className="container-max">
+              <div className="hero-grid">
+                <div className="hero-left">
+                  <p className="kicker">Full-stack developer</p>
 
-                <h1 className="hero-title-strong">
-                  <span className="hero-title-outline">Sam Williamson</span>
-                  <span className="hero-title-spot hero-spotlight">Sam</span>
-                  <span className="hero-title-spot hero-spotlight">Williamson</span>
-                </h1>
+                  <h1 className="hero-title-strong">
+                    <span className="hero-title-outline">Sam Williamson</span>
+                    <span className="hero-title-spot hero-spotlight">Sam</span>
+                    <span className="hero-title-spot hero-spotlight">Williamson</span>
+                  </h1>
 
-                <p className="lead hero-lead">
-                  Full-stack developer with a consulting background. AWS &amp; PSM certified.
-                  I build clean, practical web apps with a focus on clarity and usability.
-                </p>
+                  <p className="lead hero-lead">
+                    Full-stack developer with a consulting background. AWS &amp; PSM certified.
+                    I build clean, practical web apps with a focus on clarity and usability.
+                  </p>
 
-                <div className="hero-cta">
-                  <Link to="/projects" className="btn btn-primary">
-                    View projects
-                  </Link>
-                  <a href="/assets/SamWilliamsonCV.pdf" download className="btn btn-secondary">
-                    Download CV
-                  </a>
+                  <div className="hero-cta">
+                    <Link to="/projects" className="btn btn-primary">
+                      View projects
+                    </Link>
+                    <a href="/assets/SamWilliamsonCV.pdf" download className="btn btn-secondary">
+                      Download CV
+                    </a>
+                  </div>
+
+                  <dl className="hero-proof" aria-label="Quick facts">
+                    <div className="hero-proof-item">
+                      <dt className="hero-proof-label">Certifications</dt>
+                      <dd className="hero-proof-value">AWS SAA · PSM I</dd>
+                    </div>
+
+                    <div className="hero-proof-divider" aria-hidden="true" />
+
+                    <div className="hero-proof-item">
+                      <dt className="hero-proof-label">Core stack</dt>
+                      <dd className="hero-proof-value">React · TypeScript · Node</dd>
+                    </div>
+
+                    <div className="hero-proof-divider" aria-hidden="true" />
+
+                    <div className="hero-proof-item">
+                      <dt className="hero-proof-label">Based</dt>
+                      <dd className="hero-proof-value">Espoo</dd>
+                    </div>
+                  </dl>
                 </div>
 
-                <dl className="hero-proof" aria-label="Quick facts">
-                  <div className="hero-proof-item">
-                    <dt className="hero-proof-label">Certifications</dt>
-                    <dd className="hero-proof-value">AWS SAA · PSM I</dd>
-                  </div>
+                <aside className="hero-right" aria-label="Profile links">
+                  <dl className="hero-proof hero-proof--links" aria-label="Profile links">
+                    <div className="hero-proof-item">
+                      <dt className="hero-proof-label">GitHub</dt>
+                      <dd className="hero-proof-value">
+                        <a
+                          className="hero-proof-link"
+                          href="https://github.com/samw0907"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          samw0907
+                        </a>
+                      </dd>
+                    </div>
 
-                  <div className="hero-proof-divider" aria-hidden="true" />
+                    <div className="hero-proof-divider" aria-hidden="true" />
 
-                  <div className="hero-proof-item">
-                    <dt className="hero-proof-label">Core stack</dt>
-                    <dd className="hero-proof-value">React · TypeScript · Node</dd>
-                  </div>
-
-                  <div className="hero-proof-divider" aria-hidden="true" />
-
-                  <div className="hero-proof-item">
-                    <dt className="hero-proof-label">Based</dt>
-                    <dd className="hero-proof-value">Espoo</dd>
-                  </div>
-                </dl>
+                    <div className="hero-proof-item">
+                      <dt className="hero-proof-label">LinkedIn</dt>
+                      <dd className="hero-proof-value">
+                        <a
+                          className="hero-proof-link"
+                          href="https://www.linkedin.com/in/sam-williamson-739530146/"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          sam-williamson
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
+                </aside>
               </div>
-
-              <aside className="hero-right" aria-label="Quick links and focus">
-                <div className="hero-proof hero-proof--links" aria-label="Profile links">
-  <div className="hero-proof-item">
-    <dt className="hero-proof-label">GitHub</dt>
-    <dd className="hero-proof-value">
-      <a
-        className="hero-proof-link"
-        href="https://github.com/samw0907"
-        target="_blank"
-        rel="noreferrer"
-      >
-        samw0907
-      </a>
-    </dd>
-  </div>
-
-  <div className="hero-proof-divider" aria-hidden="true" />
-
-  <div className="hero-proof-item">
-    <dt className="hero-proof-label">LinkedIn</dt>
-    <dd className="hero-proof-value">
-      <a
-        className="hero-proof-link"
-        href="https://www.linkedin.com/in/sam-williamson-739530146/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        sam-williamson
-      </a>
-    </dd>
-  </div>
-</div>
-
-              </aside>
             </div>
           </div>
+        </div>
 
-          {/* ------------------------------------------------------------ */}
-          {/* ABOUT RAIL                                                  */}
-          {/* ------------------------------------------------------------ */}
-
+        <div className="container-max">
           <div id="about" className="scroll-anchor" />
 
           <div ref={railWrapRef} className="about-rail-wrap">
@@ -357,10 +351,6 @@ export default function Home() {
               <p className="about-rail-hint">Desktop: scroll = sideways • Alt = normal scroll • Mobile: swipe</p>
             </div>
           </div>
-
-          {/* ------------------------------------------------------------ */}
-          {/* PLACEHOLDERS (next passes)                                  */}
-          {/* ------------------------------------------------------------ */}
 
           <div id="projects" className="scroll-anchor" />
           <div className="section">

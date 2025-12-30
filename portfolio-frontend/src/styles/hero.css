@@ -3,8 +3,6 @@
 .hero-frame {
   position: relative;
   overflow: hidden;
-  border-radius: 28px;
-  border: 1px solid rgb(var(--border) / 0.10);
   background: rgb(var(--surface));
 }
 
@@ -75,12 +73,12 @@
   display: grid;
   gap: 40px;
   align-items: start;
-  padding: 40px 24px;
+  padding: 40px 0;
 }
 
 @media (min-width: 640px) {
   .hero-grid {
-    padding: 56px 40px;
+    padding: 56px 0;
   }
 }
 
@@ -188,7 +186,7 @@
 }
 
 .hero-proof {
-  margin-top: 40px;
+  margin-top: 160px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -234,51 +232,11 @@
   }
 }
 
-.hero-side-title {
-  margin-top: 8px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  font-size: 1.25rem;
-  color: rgb(var(--text));
-}
-
-@media (min-width: 640px) {
-  .hero-side-title {
-    font-size: 1.5rem;
-  }
-}
-
-.hero-side-text {
-  margin-top: 12px;
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: rgb(var(--muted));
-}
-
-.hero-side-tags {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.hero-side-links {
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* ------------------------------------------------------------------ */
-/* Links block styled like the hero-proof strip (clean + minimal)      */
-/* ------------------------------------------------------------------ */
-
 .hero-proof--links {
-  margin-top: 40px;
+  margin-top: 10px;
   padding-top: 14px;
   border-top: 1px solid rgb(var(--border) / 0.10);
 }
-
 
 .hero-proof-link {
   color: rgb(var(--text));
