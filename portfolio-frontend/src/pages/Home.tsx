@@ -252,12 +252,7 @@ export default function Home() {
                     <div className="hero-proof-item">
                       <dt className="hero-proof-label">GitHub</dt>
                       <dd className="hero-proof-value">
-                        <a
-                          className="hero-proof-link"
-                          href="https://github.com/samw0907"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
+                        <a className="hero-proof-link" href="https://github.com/samw0907" target="_blank" rel="noreferrer">
                           samw0907
                         </a>
                       </dd>

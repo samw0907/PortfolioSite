@@ -1,5 +1,5 @@
 // src/components/Navbar.tsx
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import DarkModeToggle from "./DarkModeToggle";
 
 type NavItem = {
@@ -15,23 +15,10 @@ const navItems: NavItem[] = [
   { href: "#contact", label: "Contact", id: "contact" },
 ];
 
-function getNavOffsetPx(): number {
-  const raw = getComputedStyle(document.documentElement).getPropertyValue("--nav-h").trim();
-  const parsed = Number.parseFloat(raw);
-  if (Number.isFinite(parsed)) return parsed;
-
-  const nav = document.getElementById("main-navbar");
-  return nav ? nav.offsetHeight : 0;
-}
-
 function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
-
-  const offset = getNavOffsetPx();
-  const top = el.getBoundingClientRect().top + window.scrollY - offset;
-
-  window.scrollTo({ top, behavior: "smooth" });
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 export default function Navbar() {
@@ -39,6 +26,14 @@ export default function Navbar() {
   const [activeId, setActiveId] = useState<string>("home");
 
   const ids = useMemo(() => navItems.map((n) => n.id), []);
+  const lockRef = useRef(false);
+  const lockTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (lockTimerRef.current !== null) window.clearTimeout(lockTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     const sections = ids
@@ -47,20 +42,24 @@ export default function Navbar() {
 
     if (!sections.length) return;
 
-    const navOffset = getNavOffsetPx();
-
     const obs = new IntersectionObserver(
       (entries) => {
+        if (lockRef.current) return;
+
         const visible = entries
           .filter((e) => e.isIntersecting)
-          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+          .sort((a, b) => {
+            const at = (a.target as HTMLElement).getBoundingClientRect().top;
+            const bt = (b.target as HTMLElement).getBoundingClientRect().top;
+            return Math.abs(at) - Math.abs(bt);
+          })[0];
 
-        const id = visible?.target?.id;
+        const id = (visible?.target as HTMLElement | undefined)?.id;
         if (id) setActiveId(id);
       },
       {
         root: null,
-        rootMargin: `-${navOffset + 8}px 0px -60% 0px`,
+        rootMargin: `-${76 + 8}px 0px -60% 0px`,
         threshold: [0.01, 0.1, 0.2, 0.35, 0.5],
       }
     );
@@ -73,10 +72,15 @@ export default function Navbar() {
     e.preventDefault();
     setOpen(false);
 
-    scrollToId(id);
+    lockRef.current = true;
     setActiveId(id);
-
+    scrollToId(id);
     history.replaceState(null, "", `#${id}`);
+
+    if (lockTimerRef.current !== null) window.clearTimeout(lockTimerRef.current);
+    lockTimerRef.current = window.setTimeout(() => {
+      lockRef.current = false;
+    }, 700);
   };
 
   return (
