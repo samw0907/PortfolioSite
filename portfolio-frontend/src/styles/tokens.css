@@ -1,8 +1,6 @@
-/* src/styles/tokens.css */
-
 :root {
-  --bg: 250 250 249;
-  --surface: 255 255 255;
+  --bg: 255 255 255;
+  --surface: 250 250 249;
   --surface-2: 245 245 244;
 
   --text: 17 24 39;
@@ -12,15 +10,14 @@
 
   --accent: 59 130 246;
   --accent-2: 37 99 235;
-
   --accent-warm: 245 91 66;
 
   --nav-h: 76px;
 }
 
 .dark {
-  --bg: 10 10 10;
-  --surface: 16 16 16;
+  --bg: 16 16 16;
+  --surface: 10 10 10;
   --surface-2: 22 22 22;
 
   --text: 245 245 245;
@@ -30,6 +27,5 @@
 
   --accent: 59 130 246;
   --accent-2: 37 99 235;
-
   --accent-warm: 245 91 66;
 }

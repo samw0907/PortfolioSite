@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type RailPanel = {
@@ -189,6 +188,8 @@ export default function Home() {
 
   return (
     <div className="page">
+      <div id="home" className="section-anchor" />
+
       <section className="section section--hero">
         <div className="full-bleed">
           <div ref={heroRef} className="hero-frame">
@@ -211,14 +212,14 @@ export default function Home() {
                   </h1>
 
                   <p className="lead hero-lead">
-                    Full-stack developer with a consulting background. AWS &amp; PSM certified.
-                    I build clean, practical web apps with a focus on clarity and usability.
+                    Full-stack developer with a consulting background. AWS &amp; PSM certified. I build clean, practical
+                    web apps with a focus on clarity and usability.
                   </p>
 
                   <div className="hero-cta">
-                    <Link to="/projects" className="btn btn-primary">
+                    <a href="#projects" className="btn btn-primary">
                       View projects
-                    </Link>
+                    </a>
                     <a href="/assets/SamWilliamsonCV.pdf" download className="btn btn-secondary">
                       Download CV
                     </a>
@@ -285,7 +286,7 @@ export default function Home() {
         </div>
 
         <div className="container-max">
-          <div id="about" className="scroll-anchor" />
+          <div id="about" className="section-anchor" />
 
           <div ref={railWrapRef} className="about-rail-wrap">
             <div ref={railStickyRef} className="about-rail-sticky">
@@ -352,7 +353,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div id="projects" className="scroll-anchor" />
+          <div id="projects" className="section-anchor" />
           <div className="section">
             <div className="card-subtle">
               <p className="kicker">Projects</p>
@@ -361,7 +362,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div id="contact" className="scroll-anchor" />
+          <div id="contact" className="section-anchor" />
           <div className="section">
             <div className="card-subtle">
               <p className="kicker">Contact</p>

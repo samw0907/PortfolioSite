@@ -15,13 +15,26 @@ const navItems: NavItem[] = [
   { href: "#contact", label: "Contact", id: "contact" },
 ];
 
+function getNavOffsetPx(): number {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue("--nav-h").trim();
+  const parsed = Number.parseFloat(raw);
+  if (Number.isFinite(parsed)) return parsed;
+
+  const nav = document.getElementById("main-navbar");
+  return nav ? nav.offsetHeight : 0;
+}
+
 function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
-  el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const offset = getNavOffsetPx();
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({ top, behavior: "smooth" });
 }
 
-const Navbar = () => {
+export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState<string>("home");
 
@@ -34,6 +47,8 @@ const Navbar = () => {
 
     if (!sections.length) return;
 
+    const navOffset = getNavOffsetPx();
+
     const obs = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -45,7 +60,8 @@ const Navbar = () => {
       },
       {
         root: null,
-        threshold: [0.2, 0.35, 0.5, 0.7],
+        rootMargin: `-${navOffset + 8}px 0px -60% 0px`,
+        threshold: [0.01, 0.1, 0.2, 0.35, 0.5],
       }
     );
 
@@ -56,7 +72,10 @@ const Navbar = () => {
   const onNavClick = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setOpen(false);
+
     scrollToId(id);
+    setActiveId(id);
+
     history.replaceState(null, "", `#${id}`);
   };
 
@@ -64,12 +83,7 @@ const Navbar = () => {
     <header id="main-navbar" className="navbar">
       <div className="container-max">
         <div className="navbar-row">
-          <a
-            href="#home"
-            onClick={onNavClick("home")}
-            className="navbar-brand"
-            aria-label="Go to home"
-          >
+          <a href="#home" onClick={onNavClick("home")} className="navbar-brand" aria-label="Go to home">
             Sam Williamson
           </a>
 
@@ -136,6 +150,4 @@ const Navbar = () => {
       </div>
     </header>
   );
-};
-
-export default Navbar;
+}

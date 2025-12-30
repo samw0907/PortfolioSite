@@ -4,6 +4,7 @@
   min-height: calc(100vh - var(--nav-h));
   display: flex;
   align-items: center;
+  background: rgb(var(--hero-bg));
 }
 
 .hero-bg {

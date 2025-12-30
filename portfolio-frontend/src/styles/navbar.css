@@ -1,15 +1,12 @@
-/* src/styles/navbar.css */
-
 .navbar {
   position: sticky;
   top: 0;
   z-index: 50;
   width: 100%;
-  backdrop-filter: blur(10px);
-  background: rgb(var(--surface) / 0.85);
+
+  background: rgb(var(--bg));
   border-bottom: 1px solid rgb(var(--border) / 0.10);
 }
-
 .navbar-row {
   display: flex;
   align-items: center;
