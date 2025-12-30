@@ -204,7 +204,6 @@
   color: rgb(var(--muted));
 }
 
-/* Dark mode toggle (kept as-is) */
 .dark-toggle {
   padding: 10px 16px;
 }
@@ -229,4 +228,52 @@
   .dark-toggle-label {
     display: inline;
   }
+}
+
+.about-stack {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+@media (min-width: 640px) {
+  .about-stack {
+    margin-top: 28px;
+    gap: 20px;
+  }
+}
+
+.about-card {
+  overflow: hidden;
+}
+
+.about-body {
+  margin-top: 14px;
+}
+
+.about-text {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgb(var(--muted));
+}
+
+.about-text:first-child {
+  margin-top: 0;
+}
+
+.about-bullets {
+  margin-top: 16px;
+  padding-left: 18px;
+  color: rgb(var(--muted));
+}
+
+.about-bullets li {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.about-bullets li:first-child {
+  margin-top: 0;
 }
