@@ -189,7 +189,7 @@ export default function Home() {
 
   return (
     <div className="page">
-      <section className="section">
+      <section className="section section--hero">
         <div className="full-bleed">
           <div ref={heroRef} className="hero-frame">
             <div className="hero-bg" aria-hidden="true">

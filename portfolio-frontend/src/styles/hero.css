@@ -1,9 +1,9 @@
 /* src/styles/hero.css */
 
 .hero-frame {
-  position: relative;
-  overflow: hidden;
-  background: rgb(var(--surface));
+  min-height: calc(100vh - var(--nav-h));
+  display: flex;
+  align-items: center;
 }
 
 .hero-bg {
