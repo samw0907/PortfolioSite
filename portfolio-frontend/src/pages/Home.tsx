@@ -12,7 +12,7 @@ export default function Home() {
 
   const profileBlock: AboutBlock = useMemo(
     () => ({
-      kicker: "Developer",
+      kicker: "",
       title: "Profile",
       body: [
         "My most recent project, TriSwift, is an activity-tracking app for triathletes. It includes user sign-in, a dashboard with standard CRUD operations, automatically updated personal records and a built-in pace calculator tool.",
@@ -214,9 +214,8 @@ export default function Home() {
           <div className="section">
             <div className="about-stack">
               <section className="card about-card">
-                <p className="kicker">{profileBlock.kicker}</p>
+                {profileBlock.kicker ? <p className="kicker">{profileBlock.kicker}</p> : null}
                 <h3 className="card-title">{profileBlock.title}</h3>
-
                 <div className="about-body">
                   {profileBlock.body.map((line, i) => (
                     <p key={i} className="about-text">
