@@ -268,3 +268,27 @@
   flex-direction: column;
   gap: 12px;
 }
+
+/* ------------------------------------------------------------------ */
+/* Links block styled like the hero-proof strip (clean + minimal)      */
+/* ------------------------------------------------------------------ */
+
+.hero-proof--links {
+  margin-top: 40px;
+  padding-top: 14px;
+  border-top: 1px solid rgb(var(--border) / 0.10);
+}
+
+
+.hero-proof-link {
+  color: rgb(var(--text));
+  text-decoration: none;
+  border-bottom: 1px solid rgb(var(--border) / 0.22);
+  padding-bottom: 2px;
+  transition: opacity 160ms ease, border-color 160ms ease;
+}
+
+.hero-proof-link:hover {
+  opacity: 0.85;
+  border-color: rgb(var(--border) / 0.35);
+}

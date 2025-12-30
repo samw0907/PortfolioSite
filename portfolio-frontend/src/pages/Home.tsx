@@ -245,33 +245,44 @@ export default function Home() {
 
                   <div className="hero-proof-item">
                     <dt className="hero-proof-label">Based</dt>
-                    <dd className="hero-proof-value">Helsinki</dd>
+                    <dd className="hero-proof-value">Espoo</dd>
                   </div>
                 </dl>
               </div>
 
               <aside className="hero-right" aria-label="Quick links and focus">
-                <div className="card-subtle">
-                  <p className="kicker">Links</p>
-                  <h2 className="hero-side-title">Profiles</h2>
+                <div className="hero-proof hero-proof--links" aria-label="Profile links">
+  <div className="hero-proof-item">
+    <dt className="hero-proof-label">GitHub</dt>
+    <dd className="hero-proof-value">
+      <a
+        className="hero-proof-link"
+        href="https://github.com/samw0907"
+        target="_blank"
+        rel="noreferrer"
+      >
+        samw0907
+      </a>
+    </dd>
+  </div>
 
-                  <div className="hero-side-links">
-                    <a className="link" href="https://github.com/samw0907" target="_blank" rel="noreferrer">
-                      GitHub
-                    </a>
-                    <a
-                      className="link"
-                      href="https://www.linkedin.com/in/sam-williamson-739530146/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      LinkedIn
-                    </a>
-                    <a className="link" href="mailto:swilliamson_0907@outlook.com">
-                      Email
-                    </a>
-                  </div>
-                </div>
+  <div className="hero-proof-divider" aria-hidden="true" />
+
+  <div className="hero-proof-item">
+    <dt className="hero-proof-label">LinkedIn</dt>
+    <dd className="hero-proof-value">
+      <a
+        className="hero-proof-link"
+        href="https://www.linkedin.com/in/sam-williamson-739530146/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        sam-williamson
+      </a>
+    </dd>
+  </div>
+</div>
+
               </aside>
             </div>
           </div>
