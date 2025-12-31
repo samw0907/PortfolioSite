@@ -462,38 +462,19 @@
   opacity: 0.6;
 }
 
-/* ===== About: hero-style FX wrapper (added back) ===== */
+/* ===== Continuous page FX section (NO card / NO clipping) ===== */
 
-.about-fx-inner {
+.fx-section {
   position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-
-  /* Not a "card": very light framing only */
-  border: 1px solid rgb(var(--border) / 0.10);
-  background: rgb(var(--surface) / 0.06);
 }
 
-.about-fx-inner .hero-bg {
+.fx-section .hero-bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.about-fx-content {
+.fx-section-inner {
   position: relative;
   z-index: 10;
-  padding: 20px 16px;
-}
-
-@media (min-width: 640px) {
-  .about-fx-content {
-    padding: 28px 22px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .about-fx-content {
-    padding: 34px 28px;
-  }
 }

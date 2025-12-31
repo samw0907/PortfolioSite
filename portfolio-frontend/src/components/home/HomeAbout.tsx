@@ -8,7 +8,7 @@ type AboutBlock = {
 };
 
 export default function HomeAbout() {
-  const aboutFxRef = useRef<HTMLDivElement | null>(null);
+  const aboutRef = useRef<HTMLElement | null>(null);
 
   const profileBlock: AboutBlock = useMemo(
     () => ({
@@ -65,7 +65,7 @@ export default function HomeAbout() {
   );
 
   useEffect(() => {
-    const el = aboutFxRef.current;
+    const el = aboutRef.current;
     if (!el) return;
 
     // same intentional start as hero
@@ -107,57 +107,54 @@ export default function HomeAbout() {
   }, []);
 
   return (
-    <section aria-label="About">
+    <section ref={aboutRef} className="section fx-section" aria-label="About">
       <div id="about" className="section-anchor" />
 
-      {/* Hero-style FX wrapper (NOT a card) */}
-      <div ref={aboutFxRef} className="about-fx-inner">
-        {/* replicate hero background layers */}
-        <div className="hero-bg" aria-hidden="true">
-          <div className="hero-slab" />
-          <div className="hero-slab-2" />
-          <div className="hero-spot-glow" />
-          <div className="hero-noise" />
-        </div>
+      {/* Same hero-style background layers, but NO wrapper "card" */}
+      <div className="hero-bg" aria-hidden="true">
+        <div className="hero-slab" />
+        <div className="hero-slab-2" />
+        <div className="hero-spot-glow" />
+        <div className="hero-noise" />
+      </div>
 
-        <div className="about-fx-content">
-          <div className="about-stack about-stack--plain">
-            <section className="about-block about-block--primary">
-              {profileBlock.kicker ? <p className="kicker">{profileBlock.kicker}</p> : null}
-              <h3 className="about-title">{profileBlock.title}</h3>
+      <div className="container-max fx-section-inner">
+        <div className="about-stack about-stack--plain">
+          <section className="about-block about-block--primary">
+            {profileBlock.kicker ? <p className="kicker">{profileBlock.kicker}</p> : null}
+            <h3 className="about-title">{profileBlock.title}</h3>
+
+            <div className="about-body">
+              {profileBlock.body.map((line, i) => (
+                <p key={i} className="about-text">
+                  {line}
+                </p>
+              ))}
+            </div>
+          </section>
+
+          {aboutBlocks.map((block, idx) => (
+            <section key={`${block.title}-${idx}`} className="about-block">
+              <p className="kicker">{block.kicker}</p>
+              <h3 className="about-title">{block.title}</h3>
 
               <div className="about-body">
-                {profileBlock.body.map((line, i) => (
+                {block.body.map((line, i) => (
                   <p key={i} className="about-text">
                     {line}
                   </p>
                 ))}
               </div>
-            </section>
 
-            {aboutBlocks.map((block, idx) => (
-              <section key={`${block.title}-${idx}`} className="about-block">
-                <p className="kicker">{block.kicker}</p>
-                <h3 className="about-title">{block.title}</h3>
-
-                <div className="about-body">
-                  {block.body.map((line, i) => (
-                    <p key={i} className="about-text">
-                      {line}
-                    </p>
+              {block.bullets && block.bullets.length > 0 && (
+                <ul className="about-bullets">
+                  {block.bullets.map((b, i) => (
+                    <li key={i}>{b}</li>
                   ))}
-                </div>
-
-                {block.bullets && block.bullets.length > 0 && (
-                  <ul className="about-bullets">
-                    {block.bullets.map((b, i) => (
-                      <li key={i}>{b}</li>
-                    ))}
-                  </ul>
-                )}
-              </section>
-            ))}
-          </div>
+                </ul>
+              )}
+            </section>
+          ))}
         </div>
       </div>
     </section>

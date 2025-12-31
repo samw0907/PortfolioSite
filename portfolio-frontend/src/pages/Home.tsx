@@ -78,8 +78,8 @@ export default function Home() {
                   </h1>
 
                   <p className="lead hero-lead">
-                    Full-stack developer with a consulting background. AWS &amp; PSM certified. I build clean, practical
-                    web apps with a focus on clarity and usability.
+                    Full-stack developer with a consulting background. AWS &amp; PSM certified. I build clean, practical web
+                    apps with a focus on clarity and usability.
                   </p>
 
                   <div className="hero-cta">
@@ -146,12 +146,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="container-max">
-          {/* ✅ About section moved out to HomeAbout.tsx */}
-          <div className="section">
-            <HomeAbout />
-          </div>
+        {/* ✅ About section is its own section now (no extra wrapper) */}
+        <HomeAbout />
 
+        <div className="container-max">
           <div id="projects" className="section-anchor" />
           <div className="section">
             <div className="card-subtle">
