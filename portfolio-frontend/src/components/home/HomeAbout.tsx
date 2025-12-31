@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo } from "react";
 
 type AboutBlock = {
   kicker: string;
@@ -8,8 +8,6 @@ type AboutBlock = {
 };
 
 export default function HomeAbout() {
-  const aboutRef = useRef<HTMLElement | null>(null);
-
   const profileBlock: AboutBlock = useMemo(
     () => ({
       kicker: "",
@@ -64,64 +62,16 @@ export default function HomeAbout() {
     []
   );
 
-  useEffect(() => {
-    const el = aboutRef.current;
-    if (!el) return;
-
-    // same intentional start as hero
-    el.style.setProperty("--mx", "40%");
-    el.style.setProperty("--my", "34%");
-
-    let rafId: number | null = null;
-    let lastX = 0;
-    let lastY = 0;
-
-    const applySpot = () => {
-      rafId = null;
-
-      const rect = el.getBoundingClientRect();
-      if (rect.width === 0 || rect.height === 0) return;
-
-      const x = ((lastX - rect.left) / rect.width) * 100;
-      const y = ((lastY - rect.top) / rect.height) * 100;
-
-      const clampedX = Math.max(0, Math.min(100, x));
-      const clampedY = Math.max(0, Math.min(100, y));
-
-      el.style.setProperty("--mx", `${clampedX}%`);
-      el.style.setProperty("--my", `${clampedY}%`);
-    };
-
-    const onPointerMove = (e: PointerEvent) => {
-      lastX = e.clientX;
-      lastY = e.clientY;
-      if (rafId === null) rafId = window.requestAnimationFrame(applySpot);
-    };
-
-    el.addEventListener("pointermove", onPointerMove, { passive: true });
-
-    return () => {
-      el.removeEventListener("pointermove", onPointerMove);
-      if (rafId !== null) cancelAnimationFrame(rafId);
-    };
-  }, []);
-
   return (
-    <section ref={aboutRef} className="section fx-section" aria-label="About">
+    <section className="section" aria-label="About">
       <div id="about" className="section-anchor" />
 
-      {/* Same hero-style background layers, but NO wrapper "card" */}
-      <div className="hero-bg" aria-hidden="true">
-        <div className="hero-slab" />
-        <div className="hero-slab-2" />
-        <div className="hero-spot-glow" />
-        <div className="hero-noise" />
-      </div>
-
-      <div className="container-max fx-section-inner">
+      <div className="container-max">
         <div className="about-stack about-stack--plain">
           <section className="about-block about-block--primary">
-            {profileBlock.kicker ? <p className="kicker">{profileBlock.kicker}</p> : null}
+            {profileBlock.kicker ? (
+              <p className="kicker">{profileBlock.kicker}</p>
+            ) : null}
             <h3 className="about-title">{profileBlock.title}</h3>
 
             <div className="about-body">

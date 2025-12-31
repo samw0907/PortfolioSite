@@ -4,7 +4,9 @@
   min-height: calc(100vh - var(--nav-h));
   display: flex;
   align-items: center;
-  background: rgb(var(--hero-bg));
+
+  /* CHANGED: allow page-wide FX to show through */
+  background: transparent;
 }
 
 .hero-bg {
@@ -18,12 +20,11 @@
   inset: -20% -10% auto auto;
   width: min(560px, 55vw);
   height: min(560px, 55vw);
-  background:
-    linear-gradient(
-      135deg,
-      rgb(var(--accent) / 0.55) 0%,
-      rgb(var(--accent-2) / 0.45) 100%
-    );
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent) / 0.55) 0%,
+    rgb(var(--accent-2) / 0.45) 100%
+  );
 
   border: 1px solid rgb(var(--border) / 0.10);
   box-shadow: 0 22px 60px rgb(var(--accent) / 0.25);
@@ -40,12 +41,11 @@
   bottom: -30%;
   width: min(520px, 60vw);
   height: min(520px, 60vw);
-  background:
-    linear-gradient(
-      135deg,
-      rgb(var(--accent-warm) / 0.45) 0%,
-      rgb(var(--accent-warm) / 0.35) 100%
-    );
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent-warm) / 0.45) 0%,
+    rgb(var(--accent-warm) / 0.35) 100%
+  );
 
   border: 1px solid rgb(var(--border) / 0.10);
   box-shadow: 0 20px 52px rgb(var(--accent-warm) / 0.22);
@@ -60,10 +60,21 @@
   position: absolute;
   inset: 0;
   opacity: 0.07;
-  background-image:
-    radial-gradient(circle at 20% 10%, rgb(var(--border) / 0.18) 0 1px, transparent 1px),
-    radial-gradient(circle at 80% 30%, rgb(var(--border) / 0.14) 0 1px, transparent 1px),
-    radial-gradient(circle at 30% 80%, rgb(var(--border) / 0.12) 0 1px, transparent 1px);
+  background-image: radial-gradient(
+      circle at 20% 10%,
+      rgb(var(--border) / 0.18) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgb(var(--border) / 0.14) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 30% 80%,
+      rgb(var(--border) / 0.12) 0 1px,
+      transparent 1px
+    );
   background-size: 90px 90px, 120px 120px, 140px 140px;
   background-position: 0 0, 30px 40px, 20px 10px;
 }
@@ -139,14 +150,13 @@
 
 .hero-spotlight {
   color: transparent;
-  background-image:
-    radial-gradient(
-      circle at var(--mx, 35%) var(--my, 40%),
-      rgb(var(--accent)) 0%,
-      rgb(var(--accent)) 14%,
-      rgb(var(--text)) 36%,
-      rgb(var(--text)) 100%
-    );
+  background-image: radial-gradient(
+    circle at var(--mx, 35%) var(--my, 40%),
+    rgb(var(--accent)) 0%,
+    rgb(var(--accent)) 14%,
+    rgb(var(--text)) 36%,
+    rgb(var(--text)) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   filter: saturate(1.02);
@@ -157,13 +167,12 @@
   inset: 0;
   pointer-events: none;
 
-  background:
-    radial-gradient(
-      circle at var(--mx, 40%) var(--my, 34%),
-      rgb(var(--accent) / 0.12) 0%,
-      rgb(var(--accent) / 0.06) 22%,
-      transparent 60%
-    );
+  background: radial-gradient(
+    circle at var(--mx, 40%) var(--my, 34%),
+    rgb(var(--accent) / 0.12) 0%,
+    rgb(var(--accent) / 0.06) 22%,
+    transparent 60%
+  );
 
   opacity: 1;
 }

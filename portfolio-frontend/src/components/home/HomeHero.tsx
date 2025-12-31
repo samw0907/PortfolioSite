@@ -1,21 +1,8 @@
-import type { RefObject } from "react";
-
-type HomeHeroProps = {
-  heroRef: RefObject<HTMLDivElement>;
-};
-
-export default function HomeHero({ heroRef }: HomeHeroProps) {
+export default function HomeHero() {
   return (
     <section className="section section--hero">
       <div className="full-bleed">
-        <div ref={heroRef} className="hero-frame">
-          <div className="hero-bg" aria-hidden="true">
-            <div className="hero-slab" />
-            <div className="hero-slab-2" />
-            <div className="hero-spot-glow" />
-            <div className="hero-noise" />
-          </div>
-
+        <div className="hero-frame">
           <div className="container-max">
             <div className="hero-grid">
               <div className="hero-left">
@@ -24,12 +11,15 @@ export default function HomeHero({ heroRef }: HomeHeroProps) {
                 <h1 className="hero-title-strong">
                   <span className="hero-title-outline">Sam Williamson</span>
                   <span className="hero-title-spot hero-spotlight">Sam</span>
-                  <span className="hero-title-spot hero-spotlight">Williamson</span>
+                  <span className="hero-title-spot hero-spotlight">
+                    Williamson
+                  </span>
                 </h1>
 
                 <p className="lead hero-lead">
-                  Full-stack developer with a consulting background. AWS &amp; PSM certified. I build clean, practical
-                  web apps with a focus on clarity and usability.
+                  Full-stack developer with a consulting background. AWS &amp;
+                  PSM certified. I build clean, practical web apps with a focus
+                  on clarity and usability.
                 </p>
 
                 <div className="hero-cta">
@@ -56,7 +46,9 @@ export default function HomeHero({ heroRef }: HomeHeroProps) {
 
                   <div className="hero-proof-item">
                     <dt className="hero-proof-label">Core stack</dt>
-                    <dd className="hero-proof-value">React · TypeScript · Node</dd>
+                    <dd className="hero-proof-value">
+                      React · TypeScript · Node
+                    </dd>
                   </div>
 
                   <div className="hero-proof-divider" aria-hidden="true" />

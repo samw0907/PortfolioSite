@@ -230,6 +230,47 @@
   }
 }
 
+/* ===== Page-wide continuous FX ===== */
+
+.home-fx {
+  position: relative;
+  width: 100%;
+}
+
+.home-fx-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  /* do NOT clip slabs */
+  overflow: visible;
+
+  /* ensures it always has a meaningful height even early in layout */
+  min-height: 100vh;
+  width: 100%;
+
+  /* ✅ NEW: the page-wide FX layer owns the hero background now */
+  background: rgb(var(--hero-bg));
+}
+
+/* ✅ NEW: when using page-wide FX, make hero transparent so slabs show through */
+.home-fx .hero-frame {
+  background: transparent;
+}
+
+/* ✅ NEW: prevent double-render if HomeHero still includes its own hero-bg */
+.home-fx .hero-frame > .hero-bg {
+  display: none;
+}
+
+.home-fx-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* ===== About styles ===== */
+
 .about-stack {
   margin-top: 22px;
   display: flex;
@@ -460,21 +501,4 @@
     rgb(var(--border) / 0.03) 100%
   );
   opacity: 0.6;
-}
-
-/* ===== Continuous page FX section (NO card / NO clipping) ===== */
-
-.fx-section {
-  position: relative;
-}
-
-.fx-section .hero-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.fx-section-inner {
-  position: relative;
-  z-index: 10;
 }
