@@ -250,18 +250,47 @@
   min-height: 100vh;
   width: 100%;
 
-  /* ✅ NEW: the page-wide FX layer owns the hero background now */
+  /* the page-wide FX layer owns the hero background now */
   background: rgb(var(--hero-bg));
 }
 
-/* ✅ NEW: when using page-wide FX, make hero transparent so slabs show through */
+/* when using page-wide FX, make hero transparent so FX shows through */
 .home-fx .hero-frame {
   background: transparent;
 }
 
-/* ✅ NEW: prevent double-render if HomeHero still includes its own hero-bg */
+/* prevent double-render if HomeHero still includes its own hero-bg */
 .home-fx .hero-frame > .hero-bg {
   display: none;
+}
+
+/* ✅ NEW: page-wide slab positioning (fixes “slabs vanished”)
+   Percent-based offsets were being calculated against the FULL page height.
+   Use viewport units so the slabs sit where they did originally. */
+.home-fx-bg .hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Reset inset-based positioning for page-wide mode, then place via vh/vw */
+.home-fx-bg .hero-slab {
+  inset: auto;
+  top: -18vh;
+  right: -10vw;
+}
+
+.home-fx-bg .hero-slab-2 {
+  inset: auto;
+  left: -10vw;
+  bottom: -26vh;
+}
+
+/* Keep glow/noise spanning the full page layer */
+.home-fx-bg .hero-spot-glow,
+.home-fx-bg .hero-noise {
+  position: absolute;
+  inset: 0;
 }
 
 .home-fx-content {
