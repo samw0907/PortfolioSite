@@ -15,19 +15,11 @@ export default function Home() {
       kicker: "",
       title: "Profile",
       body: [
-        "My most recent project, TriSwift, is an activity-tracking app for triathletes. It includes user sign-in, a dashboard with standard CRUD operations, automatically updated personal records and a built-in pace calculator tool.",
-        "I also implemented data-visualization features to present training volume over time and location-based progress using a custom Mapbox component.",
-        "The backend is built with JavaScript and PostgreSQL, exposing REST (Express) and GraphQL (Apollo) APIs with JWT authentication. The frontend uses React + TypeScript with GraphQL for data handling.",
-        "The app includes unit tests (Vitest) and end-to-end tests (Playwright), is containerized with Docker, and deployed via Fly.io using GitHub Actions for CI/CD.",
-        "I recently obtained AWS Solutions Architect Associate certification and I’m applying that knowledge through a new full-stack project using AWS infrastructure (with hands-on Python on the backend).",
-      ],
-      bullets: [
-        "React · TypeScript · Node/Express",
-        "PostgreSQL · REST/GraphQL · JWT",
-        "Docker · Fly.io · GitHub Actions",
-        "Vitest · Playwright",
-        "AWS SAA · PSM I",
-      ],
+        "I’m a full-stack developer with a background in geo-environmental consulting, focused on building clean, practical web applications.",
+        "My main portfolio project is TriSwift: an activity-tracking app built end-to-end, covering authentication, core CRUD flows, and performance-focused features like personal records and pace tools.",
+        "I’m comfortable across frontend and backend, and I care about clarity: predictable UI, clean data flows, and maintainable structure.",
+        "I’m AWS SAA and PSM I certified, and I’m currently applying that knowledge in a new project using AWS infrastructure with hands-on Python on the backend.",
+      ]
     }),
     []
   );
