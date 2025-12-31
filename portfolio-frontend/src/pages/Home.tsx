@@ -210,53 +210,54 @@ export default function Home() {
 
         <div className="container-max">
           <div id="about" className="section-anchor" />
-
           <div className="section">
-            <div className="about-stack">
-              <section className="card about-card">
-                {profileBlock.kicker ? <p className="kicker">{profileBlock.kicker}</p> : null}
-                <h3 className="card-title">{profileBlock.title}</h3>
-                <div className="about-body">
-                  {profileBlock.body.map((line, i) => (
-                    <p key={i} className="about-text">
-                      {line}
-                    </p>
-                  ))}
-                </div>
+  <div className="about-stack about-stack--plain">
+    <section className="about-block about-block--primary">
+      {profileBlock.kicker ? <p className="kicker">{profileBlock.kicker}</p> : null}
+      <h3 className="about-title">{profileBlock.title}</h3>
 
-                {profileBlock.bullets && profileBlock.bullets.length > 0 && (
-                  <ul className="about-bullets">
-                    {profileBlock.bullets.map((b, i) => (
-                      <li key={i}>{b}</li>
-                    ))}
-                  </ul>
-                )}
-              </section>
+      <div className="about-body">
+        {profileBlock.body.map((line, i) => (
+          <p key={i} className="about-text">
+            {line}
+          </p>
+        ))}
+      </div>
 
-              {aboutBlocks.map((block, idx) => (
-                <section key={`${block.title}-${idx}`} className="card-subtle about-card">
-                  <p className="kicker">{block.kicker}</p>
-                  <h3 className="card-title">{block.title}</h3>
+      {profileBlock.bullets && profileBlock.bullets.length > 0 && (
+        <ul className="about-bullets">
+          {profileBlock.bullets.map((b, i) => (
+            <li key={i}>{b}</li>
+          ))}
+        </ul>
+      )}
+    </section>
 
-                  <div className="about-body">
-                    {block.body.map((line, i) => (
-                      <p key={i} className="about-text">
-                        {line}
-                      </p>
-                    ))}
-                  </div>
+    {aboutBlocks.map((block, idx) => (
+      <section key={`${block.title}-${idx}`} className="about-block">
+        <p className="kicker">{block.kicker}</p>
+        <h3 className="about-title">{block.title}</h3>
 
-                  {block.bullets && block.bullets.length > 0 && (
-                    <ul className="about-bullets">
-                      {block.bullets.map((b, i) => (
-                        <li key={i}>{b}</li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
-              ))}
-            </div>
-          </div>
+        <div className="about-body">
+          {block.body.map((line, i) => (
+            <p key={i} className="about-text">
+              {line}
+            </p>
+          ))}
+        </div>
+
+        {block.bullets && block.bullets.length > 0 && (
+          <ul className="about-bullets">
+            {block.bullets.map((b, i) => (
+              <li key={i}>{b}</li>
+            ))}
+          </ul>
+        )}
+      </section>
+    ))}
+  </div>
+</div>
+
 
           <div id="projects" className="section-anchor" />
           <div className="section">

@@ -278,3 +278,41 @@
 .about-bullets li:first-child {
   margin-top: 0;
 }
+.about-stack--plain {
+  gap: 34px;
+}
+
+.about-block {
+  position: relative;
+  padding: 6px 0 0;
+}
+
+.about-block + .about-block {
+  margin-top: 2px;
+  padding-top: 34px;
+  border-top: 1px solid rgb(var(--border) / 0.10);
+}
+
+.about-title {
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-size: 1.25rem;
+  color: rgb(var(--text));
+}
+
+@media (min-width: 640px) {
+  .about-title {
+    font-size: 1.5rem;
+  }
+}
+
+.about-block--primary .about-title {
+  font-size: 1.6rem;
+}
+
+@media (min-width: 640px) {
+  .about-block--primary .about-title {
+    font-size: 1.9rem;
+  }
+}
