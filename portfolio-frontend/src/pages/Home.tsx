@@ -55,6 +55,11 @@ export default function Home() {
         <div className="hero-bg">
           <div className="hero-slab" />
           <div className="hero-slab-2" />
+
+          {/* ✅ NEW: extra slabs further down the page */}
+          <div className="hero-slab-3" />
+          <div className="hero-slab-4" />
+
           <div className="hero-spot-glow" />
           <div className="hero-noise" />
         </div>
