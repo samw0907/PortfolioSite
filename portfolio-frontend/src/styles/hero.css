@@ -1,5 +1,3 @@
-/* src/styles/hero.css */
-
 .hero-frame {
   min-height: calc(100vh - var(--nav-h));
   display: flex;
@@ -124,6 +122,25 @@
   border-radius: 46px;
   clip-path: polygon(0% 12%, 92% 0%, 100% 92%, 12% 100%);
   opacity: 0.52;
+}
+
+.hero-slab-7 {
+  position: absolute;
+  top: 16.5%;
+  left: -16%;
+  width: min(520px, 54vw);
+  height: min(520px, 54vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent-warm) / 0.42) 0%,
+    rgb(var(--accent-warm) / 0.30) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 20px 52px rgb(var(--accent-warm) / 0.18);
+  transform: rotate(8deg);
+  border-radius: 42px;
+  clip-path: polygon(6% 0%, 100% 10%, 92% 100%, 0% 86%);
+  opacity: 0.66;
 }
 
 .hero-noise {
