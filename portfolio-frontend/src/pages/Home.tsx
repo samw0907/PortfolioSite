@@ -50,16 +50,14 @@ export default function Home() {
     <div ref={pageFxRef} className="page home-fx">
       <div id="home" className="section-anchor" />
 
-      {/* ONE shared background for the entire Home page */}
       <div className="home-fx-bg" aria-hidden="true">
         <div className="hero-bg">
           <div className="hero-slab" />
           <div className="hero-slab-2" />
-
-          {/* ✅ NEW: extra slabs further down the page */}
           <div className="hero-slab-3" />
           <div className="hero-slab-4" />
-
+          <div className="hero-slab-5" />
+          <div className="hero-slab-6" />
           <div className="hero-spot-glow" />
           <div className="hero-noise" />
         </div>

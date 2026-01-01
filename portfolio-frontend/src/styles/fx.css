@@ -1,7 +1,5 @@
 /* src/styles/fx.css */
 
-/* ===== Page-wide continuous FX ===== */
-
 .home-fx {
   position: relative;
   width: 100%;
@@ -13,28 +11,21 @@
   z-index: 0;
   pointer-events: none;
 
-  /* do NOT clip slabs */
-  overflow: visible;
+  overflow: hidden;
+  clip-path: inset(0);
 
-  /* ensures it always has a meaningful height even early in layout */
-  min-height: 100vh;
   width: 100%;
-
-  /* the page-wide FX layer owns the hero background now */
   background: rgb(var(--hero-bg));
 }
 
-/* when using page-wide FX, make hero transparent so FX shows through */
 .home-fx .hero-frame {
   background: transparent;
 }
 
-/* prevent double-render if HomeHero still includes its own hero-bg */
 .home-fx .hero-frame > .hero-bg {
   display: none;
 }
 
-/* page-wide slab positioning (vh/vw so it behaves like original hero) */
 .home-fx-bg .hero-bg {
   position: absolute;
   inset: 0;
