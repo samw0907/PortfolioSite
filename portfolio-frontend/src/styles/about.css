@@ -24,7 +24,7 @@
 
 .about-text {
   margin-top: 12px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.75;
   color: rgb(var(--text) / 0.92);
 }
@@ -65,9 +65,9 @@
 
 .about-title {
   margin-top: 10px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.02em;
-  font-size: 1.25rem;
+  font-size: 1.0rem;
   color: rgb(var(--text));
 }
 
@@ -100,7 +100,7 @@
 
 @media (min-width: 640px) {
   .about-block--primary .about-text {
-    font-size: 1.125rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -126,7 +126,7 @@
 
 @media (min-width: 640px) {
   .about-block--primary .about-title {
-    font-size: 2.35rem;
+    font-size: 1.9rem;
   }
 }
 
