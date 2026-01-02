@@ -29,14 +29,13 @@ export default function HomeAbout() {
         title: "Earth Science & Geo-Environmental Consulting",
         body: [
           "I hold a BSc (Hons) in Earth Science from the University of Glasgow, with coursework covering structural geology, economic minerals, and digital geoscience. My academic work included understanding how satellite imagery is generated from surface reflectance, how raster datasets are produced, and how spectral bands are used to interpret hyperspectral data for environmental and geological applications.",
-          "Professionally, I spent several years in geo-environmental consulting in Scotland and Finland, working on technically detailed site investigations and analysing geological and environmental to inform remediation and development work. My work included:",
+          "Professionally, I spent several years working in geo-environmental consulting in Scotland and Finland, contributing to technically detailed site investigations and analysing geological and environmental data to inform remediation and development work. My work included:",
         ],
         bullets: [
-          "Geological and Environmental analysis & reporting.",
-          "Mining stability assessments.",
+          "Geological and environmental analysis & reporting.",
+          "Mine stability assessments.",
           "On-site supervision of unstable mine remediation via drilling and high-pressure grouting.",
-          "Groundwater testing & basic modelling.",
-          "Utilising GIS software in geospatial analysis.",
+          "Use of GIS software in geospatial analysis.",
         ],
       },
       {
@@ -45,8 +44,7 @@ export default function HomeAbout() {
         body: [
           "Outside of work, sport has always been a big part of my life. I represented my schools in football, field hockey, badminton, and cross-country running.",
           "In recent years, running has been my main focus and I ran two half-marathons and my first full marathon in 2024.",
-          "Recently I've been shifting into triathlon, putting in more time on the bike and in the pool. My next big goal is Ironman 70.3 Tallinn in August 2026.",
-          "Strava stats and the countdown timer will be reintroduced once the About layout is locked in.",
+          "Since then, I've been shifting into triathlon, putting in more time on the bike and in the pool. My next big goal is the Ironman 70.3 Tallinn in August 2026.",
         ],
       },
       {
