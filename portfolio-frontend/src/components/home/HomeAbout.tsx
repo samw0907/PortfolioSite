@@ -28,15 +28,15 @@ export default function HomeAbout() {
         kicker: "Background",
         title: "Earth Science & Geo-Environmental Consulting",
         body: [
-          "I hold a BSc with Honours in Earth Science from the University of Glasgow, where i worked with topics including strucutral geology, economic minerals and digital geoscience. I have an understanding of how satellites derive raster dats sets from surface refelctnace, and use spectral bands to interpret the hyperspectral imagery produced for environmental and geologicla interpretation.",
-          "  I then spent several years working in geo-environmental consulting in both Scotland & Finland. This involved in technically complex site investigations, analysing geological, environmental, and geospatial data to support remediation and development decisions.",
+          "I hold a BSc (Hons) in Earth Science from the University of Glasgow, with coursework covering structural geology, economic minerals, and digital geoscience. My academic work included understanding how satellite imagery is generated from surface reflectance, how raster datasets are produced, and how spectral bands are used to interpret hyperspectral data for environmental and geological applications.",
+          "Professionally, I spent several years in geo-environmental consulting in Scotland and Finland, working on technically detailed site investigations and analysing geological and environmental to inform remediation and development work. My work included:",
         ],
         bullets: [
-          "Geological analysis & reporting (maps, interpretation, client communication)",
-          "Site investigations (Phase II design, trial pitting, sampling)",
-          "Environmental & geotechnical testing (analysis + reporting)",
-          "Groundwater testing & basic modelling",
-          "Mine stability assessments & remediation (drilling + grouting supervision)",
+          "Geological and Environmental analysis & reporting.",
+          "Mining stability assessments.",
+          "On-site supervision of unstable mine remediation via drilling and high-pressure grouting.",
+          "Groundwater testing & basic modelling.",
+          "Utilising GIS software in geospatial analysis.",
         ],
       },
       {
