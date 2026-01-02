@@ -13,10 +13,10 @@ export default function HomeAbout() {
       kicker: "",
       title: "Profile",
       body: [
-        "I’m a full-stack developer with a background in geo-environmental consulting, focused on building clean, practical web applications.",
-        "My main portfolio project is TriSwift: an activity-tracking app built end-to-end, covering authentication, core CRUD flows, and performance-focused features like personal records and pace tools.",
-        "I’m comfortable across frontend and backend, and I care about clarity: predictable UI, clean data flows, and maintainable structure.",
-        "I’m AWS SAA and PSM I certified, and I’m currently applying that knowledge in a new project using AWS infrastructure with hands-on Python on the backend.",
+        "I’m a full-stack developer with a background in geo-environmental consulting and practical experience building complete web applications.",
+        "I’m comfortable working across frontend and backend, and have practical experience delivering full-stack features end-to-end, from UI through to APIs, data models, testing, and deployment.",
+        "I’m certified as an AWS Solutions Architect Associate and Professional Scrum Master, and I’m currently applying that knowledge in practice through new full-stack projects using cloud infrastructure.",
+        "From my consulting background, I bring experience coordinating multiple ongoing projects with clients, keeping work organised and communicaiton clear.",
       ],
     }),
     []

@@ -39,7 +39,7 @@ export default function HomeHero() {
                 <dl className="hero-proof" aria-label="Quick facts">
                   <div className="hero-proof-item">
                     <dt className="hero-proof-label">Certifications</dt>
-                    <dd className="hero-proof-value">AWS SAA · PSM I</dd>
+                    <dd className="hero-proof-value">AWS SAA-C03 · PSM I</dd>
                   </div>
 
                   <div className="hero-proof-divider" aria-hidden="true" />
