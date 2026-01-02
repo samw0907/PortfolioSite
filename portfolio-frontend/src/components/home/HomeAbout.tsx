@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import StravaStats from "../StravaStats";
 
 type AboutBlock = {
   kicker: string;
@@ -45,6 +46,7 @@ export default function HomeAbout() {
           "Outside of work, sport has always been a big part of my life. I represented my schools in football, field hockey, badminton, and cross-country running.",
           "In recent years, running has been my main focus and I ran two half-marathons and my first full marathon in 2024.",
           "Since then, I've been shifting into triathlon, putting in more time on the bike and in the pool. My next big goal is the Ironman 70.3 Tallinn in August 2026.",
+          "Training volume and activity breakdown pulled directly from Strava below.",
         ],
       },
       {
@@ -67,9 +69,7 @@ export default function HomeAbout() {
       <div className="container-max">
         <div className="about-stack about-stack--plain">
           <section className="about-block about-block--primary">
-            {profileBlock.kicker ? (
-              <p className="kicker">{profileBlock.kicker}</p>
-            ) : null}
+            {profileBlock.kicker ? <p className="kicker">{profileBlock.kicker}</p> : null}
             <h3 className="about-title">{profileBlock.title}</h3>
 
             <div className="about-body">
@@ -81,28 +81,40 @@ export default function HomeAbout() {
             </div>
           </section>
 
-          {aboutBlocks.map((block, idx) => (
-            <section key={`${block.title}-${idx}`} className="about-block">
-              <p className="kicker">{block.kicker}</p>
-              <h3 className="about-title">{block.title}</h3>
+          {aboutBlocks.map((block, idx) => {
+            const isSport = block.kicker === "Personal" && block.title === "Sport";
 
-              <div className="about-body">
-                {block.body.map((line, i) => (
-                  <p key={i} className="about-text">
-                    {line}
-                  </p>
-                ))}
-              </div>
+            return (
+              <section key={`${block.title}-${idx}`} className="about-block">
+                <p className="kicker">{block.kicker}</p>
+                <h3 className="about-title">{block.title}</h3>
 
-              {block.bullets && block.bullets.length > 0 && (
-                <ul className="about-bullets">
-                  {block.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
+                <div className="about-body">
+                  {block.body.map((line, i) => (
+                    <p key={i} className="about-text">
+                      {line}
+                    </p>
                   ))}
-                </ul>
-              )}
-            </section>
-          ))}
+                </div>
+
+                {block.bullets && block.bullets.length > 0 && (
+                  <ul className="about-bullets">
+                    {block.bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {isSport ? (
+                  <div style={{ marginTop: 26 }}>
+                    <div className="card-subtle">
+                      <StravaStats />
+                    </div>
+                  </div>
+                ) : null}
+              </section>
+            );
+          })}
         </div>
       </div>
     </section>
