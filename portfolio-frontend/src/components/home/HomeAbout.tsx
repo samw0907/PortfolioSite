@@ -16,7 +16,7 @@ export default function HomeAbout() {
         "I’m a full-stack developer with a background in geo-environmental consulting and practical experience building complete web applications.",
         "I’m comfortable working across frontend and backend, and have practical experience delivering full-stack features end-to-end, from UI through to APIs, data models, testing, and deployment.",
         "I’m certified as an AWS Solutions Architect Associate and Professional Scrum Master, and I’m currently applying that knowledge in practice through new full-stack projects using cloud infrastructure.",
-        "From my consulting background, I bring experience coordinating multiple ongoing projects with clients, keeping work organised and communicaiton clear.",
+        "From my consulting background, I bring experience coordinating multiple projects with clients and maintaining clear communication.",
       ],
     }),
     []
@@ -25,11 +25,11 @@ export default function HomeAbout() {
   const aboutBlocks: AboutBlock[] = useMemo(
     () => [
       {
-        kicker: "Consulting",
-        title: "My background",
+        kicker: "Background",
+        title: "Earth Science & Geo-Environmental Consulting",
         body: [
-          "I received my BSc with Honours in Earth Science at the University of Glasgow in 2017, before entering the geo-environmental consulting industry with Mason Evans Partnership.",
-          "I worked in a small team of five, conducting site investigations for some of the UK's largest house builders. This involved evaluating geotechnical & environmental constraints and advising clients on remediation measures required to meet local government regulations.",
+          "I hold a BSc with Honours in Earth Science from the University of Glasgow, where i worked with topics including strucutral geology, economic minerals and digital geoscience. I have an understanding of how satellites derive raster dats sets from surface refelctnace, and use spectral bands to interpret the hyperspectral imagery produced for environmental and geologicla interpretation.",
+          "  I then spent several years working in geo-environmental consulting in both Scotland & Finland. This involved in technically complex site investigations, analysing geological, environmental, and geospatial data to support remediation and development decisions.",
         ],
         bullets: [
           "Geological analysis & reporting (maps, interpretation, client communication)",
