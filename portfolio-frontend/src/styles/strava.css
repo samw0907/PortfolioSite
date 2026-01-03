@@ -158,3 +158,23 @@
     padding: 12px 10px;
   }
 }
+
+.strava .kicker {
+  color: rgb(var(--text));
+  font-size: 17px;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.strava .card-text {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.strava-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}

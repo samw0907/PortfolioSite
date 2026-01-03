@@ -36,10 +36,13 @@ export default function StravaStats() {
   const [stats, setStats] = useState<StravaData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<Period>("ytd");
+  const [isOpen, setIsOpen] = useState(false);
 
   const stravaUrl = "https://www.strava.com/athletes/38491517";
 
   useEffect(() => {
+    if (!isOpen) return;
+
     let cancelled = false;
 
     (async () => {
@@ -60,7 +63,7 @@ export default function StravaStats() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [isOpen]);
 
   const availableTabs: Period[] = useMemo(() => {
     const tabs: Period[] = [];
@@ -70,16 +73,39 @@ export default function StravaStats() {
     return tabs.length ? tabs : ["ytd", "recent"];
   }, [stats]);
 
+  const header = (
+    <div className="strava-head">
+      <div>
+        <p className="kicker">Strava</p>
+        <p className="card-text">A quick breakdown of training volume pulled from my Strava activity history.</p>
+      </div>
+
+      <div className="strava-actions">
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => setIsOpen((v) => !v)}
+          aria-expanded={isOpen}
+        >
+          {isOpen ? "Hide stats" : "Show stats"}
+        </button>
+
+        <a className="btn btn-secondary strava-open" href={stravaUrl} target="_blank" rel="noopener noreferrer">
+          Open Strava
+        </a>
+      </div>
+    </div>
+  );
+
+  if (!isOpen) {
+    return <div className="strava">{header}</div>;
+  }
+
   if (!stats && !error) {
     return (
       <div className="strava">
-        <div className="strava-head">
-          <div>
-            <p className="kicker">Strava</p>
-            <h4 className="card-title">Training snapshot</h4>
-            <p className="card-text">Loading…</p>
-          </div>
-        </div>
+        {header}
+        <p className="card-text">Loading…</p>
       </div>
     );
   }
@@ -87,18 +113,8 @@ export default function StravaStats() {
   if (error || !stats) {
     return (
       <div className="strava">
-        <div className="strava-head">
-          <div>
-            <p className="kicker">Strava</p>
-            <h4 className="card-title">Training snapshot</h4>
-            <p className="card-text">
-              {error ?? "Couldn’t load Strava data right now."}{" "}
-              <a className="link" href={stravaUrl} target="_blank" rel="noopener noreferrer">
-                Open Strava
-              </a>
-            </p>
-          </div>
-        </div>
+        {header}
+        <p className="card-text">{error ?? "Couldn’t load Strava data right now."}</p>
       </div>
     );
   }
@@ -111,24 +127,7 @@ export default function StravaStats() {
 
   return (
     <div className="strava">
-      <div className="strava-head">
-        <div>
-          <p className="kicker">Strava</p>
-          <h4 className="card-title">Training snapshot</h4>
-          <p className="card-text">
-            A quick breakdown of training volume pulled from my Strava activity history.
-          </p>
-        </div>
-
-        <a
-          className="btn btn-secondary strava-open"
-          href={stravaUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Open Strava
-        </a>
-      </div>
+      {header}
 
       <div className="strava-tabs" role="tablist" aria-label="Strava time period">
         {availableTabs.map((p) => {
@@ -157,7 +156,9 @@ export default function StravaStats() {
         <table className="strava-table" aria-label="Strava activity breakdown">
           <thead>
             <tr>
-              <th scope="col" style={{ textAlign: "center" }}>Metric</th>
+              <th scope="col" style={{ textAlign: "center" }}>
+                Metric
+              </th>
               <th scope="col">Run</th>
               <th scope="col">Ride</th>
               <th scope="col">Swim</th>
@@ -165,25 +166,33 @@ export default function StravaStats() {
           </thead>
           <tbody>
             <tr>
-              <th scope="row" style={{ textAlign: "center" }}>Activities</th>
+              <th scope="row" style={{ textAlign: "center" }}>
+                Activities
+              </th>
               <td>{data.run.count}</td>
               <td>{data.ride.count}</td>
               <td>{data.swim.count}</td>
             </tr>
             <tr>
-              <th scope="row" style={{ textAlign: "center" }}>Distance</th>
+              <th scope="row" style={{ textAlign: "center" }}>
+                Distance
+              </th>
               <td>{round1(data.run.distance_km)} km</td>
               <td>{round1(data.ride.distance_km)} km</td>
               <td>{round1(data.swim.distance_km)} km</td>
             </tr>
             <tr>
-              <th scope="row" style={{ textAlign: "center" }}>Time</th>
+              <th scope="row" style={{ textAlign: "center" }}>
+                Time
+              </th>
               <td>{round1(data.run.moving_time_hr)} hr</td>
               <td>{round1(data.ride.moving_time_hr)} hr</td>
               <td>{round1(data.swim.moving_time_hr)} hr</td>
             </tr>
             <tr>
-              <th scope="row" style={{ textAlign: "center" }}>Elevation</th>
+              <th scope="row" style={{ textAlign: "center" }}>
+                Elevation
+              </th>
               <td>{Math.round(data.run.elevation_gain_m)} m</td>
               <td>{Math.round(data.ride.elevation_gain_m)} m</td>
               <td>—</td>
