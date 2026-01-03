@@ -67,7 +67,7 @@
   margin-top: 10px;
   font-weight: 500;
   letter-spacing: -0.02em;
-  font-size: 1.0rem;
+  font-size: 1rem;
   color: rgb(var(--text));
 }
 
@@ -232,81 +232,47 @@
   opacity: 0.6;
 }
 
-.strava {
+.spotify {
   width: 100%;
 }
 
-.strava-head {
+.spotify-head {
   display: flex;
-  gap: 18px;
   align-items: flex-start;
   justify-content: space-between;
-}
-
-.strava-open {
-  white-space: nowrap;
-}
-
-.strava-tabs {
-  margin-top: 18px;
-  display: flex;
+  gap: 14px;
   flex-wrap: wrap;
+}
+
+.spotify-left {
+  min-width: 0;
+}
+
+.spotify-kicker {
+  color: rgb(var(--text));
+  opacity: 0.95;
+  font-size: 13px;
+  letter-spacing: 0.24em;
+}
+
+.spotify-text {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgb(var(--text) / 0.82);
+}
+
+.spotify-actions {
+  display: inline-flex;
+  align-items: center;
   gap: 10px;
-}
-
-.strava-tab {
-  padding: 10px 14px;
-}
-
-.strava-tab.is-active {
-  border-color: rgb(var(--border) / 0.28);
-}
-
-.strava-chips {
-  margin-top: 14px;
-  display: flex;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
-.strava-table-wrap {
-  margin-top: 18px;
-  overflow-x: auto;
+.spotify-embed {
+  margin-top: 16px;
   border-radius: 14px;
+  overflow: hidden;
   border: 1px solid rgb(var(--border) / 0.10);
   background: rgb(var(--surface));
-}
-
-.strava-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 520px;
-}
-
-.strava-table thead th {
-  text-align: left;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: rgb(var(--muted));
-  padding: 14px 16px;
-  border-bottom: 1px solid rgb(var(--border) / 0.10);
-}
-
-.strava-table tbody th,
-.strava-table tbody td {
-  padding: 14px 16px;
-  border-bottom: 1px solid rgb(var(--border) / 0.08);
-  font-size: 13px;
-  color: rgb(var(--text) / 0.90);
-}
-
-.strava-table tbody tr:last-child th,
-.strava-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.strava-table tbody td {
-  text-align: left;
-  color: rgb(var(--text) / 0.86);
 }
