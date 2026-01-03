@@ -1,0 +1,162 @@
+/* src/styles/strava.css */
+
+.strava {
+  width: 100%;
+  border-radius: 18px;
+}
+
+.strava-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.strava-open {
+  white-space: nowrap;
+}
+
+/* subtle “Strava-ish” accent without shouting */
+.strava {
+  position: relative;
+  padding-top: 2px;
+}
+
+.strava::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -2px;
+  width: 3px;
+  border-radius: 999px;
+  background: rgb(var(--accent-warm));
+  opacity: 0.9;
+}
+
+.strava-tabs {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.strava-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 10px 4px;
+  cursor: pointer;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: rgb(var(--muted));
+
+  border-bottom: 2px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease, opacity 160ms ease;
+}
+
+.strava-tab:hover {
+  opacity: 0.85;
+}
+
+.strava-tab.is-active {
+  color: rgb(var(--text));
+  border-bottom-color: rgb(var(--accent-warm));
+}
+
+.strava-chips {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.strava-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 7px 12px;
+  border-radius: 999px;
+
+  background: rgb(var(--surface));
+  border: 1px solid rgb(var(--border) / 0.10);
+  color: rgb(var(--muted));
+}
+
+.strava-table-wrap {
+  margin-top: 16px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgb(var(--border) / 0.10);
+  background: rgb(var(--surface));
+}
+
+.strava-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.strava-table thead th {
+  text-align: left;
+  padding: 14px 14px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgb(var(--muted));
+  background: rgb(var(--surface-2));
+  border-bottom: 1px solid rgb(var(--border) / 0.10);
+}
+
+.strava-table thead th:nth-child(n + 2) {
+  text-align: center;
+}
+
+.strava-table tbody th,
+.strava-table tbody td {
+  padding: 14px 14px;
+  border-top: 1px solid rgb(var(--border) / 0.08);
+}
+
+.strava-table tbody th {
+  font-weight: 600;
+  color: rgb(var(--text));
+}
+
+.strava-table tbody td {
+  text-align: center;
+  color: rgb(var(--text) / 0.92);
+}
+
+.strava-table tbody tr:nth-child(even) {
+  background: rgb(var(--surface-2));
+}
+
+/* mobile tightening */
+@media (max-width: 640px) {
+  .strava-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .strava-open {
+    align-self: flex-start;
+  }
+
+  .strava-table {
+    font-size: 13px;
+  }
+
+  .strava-table thead th,
+  .strava-table tbody th,
+  .strava-table tbody td {
+    padding: 12px 10px;
+  }
+}

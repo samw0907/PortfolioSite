@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { fetchStravaStats } from "../utils/fetchStravaStats";
 
 type Sport = "run" | "ride" | "swim";
-type Period = "all_time" | "ytd" | "recent";
+type Period = "all_time" | "ytd" | "recent" | "y2025" | "y2024";
 
 interface SportStats {
   count: number;
@@ -12,16 +12,20 @@ interface SportStats {
   elevation_gain_m: number;
 }
 
-interface StravaData {
+interface StravaBaseData {
   all_time: Record<Sport, SportStats>;
   ytd: Record<Sport, SportStats>;
   recent: Record<Sport, SportStats>;
 }
 
+type YearData = { year: number } & Record<Sport, SportStats>;
+
 const periodLabels: Record<Period, string> = {
   all_time: "All-time",
   ytd: new Date().getFullYear().toString(),
   recent: "Last 4 weeks",
+  y2025: "2025",
+  y2024: "2024",
 };
 
 function round1(value: number) {
@@ -33,9 +37,14 @@ function sumSport(data: Record<Sport, SportStats>, key: keyof SportStats) {
 }
 
 export default function StravaStats() {
-  const [stats, setStats] = useState<StravaData | null>(null);
+  const [base, setBase] = useState<StravaBaseData | null>(null);
+  const [year2025, setYear2025] = useState<Record<Sport, SportStats> | null>(null);
+  const [year2024, setYear2024] = useState<Record<Sport, SportStats> | null>(null);
+
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<Period>("ytd");
+
+  const stravaUrl = "https://www.strava.com/athletes/38491517";
 
   useEffect(() => {
     let cancelled = false;
@@ -43,16 +52,30 @@ export default function StravaStats() {
     (async () => {
       setError(null);
 
-      const data = await fetchStravaStats();
+      const [baseRes, y25Res, y24Res] = await Promise.all([
+        fetchStravaStats(),
+        fetchStravaStats(2025),
+        fetchStravaStats(2024),
+      ]);
+
       if (cancelled) return;
 
-      if (!data) {
+      if (!baseRes) {
         setError("Couldn’t load Strava data right now.");
-        setStats(null);
+        setBase(null);
         return;
       }
 
-      setStats(data);
+      setBase(baseRes);
+
+      // Year endpoints return { year, run, ride, swim }
+      const toYearBlock = (x: any): Record<Sport, SportStats> | null => {
+        if (!x || !x.run || !x.ride || !x.swim) return null;
+        return { run: x.run, ride: x.ride, swim: x.swim };
+      };
+
+      setYear2025(toYearBlock(y25Res));
+      setYear2024(toYearBlock(y24Res));
     })();
 
     return () => {
@@ -60,42 +83,58 @@ export default function StravaStats() {
     };
   }, []);
 
-  const stravaUrl = "https://www.strava.com/athletes/38491517";
-
   const availableTabs: Period[] = useMemo(() => {
     const tabs: Period[] = [];
-    if (stats?.all_time) tabs.push("all_time");
-    if (stats?.ytd) tabs.push("ytd");
-    if (stats?.recent) tabs.push("recent");
+    if (year2025) tabs.push("y2025");
+    if (year2024) tabs.push("y2024");
+    if (base?.ytd) tabs.push("ytd");
+    if (base?.recent) tabs.push("recent");
+    if (base?.all_time) tabs.push("all_time");
     return tabs.length ? tabs : ["ytd", "recent"];
-  }, [stats]);
+  }, [base, year2025, year2024]);
 
-  if (!stats && !error) {
+  if (!base && !error) {
     return (
       <div className="strava">
-        <p className="kicker">Strava</p>
-        <h4 className="card-title">Live training snapshot</h4>
-        <p className="card-text">Loading…</p>
+        <div className="strava-head">
+          <div>
+            <p className="kicker">Strava</p>
+            <h4 className="card-title">Training snapshot</h4>
+            <p className="card-text">Loading…</p>
+          </div>
+        </div>
       </div>
     );
   }
 
-  if (error || !stats) {
+  if (error || !base) {
     return (
       <div className="strava">
-        <p className="kicker">Strava</p>
-        <h4 className="card-title">Live training snapshot</h4>
-        <p className="card-text">
-          {error ?? "Couldn’t load Strava data right now."}{" "}
-          <a className="link" href={stravaUrl} target="_blank" rel="noopener noreferrer">
-            Open Strava
-          </a>
-        </p>
+        <div className="strava-head">
+          <div>
+            <p className="kicker">Strava</p>
+            <h4 className="card-title">Training snapshot</h4>
+            <p className="card-text">
+              {error ?? "Couldn’t load Strava data right now."}{" "}
+              <a className="link" href={stravaUrl} target="_blank" rel="noopener noreferrer">
+                Open Strava
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
 
-  const data = stats[activeTab];
+  const blockForTab = (tab: Period): Record<Sport, SportStats> => {
+    if (tab === "y2025" && year2025) return year2025;
+    if (tab === "y2024" && year2024) return year2024;
+    if (tab === "ytd") return base.ytd;
+    if (tab === "recent") return base.recent;
+    return base.all_time;
+  };
+
+  const data = blockForTab(activeTab);
 
   const totalKm = round1(sumSport(data, "distance_km"));
   const totalHours = round1(sumSport(data, "moving_time_hr"));
@@ -106,9 +145,9 @@ export default function StravaStats() {
       <div className="strava-head">
         <div>
           <p className="kicker">Strava</p>
-          <h4 className="card-title">Live training snapshot</h4>
+          <h4 className="card-title">Training snapshot</h4>
           <p className="card-text">
-            Training volume and activity breakdown, synced from Strava.
+            A quick breakdown of recent training volume, pulled from my Strava activity history.
           </p>
         </div>
 
@@ -125,7 +164,7 @@ export default function StravaStats() {
               key={p}
               type="button"
               onClick={() => setActiveTab(p)}
-              className={`btn btn-secondary strava-tab ${active ? "is-active" : ""}`}
+              className={`strava-tab ${active ? "is-active" : ""}`}
               aria-pressed={active}
             >
               {periodLabels[p]}
@@ -135,9 +174,9 @@ export default function StravaStats() {
       </div>
 
       <div className="strava-chips" aria-label="Strava quick totals">
-        <span className="tag">Total: {totalKm} km</span>
-        <span className="tag">Time: {totalHours} hr</span>
-        <span className="tag">Activities: {totalActivities}</span>
+        <span className="strava-chip">Total: {totalKm} km</span>
+        <span className="strava-chip">Time: {totalHours} hr</span>
+        <span className="strava-chip">Activities: {totalActivities}</span>
       </div>
 
       <div className="strava-table-wrap">
