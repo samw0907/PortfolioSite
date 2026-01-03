@@ -53,7 +53,10 @@ export default function HomeAbout() {
       {
         kicker: "Personal",
         title: "Music",
-        body: [],
+        body: [
+          "I’m also a big music fan, and I like building routines around long sessions with good albums on.",
+          "I’ll add a short overview here later (what I listen to, how I discover music, and a few favourites).",
+        ],
       },
     ],
     []
