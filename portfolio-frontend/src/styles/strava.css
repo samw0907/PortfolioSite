@@ -1,8 +1,22 @@
 /* src/styles/strava.css */
 
 .strava {
+  position: relative;
   width: 100%;
-  border-radius: 18px;
+}
+
+.strava::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+
+  left: -14px;
+  width: 3px;
+
+  border-radius: 999px;
+  background: rgb(var(--accent-warm));
+  opacity: 0.9;
 }
 
 .strava-head {
@@ -14,24 +28,6 @@
 
 .strava-open {
   white-space: nowrap;
-}
-
-/* subtle “Strava-ish” accent without shouting */
-.strava {
-  position: relative;
-  padding-top: 2px;
-}
-
-.strava::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: -2px;
-  width: 3px;
-  border-radius: 999px;
-  background: rgb(var(--accent-warm));
-  opacity: 0.9;
 }
 
 .strava-tabs {
@@ -77,7 +73,6 @@
 .strava-chip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
 
   font-size: 11px;
   text-transform: uppercase;
@@ -139,7 +134,6 @@
   background: rgb(var(--surface-2));
 }
 
-/* mobile tightening */
 @media (max-width: 640px) {
   .strava-head {
     flex-direction: column;
@@ -148,6 +142,10 @@
 
   .strava-open {
     align-self: flex-start;
+  }
+
+  .strava::before {
+    left: -12px;
   }
 
   .strava-table {

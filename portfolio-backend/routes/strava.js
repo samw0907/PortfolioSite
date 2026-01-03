@@ -32,42 +32,6 @@ function formatStats(stats) {
   };
 }
 
-function safeInt(value) {
-  const n = Number.parseInt(String(value), 10);
-  return Number.isFinite(n) ? n : null;
-}
-
-function sportKeyFromStrava(activity) {
-  const t = activity?.sport_type || activity?.type || "";
-  if (t === "Swim") return "swim";
-  if (t.includes("Ride")) return "ride";
-  if (t.includes("Run")) return "run";
-  return null;
-}
-
-function makeEmptyYearAgg() {
-  return {
-    run: { count: 0, distance_m: 0, moving_time_s: 0, elevation_gain_m: 0 },
-    ride: { count: 0, distance_m: 0, moving_time_s: 0, elevation_gain_m: 0 },
-    swim: { count: 0, distance_m: 0, moving_time_s: 0, elevation_gain_m: 0 },
-  };
-}
-
-function formatYearAgg(agg) {
-  const toStats = (x) => ({
-    count: x.count,
-    distance_km: +(x.distance_m / 1000).toFixed(1),
-    moving_time_hr: +(x.moving_time_s / 3600).toFixed(1),
-    elevation_gain_m: Math.round(x.elevation_gain_m),
-  });
-
-  return {
-    run: toStats(agg.run),
-    ride: toStats(agg.ride),
-    swim: toStats(agg.swim),
-  };
-}
-
 async function fetchAthleteId(accessToken) {
   const athleteRes = await axios.get("https://www.strava.com/api/v3/athlete", {
     headers: { Authorization: `Bearer ${accessToken}` },
@@ -76,72 +40,16 @@ async function fetchAthleteId(accessToken) {
   return athleteRes.data.id;
 }
 
-async function fetchYearTotals(accessToken, year) {
-  const after = Math.floor(new Date(`${year}-01-01T00:00:00Z`).getTime() / 1000);
-  const before = Math.floor(new Date(`${year + 1}-01-01T00:00:00Z`).getTime() / 1000);
-
-  const agg = makeEmptyYearAgg();
-
-  let page = 1;
-  const perPage = 200;
-
-  while (true) {
-    const res = await axios.get("https://www.strava.com/api/v3/athlete/activities", {
-      headers: { Authorization: `Bearer ${accessToken}` },
-      params: {
-        after,
-        before,
-        page,
-        per_page: perPage,
-      },
-    });
-
-    const activities = res.data;
-    if (!Array.isArray(activities) || activities.length === 0) break;
-
-    for (const a of activities) {
-      const key = sportKeyFromStrava(a);
-      if (!key) continue;
-
-      agg[key].count += 1;
-      agg[key].distance_m += Number(a.distance || 0);
-      agg[key].moving_time_s += Number(a.moving_time || 0);
-
-      if (key !== "swim") {
-        agg[key].elevation_gain_m += Number(a.total_elevation_gain || 0);
-      }
-    }
-
-    if (activities.length < perPage) break;
-    page += 1;
-  }
-
-  return formatYearAgg(agg);
-}
-
 router.get("/stats", async (req, res) => {
   try {
     const accessToken = await refreshStravaToken();
 
-    const yearParam = req.query.year;
-    if (yearParam !== undefined) {
-      const year = safeInt(yearParam);
-      const nowYear = new Date().getUTCFullYear();
-
-      if (!year || year < 2000 || year > nowYear + 1) {
-        return res.status(400).json({ error: "Invalid year parameter" });
-      }
-
-      const yearTotals = await fetchYearTotals(accessToken, year);
-      return res.json({ year, ...yearTotals });
-    }
-
     const athleteId = await fetchAthleteId(accessToken);
-    console.log("Fetched athlete ID:", athleteId);
 
-    const statsRes = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteId}/stats`, {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    });
+    const statsRes = await axios.get(
+      `https://www.strava.com/api/v3/athletes/${athleteId}/stats`,
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    );
 
     const formatted = formatStats(statsRes.data);
     res.json(formatted);
