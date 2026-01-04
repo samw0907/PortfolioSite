@@ -1,0 +1,59 @@
+/* src/styles/homeContact.css */
+
+.home-contact-links {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.home-contact-linkrow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  min-width: 0;
+}
+
+.home-contact-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+  flex: 0 0 auto;
+}
+
+.home-contact-link {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-contact-link--right {
+  text-align: right;
+}
+
+.home-contact-divider {
+  height: 1px;
+  background: rgb(var(--border) / 0.12);
+}
+
+.home-contact-formgrid {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.home-contact-actions {
+  margin-top: 16px;
+  padding-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-contact-status {
+  font-size: 0.9rem;
+  color: rgb(var(--muted));
+}

@@ -1,5 +1,6 @@
 // src/components/home/HomeContact.tsx
 import { useState } from "react";
+import "../../styles/homeContact.css";
 
 export default function HomeContact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -38,48 +39,48 @@ export default function HomeContact() {
     <section className="section" aria-label="Contact">
       <div id="contact" className="section-anchor" />
 
-      <p className="kicker">Contact</p>
-      <h2 className="page-title">Get in touch</h2>
-      <p className="lead" style={{ maxWidth: "42rem" }}>
-        If you’re hiring or want to chat about a project, the fastest way is LinkedIn.
-        Otherwise, send a message here and I’ll reply by email.
-      </p>
+      <h2 className="page-title">Contact</h2>
+      <p className="lead" style={{ maxWidth: "42rem" }} />
 
       <div className="mt-10 grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="card">
             <h3 className="card-title">Direct</h3>
-            <p className="card-text">Best channels for a quick response.</p>
+            <p className="card-text">
+              My main email address below is the best way to contact me directly. Feel free to also use LinkedIn or the
+              contact form.
+            </p>
 
-            <div className="mt-5 flex flex-col gap-3">
-              <a className="link" href="mailto:swilliamson_0907@outlook.com">
-                swilliamson_0907@outlook.com
-              </a>
-              <a
-                className="link"
-                href="https://www.linkedin.com/in/sam-williamson-739530146/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                LinkedIn
-              </a>
+            <div className="home-contact-links">
+              <div className="home-contact-linkrow">
+                <span className="home-contact-label">Email</span>
+                <a className="link home-contact-link" href="mailto:swilliamson_0907@outlook.com">
+                  swilliamson_0907@outlook.com
+                </a>
+              </div>
+
+              <div className="home-contact-divider" />
+
+              <div className="home-contact-linkrow">
+                <span className="home-contact-label">LinkedIn</span>
+                <a
+                  className="link home-contact-link home-contact-link--right"
+                  href="https://www.linkedin.com/in/sam-williamson-739530146/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open profile
+                </a>
+              </div>
             </div>
-          </div>
-
-          <div className="mt-6 card-subtle">
-            <p className="kicker">Note</p>
-            <p className="card-text">I read everything, but I may take a day to reply during busy weeks.</p>
           </div>
         </div>
 
         <div className="lg:col-span-7">
           <form onSubmit={handleSubmit} className="card">
             <h3 className="card-title">Message</h3>
-            <p className="card-text">
-              Short and specific is perfect — what role, what team, and what timeline.
-            </p>
 
-            <div className="mt-6 grid gap-3">
+            <div className="home-contact-formgrid">
               <input
                 name="name"
                 placeholder="Name"
@@ -110,14 +111,16 @@ export default function HomeContact() {
               />
             </div>
 
-            <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="home-contact-actions">
               <button type="submit" className="btn btn-primary">
                 Send
               </button>
 
-              <div className="text-sm" style={{ color: "rgb(var(--muted))" }}>
-                {status ? status : "Replies typically within 1–2 days."}
-              </div>
+              {status ? (
+                <span className="home-contact-status" aria-live="polite">
+                  {status}
+                </span>
+              ) : null}
             </div>
           </form>
         </div>
