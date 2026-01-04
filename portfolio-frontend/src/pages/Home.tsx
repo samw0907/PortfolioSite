@@ -1,6 +1,8 @@
+// src/pages/Home.tsx
 import { useEffect, useRef } from "react";
 import HomeHero from "../components/home/HomeHero";
 import HomeAbout from "../components/home/HomeAbout";
+import HomeContact from "../components/home/HomeContact";
 
 export default function Home() {
   const pageFxRef = useRef<HTMLDivElement | null>(null);
@@ -66,9 +68,10 @@ export default function Home() {
 
       <div className="home-fx-content">
         <HomeHero />
-        <HomeAbout />
 
         <div className="container-max">
+          <HomeAbout />
+
           <div id="projects" className="section-anchor" />
           <div className="section">
             <div className="card-subtle">
@@ -80,16 +83,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div id="contact" className="section-anchor" />
-          <div className="section">
-            <div className="card-subtle">
-              <p className="kicker">Contact</p>
-              <h2 className="card-title">Next pass</h2>
-              <p className="card-text">
-                We’ll reintroduce contact after projects are locked in.
-              </p>
-            </div>
-          </div>
+          <HomeContact />
         </div>
       </div>
     </div>
