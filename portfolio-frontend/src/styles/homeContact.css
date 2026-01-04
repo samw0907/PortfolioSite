@@ -1,5 +1,51 @@
 /* src/styles/homeContact.css */
 
+.contact-header {
+  position: relative;
+  padding-top: 14px;
+}
+
+.contact-header::before {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: rgb(var(--accent));
+  border-radius: 999px;
+  opacity: 0.95;
+  margin-bottom: 14px;
+}
+
+.contact-heading {
+  font-size: 26px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  color: rgb(var(--text));
+  line-height: 1.15;
+}
+
+@media (min-width: 640px) {
+  .contact-heading {
+    font-size: 28px;
+  }
+}
+
+.contact-subheading {
+  margin-top: 6px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: rgb(var(--text));
+}
+
+@media (min-width: 640px) {
+  .contact-subheading {
+    font-size: 20px;
+  }
+}
+
 .home-contact-direct-text {
   margin-top: 8px;
   max-width: 120ch;

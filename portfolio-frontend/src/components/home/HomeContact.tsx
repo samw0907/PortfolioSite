@@ -39,12 +39,13 @@ export default function HomeContact() {
     <section className="section" aria-label="Contact">
       <div id="contact" className="section-anchor" />
 
-      <h2 className="page-title">Contact</h2>
+      <header className="contact-header">
+        <h2 className="contact-heading">Contact</h2>
+      </header>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="home-contact-direct">
-            <p className="kicker">Direct</p>
 
             <p className="card-text home-contact-direct-text">
               My main email address below is the best way to contact me directly. Feel free to also use LinkedIn or the
@@ -70,7 +71,7 @@ export default function HomeContact() {
 
         <div className="lg:col-span-7 home-contact-formcol">
           <form onSubmit={handleSubmit} className="home-contact-form">
-            <p className="kicker">Message</p>
+            <h3 className="contact-subheading">Message</h3>
 
             <div className="home-contact-formgrid">
               <input
