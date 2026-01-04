@@ -1,51 +1,35 @@
 /* src/styles/homeContact.css */
 
-.home-contact-links {
+.home-contact-direct-text {
+  margin-top: 8px;
+  max-width: 120ch;
+}
+
+.home-contact-direct-links {
   margin-top: 18px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
-.home-contact-linkrow {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 14px;
-  min-width: 0;
+.home-contact-formcol {
+  margin-top: 64px;
 }
 
-.home-contact-label {
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgb(var(--muted));
-  flex: 0 0 auto;
-}
-
-.home-contact-link {
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.home-contact-link--right {
-  text-align: right;
-}
-
-.home-contact-divider {
-  height: 1px;
-  background: rgb(var(--border) / 0.12);
+@media (min-width: 1024px) {
+  .home-contact-formcol {
+    margin-top: 0;
+  }
 }
 
 .home-contact-formgrid {
   margin-top: 18px;
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .home-contact-actions {
-  margin-top: 16px;
+  margin-top: 18px;
   padding-top: 6px;
   display: flex;
   flex-wrap: wrap;

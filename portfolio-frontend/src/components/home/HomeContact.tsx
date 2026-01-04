@@ -40,45 +40,37 @@ export default function HomeContact() {
       <div id="contact" className="section-anchor" />
 
       <h2 className="page-title">Contact</h2>
-      <p className="lead" style={{ maxWidth: "42rem" }} />
 
       <div className="mt-10 grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <div className="card">
-            <h3 className="card-title">Direct</h3>
-            <p className="card-text">
+          <div className="home-contact-direct">
+            <p className="kicker">Direct</p>
+
+            <p className="card-text home-contact-direct-text">
               My main email address below is the best way to contact me directly. Feel free to also use LinkedIn or the
-              contact form.
+              contact form below.
             </p>
 
-            <div className="home-contact-links">
-              <div className="home-contact-linkrow">
-                <span className="home-contact-label">Email</span>
-                <a className="link home-contact-link" href="mailto:swilliamson_0907@outlook.com">
-                  swilliamson_0907@outlook.com
-                </a>
-              </div>
+            <div className="home-contact-direct-links">
+              <a className="link" href="mailto:swilliamson_0907@outlook.com">
+                swilliamson_0907@outlook.com
+              </a>
 
-              <div className="home-contact-divider" />
-
-              <div className="home-contact-linkrow">
-                <span className="home-contact-label">LinkedIn</span>
-                <a
-                  className="link home-contact-link home-contact-link--right"
-                  href="https://www.linkedin.com/in/sam-williamson-739530146/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Open profile
-                </a>
-              </div>
+              <a
+                className="link"
+                href="https://www.linkedin.com/in/sam-williamson-739530146/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
         </div>
 
-        <div className="lg:col-span-7">
-          <form onSubmit={handleSubmit} className="card">
-            <h3 className="card-title">Message</h3>
+        <div className="lg:col-span-7 home-contact-formcol">
+          <form onSubmit={handleSubmit} className="home-contact-form">
+            <p className="kicker">Message</p>
 
             <div className="home-contact-formgrid">
               <input

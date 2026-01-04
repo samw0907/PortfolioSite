@@ -1,6 +1,8 @@
 // src/pages/Home.tsx
 import { useEffect, useRef } from "react";
 import HomeHero from "../components/home/HomeHero";
+import HomeProfile from "../components/home/HomeProfile";
+import HomeProjects from "../components/home/HomeProjects";
 import HomeAbout from "../components/home/HomeAbout";
 import HomeContact from "../components/home/HomeContact";
 
@@ -70,19 +72,9 @@ export default function Home() {
         <HomeHero />
 
         <div className="container-max">
+          <HomeProfile />
+          <HomeProjects />
           <HomeAbout />
-
-          <div id="projects" className="section-anchor" />
-          <div className="section">
-            <div className="card-subtle">
-              <p className="kicker">Projects</p>
-              <h2 className="card-title">Next pass</h2>
-              <p className="card-text">
-                We’ll reintroduce projects once the About section feels right.
-              </p>
-            </div>
-          </div>
-
           <HomeContact />
         </div>
       </div>
