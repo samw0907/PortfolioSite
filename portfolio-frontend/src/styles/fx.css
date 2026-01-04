@@ -54,3 +54,7 @@
   position: relative;
   z-index: 10;
 }
+
+:root:not(.dark) .hero-spot-glow {
+  display: none;
+}
