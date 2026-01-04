@@ -28,8 +28,9 @@ export default function HomeProfile() {
 
       <div className="about-stack about-stack--plain">
         <section className="about-block about-block--primary">
-          {profileBlock.kicker ? <p className="kicker">{profileBlock.kicker}</p> : null}
-          <h3 className="about-title">{profileBlock.title}</h3>
+          <h3 className="about-title--kickerPrimary">
+            {profileBlock.title}
+          </h3>
 
           <div className="about-body">
             {profileBlock.body.map((line, i) => (

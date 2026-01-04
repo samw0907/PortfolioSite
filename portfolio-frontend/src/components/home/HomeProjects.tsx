@@ -25,19 +25,24 @@ export default function HomeProjects() {
     <section className="section projects" aria-label="Projects">
       <div id="projects" className="section-anchor" />
 
-      <p className="kicker">Projects</p>
-      <h2 className="page-title projects-title">Projects</h2>
+      <div className="projects-head">
+        <h2 className="projects-heading">Projects</h2>
+      </div>
 
       <div className="projects-stack">
-        <article className="project project--featured" aria-label="TriSwift project">
+        <article
+          className="project project--featured"
+          aria-label="TriSwift project"
+        >
           <div className="project-rail" aria-hidden="true" />
 
           <div className="project-grid">
             <div className="project-main">
               <h3 className="project-name">TriSwift</h3>
               <p className="project-desc">
-                Activity tracking built for triathletes — authentication, sessions & activities, automatic personal
-                records, pace tools, visualisation, and CI/CD with end-to-end testing.
+                Activity tracking built for triathletes — authentication,
+                sessions & activities, automatic personal records, pace tools,
+                visualisation, and CI/CD with end-to-end testing.
               </p>
 
               <div className="project-tags" aria-label="TriSwift tech stack">
@@ -110,17 +115,23 @@ export default function HomeProjects() {
           </div>
         </article>
 
-        <p className="kicker">In progress</p>
+        <div className="projects-subhead">
+          <h3 className="projects-subheading">In progress</h3>
+        </div>
 
-        <article className="project project--secondary" aria-label="ToolSharer project">
+        <article
+          className="project project--secondary"
+          aria-label="ToolSharer project"
+        >
           <div className="project-rail" aria-hidden="true" />
 
           <div className="project-secondary">
             <div className="project-secondary-head">
               <h3 className="project-name">ToolSharer</h3>
               <p className="project-desc">
-                Cloud-native tool sharing app focused on production-style AWS infrastructure, authentication, clean APIs,
-                and image/location handling.
+                Cloud-native tool sharing app focused on production-style AWS
+                infrastructure, authentication, clean APIs, and image/location
+                handling.
               </p>
             </div>
 

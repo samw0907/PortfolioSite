@@ -4,8 +4,43 @@
   padding-top: 44px;
 }
 
-.projects-title {
-  margin-top: 10px;
+.projects-head {
+  position: relative;
+  padding-top: 14px;
+}
+
+.projects-head::before {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: rgb(var(--accent));
+  border-radius: 999px;
+  opacity: 0.95;
+}
+
+.projects-heading {
+  margin-top: 14px;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  color: rgb(var(--text));
+  line-height: 1.15;
+}
+
+.projects-subhead {
+  padding-top: 14px;
+}
+
+.projects-subheading {
+  margin: 0;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  color: rgb(var(--text));
+  line-height: 1.15;
 }
 
 .projects-stack {
@@ -25,7 +60,11 @@
   position: relative;
   border-radius: 20px;
   border: 1px solid rgb(var(--border) / 0.10);
-  background: linear-gradient(180deg, rgb(var(--surface) / 0.92) 0%, rgb(var(--surface-2) / 0.92) 100%);
+  background: linear-gradient(
+    180deg,
+    rgb(var(--surface) / 0.92) 0%,
+    rgb(var(--surface-2) / 0.92) 100%
+  );
   overflow: hidden;
 }
 
@@ -34,8 +73,16 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(1200px 600px at 22% 0%, rgb(var(--accent) / 0.10), transparent 55%),
-    radial-gradient(900px 520px at 88% 20%, rgb(var(--accent-warm) / 0.08), transparent 62%);
+  background: radial-gradient(
+      1200px 600px at 22% 0%,
+      rgb(var(--accent) / 0.10),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 520px at 88% 20%,
+      rgb(var(--accent-warm) / 0.08),
+      transparent 62%
+    );
   opacity: 0.95;
 }
 
@@ -83,21 +130,23 @@
 }
 
 .project-name {
-  font-weight: 650;
-  letter-spacing: -0.03em;
-  font-size: 1.6rem;
-  color: rgb(var(--text));
   margin: 0;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: rgb(var(--text));
+  line-height: 1.15;
 }
 
 @media (min-width: 640px) {
   .project-name {
-    font-size: 1.9rem;
+    font-size: 22px;
   }
 }
 
 .project-desc {
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 0.98rem;
   line-height: 1.75;
   color: rgb(var(--muted));
@@ -205,15 +254,5 @@
     grid-template-columns: 220px 1fr;
     gap: 18px;
     align-items: baseline;
-  }
-}
-
-.project--secondary .project-name {
-  font-size: 1.4rem;
-}
-
-@media (min-width: 640px) {
-  .project--secondary .project-name {
-    font-size: 1.6rem;
   }
 }
