@@ -40,9 +40,8 @@ export default function HomeAbout() {
         kicker: "Personal",
         title: "Music",
         body: [
-          "Placeholder: I’m also a big music fan, and I like building routines around long sessions with good albums on.",
-          "Placeholder: I’ll add a short overview here later (what I listen to, how I discover music, and a few favourites).",
-          "Placeholder: This section may later include a small Spotify-style snapshot or recent listens widget.",
+          "I’m a big music fan, basically any genre is on the table for me. I love spending time trying to discover new artists and albums and still have a very big physical music collection. I love to hear what music people are enjoying and trying to find an artist they may not have heard of to fit their taste.",
+          "Below is a small, very mixed genre playlist with a variety of lesser known and more well known artists I've been enjoying recently if you'd like to take a listen.",
         ],
       },
     ],
@@ -51,41 +50,65 @@ export default function HomeAbout() {
 
   return (
     <section className="section" aria-label="About">
-      <div className="about-stack about-stack--plain">
-        {aboutBlocks.map((block, idx) => {
-          const isSport = block.kicker === "Personal" && block.title === "Sport";
+      <div id="about" className="section-anchor" />
 
-          return (
-            <section key={`${block.title}-${idx}`} className="about-block">
-              <p className="kicker">{block.kicker}</p>
-              <h3 className="about-title">{block.title}</h3>
+      <div className="container-max">
+        <div className="about-stack about-stack--plain">
+          {aboutBlocks.map((block, idx) => {
+            const isSport =
+              block.kicker === "Personal" && block.title === "Sport";
+            const isMusic =
+              block.kicker === "Personal" && block.title === "Music";
 
-              <div className="about-body">
-                {block.body.map((line, i) => (
-                  <p key={i} className="about-text">
-                    {line}
-                  </p>
-                ))}
-              </div>
+            return (
+              <section key={`${block.title}-${idx}`} className="about-block">
+                <p className="kicker">{block.kicker}</p>
+                <h3 className="about-title">{block.title}</h3>
 
-              {block.bullets && block.bullets.length > 0 && (
-                <ul className="about-bullets">
-                  {block.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
-                  ))}
-                </ul>
-              )}
-
-              {isSport ? (
-                <div style={{ marginTop: 26 }}>
-                  <div className="card-subtle">
-                    <StravaStats />
+                {block.body.length ? (
+                  <div className="about-body">
+                    {block.body.map((line, i) => (
+                      <p key={i} className="about-text">
+                        {line}
+                      </p>
+                    ))}
                   </div>
-                </div>
-              ) : null}
-            </section>
-          );
-        })}
+                ) : null}
+
+                {block.bullets && block.bullets.length > 0 && (
+                  <ul className="about-bullets">
+                    {block.bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {isSport ? (
+                  <div style={{ marginTop: 26 }}>
+                    <div className="card-subtle">
+                      <StravaStats />
+                    </div>
+                  </div>
+                ) : null}
+
+                {isMusic ? (
+                  <div style={{ marginTop: 26 }}>
+                    <iframe
+                      style={{ borderRadius: 12, display: "block" }}
+                      src="https://open.spotify.com/embed/playlist/6iOuXEPPs5liMYgc2ri3oM?utm_source=generator&theme=0"
+                      width="100%"
+                      height="352"
+                      frameBorder={0}
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="lazy"
+                      title="Spotify playlist"
+                    />
+                  </div>
+                ) : null}
+              </section>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
