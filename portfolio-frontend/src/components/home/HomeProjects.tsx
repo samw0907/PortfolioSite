@@ -1,7 +1,26 @@
 // src/components/home/HomeProjects.tsx
+import { useState } from "react";
 import "../../styles/homeProjects.css";
 
+import TriSwift1 from "../../assets/TriSwift1.png";
+import TriSwift2 from "../../assets/TriSwift2.png";
+import TriSwift3 from "../../assets/TriSwift3.png";
+import TriSwift4 from "../../assets/TriSwift4.png";
+import TriSwift5 from "../../assets/TriSwift5.png";
+
+const triswiftImages = [TriSwift1, TriSwift2, TriSwift3, TriSwift4, TriSwift5];
+
 export default function HomeProjects() {
+  const [activeImage, setActiveImage] = useState(0);
+
+  function prevImage() {
+    setActiveImage((i) => (i === 0 ? triswiftImages.length - 1 : i - 1));
+  }
+
+  function nextImage() {
+    setActiveImage((i) => (i === triswiftImages.length - 1 ? 0 : i + 1));
+  }
+
   return (
     <section className="section projects" aria-label="Projects">
       <div id="projects" className="section-anchor" />
@@ -39,8 +58,37 @@ export default function HomeProjects() {
                   </span>
                 ))}
               </div>
+            </div>
 
-              <div className="project-actions">
+            <div className="project-visual">
+              <div className="project-media">
+                <img
+                  src={triswiftImages[activeImage]}
+                  alt={`TriSwift screenshot ${activeImage + 1}`}
+                  className="project-screenshot"
+                />
+
+                <div className="project-visual-controls">
+                  <button
+                    type="button"
+                    className="project-visual-btn"
+                    onClick={prevImage}
+                    aria-label="Previous screenshot"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    className="project-visual-btn"
+                    onClick={nextImage}
+                    aria-label="Next screenshot"
+                  >
+                    ›
+                  </button>
+                </div>
+              </div>
+
+              <div className="project-visual-actions">
                 <a
                   className="btn btn-secondary"
                   href="https://github.com/samw0907/TriSwift"
@@ -59,14 +107,10 @@ export default function HomeProjects() {
                 </a>
               </div>
             </div>
-
-            <div className="project-visual" aria-hidden="true">
-              <div className="project-visual-inner">
-                <div className="project-visual-chip">Screenshots next pass</div>
-              </div>
-            </div>
           </div>
         </article>
+
+        <p className="kicker">In progress</p>
 
         <article className="project project--secondary" aria-label="ToolSharer project">
           <div className="project-rail" aria-hidden="true" />
