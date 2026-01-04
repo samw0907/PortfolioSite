@@ -1,0 +1,219 @@
+/* src/styles/homeProjects.css */
+
+.projects {
+  padding-top: 44px;
+}
+
+.projects-title {
+  margin-top: 10px;
+}
+
+.projects-stack {
+  margin-top: 26px;
+  display: grid;
+  gap: 18px;
+}
+
+@media (min-width: 640px) {
+  .projects-stack {
+    margin-top: 34px;
+    gap: 22px;
+  }
+}
+
+.project {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid rgb(var(--border) / 0.10);
+  background: linear-gradient(
+      180deg,
+      rgb(var(--surface) / 0.92) 0%,
+      rgb(var(--surface-2) / 0.92) 100%
+    );
+  overflow: hidden;
+}
+
+.project::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+      1200px 600px at 22% 0%,
+      rgb(var(--accent) / 0.10),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 520px at 88% 20%,
+      rgb(var(--accent-warm) / 0.08),
+      transparent 62%
+    );
+  opacity: 0.95;
+}
+
+.project-rail {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgb(var(--accent)) 0%,
+    rgb(var(--accent-2)) 55%,
+    rgb(var(--accent-warm)) 110%
+  );
+  opacity: 0.95;
+}
+
+.project-grid {
+  position: relative;
+  z-index: 1;
+  padding: 22px 18px 18px 34px;
+  display: grid;
+  gap: 18px;
+}
+
+@media (min-width: 640px) {
+  .project-grid {
+    padding: 28px 24px 24px 44px;
+    gap: 22px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-grid {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    align-items: stretch;
+    gap: 28px;
+  }
+}
+
+.project-main {
+  min-width: 0;
+}
+
+.project-name {
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  font-size: 1.6rem;
+  color: rgb(var(--text));
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .project-name {
+    font-size: 1.9rem;
+  }
+}
+
+.project-desc {
+  margin-top: 12px;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: rgb(var(--muted));
+  max-width: 70ch;
+}
+
+.project-tags {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.project-visual {
+  position: relative;
+  z-index: 1;
+  border-radius: 18px;
+  border: 1px solid rgb(var(--border) / 0.10);
+  background: rgb(var(--surface));
+  overflow: hidden;
+  min-height: 190px;
+}
+
+@media (min-width: 1024px) {
+  .project-visual {
+    min-height: 100%;
+  }
+}
+
+.project-visual-inner {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 400px at 35% 30%, rgb(var(--accent) / 0.22), transparent 60%),
+    radial-gradient(640px 380px at 80% 70%, rgb(var(--accent-warm) / 0.18), transparent 60%),
+    linear-gradient(135deg, rgb(var(--surface-2)) 0%, rgb(var(--surface)) 100%);
+  transform: translateZ(0);
+  transition: transform 220ms ease, filter 220ms ease, opacity 220ms ease;
+  opacity: 0.95;
+}
+
+.project-visual-chip {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgb(var(--text));
+  background: rgb(var(--bg) / 0.70);
+  border: 1px solid rgb(var(--border) / 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.project--featured:hover .project-visual-inner {
+  transform: scale(1.03);
+  filter: saturate(1.05);
+}
+
+.project--secondary {
+  background: rgb(var(--surface));
+}
+
+.project-secondary {
+  position: relative;
+  z-index: 1;
+  padding: 20px 18px 18px 34px;
+}
+
+@media (min-width: 640px) {
+  .project-secondary {
+    padding: 24px 24px 22px 44px;
+  }
+}
+
+.project-secondary-head {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .project-secondary-head {
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+    align-items: baseline;
+  }
+}
+
+.project--secondary .project-name {
+  font-size: 1.4rem;
+}
+
+@media (min-width: 640px) {
+  .project--secondary .project-name {
+    font-size: 1.6rem;
+  }
+}
