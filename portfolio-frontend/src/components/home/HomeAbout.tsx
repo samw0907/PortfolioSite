@@ -15,7 +15,7 @@ export default function HomeAbout() {
       kicker: "Background",
       title: "Earth Science & Geo-Environmental Consulting",
       body: [
-        "I hold a BSc (Hons) in Earth Science from the University of Glasgow, with coursework covering structural geology, economic minerals, and digital geoscience. My academic work included understanding how satellite imagery is generated from surface reflectance, how raster datasets are produced, and how spectral bands are used to interpret hyperspectral data for environmental and geological applications.",
+        "I hold a BSc (Hons) in Earth Science from the University of Glasgow, with coursework covering structural geology, economic minerals, climate and digital geoscience. My academic work included understanding how satellite imagery is generated from surface reflectance, how raster datasets are produced, and how spectral bands are used to interpret hyperspectral data for environmental and geological applications.",
         "Professionally, I spent several years working in geo-environmental consulting in Scotland and Finland, contributing to technically detailed site investigations and analysing geological and environmental data to inform remediation and development work. My work included:",
       ],
       bullets: [
@@ -53,6 +53,7 @@ export default function HomeAbout() {
   return (
     <section className="section" aria-label="About">
       <div id="about" className="section-anchor" />
+      <div id="background" className="section-anchor" />
 
       <div className="container-max">
         <div className="about-stack about-stack--plain">

@@ -10,8 +10,8 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { href: "#home", label: "Home", id: "home" },
-  { href: "#about", label: "About", id: "about" },
   { href: "#projects", label: "Projects", id: "projects" },
+  { href: "#background", label: "About", id: "background" },
   { href: "#contact", label: "Contact", id: "contact" },
 ];
 

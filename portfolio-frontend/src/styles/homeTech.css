@@ -1,0 +1,79 @@
+/* src/styles/homeTech.css */
+
+.tech-header {
+  position: relative;
+  padding-top: 6px;
+}
+
+.tech-header::before {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: rgb(var(--accent));
+  border-radius: 999px;
+  opacity: 0.95;
+}
+
+.tech-heading {
+  margin-top: 14px;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  color: rgb(var(--text));
+  line-height: 1.15;
+}
+
+.tech-grid {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 520px) {
+  .tech-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 860px) {
+  .tech-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.tech-item {
+  border-radius: 18px;
+  border: 1px solid rgb(var(--border) / 0.10);
+  background: rgb(var(--surface));
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.tech-iconWrap {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+}
+
+.tech-icon {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+.tech-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: rgb(var(--text));
+  text-align: center;
+  line-height: 1.2;
+}

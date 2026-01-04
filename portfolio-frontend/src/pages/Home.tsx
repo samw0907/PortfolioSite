@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import HomeHero from "../components/home/HomeHero";
 import HomeProfile from "../components/home/HomeProfile";
+import HomeTech from "../components/home/HomeTech";
 import HomeProjects from "../components/home/HomeProjects";
 import HomeAbout from "../components/home/HomeAbout";
 import HomeContact from "../components/home/HomeContact";
@@ -73,6 +74,7 @@ export default function Home() {
 
         <div className="container-max">
           <HomeProfile />
+          <HomeTech />
           <HomeProjects />
           <HomeAbout />
           <HomeContact />
