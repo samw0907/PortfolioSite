@@ -6,8 +6,36 @@
 
   background: rgb(var(--bg));
   border-bottom: 1px solid rgb(var(--border) / 0.10);
+
+  position: sticky;
 }
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      900px 520px at 12% 40%,
+      rgb(var(--accent) / 0.12),
+      transparent 62%
+    ),
+    radial-gradient(
+      1200px 600px at 88% 30%,
+      rgb(var(--accent) / 0.12),
+      transparent 58%
+    );
+
+  opacity: 0.95;
+}
+
+
 .navbar-row {
+  position: relative;
+  z-index: 1;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -77,6 +105,9 @@
 }
 
 .navbar-mobile {
+  position: relative;
+  z-index: 1;
+
   padding-bottom: 20px;
 }
 
