@@ -23,6 +23,10 @@ export default function HomeProjects() {
     setActiveImage((i) => (i === triswiftImages.length - 1 ? 0 : i + 1));
   }
 
+  function goToImage(index: number) {
+    setActiveImage(index);
+  }
+
   function openGallery(index: number) {
     setActiveImage(index);
     setGalleryOpen(true);
@@ -173,6 +177,10 @@ export default function HomeProjects() {
             }}
           >
             <div className="gallery-dialog">
+              <div className="gallery-counter">
+                {activeImage + 1} / {triswiftImages.length}
+              </div>
+
               <button
                 type="button"
                 className="gallery-close"
@@ -207,6 +215,23 @@ export default function HomeProjects() {
                 >
                   ›
                 </button>
+              </div>
+
+              <div className="gallery-dots" aria-label="Gallery image dots">
+                {triswiftImages.map((_, idx) => {
+                  const active = idx === activeImage;
+
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      className={`gallery-dot ${active ? "is-active" : ""}`}
+                      onClick={() => goToImage(idx)}
+                      aria-label={`Go to image ${idx + 1}`}
+                      aria-current={active ? "true" : undefined}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>
