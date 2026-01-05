@@ -1,6 +1,7 @@
 // src/pages/Home.tsx
 import { useEffect, useRef } from "react";
 import HomeHero from "../components/home/HomeHero";
+import HomeCerts from "../components/home/HomeCerts";
 import HomeProfile from "../components/home/HomeProfile";
 import HomeTech from "../components/home/HomeTech";
 import HomeProjects from "../components/home/HomeProjects";
@@ -71,6 +72,7 @@ export default function Home() {
 
       <div className="home-fx-content">
         <HomeHero />
+        <HomeCerts />
 
         <div className="container-max">
           <HomeProfile />

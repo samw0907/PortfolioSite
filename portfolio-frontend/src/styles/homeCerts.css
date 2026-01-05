@@ -1,0 +1,44 @@
+/* src/styles/homeCerts.css */
+
+.certs-block {
+  padding-top: 28px;
+}
+
+.certs-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .certs-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+.cert-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.cert-item img {
+  max-width: 160px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cert-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgb(var(--text));
+  opacity: 0.9;
+  text-align: center;
+}

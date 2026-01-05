@@ -55,79 +55,77 @@ export default function HomeAbout() {
       <div id="about" className="section-anchor" />
       <div id="background" className="section-anchor" />
 
-      <div className="container-max">
-        <div className="about-stack about-stack--plain">
-          <section className="about-block about-block--background">
-            {backgroundBlock.kicker ? <p className="kicker">{backgroundBlock.kicker}</p> : null}
-            <h3 className="about-heading">{backgroundBlock.title}</h3>
+      <div className="about-stack about-stack--plain">
+        <section className="about-block about-block--background">
+          {backgroundBlock.kicker ? <p className="kicker">{backgroundBlock.kicker}</p> : null}
+          <h3 className="about-heading">{backgroundBlock.title}</h3>
 
-            {backgroundBlock.body.length ? (
-              <div className="about-body">
-                {backgroundBlock.body.map((line, i) => (
-                  <p key={i} className="about-text">
-                    {line}
-                  </p>
-                ))}
-              </div>
-            ) : null}
+          {backgroundBlock.body.length ? (
+            <div className="about-body">
+              {backgroundBlock.body.map((line, i) => (
+                <p key={i} className="about-text">
+                  {line}
+                </p>
+              ))}
+            </div>
+          ) : null}
 
-            {backgroundBlock.bullets && backgroundBlock.bullets.length > 0 ? (
-              <ul className="about-bullets">
-                {backgroundBlock.bullets.map((b, i) => (
-                  <li key={i}>{b}</li>
-                ))}
-              </ul>
-            ) : null}
-          </section>
+          {backgroundBlock.bullets && backgroundBlock.bullets.length > 0 ? (
+            <ul className="about-bullets">
+              {backgroundBlock.bullets.map((b, i) => (
+                <li key={i}>{b}</li>
+              ))}
+            </ul>
+          ) : null}
+        </section>
 
-          <section className="about-group" aria-label="Personal">
-            <p className="kicker">Personal</p>
+        <section className="about-group" aria-label="Personal">
+          <p className="kicker">Personal</p>
 
-            {personalBlocks.map((block) => {
-              const isSport = block.title === "Sport";
-              const isMusic = block.title === "Music";
+          {personalBlocks.map((block) => {
+            const isSport = block.title === "Sport";
+            const isMusic = block.title === "Music";
 
-              return (
-                <section key={block.title} className="about-subblock">
-                  <h3 className="about-subheading">{block.title}</h3>
+            return (
+              <section key={block.title} className="about-subblock">
+                <h3 className="about-subheading">{block.title}</h3>
 
-                  {block.body.length ? (
-                    <div className="about-body">
-                      {block.body.map((line, i) => (
-                        <p key={i} className="about-text">
-                          {line}
-                        </p>
-                      ))}
+                {block.body.length ? (
+                  <div className="about-body">
+                    {block.body.map((line, i) => (
+                      <p key={i} className="about-text">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
+
+                {isSport ? (
+                  <div className="about-embed">
+                    <div className="card-subtle">
+                      <StravaStats />
                     </div>
-                  ) : null}
+                  </div>
+                ) : null}
 
-                  {isSport ? (
-                    <div className="about-embed">
-                      <div className="card-subtle">
-                        <StravaStats />
-                      </div>
-                    </div>
-                  ) : null}
-
-                  {isMusic ? (
-                    <div className="about-embed">
-                      <iframe
-                        style={{ borderRadius: 12, display: "block" }}
-                        src="https://open.spotify.com/embed/playlist/6iOuXEPPs5liMYgc2ri3oM?utm_source=generator&theme=0"
-                        width="100%"
-                        height="352"
-                        frameBorder={0}
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"
-                        title="Spotify playlist"
-                      />
-                    </div>
-                  ) : null}
-                </section>
-              );
-            })}
-          </section>
-        </div>
+                {isMusic ? (
+                  <div className="about-embed">
+                    <iframe
+                      style={{ borderRadius: 12, display: "block" }}
+                      src="https://open.spotify.com/embed/playlist/6iOuXEPPs5liMYgc2ri3oM?utm_source=generator&theme=0"
+                      width="100%"
+                      height="352"
+                      frameBorder={0}
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="lazy"
+                      title="Spotify playlist"
+                    />
+                  </div>
+                ) : null}
+              </section>
+            );
+          })}
+        </section>
       </div>
     </section>
   );
