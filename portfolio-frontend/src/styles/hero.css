@@ -124,7 +124,7 @@ clip-path: polygon(
 
 .hero-slab-6 {
   position: absolute;
-  top: 40%;
+  top: 40.3%;
   left: -16%;
   width: min(540px, 56vw);
   height: min(540px, 56vw);
@@ -137,13 +137,13 @@ clip-path: polygon(
   box-shadow: 0 20px 52px rgb(var(--accent-warm) / 0.22);
   transform: rotate(12deg);
   border-radius: 46px;
-  clip-path: polygon(0% 12%, 92% 0%, 100% 92%, 12% 100%);
+  clip-path: polygon(0% 12%, 92% 0%, 100% 99%, 8% 90%);
   opacity: 0.78;
 }
 
 .hero-slab-7 {
   position: absolute;
-  top: 62%;
+  top: 47%;
   right: -14%;
   width: min(520px, 52vw);
   height: min(520px, 52vw);
@@ -162,8 +162,8 @@ clip-path: polygon(
 
 .hero-slab-8 {
   position: absolute;
-  top: 72%;
-  left: -18%;
+  top: 56%;
+  left: -12.5%;
   width: min(520px, 54vw);
   height: min(520px, 54vw);
   background: linear-gradient(
@@ -175,13 +175,13 @@ clip-path: polygon(
   box-shadow: 0 20px 52px rgb(var(--accent-warm) / 0.22);
   transform: rotate(8deg);
   border-radius: 42px;
-  clip-path: polygon(6% 0%, 100% 10%, 92% 100%, 0% 86%);
-  opacity: 0.78;
+  clip-path: polygon(6% 0%, 100% 10%, 94% 94%, 2% 94%);
+  opacity: 0.64;
 }
 
 .hero-slab-9 {
   position: absolute;
-  top: 82%;
+  top: 66.3%;
   right: -10%;
   width: min(520px, 52vw);
   height: min(520px, 52vw);
@@ -200,8 +200,8 @@ clip-path: polygon(
 
 .hero-slab-10 {
   position: absolute;
-  top: 92%;
-  left: -12%;
+  top: 75.59%;
+  left: -15%;
   width: min(520px, 52vw);
   height: min(520px, 52vw);
   background: linear-gradient(
@@ -213,7 +213,45 @@ clip-path: polygon(
   box-shadow: 0 20px 52px rgb(var(--accent-warm) / 0.22);
   transform: rotate(10deg);
   border-radius: 44px;
-  clip-path: polygon(0% 10%, 88% 0%, 100% 86%, 16% 100%);
+  clip-path: polygon(1% 23%, 59% 0%, 90% 100%, 16% 90%);
+  opacity: 0.78;
+}
+
+.hero-slab-11 {
+  position: absolute;
+  top: 87%;
+  right: -19%;
+  width: min(520px, 52vw);
+  height: min(520px, 52vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent) / 0.50) 0%,
+    rgb(var(--accent-2) / 0.40) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 20px 56px rgb(var(--accent) / 0.20);
+  transform: rotate(-4deg);
+  border-radius: 38px;
+  clip-path: polygon(10% 8%, 100% 0%, 92% 100%, 0% 84%);
+  opacity: 0.78;
+}
+
+.hero-slab-12 {
+  position: absolute;
+  top: 95.5%;
+  left: -13%;
+  width: min(720px, 52vw);
+  height: min(520px, 52vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent-warm) / 0.48) 0%,
+    rgb(var(--accent-warm) / 0.38) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 20px 52px rgb(var(--accent-warm) / 0.22);
+  transform: rotate(10deg);
+  border-radius: 44px;
+  clip-path: polygon(1% 23%, 59% 0%, 90% 100%, 16% 90%);
   opacity: 0.78;
 }
 
