@@ -1,3 +1,4 @@
+// src/components/home/HomeHero.tsx
 export default function HomeHero() {
   return (
     <section className="section section--hero">
@@ -10,9 +11,10 @@ export default function HomeHero() {
 
                 <h1 className="hero-title-strong">
                   <span className="hero-title-outline">Sam Williamson</span>
-                  <span className="hero-title-spot hero-spotlight">Sam</span>
-                  <span className="hero-title-spot hero-spotlight">
-                    Williamson
+
+                  <span className="hero-spotlight hero-title-fill">
+                    <span className="hero-title-spot">Sam</span>
+                    <span className="hero-title-spot">Williamson</span>
                   </span>
                 </h1>
 

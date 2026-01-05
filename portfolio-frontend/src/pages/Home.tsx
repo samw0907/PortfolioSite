@@ -12,11 +12,14 @@ export default function Home() {
   const pageFxRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const el = pageFxRef.current;
-    if (!el) return;
+    const root = pageFxRef.current;
+    if (!root) return;
 
-    el.style.setProperty("--mx", "40%");
-    el.style.setProperty("--my", "34%");
+    const target =
+      (root.querySelector(".home-fx-bg") as HTMLDivElement | null) ?? root;
+
+    root.style.setProperty("--mx", "40%");
+    root.style.setProperty("--my", "34%");
 
     let rafId: number | null = null;
     let lastX = 0;
@@ -25,7 +28,7 @@ export default function Home() {
     const applySpot = () => {
       rafId = null;
 
-      const rect = el.getBoundingClientRect();
+      const rect = target.getBoundingClientRect();
       if (rect.width === 0 || rect.height === 0) return;
 
       const x = ((lastX - rect.left) / rect.width) * 100;
@@ -34,8 +37,8 @@ export default function Home() {
       const clampedX = Math.max(0, Math.min(100, x));
       const clampedY = Math.max(0, Math.min(100, y));
 
-      el.style.setProperty("--mx", `${clampedX}%`);
-      el.style.setProperty("--my", `${clampedY}%`);
+      root.style.setProperty("--mx", `${clampedX}%`);
+      root.style.setProperty("--my", `${clampedY}%`);
     };
 
     const onPointerMove = (e: PointerEvent) => {
@@ -44,10 +47,10 @@ export default function Home() {
       if (rafId === null) rafId = window.requestAnimationFrame(applySpot);
     };
 
-    el.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
 
     return () => {
-      el.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointermove", onPointerMove);
       if (rafId !== null) cancelAnimationFrame(rafId);
     };
   }, []);
@@ -58,22 +61,20 @@ export default function Home() {
 
       <div className="home-fx-bg" aria-hidden="true">
         <div className="hero-bg">
-          <div className="hero-bg-stage">
-            <div className="hero-slab" />
-            <div className="hero-slab-2" />
-            <div className="hero-slab-3" />
-            <div className="hero-slab-4" />
-            <div className="hero-slab-5" />
-            <div className="hero-slab-6" />
-            <div className="hero-slab-7" />
-            <div className="hero-slab-8" />
-            <div className="hero-slab-9" />
-            <div className="hero-slab-10" />
-            <div className="hero-slab-11" />
-            <div className="hero-slab-12" />
-            <div className="hero-spot-glow" />
-            <div className="hero-noise" />
-          </div>
+          <div className="hero-slab" />
+          <div className="hero-slab-2" />
+          <div className="hero-slab-3" />
+          <div className="hero-slab-4" />
+          <div className="hero-slab-5" />
+          <div className="hero-slab-6" />
+          <div className="hero-slab-7" />
+          <div className="hero-slab-8" />
+          <div className="hero-slab-9" />
+          <div className="hero-slab-10" />
+          <div className="hero-slab-11" />
+          <div className="hero-slab-12" />
+          <div className="hero-spot-glow" />
+          <div className="hero-noise" />
         </div>
       </div>
 
