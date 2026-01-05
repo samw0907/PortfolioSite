@@ -1,5 +1,11 @@
 /* src/styles/hero.css */
 
+:root {
+  --hero-design-w: 2560;
+  --hero-scale: calc(100vw / (var(--hero-design-w) * 1px));
+  --hero-scale: clamp(0.78, var(--hero-scale), 1.08);
+}
+
 .hero-frame {
   min-height: calc(100vh - var(--nav-h));
   display: flex;
@@ -11,6 +17,16 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-bg-stage {
+  position: absolute;
+  inset: 0;
+  transform-origin: top left;
+  transform: scale(var(--hero-scale));
+  width: calc(100% / var(--hero-scale));
+  height: calc(100% / var(--hero-scale));
 }
 
 .hero-slab {
@@ -36,7 +52,7 @@
 
 .hero-slab-2 {
   position: absolute;
-  top:9.7%;
+  top: 9.7%;
   left: -12%;
   width: min(520px, 60vw);
   height: min(520px, 60vw);
@@ -49,12 +65,7 @@
   box-shadow: 0 20px 52px rgb(var(--accent-warm) / 0.22);
   transform: rotate(18deg);
   border-radius: 40px;
-clip-path: polygon(
-  6% 8%,
-  88% 0%,
-  69% 65%,
-  8% 100%
-);
+  clip-path: polygon(6% 8%, 88% 0%, 69% 65%, 8% 100%);
   opacity: 0.68;
 }
 
@@ -92,16 +103,9 @@ clip-path: polygon(
   box-shadow: 0 20px 52px rgb(var(--accent-warm) / 0.22);
   transform: translateX(5%) translateY(-4%) rotate(-14deg);
   border-radius: 44px;
-  clip-path: polygon(
-    2% 2%,
-    90% 22%,
-    88% 99%,
-    8% 78%
-  );
+  clip-path: polygon(2% 2%, 90% 22%, 88% 99%, 8% 78%);
   opacity: 0.65;
 }
-
-
 
 .hero-slab-5 {
   position: absolute;

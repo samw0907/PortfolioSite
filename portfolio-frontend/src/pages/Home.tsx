@@ -58,20 +58,22 @@ export default function Home() {
 
       <div className="home-fx-bg" aria-hidden="true">
         <div className="hero-bg">
-          <div className="hero-slab" />
-          <div className="hero-slab-2" />
-          <div className="hero-slab-3" />
-          <div className="hero-slab-4" />
-          <div className="hero-slab-5" />
-          <div className="hero-slab-6" />
-          <div className="hero-slab-7" />
-          <div className="hero-slab-8" />
-          <div className="hero-slab-9" />
-          <div className="hero-slab-10" />
-          <div className="hero-slab-11" />
-          <div className="hero-slab-12" />
-          <div className="hero-spot-glow" />
-          <div className="hero-noise" />
+          <div className="hero-bg-stage">
+            <div className="hero-slab" />
+            <div className="hero-slab-2" />
+            <div className="hero-slab-3" />
+            <div className="hero-slab-4" />
+            <div className="hero-slab-5" />
+            <div className="hero-slab-6" />
+            <div className="hero-slab-7" />
+            <div className="hero-slab-8" />
+            <div className="hero-slab-9" />
+            <div className="hero-slab-10" />
+            <div className="hero-slab-11" />
+            <div className="hero-slab-12" />
+            <div className="hero-spot-glow" />
+            <div className="hero-noise" />
+          </div>
         </div>
       </div>
 
