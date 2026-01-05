@@ -31,7 +31,9 @@ export default function Navbar() {
 
   useEffect(() => {
     return () => {
-      if (lockTimerRef.current !== null) window.clearTimeout(lockTimerRef.current);
+      if (lockTimerRef.current !== null) {
+        window.clearTimeout(lockTimerRef.current);
+      }
     };
   }, []);
 
@@ -68,26 +70,35 @@ export default function Navbar() {
     return () => obs.disconnect();
   }, [ids]);
 
-  const onNavClick = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setOpen(false);
+  const onNavClick =
+    (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      setOpen(false);
 
-    lockRef.current = true;
-    setActiveId(id);
-    scrollToId(id);
-    history.replaceState(null, "", `#${id}`);
+      lockRef.current = true;
+      setActiveId(id);
+      scrollToId(id);
+      history.replaceState(null, "", `#${id}`);
 
-    if (lockTimerRef.current !== null) window.clearTimeout(lockTimerRef.current);
-    lockTimerRef.current = window.setTimeout(() => {
-      lockRef.current = false;
-    }, 700);
-  };
+      if (lockTimerRef.current !== null) {
+        window.clearTimeout(lockTimerRef.current);
+      }
+
+      lockTimerRef.current = window.setTimeout(() => {
+        lockRef.current = false;
+      }, 700);
+    };
 
   return (
     <header id="main-navbar" className="navbar">
       <div className="container-max">
         <div className="navbar-row">
-          <a href="#home" onClick={onNavClick("home")} className="navbar-brand" aria-label="Go to home">
+          <a
+            href="#home"
+            onClick={onNavClick("home")}
+            className="navbar-brand navbar-brand--rail"
+            aria-label="Go to home"
+          >
             Sam Williamson
           </a>
 
@@ -101,7 +112,9 @@ export default function Navbar() {
                     key={item.id}
                     href={item.href}
                     onClick={onNavClick(item.id)}
-                    className={`navbar-link ${active ? "is-active" : ""}`}
+                    className={`navbar-link navbar-link--rail ${
+                      active ? "is-active" : ""
+                    }`}
                     aria-current={active ? "page" : undefined}
                   >
                     {item.label}
@@ -136,7 +149,9 @@ export default function Navbar() {
                       key={item.id}
                       href={item.href}
                       onClick={onNavClick(item.id)}
-                      className={`navbar-link navbar-link-lg ${active ? "is-active" : ""}`}
+                      className={`navbar-link navbar-link--rail navbar-link-lg ${
+                        active ? "is-active" : ""
+                      }`}
                       aria-current={active ? "page" : undefined}
                     >
                       {item.label}
