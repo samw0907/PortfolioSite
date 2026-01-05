@@ -1,3 +1,5 @@
+/* src/styles/hero.css */
+
 .hero-frame {
   min-height: calc(100vh - var(--nav-h));
   display: flex;
@@ -13,7 +15,8 @@
 
 .hero-slab {
   position: absolute;
-  inset: -26% -12% auto auto;
+  left: -12%;
+  bottom: -34%;
   width: min(560px, 55vw);
   height: min(560px, 55vw);
   background: linear-gradient(
@@ -48,10 +51,9 @@
   opacity: 0.75;
 }
 
-/* 3 (MID RIGHT - cool) */
 .hero-slab-3 {
   position: absolute;
-  top: 24%; /* moved up */
+  top: 24%;
   right: -18%;
   width: min(520px, 52vw);
   height: min(520px, 52vw);
@@ -68,10 +70,9 @@
   opacity: 0.70;
 }
 
-/* 4 (LOWER LEFT - warm) */
 .hero-slab-4 {
   position: absolute;
-  top: 46%; /* moved up */
+  top: 46%;
   left: -22%;
   width: min(560px, 58vw);
   height: min(560px, 58vw);
@@ -88,10 +89,9 @@
   opacity: 0.62;
 }
 
-/* 5 (BOTTOM RIGHT - cool) */
 .hero-slab-5 {
   position: absolute;
-  top: 72%; /* moved up */
+  top: 72%;
   right: -18%;
   width: min(500px, 50vw);
   height: min(500px, 50vw);
@@ -106,9 +106,8 @@
   border-radius: 42px;
   clip-path: polygon(10% 0%, 100% 14%, 88% 100%, 0% 86%);
   opacity: 0.58;
-}
+}¨
 
-/* 6 (DEEP BOTTOM LEFT - warm) */
 .hero-slab-6 {
   position: absolute;
   bottom: -32%;
@@ -128,10 +127,9 @@
   opacity: 0.52;
 }
 
-/* 7 (TOP LEFT - warm) */
 .hero-slab-7 {
   position: absolute;
-  top: 6%; /* moved up */
+  top: 6%;
   left: -18%;
   width: min(520px, 54vw);
   height: min(520px, 54vw);
@@ -148,7 +146,6 @@
   opacity: 0.66;
 }
 
-/* 8 (NEW - TOP RIGHT - cool, clone-ish of #1) */
 .hero-slab-8 {
   position: absolute;
   top: -18%;
@@ -168,7 +165,6 @@
   opacity: 0.78;
 }
 
-/* 9 (NEW - TOP LEFT - warm, clone-ish of #7) */
 .hero-slab-9 {
   position: absolute;
   top: -10%;
@@ -188,7 +184,6 @@
   opacity: 0.70;
 }
 
-/* 10 (NEW - MID RIGHT - cool) */
 .hero-slab-10 {
   position: absolute;
   top: 40%;
@@ -208,7 +203,6 @@
   opacity: 0.62;
 }
 
-/* 11 (NEW - MID LEFT - warm) */
 .hero-slab-11 {
   position: absolute;
   top: 30%;
@@ -228,7 +222,6 @@
   opacity: 0.58;
 }
 
-/* 12 (NEW - LOWER RIGHT - cool) */
 .hero-slab-12 {
   position: absolute;
   top: 62%;
@@ -248,7 +241,6 @@
   opacity: 0.56;
 }
 
-/* 13 (NEW - LOWER LEFT - warm) */
 .hero-slab-13 {
   position: absolute;
   top: 66%;
@@ -268,7 +260,6 @@
   opacity: 0.52;
 }
 
-/* 14 (NEW - DEEP BOTTOM RIGHT - cool) */
 .hero-slab-14 {
   position: absolute;
   bottom: -30%;
@@ -287,7 +278,6 @@
   clip-path: polygon(6% 0%, 100% 12%, 92% 100%, 0% 88%);
   opacity: 0.50;
 }
-
 
 .hero-noise {
   position: absolute;
@@ -310,6 +300,19 @@
     );
   background-size: 90px 90px, 120px 120px, 140px 140px;
   background-position: 0 0, 30px 40px, 20px 10px;
+}
+
+.hero-spot-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--mx, 40%) var(--my, 34%),
+    rgb(var(--accent) / 0.26) 0%,
+    rgb(var(--accent) / 0.14) 8%,
+    transparent 24%
+  );
+  opacity: 1;
 }
 
 .hero-grid {
@@ -393,19 +396,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   filter: saturate(1.10);
-}
-
-.hero-spot-glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at var(--mx, 40%) var(--my, 34%),
-    rgb(var(--accent) / 0.26) 0%,
-    rgb(var(--accent) / 0.14) 8%,
-    transparent 24%
-  );
-  opacity: 1;
 }
 
 .hero-lead {

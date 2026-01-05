@@ -5,6 +5,7 @@
   width: 100%;
 }
 
+/* The background FX layer that holds the slabs */
 .home-fx-bg {
   position: absolute;
   inset: 0;
@@ -18,43 +19,27 @@
   background: rgb(var(--hero-bg));
 }
 
-.home-fx .hero-frame {
-  background: transparent;
+/* Ensure content sits above the FX */
+.home-fx-content {
+  position: relative;
+  z-index: 10;
 }
 
-.home-fx .hero-frame > .hero-bg {
-  display: none;
-}
-
+/* The FX container that holds the slabs */
 .home-fx-bg .hero-bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.home-fx-bg .hero-slab {
-  inset: auto;
-  top: -18vh;
-  right: -10vw;
-}
-
-.home-fx-bg .hero-slab-2 {
-  inset: auto;
-  left: -10vw;
-  bottom: -26vh;
-}
-
+/* Glow/noise live inside the FX layer */
 .home-fx-bg .hero-spot-glow,
 .home-fx-bg .hero-noise {
   position: absolute;
   inset: 0;
 }
 
-.home-fx-content {
-  position: relative;
-  z-index: 10;
-}
-
+/* If you only want glow in dark mode */
 :root:not(.dark) .hero-spot-glow {
   display: none;
 }

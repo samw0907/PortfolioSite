@@ -4,8 +4,10 @@
 
 @import "./styles/ui.css";
 @import "./styles/navbar.css";
-@import "./styles/hero.css";
+
 @import "./styles/fx.css";
+@import "./styles/hero.css";
+
 @import "./styles/about.css";
 @import "./styles/footer.css";
 @import "./styles/strava.css";
