@@ -1,4 +1,5 @@
 // src/components/home/HomeProjects.tsx
+
 import { useState } from "react";
 import "../../styles/homeProjects.css";
 
@@ -39,6 +40,7 @@ export default function HomeProjects() {
           <div className="project-grid">
             <div className="project-main">
               <h3 className="project-name">TriSwift</h3>
+
               <p className="project-desc">
                 Activity tracking built for triathletes — authentication,
                 sessions & activities, automatic personal records, pace tools,
@@ -62,6 +64,25 @@ export default function HomeProjects() {
                     {t}
                   </span>
                 ))}
+              </div>
+
+              <div className="project-actions">
+                <a
+                  className="btn btn-secondary"
+                  href="https://github.com/samw0907/TriSwift"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+                <a
+                  className="btn btn-primary"
+                  href="https://triswift-frontend.fly.dev"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Live
+                </a>
               </div>
             </div>
 
@@ -91,25 +112,6 @@ export default function HomeProjects() {
                     ›
                   </button>
                 </div>
-              </div>
-
-              <div className="project-visual-actions">
-                <a
-                  className="btn btn-secondary"
-                  href="https://github.com/samw0907/TriSwift"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
-                <a
-                  className="btn btn-primary"
-                  href="https://triswift-frontend.fly.dev"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Live
-                </a>
               </div>
             </div>
           </div>
