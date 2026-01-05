@@ -1,6 +1,6 @@
 // src/components/home/HomeProjects.tsx
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../styles/homeProjects.css";
 
 import TriSwift1 from "../../assets/TriSwift1.png";
@@ -13,6 +13,7 @@ const triswiftImages = [TriSwift1, TriSwift2, TriSwift3, TriSwift4, TriSwift5];
 
 export default function HomeProjects() {
   const [activeImage, setActiveImage] = useState(0);
+  const [galleryOpen, setGalleryOpen] = useState(false);
 
   function prevImage() {
     setActiveImage((i) => (i === 0 ? triswiftImages.length - 1 : i - 1));
@@ -21,6 +22,35 @@ export default function HomeProjects() {
   function nextImage() {
     setActiveImage((i) => (i === triswiftImages.length - 1 ? 0 : i + 1));
   }
+
+  function openGallery(index: number) {
+    setActiveImage(index);
+    setGalleryOpen(true);
+  }
+
+  function closeGallery() {
+    setGalleryOpen(false);
+  }
+
+  useEffect(() => {
+    if (!galleryOpen) return;
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeGallery();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [galleryOpen]);
 
   return (
     <section className="section projects" aria-label="Projects">
@@ -87,7 +117,16 @@ export default function HomeProjects() {
             </div>
 
             <div className="project-visual">
-              <div className="project-media">
+              <div
+                className="project-media"
+                role="button"
+                tabIndex={0}
+                aria-label="Open gallery"
+                onClick={() => openGallery(activeImage)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") openGallery(activeImage);
+                }}
+              >
                 <img
                   src={triswiftImages[activeImage]}
                   alt={`TriSwift screenshot ${activeImage + 1}`}
@@ -98,7 +137,10 @@ export default function HomeProjects() {
                   <button
                     type="button"
                     className="project-visual-btn"
-                    onClick={prevImage}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prevImage();
+                    }}
                     aria-label="Previous screenshot"
                   >
                     ‹
@@ -106,7 +148,10 @@ export default function HomeProjects() {
                   <button
                     type="button"
                     className="project-visual-btn"
-                    onClick={nextImage}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      nextImage();
+                    }}
                     aria-label="Next screenshot"
                   >
                     ›
@@ -116,6 +161,56 @@ export default function HomeProjects() {
             </div>
           </div>
         </article>
+
+        {galleryOpen && (
+          <div
+            className="gallery-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label="TriSwift gallery"
+            onMouseDown={(e) => {
+              if (e.target === e.currentTarget) closeGallery();
+            }}
+          >
+            <div className="gallery-dialog">
+              <button
+                type="button"
+                className="gallery-close"
+                onClick={closeGallery}
+                aria-label="Close gallery"
+              >
+                ×
+              </button>
+
+              <div className="gallery-stage">
+                <img
+                  src={triswiftImages[activeImage]}
+                  alt={`TriSwift screenshot ${activeImage + 1} enlarged`}
+                  className="gallery-image"
+                />
+              </div>
+
+              <div className="gallery-nav" aria-hidden="false">
+                <button
+                  type="button"
+                  className="gallery-nav-btn"
+                  onClick={prevImage}
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  className="gallery-nav-btn"
+                  onClick={nextImage}
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="projects-subhead">
           <h3 className="projects-subheading">In progress</h3>
