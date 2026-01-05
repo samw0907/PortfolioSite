@@ -1,5 +1,6 @@
 // src/components/home/HomeProfile.tsx
 import { useMemo } from "react";
+import BWPhotoEdit from "../../assets/BWPhotoEdit.png";
 
 type AboutBlock = {
   kicker: string;
@@ -28,16 +29,21 @@ export default function HomeProfile() {
 
       <div className="about-stack about-stack--plain">
         <section className="about-block about-block--primary">
-          <h3 className="about-title--kickerPrimary">
-            {profileBlock.title}
-          </h3>
+          <div className="about-primary-grid">
+            <div className="about-primary-content">
+              <h3 className="about-title--kickerPrimary">{profileBlock.title}</h3>
+              <div className="about-body">
+                {profileBlock.body.map((line, i) => (
+                  <p key={i} className="about-text">
+                    {line}
+                  </p>
+                ))}
+              </div>
+            </div>
 
-          <div className="about-body">
-            {profileBlock.body.map((line, i) => (
-              <p key={i} className="about-text">
-                {line}
-              </p>
-            ))}
+            <div className="about-primary-visual" aria-hidden="true">
+              <img className="about-primary-photo" src={BWPhotoEdit} alt="" />
+            </div>
           </div>
         </section>
       </div>
