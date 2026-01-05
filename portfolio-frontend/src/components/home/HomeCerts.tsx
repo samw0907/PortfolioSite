@@ -9,7 +9,6 @@ export default function HomeCerts() {
     <section className="section" aria-label="Certifications">
       <div className="container-max">
         <div className="certs-block">
-          <p className="kicker">Certified</p>
 
           <div className="certs-grid">
             <div className="cert-item">
