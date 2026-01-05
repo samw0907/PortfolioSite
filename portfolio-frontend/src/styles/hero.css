@@ -13,7 +13,7 @@
 
 .hero-slab {
   position: absolute;
-  inset: -20% -10% auto auto;
+  inset: -26% -12% auto auto;
   width: min(560px, 55vw);
   height: min(560px, 55vw);
   background: linear-gradient(
@@ -31,8 +31,8 @@
 
 .hero-slab-2 {
   position: absolute;
-  left: -10%;
-  bottom: -30%;
+  left: -12%;
+  bottom: -34%;
   width: min(520px, 60vw);
   height: min(520px, 60vw);
   background: linear-gradient(
@@ -48,9 +48,10 @@
   opacity: 0.75;
 }
 
+/* 3 (MID RIGHT - cool) */
 .hero-slab-3 {
   position: absolute;
-  top: 38%;
+  top: 24%; /* moved up */
   right: -18%;
   width: min(520px, 52vw);
   height: min(520px, 52vw);
@@ -67,10 +68,11 @@
   opacity: 0.70;
 }
 
+/* 4 (LOWER LEFT - warm) */
 .hero-slab-4 {
   position: absolute;
-  top: 62%;
-  left: -20%;
+  top: 46%; /* moved up */
+  left: -22%;
   width: min(560px, 58vw);
   height: min(560px, 58vw);
   background: linear-gradient(
@@ -86,10 +88,11 @@
   opacity: 0.62;
 }
 
+/* 5 (BOTTOM RIGHT - cool) */
 .hero-slab-5 {
   position: absolute;
-  top: 84%;
-  right: -16%;
+  top: 72%; /* moved up */
+  right: -18%;
   width: min(500px, 50vw);
   height: min(500px, 50vw);
   background: linear-gradient(
@@ -105,10 +108,11 @@
   opacity: 0.58;
 }
 
+/* 6 (DEEP BOTTOM LEFT - warm) */
 .hero-slab-6 {
   position: absolute;
-  bottom: -26%;
-  left: -14%;
+  bottom: -32%;
+  left: -16%;
   width: min(540px, 56vw);
   height: min(540px, 56vw);
   background: linear-gradient(
@@ -124,10 +128,11 @@
   opacity: 0.52;
 }
 
+/* 7 (TOP LEFT - warm) */
 .hero-slab-7 {
   position: absolute;
-  top: 16.5%;
-  left: -16%;
+  top: 6%; /* moved up */
+  left: -18%;
   width: min(520px, 54vw);
   height: min(520px, 54vw);
   background: linear-gradient(
@@ -142,6 +147,147 @@
   clip-path: polygon(6% 0%, 100% 10%, 92% 100%, 0% 86%);
   opacity: 0.66;
 }
+
+/* 8 (NEW - TOP RIGHT - cool, clone-ish of #1) */
+.hero-slab-8 {
+  position: absolute;
+  top: -18%;
+  right: -6%;
+  width: min(520px, 52vw);
+  height: min(520px, 52vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent) / 0.50) 0%,
+    rgb(var(--accent-2) / 0.40) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 20px 56px rgb(var(--accent) / 0.20);
+  transform: rotate(-4deg);
+  border-radius: 38px;
+  clip-path: polygon(10% 8%, 100% 0%, 92% 100%, 0% 84%);
+  opacity: 0.78;
+}
+
+/* 9 (NEW - TOP LEFT - warm, clone-ish of #7) */
+.hero-slab-9 {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: min(500px, 50vw);
+  height: min(500px, 50vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent-warm) / 0.40) 0%,
+    rgb(var(--accent-warm) / 0.28) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 18px 50px rgb(var(--accent-warm) / 0.16);
+  transform: rotate(16deg);
+  border-radius: 40px;
+  clip-path: polygon(0% 14%, 90% 0%, 100% 82%, 14% 100%);
+  opacity: 0.70;
+}
+
+/* 10 (NEW - MID RIGHT - cool) */
+.hero-slab-10 {
+  position: absolute;
+  top: 40%;
+  right: -22%;
+  width: min(520px, 52vw);
+  height: min(520px, 52vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent) / 0.36) 0%,
+    rgb(var(--accent-2) / 0.28) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 20px 56px rgb(var(--accent) / 0.14);
+  transform: rotate(18deg);
+  border-radius: 44px;
+  clip-path: polygon(8% 0%, 100% 12%, 88% 100%, 0% 90%);
+  opacity: 0.62;
+}
+
+/* 11 (NEW - MID LEFT - warm) */
+.hero-slab-11 {
+  position: absolute;
+  top: 30%;
+  left: -26%;
+  width: min(540px, 56vw);
+  height: min(540px, 56vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent-warm) / 0.34) 0%,
+    rgb(var(--accent-warm) / 0.24) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 18px 52px rgb(var(--accent-warm) / 0.12);
+  transform: rotate(-22deg);
+  border-radius: 46px;
+  clip-path: polygon(0% 22%, 92% 0%, 100% 78%, 12% 100%);
+  opacity: 0.58;
+}
+
+/* 12 (NEW - LOWER RIGHT - cool) */
+.hero-slab-12 {
+  position: absolute;
+  top: 62%;
+  right: -10%;
+  width: min(520px, 52vw);
+  height: min(520px, 52vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent) / 0.30) 0%,
+    rgb(var(--accent-2) / 0.24) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 18px 50px rgb(var(--accent) / 0.12);
+  transform: rotate(-16deg);
+  border-radius: 44px;
+  clip-path: polygon(12% 0%, 100% 18%, 84% 100%, 0% 82%);
+  opacity: 0.56;
+}
+
+/* 13 (NEW - LOWER LEFT - warm) */
+.hero-slab-13 {
+  position: absolute;
+  top: 66%;
+  left: -12%;
+  width: min(520px, 52vw);
+  height: min(520px, 52vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent-warm) / 0.28) 0%,
+    rgb(var(--accent-warm) / 0.20) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 18px 50px rgb(var(--accent-warm) / 0.10);
+  transform: rotate(10deg);
+  border-radius: 44px;
+  clip-path: polygon(0% 10%, 88% 0%, 100% 86%, 16% 100%);
+  opacity: 0.52;
+}
+
+/* 14 (NEW - DEEP BOTTOM RIGHT - cool) */
+.hero-slab-14 {
+  position: absolute;
+  bottom: -30%;
+  right: -14%;
+  width: min(540px, 56vw);
+  height: min(540px, 56vw);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent) / 0.26) 0%,
+    rgb(var(--accent-2) / 0.20) 100%
+  );
+  border: 1px solid rgb(var(--border) / 0.10);
+  box-shadow: 0 18px 52px rgb(var(--accent) / 0.10);
+  transform: rotate(14deg);
+  border-radius: 48px;
+  clip-path: polygon(6% 0%, 100% 12%, 92% 100%, 0% 88%);
+  opacity: 0.50;
+}
+
 
 .hero-noise {
   position: absolute;
