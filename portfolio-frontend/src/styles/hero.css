@@ -50,7 +50,7 @@
   transform: rotate(18deg);
   border-radius: 40px;
   clip-path: polygon(6% 8%, 88% 0%, 69% 65%, 8% 100%);
-  opacity: 0.68;
+  opacity: 0.88;
 }
 
 .hero-slab-3 {
@@ -240,7 +240,7 @@
   transform: rotate(10deg);
   border-radius: 44px;
   clip-path: polygon(1% 21%, 76% 0%, 65% 100%, 16% 90%);
-  opacity: 0.78;
+  opacity: 0.98;
 }
 
 .hero-noise {
