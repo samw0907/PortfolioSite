@@ -53,6 +53,7 @@ export default function HomeAbout() {
 
   return (
     <section className="section" aria-label="About">
+      <div id="about" className="section-anchor" />
       <div id="background" className="section-anchor" />
 
       <div className="about-stack about-stack--plain">
@@ -111,6 +112,7 @@ export default function HomeAbout() {
                 {isMusic ? (
                   <div className="about-embed">
                     <iframe
+                      className="spotify-iframe"
                       style={{ borderRadius: 12, display: "block" }}
                       src="https://open.spotify.com/embed/playlist/6iOuXEPPs5liMYgc2ri3oM?utm_source=generator&theme=0"
                       width="100%"

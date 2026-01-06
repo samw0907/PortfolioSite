@@ -362,3 +362,13 @@
   object-fit: cover;
   object-position: center;
 }
+
+.spotify-iframe {
+  height: 510px;
+}
+
+@media (max-width: 640px) {
+  .spotify-iframe {
+    height: 410px;
+  }
+}
