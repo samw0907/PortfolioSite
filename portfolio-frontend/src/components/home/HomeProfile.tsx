@@ -25,7 +25,7 @@ export default function HomeProfile() {
 
   return (
     <section className="section" aria-label="Profile">
-      <div id="about" className="section-anchor" />
+      <div id="profile" className="section-anchor" />
 
       <div className="about-stack about-stack--plain">
         <section className="about-block about-block--primary">

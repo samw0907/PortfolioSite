@@ -68,7 +68,7 @@ body {
 }
 
 .section-anchor {
-  scroll-margin-top: var(--nav-h);
+  scroll-margin-top: 0px;
 }
 
 .container-max {

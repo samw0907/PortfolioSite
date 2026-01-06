@@ -53,7 +53,6 @@ export default function HomeAbout() {
 
   return (
     <section className="section" aria-label="About">
-      <div id="about" className="section-anchor" />
       <div id="background" className="section-anchor" />
 
       <div className="about-stack about-stack--plain">

@@ -18,7 +18,17 @@ const navItems: NavItem[] = [
 function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
-  el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const navbar = document.getElementById("main-navbar");
+  const navHeight = navbar?.offsetHeight ?? 76;
+  const offset = navHeight + 8;
+
+  const y = el.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({
+    top: Math.max(0, y),
+    behavior: "smooth",
+  });
 }
 
 export default function Navbar() {
@@ -44,6 +54,10 @@ export default function Navbar() {
 
     if (!sections.length) return;
 
+    const navbar = document.getElementById("main-navbar");
+    const navHeight = navbar?.offsetHeight ?? 76;
+    const offset = navHeight + 8;
+
     const obs = new IntersectionObserver(
       (entries) => {
         if (lockRef.current) return;
@@ -61,7 +75,7 @@ export default function Navbar() {
       },
       {
         root: null,
-        rootMargin: `-${76 + 8}px 0px -60% 0px`,
+        rootMargin: `-${offset}px 0px -60% 0px`,
         threshold: [0.01, 0.1, 0.2, 0.35, 0.5],
       }
     );
@@ -73,20 +87,34 @@ export default function Navbar() {
   const onNavClick =
     (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
-      setOpen(false);
 
       lockRef.current = true;
       setActiveId(id);
-      scrollToId(id);
+
+      const wasOpen = open;
+      if (wasOpen) setOpen(false);
+
       history.replaceState(null, "", `#${id}`);
 
       if (lockTimerRef.current !== null) {
         window.clearTimeout(lockTimerRef.current);
       }
 
-      lockTimerRef.current = window.setTimeout(() => {
-        lockRef.current = false;
-      }, 700);
+      const doScroll = () => {
+        scrollToId(id);
+
+        lockTimerRef.current = window.setTimeout(() => {
+          lockRef.current = false;
+        }, 700);
+      };
+
+      if (wasOpen) {
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(doScroll);
+        });
+      } else {
+        doScroll();
+      }
     };
 
   return (
