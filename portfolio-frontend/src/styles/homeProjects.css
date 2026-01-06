@@ -39,12 +39,7 @@
   display: block;
   width: 72px;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgb(var(--accent)) 0%,
-    rgb(var(--accent-2)) 55%,
-    rgb(var(--accent-warm)) 110%
-  );
+  background: rgb(var(--accent));
   border-radius: 999px;
   opacity: 0.95;
   margin-bottom: 14px;
