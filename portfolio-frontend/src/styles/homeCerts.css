@@ -15,7 +15,7 @@
 @media (max-width: 640px) {
   .certs-grid {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 68px;
   }
 }
 
