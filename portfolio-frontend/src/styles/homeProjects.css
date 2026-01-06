@@ -178,6 +178,7 @@
 
 @media (max-width: 640px) {
   .project-actions {
+    margin-top: 14px;
     justify-content: flex-start;
     transform: none;
   }
