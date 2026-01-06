@@ -34,14 +34,18 @@
 }
 
 .about-bullets {
-  margin-top: 16px;
+  margin-top: 12px;
   padding-left: 18px;
-  color: rgb(var(--text) / 0.86);
+
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: rgb(var(--text) / 0.92);
 }
 
 .about-bullets li {
-  margin-top: 10px;
-  line-height: 1.6;
+  margin-top: 12px;
+  line-height: inherit;
+  color: inherit;
 }
 
 .about-bullets li:first-child {

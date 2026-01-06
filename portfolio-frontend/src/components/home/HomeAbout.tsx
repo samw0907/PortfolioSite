@@ -20,9 +20,9 @@ export default function HomeAbout() {
       ],
       bullets: [
         "Geological and environmental analysis & reporting.",
+        "Use of GIS software in geospatial analysis.",
         "Mine stability assessments.",
         "On-site supervision of unstable mine remediation via drilling and high-pressure grouting.",
-        "Use of GIS software in geospatial analysis.",
       ],
     }),
     []
