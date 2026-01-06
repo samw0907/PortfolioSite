@@ -78,14 +78,14 @@
 }
 
 .home-contact-direct-links {
-  margin-top: 28px;
+  margin-top: 68px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 .home-contact-formgrid {
-  margin-top: 18px;
+  margin-top: 8px;
   display: grid;
   gap: 14px;
 }

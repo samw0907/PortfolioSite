@@ -1,5 +1,51 @@
 // src/components/home/HomeHero.tsx
+import { useEffect, useRef } from "react";
+
 export default function HomeHero() {
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+
+  useEffect(() => {
+    const el = titleRef.current;
+    if (!el) return;
+
+    // Good default (matches your existing initial "intentional" spot)
+    el.style.setProperty("--hx", "40%");
+    el.style.setProperty("--hy", "34%");
+
+    let rafId: number | null = null;
+    let lastX = 0;
+    let lastY = 0;
+
+    const apply = () => {
+      rafId = null;
+
+      const rect = el.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+
+      const x = ((lastX - rect.left) / rect.width) * 100;
+      const y = ((lastY - rect.top) / rect.height) * 100;
+
+      const clampedX = Math.max(0, Math.min(100, x));
+      const clampedY = Math.max(0, Math.min(100, y));
+
+      el.style.setProperty("--hx", `${clampedX}%`);
+      el.style.setProperty("--hy", `${clampedY}%`);
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      lastX = e.clientX;
+      lastY = e.clientY;
+      if (rafId === null) rafId = window.requestAnimationFrame(apply);
+    };
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
     <section className="section section--hero">
       <div className="full-bleed">
@@ -9,7 +55,7 @@ export default function HomeHero() {
               <div className="hero-left">
                 <p className="kicker">Full-stack developer</p>
 
-                <h1 className="hero-title-strong">
+                <h1 ref={titleRef} className="hero-title-strong">
                   <span className="hero-title-outline">Sam Williamson</span>
 
                   <span className="hero-spotlight hero-title-fill">

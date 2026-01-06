@@ -348,9 +348,11 @@
   color: inherit;
 }
 
+/* ✅ TEXT spotlight now uses the hero-title-local vars (--hx/--hy).
+   Background glow still uses the page vars (--mx/--my) below. */
 .hero-spotlight {
   background-image: radial-gradient(
-    circle at var(--mx, 35%) var(--my, 40%),
+    circle at var(--hx, 35%) var(--hy, 40%),
     rgb(var(--accent-2)) 0%,
     rgb(var(--accent)) 4%,
     rgb(var(--text)) 12%,
