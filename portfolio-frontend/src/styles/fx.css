@@ -46,3 +46,58 @@
 :root:not(.dark) .hero-spot-glow {
   display: none;
 }
+
+@media (max-width: 640px) {
+  .hero-spot-glow {
+    display: none !important;
+  }
+
+  .section--hero,
+  .projects,
+  .about-subblock--music {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .section--hero::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+      820px 520px at 50% 18%,
+      rgb(var(--accent) / 0.22) 0%,
+      rgb(var(--accent) / 0.14) 14%,
+      transparent 66%
+    );
+  }
+
+  .projects::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+      820px 520px at 50% 24%,
+      rgb(var(--accent) / 0.32) 0%,
+      rgb(var(--accent-2) / 0.22) 12%,
+      transparent 64%
+    );
+  }
+
+  .about-subblock--music::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+      800px 520px at 50% 20%,
+      rgb(var(--accent-2) / 0.30) 0%,
+      rgb(var(--accent-2) / 0.20) 12%,
+      transparent 64%
+    );
+  }
+}

@@ -367,11 +367,11 @@
   pointer-events: none;
   background: radial-gradient(
     circle at var(--mx, 40%) var(--my, 34%),
-    rgb(var(--accent) / 0.26) 0%,
-    rgb(var(--accent) / 0.14) 8%,
-    transparent 24%
+    rgb(var(--accent) / 0.18) 0%,
+    rgb(var(--accent) / 0.10) 10%,
+    transparent 30%
   );
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .hero-lead {

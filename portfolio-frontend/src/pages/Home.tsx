@@ -15,11 +15,17 @@ export default function Home() {
     const root = pageFxRef.current;
     if (!root) return;
 
+    const supportsHover = window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
+
     const target =
       (root.querySelector(".home-fx-bg") as HTMLDivElement | null) ?? root;
 
     root.style.setProperty("--mx", "40%");
     root.style.setProperty("--my", "34%");
+
+    if (!supportsHover) return;
 
     let rafId: number | null = null;
     let lastX = 0;

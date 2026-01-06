@@ -8,8 +8,14 @@ export default function HomeHero() {
     const el = titleRef.current;
     if (!el) return;
 
+    const supportsHover = window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
+
     el.style.setProperty("--hx", "40%");
     el.style.setProperty("--hy", "34%");
+
+    if (!supportsHover) return;
 
     let rafId: number | null = null;
     let lastX = 0;

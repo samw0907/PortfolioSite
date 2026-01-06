@@ -88,7 +88,10 @@ export default function HomeAbout() {
             const isMusic = block.title === "Music";
 
             return (
-              <section key={block.title} className="about-subblock">
+              <section
+                key={block.title}
+                className={`about-subblock${isMusic ? " about-subblock--music" : ""}`}
+              >
                 <h3 className="about-subheading">{block.title}</h3>
 
                 {block.body.length ? (
@@ -112,7 +115,6 @@ export default function HomeAbout() {
                 {isMusic ? (
                   <div className="about-embed">
                     <iframe
-                      className="spotify-iframe"
                       style={{ borderRadius: 12, display: "block" }}
                       src="https://open.spotify.com/embed/playlist/6iOuXEPPs5liMYgc2ri3oM?utm_source=generator&theme=0"
                       width="100%"
