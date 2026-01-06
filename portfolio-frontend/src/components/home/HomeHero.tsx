@@ -8,7 +8,6 @@ export default function HomeHero() {
     const el = titleRef.current;
     if (!el) return;
 
-    // Good default (matches your existing initial "intentional" spot)
     el.style.setProperty("--hx", "40%");
     el.style.setProperty("--hy", "34%");
 

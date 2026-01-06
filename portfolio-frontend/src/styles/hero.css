@@ -294,7 +294,7 @@
 
 @media (min-width: 1024px) {
   .hero-left {
-    grid-column: span 8 / span 8;
+    grid-column: span 10 / span 10;
   }
 }
 
@@ -324,16 +324,20 @@
   letter-spacing: -0.03em;
 }
 
+.hero-title-spot + .hero-title-spot {
+  margin-top: -0.1em;
+}
+
 .hero-title-outline {
   color: transparent;
   -webkit-text-stroke: 1px rgb(var(--border) / 0.22);
-  opacity: 0.9;
+  opacity: 0.75;
   user-select: none;
 }
 
 .hero-title-fill {
   display: block;
-  margin-top: -0.18em;
+  margin-top: -0.5em;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   -webkit-background-clip: text;
@@ -348,17 +352,16 @@
   color: inherit;
 }
 
-/* ✅ TEXT spotlight now uses the hero-title-local vars (--hx/--hy).
-   Background glow still uses the page vars (--mx/--my) below. */
 .hero-spotlight {
   background-image: radial-gradient(
     circle at var(--hx, 35%) var(--hy, 40%),
     rgb(var(--accent-2)) 0%,
-    rgb(var(--accent)) 4%,
-    rgb(var(--text)) 12%,
+    rgb(var(--accent)) 10%,
+    rgb(var(--text)) 28%,
     rgb(var(--text)) 100%
   );
 }
+
 
 .hero-spot-glow {
   position: absolute;
@@ -392,7 +395,7 @@
 }
 
 .hero-proof {
-  margin-top: 160px;
+  margin-top: 120px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -406,6 +409,13 @@
     flex-direction: row;
     align-items: center;
     gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-proof {
+    margin-left: 335px;
+    max-width: 100rem;
   }
 }
 
