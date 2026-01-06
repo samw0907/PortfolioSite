@@ -412,7 +412,33 @@
   background: rgb(var(--border) / 0.1);
 }
 
+@media (max-width: 640px) {
+  .hero-proof {
+    margin-top: 34px;
+    padding-top: 0;
+    gap: 14px;
+    max-width: 100%;
+  }
 
+  .hero-proof::before {
+    display: none;
+  }
+
+  .hero-proof-value {
+    margin-top: 8px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .hero-proof-link {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .hero-proof--links {
+    margin-top: 14px;
+  }
+}
 
 @media (min-width: 640px) {
   .hero-proof {
