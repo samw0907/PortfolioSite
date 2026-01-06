@@ -227,8 +227,8 @@
 
 .hero-slab-12 {
   position: absolute;
-  top: 95.5%;
-  left: -13%;
+  top: 95.8%;
+  left: -5%;
   width: min(720px, 52vw);
   height: min(520px, 52vw);
   background: linear-gradient(
@@ -240,7 +240,7 @@
   box-shadow: 0 20px 52px rgb(var(--accent-warm) / 0.22);
   transform: rotate(10deg);
   border-radius: 44px;
-  clip-path: polygon(1% 23%, 59% 0%, 90% 100%, 16% 90%);
+  clip-path: polygon(1% 21%, 76% 0%, 65% 100%, 16% 90%);
   opacity: 0.78;
 }
 

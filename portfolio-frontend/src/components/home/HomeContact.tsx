@@ -6,7 +6,9 @@ export default function HomeContact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<string>("");
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
@@ -43,15 +45,20 @@ export default function HomeContact() {
         <h2 className="contact-heading">Contact</h2>
       </header>
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-5">
+      <div className="contact-grid">
+        <div className="contact-col-left">
           <div className="home-contact-direct">
-
             <p className="card-text home-contact-direct-text">
-              My main email address below is the best way to contact me directly. Feel free to also use LinkedIn or the
-              contact form below.
+              I'm always happy to make new connections!
             </p>
-
+            <p className="card-text home-contact-direct-text">
+              Whether you want to talk work and careers, or just get some new
+              music recommendations!
+            </p>
+            <p className="card-text home-contact-direct-text">
+              My main email address below is the best way to contact me directly.
+              However, please feel free to also use LinkedIn or the message form provided.
+            </p>
             <div className="home-contact-direct-links">
               <a className="link" href="mailto:swilliamson_0907@outlook.com">
                 swilliamson_0907@outlook.com
@@ -69,9 +76,8 @@ export default function HomeContact() {
           </div>
         </div>
 
-        <div className="lg:col-span-7 home-contact-formcol">
+        <div className="contact-col-right">
           <form onSubmit={handleSubmit} className="home-contact-form">
-            <h3 className="contact-subheading">Message</h3>
 
             <div className="home-contact-formgrid">
               <input
