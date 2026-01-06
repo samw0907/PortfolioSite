@@ -83,33 +83,43 @@ export default function HomeHero() {
                   </a>
                 </div>
 
-                <dl className="hero-proof" aria-label="Quick facts">
+                <dl
+                  className="hero-proof hero-proof--current"
+                  aria-label="Current focus"
+                  style={
+                    {
+                      "--proof-x": "455px",
+                      "--proof-y": "0px",
+                      "--proof-rule-w": "400px",
+                    } as React.CSSProperties
+                  }
+                >
                   <div className="hero-proof-item">
-                    <dt className="hero-proof-label">Certifications</dt>
-                    <dd className="hero-proof-value">AWS SAA-C03 · PSM I</dd>
-                  </div>
-
-                  <div className="hero-proof-divider" aria-hidden="true" />
-
-                  <div className="hero-proof-item">
-                    <dt className="hero-proof-label">Core stack</dt>
+                    <dt className="hero-proof-label">Current Project</dt>
                     <dd className="hero-proof-value">
-                      React · TypeScript · Node
+                      ToolSharer · AWS serverless architecture
                     </dd>
-                  </div>
-
-                  <div className="hero-proof-divider" aria-hidden="true" />
-
-                  <div className="hero-proof-item">
-                    <dt className="hero-proof-label">Based</dt>
-                    <dd className="hero-proof-value">Espoo</dd>
                   </div>
                 </dl>
 
                 <dl
                   className="hero-proof hero-proof--links"
-                  aria-label="Profile links"
+                  aria-label="Location and profile links"
+                  style={
+                    {
+                      "--proof-x": "365px",
+                      "--proof-y": "0px",
+                      "--proof-rule-w": "490px",
+                    } as React.CSSProperties
+                  }
                 >
+                  <div className="hero-proof-item">
+                    <dt className="hero-proof-label">Based</dt>
+                    <dd className="hero-proof-value">Espoo</dd>
+                  </div>
+
+                  <div className="hero-proof-divider" aria-hidden="true" />
+
                   <div className="hero-proof-item">
                     <dt className="hero-proof-label">GitHub</dt>
                     <dd className="hero-proof-value">
