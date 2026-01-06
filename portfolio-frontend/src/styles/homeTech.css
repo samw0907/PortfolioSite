@@ -77,3 +77,9 @@
   text-align: center;
   line-height: 1.2;
 }
+
+@media (min-width: 860px) {
+  .tech-item--break {
+    grid-column: 1;
+  }
+}

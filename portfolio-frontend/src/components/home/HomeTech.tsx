@@ -36,7 +36,12 @@ export default function HomeTech() {
 
       <div className="tech-grid">
         {techItems.map((tech) => (
-          <div key={tech.name} className="tech-item">
+          <div
+            key={tech.name}
+            className={`tech-item ${
+              tech.name === "PostgreSQL" ? "tech-item--break" : ""
+            }`}
+          >
             <span
               className="tech-icon"
               aria-hidden

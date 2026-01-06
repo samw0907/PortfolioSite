@@ -115,7 +115,7 @@ export default function HomeAbout() {
                       style={{ borderRadius: 12, display: "block" }}
                       src="https://open.spotify.com/embed/playlist/6iOuXEPPs5liMYgc2ri3oM?utm_source=generator&theme=0"
                       width="100%"
-                      height="352"
+                      height="510"
                       frameBorder={0}
                       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                       loading="lazy"
