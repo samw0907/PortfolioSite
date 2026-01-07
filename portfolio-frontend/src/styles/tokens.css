@@ -8,6 +8,8 @@
   --text: 17 24 39;
   --muted: 75 85 99;
 
+  --muted-strong: 55 65 81;
+
   --border: 0 0 0;
 
   --accent: 37 99 235;
@@ -25,10 +27,11 @@
   --text: 255 255 255;
   --muted: 205 205 205;
 
+  --muted-strong: 229 231 235;
+
   --border: 255 255 255;
 
   --accent: 59 130 246;
   --accent-2: 37 99 235;
   --accent-warm: 245 91 66;
 }
-

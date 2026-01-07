@@ -48,7 +48,7 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-weight: 700;
-  color: rgb(var(--muted));
+  color: rgb(var(--muted-strong));
 
   border-bottom: 2px solid transparent;
   transition: color 160ms ease, border-color 160ms ease, opacity 160ms ease;
@@ -82,7 +82,7 @@
 
   background: rgb(var(--surface));
   border: 1px solid rgb(var(--border) / 0.10);
-  color: rgb(var(--muted));
+  color: rgb(var(--muted-strong));
 }
 
 .strava-table-wrap {
@@ -105,7 +105,7 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: rgb(var(--muted));
+  color: rgb(var(--muted-strong));
   background: rgb(var(--surface-2));
   border-bottom: 1px solid rgb(var(--border) / 0.10);
 }
@@ -170,6 +170,7 @@
 .strava .card-text {
   font-size: 0.85rem;
   line-height: 1.6;
+  color: rgb(var(--text) / 0.86);
 }
 
 .strava-actions {

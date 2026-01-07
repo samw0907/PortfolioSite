@@ -4,7 +4,7 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.24em;
-  color: rgb(var(--muted));
+  color: rgb(var(--muted-strong));
 }
 
 .page-title {
@@ -54,7 +54,7 @@
   margin-top: 24px;
   font-size: 1rem;
   line-height: 1.75;
-  color: rgb(var(--text) / 0.82);
+  color: rgb(var(--text) / 0.88);
 }
 
 @media (min-width: 640px) {
@@ -165,7 +165,7 @@
   padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid rgb(var(--border) / 0.10);
-  color: rgb(var(--muted));
+  color: rgb(var(--muted-strong));
   background: rgb(var(--surface));
 }
 
@@ -201,7 +201,7 @@
   margin-top: 12px;
   font-size: 0.95rem;
   line-height: 1.75;
-  color: rgb(var(--muted));
+  color: rgb(var(--muted-strong));
 }
 
 .dark-toggle {
