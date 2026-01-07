@@ -28,7 +28,7 @@ export default function HomeProfile() {
       <div id="profile" className="section-anchor" />
 
       <div className="about-stack about-stack--plain">
-        <section className="about-block about-block--primary">
+        <section className="about-block about-block--primary about-block--profile">
           <div className="about-primary-grid">
             <div className="about-primary-content">
               <h3 className="about-title--kickerPrimary">{profileBlock.title}</h3>

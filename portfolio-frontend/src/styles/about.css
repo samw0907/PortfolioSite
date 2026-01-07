@@ -26,7 +26,7 @@
   margin-top: 12px;
   font-size: 0.9rem;
   line-height: 1.75;
-  color: rgb(var(--muted-strong));
+  color: rgb(var(--text) / 0.9);
 }
 
 .about-text:first-child {
@@ -39,7 +39,7 @@
 
   font-size: 0.9rem;
   line-height: 1.75;
-  color: rgb(var(--muted-strong));
+  color: rgb(var(--text) / 0.9);
 }
 
 .about-bullets li {
@@ -119,7 +119,7 @@
 .about-block--primary .about-text {
   font-size: 1.05rem;
   line-height: 1.9;
-  color: rgb(var(--muted-strong));
+  color: rgb(var(--text) / 0.9);
 }
 
 @media (min-width: 640px) {
@@ -139,7 +139,7 @@
 .about-block--primary .about-bullets li {
   font-size: 0.95rem;
   letter-spacing: 0.02em;
-  color: rgb(var(--muted-strong));
+  color: rgb(var(--text) / 0.9);
 }
 
 .about-primary-grid {
@@ -372,3 +372,20 @@
     height: 410px;
   }
 }
+
+.about-subblock--music .about-subheading {
+  position: relative;
+  padding-top: 14px;
+}
+
+.about-subblock--music .about-subheading::before {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: rgb(var(--accent));
+  border-radius: 999px;
+  opacity: 0.95;
+  margin-bottom: 12px;
+}
+
