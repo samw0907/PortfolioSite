@@ -43,18 +43,20 @@
   z-index: 10;
 }
 
+/* Disable animated spotlight in light mode (static glow only) */
 :root:not(.dark) .hero-spot-glow {
   display: none;
 }
 
+/* -------------------------
+   Mobile: hero spotlight only
+   ------------------------- */
 @media (max-width: 640px) {
   .hero-spot-glow {
     display: none !important;
   }
 
-  .section--hero,
-  .projects,
-  .about-subblock--music {
+  .section--hero {
     position: relative;
     isolation: isolate;
   }
@@ -72,32 +74,28 @@
       transparent 66%
     );
   }
+}
 
-  .projects::before {
-    content: "";
-    position: absolute;
-    inset: -18px;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(
-      820px 520px at 50% 24%,
-      rgb(var(--accent) / 0.32) 0%,
-      rgb(var(--accent-2) / 0.22) 12%,
-      transparent 64%
-    );
+/* -------------------------
+   Desktop: hero spotlight only
+   ------------------------- */
+@media (min-width: 641px) {
+  :root:not(.dark) .section--hero {
+    position: relative;
+    isolation: isolate;
   }
 
-  .about-subblock--music::before {
+  :root:not(.dark) .section--hero::before {
     content: "";
     position: absolute;
-    inset: -18px;
+    inset: -24px;
     z-index: -1;
     pointer-events: none;
     background: radial-gradient(
-      800px 520px at 50% 20%,
-      rgb(var(--accent-2) / 0.30) 0%,
-      rgb(var(--accent-2) / 0.20) 12%,
-      transparent 64%
+      1100px 640px at 25% 23%,
+      rgb(var(--accent) / 0.28) 0%,
+      rgb(var(--accent) / 0.12) 16%,
+      transparent 78%
     );
   }
 }

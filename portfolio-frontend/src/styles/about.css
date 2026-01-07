@@ -397,3 +397,9 @@
 .about-block--profile .about-bullets li {
   color: rgb(var(--text) / 0.94);
 }
+
+.about-block--background > .kicker,
+.about-group > .kicker {
+  color: rgb(var(--text) / 0.92);
+  font-weight: 500;
+}
