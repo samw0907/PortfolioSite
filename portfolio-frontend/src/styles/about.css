@@ -26,7 +26,7 @@
   margin-top: 12px;
   font-size: 0.9rem;
   line-height: 1.75;
-  color: rgb(var(--text) / 0.92);
+  color: rgb(var(--muted-strong));
 }
 
 .about-text:first-child {
@@ -39,7 +39,7 @@
 
   font-size: 0.9rem;
   line-height: 1.75;
-  color: rgb(var(--text) / 0.92);
+  color: rgb(var(--muted-strong));
 }
 
 .about-bullets li {
@@ -119,7 +119,7 @@
 .about-block--primary .about-text {
   font-size: 1.05rem;
   line-height: 1.9;
-  color: rgb(var(--text) / 0.92);
+  color: rgb(var(--muted-strong));
 }
 
 @media (min-width: 640px) {
@@ -139,7 +139,7 @@
 .about-block--primary .about-bullets li {
   font-size: 0.95rem;
   letter-spacing: 0.02em;
-  color: rgb(var(--text) / 0.86);
+  color: rgb(var(--muted-strong));
 }
 
 .about-primary-grid {
@@ -257,7 +257,7 @@
   margin-top: 10px;
   font-size: 0.95rem;
   line-height: 1.7;
-  color: rgb(var(--text) / 0.82);
+  color: rgb(var(--muted-strong));
 }
 
 .spotify-actions {

@@ -1,4 +1,5 @@
 // src/components/home/HomeAbout.tsx
+
 import { useMemo } from "react";
 import StravaStats from "../StravaStats";
 

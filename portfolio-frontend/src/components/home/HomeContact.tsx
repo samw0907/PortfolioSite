@@ -78,7 +78,6 @@ export default function HomeContact() {
 
         <div className="contact-col-right">
           <form onSubmit={handleSubmit} className="home-contact-form">
-
             <div className="home-contact-formgrid">
               <input
                 name="name"

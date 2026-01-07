@@ -155,7 +155,7 @@
   margin-top: 14px;
   font-size: 0.98rem;
   line-height: 1.75;
-  color: rgb(var(--muted));
+  color: rgb(var(--muted-strong));
   max-width: 70ch;
 }
 
