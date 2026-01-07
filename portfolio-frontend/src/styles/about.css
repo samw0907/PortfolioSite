@@ -389,3 +389,11 @@
   margin-bottom: 12px;
 }
 
+.about-block--profile .about-text {
+  color: rgb(var(--text) / 0.99);
+}
+
+.about-block--profile .about-bullets,
+.about-block--profile .about-bullets li {
+  color: rgb(var(--text) / 0.94);
+}
