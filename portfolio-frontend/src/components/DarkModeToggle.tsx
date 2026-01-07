@@ -6,10 +6,7 @@ const DarkModeToggle = () => {
 
   useEffect(() => {
     const storedPreference = localStorage.getItem("theme");
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    const shouldUseDark =
-      storedPreference === "dark" || (!storedPreference && systemPrefersDark);
+    const shouldUseDark = storedPreference !== "light";
 
     setIsDark(shouldUseDark);
     document.documentElement.classList.toggle("dark", shouldUseDark);
@@ -32,12 +29,17 @@ const DarkModeToggle = () => {
       aria-label="Toggle color theme"
     >
       <span className="dark-toggle-inner">
-        {isDark ? <Moon className="dark-toggle-icon" aria-hidden /> : <Sun className="dark-toggle-icon" aria-hidden />}
-        <span className="dark-toggle-label">{isDark ? "Dark" : "Light"}</span>
+        {isDark ? (
+          <Moon className="dark-toggle-icon" aria-hidden />
+        ) : (
+          <Sun className="dark-toggle-icon" aria-hidden />
+        )}
+        <span className="dark-toggle-label">
+          {isDark ? "Dark" : "Light"}
+        </span>
       </span>
     </button>
   );
 };
 
 export default DarkModeToggle;
-
