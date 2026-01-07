@@ -229,3 +229,20 @@
     display: inline;
   }
 }
+
+.dark .kicker {
+  color: rgb(var(--text) / 0.80);
+}
+
+.dark .lead {
+  color: rgb(var(--text) / 0.92);
+}
+
+.dark .card-text {
+  color: rgb(var(--text) / 0.86);
+}
+
+.dark .tag {
+  color: rgb(var(--text) / 0.82);
+  border-color: rgb(var(--border) / 0.14);
+}

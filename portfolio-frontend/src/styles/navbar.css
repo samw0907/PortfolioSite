@@ -64,18 +64,36 @@
   gap: 24px;
 }
 
+:root {
+  --nav-link: rgb(var(--text) / 0.86);
+
+  --nav-rail: linear-gradient(
+    90deg,
+    rgb(var(--accent)) 0%,
+    rgb(var(--accent-2)) 55%,
+    rgb(var(--accent-warm)) 110%
+  );
+}
+
+.dark {
+  --nav-link: rgb(var(--text) / 0.88);
+}
+
 .navbar-link {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-weight: 700;
-  color: rgb(var(--muted));
+
+  /* was: color: rgb(var(--muted)); */
+  color: var(--nav-link);
+
   text-decoration: none;
   transition: opacity 160ms ease, color 160ms ease;
 }
 
 .navbar-link:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .navbar-mobile-toggle {
@@ -114,17 +132,6 @@
 
 .navbar-mobile-toggle-row {
   margin-top: 24px;
-}
-
-/* src/styles/navbar.css */
-
-:root {
-  --nav-rail: linear-gradient(
-    90deg,
-    rgb(var(--accent)) 0%,
-    rgb(var(--accent-2)) 55%,
-    rgb(var(--accent-warm)) 110%
-  );
 }
 
 .navbar-brand--rail {

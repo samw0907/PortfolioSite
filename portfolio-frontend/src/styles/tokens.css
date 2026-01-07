@@ -6,7 +6,7 @@
   --surface-2: 245 245 244;
 
   --text: 17 24 39;
-  --muted: 75 85 99;
+  --muted: 55 65 81;
 
   --muted-strong: 55 65 81;
 
@@ -20,14 +20,13 @@
 }
 
 .dark {
-  --bg: 12 12 12;
-  --surface: 16 16 16;
-  --surface-2: 22 22 22;
+  --bg: 10 10 10;
+  --surface: 18 18 18;
+  --surface-2: 26 26 26;
 
   --text: 255 255 255;
-  --muted: 205 205 205;
-
-  --muted-strong: 229 231 235;
+  --muted: 170 170 170;
+  --muted-strong: 205 205 205;
 
   --border: 255 255 255;
 
