@@ -415,7 +415,7 @@
 @media (max-width: 640px) {
   .hero-proof {
     margin-top: 34px;
-    padding-top: 75px;
+    padding-top: 92px;
     margin-bottom: -6px;
     gap: 14px;
     max-width: 100%;
@@ -532,15 +532,15 @@
   }
 
   .hero-slab-2 {
-    top:5%;
+    top:5.1%;
     left: -28%;
     transform: rotate(16deg);
     opacity: 0.70;
     clip-path: polygon(
       15% 7%,
       99% 2%,
-      90% 52%,
-      3% 77%
+      88% 54%,
+      4% 78%
     );
   }
 
@@ -550,15 +550,15 @@
     transform: rotate(12deg);
     opacity: 0.62;
     clip-path: polygon(
-      6% 18%,
-      99% 0%,
-      99% 92%,
-      39% 70%
+      6% 17%,
+      88% 0%,
+      99% 85%,
+      39% 66%
     );
   }
 
   .hero-slab-4 {
-    top: 18.4%;
+    top: 18.55%;
     left: -48%;
     width: min(540px, 120vw);
     height: min(240px, 96vw);
@@ -573,10 +573,10 @@
   }
 
   .hero-slab-5 {
-    top: 42%;
+    top: 28.6%;
     right: -34%;
     transform: rotate(-10deg);
-    opacity: 0.55;
+    opacity: 0.65;
   }
 
   .hero-slab-6 {
