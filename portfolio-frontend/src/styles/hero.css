@@ -550,8 +550,8 @@
     transform: rotate(12deg);
     opacity: 0.62;
     clip-path: polygon(
-      6% 17%,
-      88% 0%,
+      6% 18%,
+      91% 0%,
       99% 85%,
       39% 66%
     );
@@ -574,14 +574,22 @@
 
   .hero-slab-5 {
     top: 28.6%;
-    right: -34%;
+    right: -38%;
+    width: min(540px, 120vw);
+    height: min(440px, 96vw);
     transform: rotate(-10deg);
     opacity: 0.65;
+    clip-path: polygon(
+    29% 12%,
+      88% 36%,
+      78% 99%,
+      26% 94%
+    );
   }
 
   .hero-slab-6 {
-    top: 52%;
-    left: -44%;
+    top: 36.6%;
+    left: -10%;
     transform: rotate(10deg);
     opacity: 0.55;
   }
