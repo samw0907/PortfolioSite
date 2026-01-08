@@ -415,7 +415,8 @@
 @media (max-width: 640px) {
   .hero-proof {
     margin-top: 34px;
-    padding-top: 0;
+    padding-top: 75px;
+    margin-bottom: -6px;
     gap: 14px;
     max-width: 100%;
   }
@@ -501,4 +502,119 @@
 .hero-proof-link:hover {
   opacity: 0.85;
   border-color: rgb(var(--border) / 0.42);
+}
+
+/* --- Mobile-only slab positioning --- */
+@media (max-width: 640px) {
+  .hero-slab,
+  .hero-slab-2,
+  .hero-slab-3,
+  .hero-slab-4,
+  .hero-slab-5,
+  .hero-slab-6,
+  .hero-slab-7,
+  .hero-slab-8,
+  .hero-slab-9,
+  .hero-slab-10,
+  .hero-slab-11,
+  .hero-slab-12 {
+    width: min(420px, 92vw);
+    height: min(420px, 92vw);
+  }
+
+  .hero-slab {
+    top: -40vh;
+    right: -33vw;
+    left: auto;
+    bottom: auto;
+    transform: rotate(-14deg);
+    opacity: 0.85;
+  }
+
+  .hero-slab-2 {
+    top:5%;
+    left: -28%;
+    transform: rotate(16deg);
+    opacity: 0.70;
+    clip-path: polygon(
+      15% 7%,
+      99% 2%,
+      90% 52%,
+      3% 77%
+    );
+  }
+
+  .hero-slab-3 {
+    top: 18%;
+    right: -42%;
+    transform: rotate(12deg);
+    opacity: 0.62;
+  }
+
+  .hero-slab-4 {
+    top: 30%;
+    left: -48%;
+    width: min(540px, 120vw);
+    height: min(420px, 96vw);
+    transform: translateX(0) translateY(0) rotate(-14deg);
+    opacity: 0.40;
+  }
+
+  .hero-slab-5 {
+    top: 42%;
+    right: -34%;
+    transform: rotate(-10deg);
+    opacity: 0.55;
+  }
+
+  .hero-slab-6 {
+    top: 52%;
+    left: -44%;
+    transform: rotate(10deg);
+    opacity: 0.55;
+  }
+
+  .hero-slab-7 {
+    top: 60%;
+    right: -40%;
+    transform: rotate(-14deg);
+    opacity: 0.42;
+  }
+
+  .hero-slab-8 {
+    top: 68%;
+    left: -42%;
+    transform: rotate(8deg);
+    opacity: 0.40;
+  }
+
+  .hero-slab-9 {
+    top: 76%;
+    right: -54%;
+    transform: rotate(-6deg);
+    opacity: 0.55;
+  }
+
+  .hero-slab-10 {
+    top: 84%;
+    left: -46%;
+    transform: rotate(8deg);
+    opacity: 0.45;
+  }
+
+  .hero-slab-11 {
+    top: 92%;
+    right: -52%;
+    transform: rotate(-6deg);
+    opacity: 0.52;
+  }
+
+  .hero-slab-12 {
+    top: 102%;
+    left: -34%;
+    width: min(520px, 110vw);
+    height: min(420px, 96vw);
+    transform: rotate(10deg);
+    opacity: 0.52;
+  }
 }
