@@ -615,7 +615,7 @@
   }
 
   .hero-slab-8 {
-    top: calc(52.35% + var(--slab-y-shift));
+    top: calc(52.65% + var(--slab-y-shift));
     left: -20%;
     width: min(540px, 120vw);
     height: min(540px, 96vw);
@@ -630,7 +630,7 @@
   }
 
   .hero-slab-9 {
-    top: calc(62.8% + var(--slab-y-shift));
+    top: calc(63.2% + var(--slab-y-shift));
     right: -45%;
     transform: rotate(-6deg);
     opacity: 0.55;
@@ -643,7 +643,7 @@
   }
 
   .hero-slab-10 {
-    top: calc(72.4% + var(--slab-y-shift));
+    top: calc(72.75% + var(--slab-y-shift));
     left: -30%;
     transform: rotate(8deg);
     opacity: 0.45;
@@ -656,7 +656,7 @@
   }
 
   .hero-slab-11 {
-    top: calc(85.5% + var(--slab-y-shift));
+    top: calc(86.1% + var(--slab-y-shift));
     right: -42%;
     transform: rotate(-6deg);
     opacity: 0.52;
@@ -669,7 +669,7 @@
   }
 
   .hero-slab-12 {
-    top: calc(92.5% + var(--slab-y-shift));
+    top: calc(92.6% + var(--slab-y-shift));
     left: -14%;
     width: min(520px, 110vw);
     height: min(420px, 96vw);
