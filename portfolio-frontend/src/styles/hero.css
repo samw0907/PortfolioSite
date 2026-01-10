@@ -414,7 +414,7 @@
 
 @media (max-width: 640px) {
   .hero-proof {
-    margin-top: 34px;
+    margin-top: 40px;
     padding-top: 92px;
     margin-bottom: -6px;
     gap: 14px;
@@ -510,20 +510,7 @@
 @media (max-width: 360px) {
   :root {
     --slab-y-shift: 0px;
-    --slab-x-shift: 0px; /* optional, for later */
-  }
-
- @media (max-width: 640px) and (min-width: 381px) {
-  :root {
-    --slab-y-shift: -24px; /* start value; you’ll tune */
-  }
-}
-
-  /* Short-height outliers (keep this, but only inside the 360 baseline) */
-  @media (max-height: 700px) {
-    :root {
-      --slab-y-shift: -22px;
-    }
+    --slab-x-shift: 0px;
   }
 
   .hero-slab,
@@ -537,11 +524,14 @@
   .hero-slab-9,
   .hero-slab-10,
   .hero-slab-11,
-  .hero-slab-12
+  .hero-slab-12 {
+    width: min(460px, 96vw);
+    height: min(460px, 96vw);
+  }
 
   .hero-slab {
-    top: calc(-1.5% + var(--slab-y-shift));
-    right: -12%;
+    top: calc(-3.5% + var(--slab-y-shift));
+    right: calc(-40% + var(--slab-x-shift));
     left: auto;
     bottom: auto;
     transform: rotate(-14deg);
@@ -549,149 +539,111 @@
   }
 
   .hero-slab-2 {
-    top: calc(5.35% + var(--slab-y-shift));
-    left: -28%;
+    top: calc(5.05% + var(--slab-y-shift));
+    left: calc(-28% + var(--slab-x-shift));
     transform: rotate(16deg);
     opacity: 0.70;
-    clip-path: polygon(
-      15% 7%,
-      97% 4%,
-      78% 57%,
-      23% 73%
-    );
+    clip-path: polygon(15% 7%, 97% 4%, 78% 62%, 23% 78%);
   }
 
   .hero-slab-3 {
     top: calc(9.26% + var(--slab-y-shift));
-    right: -32%;
+    right: calc(-32% + var(--slab-x-shift));
     transform: rotate(12deg);
     opacity: 0.62;
-    clip-path: polygon(
-      6% 18%,
-      91% 0%,
-      99% 85%,
-      39% 66%
-    );
+    clip-path: polygon(6% 18%, 91% 0%, 99% 85%, 39% 66%);
   }
 
   .hero-slab-4 {
     top: calc(18.75% + var(--slab-y-shift));
-    left: -45%;
-    width: min(540px, 120vw);
-    height: min(240px, 96vw);
+    left: calc(-45% + var(--slab-x-shift));
+    width: min(600px, 130vw);
+    height: min(270px, 104vw);
     transform: translateX(0) translateY(0) rotate(-14deg);
     opacity: 0.6;
-    clip-path: polygon(
-      26% 18%,
-      99% 28%,
-      79% 78%,
-      28% 54%
-    );
+    clip-path: polygon(26% 18%, 99% 28%, 79% 78%, 28% 54%);
   }
 
   .hero-slab-5 {
     top: calc(28.9% + var(--slab-y-shift));
-    right: -38%;
-    width: min(540px, 120vw);
-    height: min(440px, 96vw);
+    right: calc(-38% + var(--slab-x-shift));
+    width: min(600px, 130vw);
+    height: min(490px, 104vw);
     transform: rotate(-10deg);
     opacity: 0.65;
-    clip-path: polygon(
-      29% 12%,
-      88% 36%,
-      78% 99%,
-      26% 94%
-    );
+    clip-path: polygon(29% 12%, 88% 36%, 78% 99%, 26% 94%);
   }
 
   .hero-slab-6 {
     top: calc(37.1% + var(--slab-y-shift));
-    left: -23%;
+    left: calc(-23% + var(--slab-x-shift));
     transform: rotate(10deg);
     opacity: 0.55;
   }
 
   .hero-slab-7 {
     top: calc(43.6% + var(--slab-y-shift));
-    right: -50%;
+    right: calc(-50% + var(--slab-x-shift));
     transform: rotate(-14deg);
     opacity: 0.72;
   }
 
   .hero-slab-8 {
     top: calc(52.65% + var(--slab-y-shift));
-    left: -20%;
-    width: min(540px, 120vw);
-    height: min(540px, 96vw);
+    left: calc(-20% + var(--slab-x-shift));
+    width: min(600px, 130vw);
+    height: min(600px, 104vw);
     transform: rotate(8deg);
     opacity: 0.70;
-    clip-path: polygon(
-      2% 42%,
-      96% 36%,
-      86% 90%,
-      2% 99%
-    );
+    clip-path: polygon(2% 42%, 96% 36%, 86% 90%, 2% 99%);
   }
 
   .hero-slab-9 {
     top: calc(63.2% + var(--slab-y-shift));
-    right: -45%;
+    right: calc(-45% + var(--slab-x-shift));
     transform: rotate(-6deg);
     opacity: 0.55;
-    clip-path: polygon(
-      4% 45%,
-      96% 36%,
-      56% 90%,
-      2% 74%
-    );
+    clip-path: polygon(4% 45%, 96% 36%, 56% 90%, 2% 74%);
   }
 
   .hero-slab-10 {
     top: calc(72.75% + var(--slab-y-shift));
-    left: -30%;
+    left: calc(-30% + var(--slab-x-shift));
     transform: rotate(8deg);
     opacity: 0.45;
-    clip-path: polygon(
-      4% 25%,
-      96% 26%,
-      76% 90%,
-      12% 98%
-    );
+    clip-path: polygon(4% 25%, 96% 26%, 76% 90%, 12% 98%);
   }
 
   .hero-slab-11 {
     top: calc(86.1% + var(--slab-y-shift));
-    right: -42%;
+    right: calc(-42% + var(--slab-x-shift));
     transform: rotate(-6deg);
     opacity: 0.52;
-    clip-path: polygon(
-      4% 25%,
-      96% 26%,
-      76% 90%,
-      12% 98%
-    );
+    clip-path: polygon(4% 25%, 96% 26%, 76% 90%, 12% 98%);
   }
 
   .hero-slab-12 {
     top: calc(92.6% + var(--slab-y-shift));
-    left: -14%;
-    width: min(520px, 110vw);
-    height: min(420px, 96vw);
+    left: calc(-14% + var(--slab-x-shift));
+    width: min(580px, 120vw);
+    height: min(470px, 104vw);
     transform: rotate(10deg);
     opacity: 0.52;
-    clip-path: polygon(
-      4% 35%,
-      96% 26%,
-      76% 90%,
-      12% 98%
-    );
+    clip-path: polygon(4% 35%, 96% 26%, 76% 90%, 12% 98%);
   }
 }
 
-@media (min-width: 381px) and (max-width: 414px) {
+/* Short-height outliers (only for the 360 baseline) */
+@media (max-width: 360px) and (max-height: 700px) {
   :root {
-    /* Start with something small, then tweak */
-    --slab-y-shift: -18px;
-    --slab-x-shift: 0px;
+    --slab-y-shift: -18px; /* tune */
+  }
+}
+
+/* WIDER PHONES (iPhone 12/13/14/15 etc, many Androids) */
+@media (min-width: 390px) and (max-width: 640px) {
+  :root {
+    --slab-y-shift: -24px; /* tune */
+    /* --slab-x-shift: 0px; */
   }
 }
