@@ -536,8 +536,8 @@
   }
 
   .hero-slab {
-    top: calc(-40vh + var(--slab-y-shift));
-    right: -33vw;
+    top: calc(-3.3% + var(--slab-y-shift));
+    right: -38%;
     left: auto;
     bottom: auto;
     transform: rotate(-14deg);
