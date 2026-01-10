@@ -547,7 +547,7 @@
   }
 
   .hero-slab-3 {
-    top: calc(9.26% + var(--slab-y-shift));
+    top: calc(9% + var(--slab-y-shift));
     right: calc(-32% + var(--slab-x-shift));
     transform: rotate(12deg);
     opacity: 0.62;
