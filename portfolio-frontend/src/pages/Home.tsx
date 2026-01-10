@@ -85,7 +85,7 @@ export default function Home() {
       </div>
 
       <div className="home-fx-content">
-        <div className="fx-band fx-band--a">
+        <div className="fx-band fx-band--a" data-band="hero">
           <div className="fx-band-bg" aria-hidden="true">
             <div className="hero-bg">
               <div className="hero-slab" />
@@ -103,7 +103,7 @@ export default function Home() {
         </div>
 
         <div className="container-max">
-          <div className="fx-band fx-band--b">
+          <div className="fx-band fx-band--b" data-band="profile-tech">
             <div className="fx-band-bg" aria-hidden="true">
               <div className="hero-bg">
                 <div className="hero-slab-5" />
@@ -119,7 +119,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="fx-band fx-band--c">
+          <div className="fx-band fx-band--c" data-band="projects">
             <div className="fx-band-bg" aria-hidden="true">
               <div className="hero-bg">
                 <div className="hero-slab-8" />
@@ -133,7 +133,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="fx-band fx-band--d">
+          <div className="fx-band fx-band--d" data-band="about-contact">
             <div className="fx-band-bg" aria-hidden="true">
               <div className="hero-bg">
                 <div className="hero-slab-10" />
