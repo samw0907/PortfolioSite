@@ -1,4 +1,4 @@
-// src/pages/Home.tsx
+/* src/pages/Home.tsx */
 import { useEffect, useRef } from "react";
 import HomeHero from "../components/home/HomeHero";
 import HomeCerts from "../components/home/HomeCerts";
@@ -15,12 +15,12 @@ export default function Home() {
     const root = pageFxRef.current;
     if (!root) return;
 
-    const supportsHover = window.matchMedia(
-      "(hover: hover) and (pointer: fine)"
-    ).matches;
+    const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
     const target =
-      (root.querySelector(".home-fx-bg") as HTMLDivElement | null) ?? root;
+      (root.querySelector(".home-fx-bg") as HTMLDivElement | null) ??
+      (root.querySelector(".home-fx-content") as HTMLDivElement | null) ??
+      root;
 
     root.style.setProperty("--mx", "40%");
     root.style.setProperty("--my", "34%");
@@ -85,15 +85,69 @@ export default function Home() {
       </div>
 
       <div className="home-fx-content">
-        <HomeHero />
-        <HomeCerts />
+        <div className="fx-band fx-band--a">
+          <div className="fx-band-bg" aria-hidden="true">
+            <div className="hero-bg">
+              <div className="hero-slab" />
+              <div className="hero-slab-2" />
+              <div className="hero-slab-3" />
+              <div className="hero-slab-4" />
+              <div className="hero-noise" />
+            </div>
+          </div>
+
+          <div className="fx-band-content">
+            <HomeHero />
+            <HomeCerts />
+          </div>
+        </div>
 
         <div className="container-max">
-          <HomeProfile />
-          <HomeTech />
-          <HomeProjects />
-          <HomeAbout />
-          <HomeContact />
+          <div className="fx-band fx-band--b">
+            <div className="fx-band-bg" aria-hidden="true">
+              <div className="hero-bg">
+                <div className="hero-slab-5" />
+                <div className="hero-slab-6" />
+                <div className="hero-slab-7" />
+                <div className="hero-noise" />
+              </div>
+            </div>
+
+            <div className="fx-band-content">
+              <HomeProfile />
+              <HomeTech />
+            </div>
+          </div>
+
+          <div className="fx-band fx-band--c">
+            <div className="fx-band-bg" aria-hidden="true">
+              <div className="hero-bg">
+                <div className="hero-slab-8" />
+                <div className="hero-slab-9" />
+                <div className="hero-noise" />
+              </div>
+            </div>
+
+            <div className="fx-band-content">
+              <HomeProjects />
+            </div>
+          </div>
+
+          <div className="fx-band fx-band--d">
+            <div className="fx-band-bg" aria-hidden="true">
+              <div className="hero-bg">
+                <div className="hero-slab-10" />
+                <div className="hero-slab-11" />
+                <div className="hero-slab-12" />
+                <div className="hero-noise" />
+              </div>
+            </div>
+
+            <div className="fx-band-content">
+              <HomeAbout />
+              <HomeContact />
+            </div>
+          </div>
         </div>
       </div>
     </div>

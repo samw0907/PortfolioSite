@@ -10,10 +10,8 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-
   overflow: hidden;
   clip-path: inset(0);
-
   width: 100%;
   background: rgb(var(--hero-bg));
 }
@@ -43,15 +41,38 @@
   z-index: 10;
 }
 
-/* Disable animated spotlight in light mode (static glow only) */
 :root:not(.dark) .hero-spot-glow {
   display: none;
 }
 
-/* -------------------------
-   Mobile: hero spotlight only
-   ------------------------- */
 @media (max-width: 640px) {
+  .home-fx-bg {
+    display: none;
+  }
+
+  .fx-band {
+    position: relative;
+    width: 100%;
+  }
+
+  .fx-band-bg {
+    position: absolute;
+    inset: -24px;
+    z-index: 0;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  .fx-band-bg .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .fx-band-content {
+    position: relative;
+    z-index: 1;
+  }
+
   .hero-spot-glow {
     display: none !important;
   }
@@ -76,9 +97,6 @@
   }
 }
 
-/* -------------------------
-   Desktop: hero spotlight only
-   ------------------------- */
 @media (min-width: 641px) {
   :root:not(.dark) .section--hero {
     position: relative;
@@ -99,4 +117,3 @@
     );
   }
 }
-
