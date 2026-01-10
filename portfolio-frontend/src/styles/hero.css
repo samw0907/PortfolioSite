@@ -519,6 +519,10 @@
     }
   }
 
+    @media (min-height: 760px) {
+    :root { --slab-y-shift: -28px; }
+  }
+
   .hero-slab,
   .hero-slab-2,
   .hero-slab-3,
