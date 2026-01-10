@@ -505,22 +505,25 @@
 }
 
 /* --- Mobile-only slab positioning --- */
-@media (max-width: 640px) {
-  /* Global mobile tuning knobs */
+
+/* BASE: small Android baseline (<= 360px) */
+@media (max-width: 360px) {
   :root {
-    /* +/- px: shifts ALL mobile slabs up/down without moving hero content */
     --slab-y-shift: 0px;
+    --slab-x-shift: 0px; /* optional, for later */
   }
 
-  /* Short-height phones (e.g., iPhone SE landscape-ish / small viewport chrome) */
+ @media (max-width: 640px) and (min-width: 381px) {
+  :root {
+    --slab-y-shift: -24px; /* start value; you’ll tune */
+  }
+}
+
+  /* Short-height outliers (keep this, but only inside the 360 baseline) */
   @media (max-height: 700px) {
     :root {
       --slab-y-shift: -22px;
     }
-  }
-
-    @media (min-height: 760px) {
-    :root { --slab-y-shift: -46px; }
   }
 
   .hero-slab,
@@ -534,14 +537,11 @@
   .hero-slab-9,
   .hero-slab-10,
   .hero-slab-11,
-  .hero-slab-12 {
-    width: min(420px, 92vw);
-    height: min(420px, 92vw);
-  }
+  .hero-slab-12
 
   .hero-slab {
-    top: calc(-3.3% + var(--slab-y-shift));
-    right: -38%;
+    top: calc(-1.5% + var(--slab-y-shift));
+    right: -12%;
     left: auto;
     bottom: auto;
     transform: rotate(-14deg);
@@ -685,5 +685,13 @@
       76% 90%,
       12% 98%
     );
+  }
+}
+
+@media (min-width: 381px) and (max-width: 414px) {
+  :root {
+    /* Start with something small, then tweak */
+    --slab-y-shift: -18px;
+    --slab-x-shift: 0px;
   }
 }
