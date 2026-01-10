@@ -520,7 +520,7 @@
   }
 
     @media (min-height: 760px) {
-    :root { --slab-y-shift: -28px; }
+    :root { --slab-y-shift: -46px; }
   }
 
   .hero-slab,
