@@ -122,9 +122,9 @@
 }
 
 .btn-secondary {
-  background: transparent;
+  background: rgb(var(--surface) / 0.89);
   border: 1px solid rgb(var(--border) / 0.18);
-  color: rgb(var(--text));
+  color: rgb(var(--text) / 0.98);
 }
 
 .btn-accent {

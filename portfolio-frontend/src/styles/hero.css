@@ -545,20 +545,20 @@
   }
 
   .hero-slab-2 {
-    top: calc(5.1% + var(--slab-y-shift));
+    top: calc(5.35% + var(--slab-y-shift));
     left: -28%;
     transform: rotate(16deg);
     opacity: 0.70;
     clip-path: polygon(
       15% 7%,
       97% 4%,
-      78% 51%,
-      3% 73%
+      78% 57%,
+      23% 73%
     );
   }
 
   .hero-slab-3 {
-    top: calc(9% + var(--slab-y-shift));
+    top: calc(9.26% + var(--slab-y-shift));
     right: -32%;
     transform: rotate(12deg);
     opacity: 0.62;
@@ -571,7 +571,7 @@
   }
 
   .hero-slab-4 {
-    top: calc(18.55% + var(--slab-y-shift));
+    top: calc(18.8% + var(--slab-y-shift));
     left: -48%;
     width: min(540px, 120vw);
     height: min(240px, 96vw);
