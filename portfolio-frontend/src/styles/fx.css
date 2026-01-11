@@ -186,18 +186,18 @@
   }
 
   .fx-band-bg .hero-slab-4 {
-    top: calc(94.00% + var(--slab-y-shift, 0px));
+    top: calc(-0.50% + var(--slab-y-shift, 0px));
     left: calc(-45% + var(--slab-x-shift, 0px));
     width: min(600px, 130vw);
     height: min(270px, 104vw);
     transform: translateX(0) translateY(0) rotate(-14deg);
     opacity: 0.6;
-    clip-path: polygon(26% 18%, 99% 28%, 79% 78%, 28% 54%);
+    clip-path: polygon(26% 18%, 99% 40%, 79% 78%, 28% 54%);
   }
 
   .fx-band-bg .hero-slab-5 {
-    top: calc(28.9% + var(--slab-y-shift, 0px));
-    right: calc(-38% + var(--slab-x-shift, 0px));
+    top: calc(52.9% + var(--slab-y-shift, 0px));
+    right: calc(-44% + var(--slab-x-shift, 0px));
     width: min(600px, 130vw);
     height: min(490px, 104vw);
     transform: rotate(-10deg);
@@ -206,21 +206,21 @@
   }
 
   .fx-band-bg .hero-slab-6 {
-    top: calc(37.1% + var(--slab-y-shift, 0px));
+    top: calc(2.1% + var(--slab-y-shift, 0px));
     left: calc(-23% + var(--slab-x-shift, 0px));
     transform: rotate(10deg);
     opacity: 0.55;
   }
 
   .fx-band-bg .hero-slab-7 {
-    top: calc(43.6% + var(--slab-y-shift, 0px));
+    top: calc(41.6% + var(--slab-y-shift, 0px));
     right: calc(-50% + var(--slab-x-shift, 0px));
     transform: rotate(-14deg);
     opacity: 0.72;
   }
 
   .fx-band-bg .hero-slab-8 {
-    top: calc(52.65% + var(--slab-y-shift, 0px));
+    top: calc(-1.7% + var(--slab-y-shift, 0px));
     left: calc(-20% + var(--slab-x-shift, 0px));
     width: min(600px, 130vw);
     height: min(600px, 104vw);
@@ -230,11 +230,11 @@
   }
 
   .fx-band-bg .hero-slab-9 {
-    top: calc(63.2% + var(--slab-y-shift, 0px));
-    right: calc(-45% + var(--slab-x-shift, 0px));
+    top: calc(21% + var(--slab-y-shift, 0px));
+    right: calc(-40% + var(--slab-x-shift, 0px));
     transform: rotate(-6deg);
     opacity: 0.55;
-    clip-path: polygon(4% 45%, 96% 36%, 56% 90%, 2% 74%);
+    clip-path: polygon(22% 45%, 96% 31%, 56% 90%, 2% 74%);
   }
 
   .fx-band-bg .hero-slab-10 {
