@@ -159,7 +159,7 @@
     --hero-push: 42px;
   }
 
-  .section--hero {
+  .fx-band--a .fx-band-content {
     padding-top: var(--hero-push, 0px);
   }
 }
