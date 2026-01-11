@@ -155,6 +155,12 @@
     --slab10-y: -62px;
     --slab11-y: 56px;
     --slab12-y: -14px;
+
+    --hero-push: 12px;
+  }
+
+  .section--hero {
+    padding-top: var(--hero-push, 0px);
   }
 }
 
