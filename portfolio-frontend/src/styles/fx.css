@@ -145,23 +145,23 @@
 
 @media (max-width: 640px) and (min-height: 780px) {
   :root {
-    --slab1-y: -50px;
+    --slab1-y: -40px;
     --slab2-y: 12px;
-    --slab3-y: 12px;
-    --slab4-y: 12px;
+    --slab3-y: 15px;
+    --slab4-y: 18px;
     --slab5-y: -18px;
     --slab6-y: 14px;
     --slab7-y: -60px;
-    --slab8-y: -75px;
+    --slab8-y: -80px;
     --slab9-y: -70px;
-    --slab10-y: -92px;
-    --slab11-y: 96px;
-    --slab12-y: -34px;
+    --slab10-y: -122px;
+    --slab11-y: 126px;
+    --slab12-y: -46px;
 
     --hero-push: 42px;
 
     --slab2-scale: 0.78;
-    --slab9-scale: 0.78;
+    --slab9-scale: 0.70;
   }
 
   .fx-band--a .fx-band-content {
