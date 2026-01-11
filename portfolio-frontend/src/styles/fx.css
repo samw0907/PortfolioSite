@@ -145,15 +145,16 @@
 
 @media (max-width: 640px) and (min-height: 780px) {
   :root {
-    --slab1-y: -60px;
-    --slab2-y: -50px;
-    --slab4-y: 40px;
-    --slab5-y: -30px;
-    --slab6-y: 20px;
-    --slab8-y: -30px;
-    --slab9-y: -62px;
-    --slab10-y: -52px;
-    --slab11-y: -32px;
+    --slab1-y: -50px;
+    --slab4-y: -12px;
+    --slab5-y: -18px;
+    --slab6-y: 14px;
+    --slab7-y: -60px;
+    --slab8-y: -70px;
+    --slab9-y: -70px;
+    --slab10-y: -62px;
+    --slab11-y: 56px;
+    --slab12-y: -14px;
   }
 }
 
@@ -175,7 +176,7 @@
   }
 
   .fx-band-bg .hero-slab {
-    top: calc(-16.5% + var(--slab-y-shift, 0px));
+    top: calc(-16.5% + var(--slab-y-shift, 0px) + var(--slab1-y, 0px));
     right: calc(-30% + var(--slab-x-shift, 0px));
     left: auto;
     bottom: auto;
@@ -210,7 +211,7 @@
   }
 
   .fx-band-bg .hero-slab-5 {
-    top: calc(52.9% + var(--slab-y-shift, 0px));
+    top: calc(52.9% + var(--slab-y-shift, 0px) + var(--slab5-y, 0px));
     right: calc(-44% + var(--slab-x-shift, 0px));
     width: min(600px, 130vw);
     height: min(490px, 104vw);
@@ -220,14 +221,14 @@
   }
 
   .fx-band-bg .hero-slab-6 {
-    top: calc(2.1% + var(--slab-y-shift, 0px));
+    top: calc(2.1% + var(--slab-y-shift, 0px) + var(--slab6-y, 0px));
     left: calc(-23% + var(--slab-x-shift, 0px));
     transform: rotate(10deg);
     opacity: 0.55;
   }
 
   .fx-band-bg .hero-slab-7 {
-    top: calc(41.6% + var(--slab-y-shift, 0px));
+    top: calc(41.6% + var(--slab-y-shift, 0px) + var(--slab7-y, 0px));
     right: calc(-50% + var(--slab-x-shift, 0px));
     transform: rotate(-14deg);
     opacity: 0.72;
@@ -268,7 +269,7 @@
   }
 
   .fx-band-bg .hero-slab-12 {
-    top: calc(83.5% + var(--slab-y-shift, 0px));
+    top: calc(83.5% + var(--slab-y-shift, 0px) + var(--slab12-y, 0px));
     left: calc(-14% + var(--slab-x-shift, 0px));
     width: min(580px, 120vw);
     height: min(470px, 104vw);
