@@ -143,6 +143,18 @@
   }
 }
 
+@media (max-width: 640px) and (min-height: 780px) {
+  :root {
+    --slab1-y: -10px;
+    --slab2-y: -10px;
+    --slab4-y: 8px;
+    --slab8-y: -20px;
+    --slab9-y: -12px;
+    --slab10-y: -12px;
+    --slab11-y: -12px;
+  }
+}
+
 @media (max-width: 640px) {
   .fx-band-bg .hero-slab,
   .fx-band-bg .hero-slab-2,
@@ -170,7 +182,7 @@
   }
 
   .fx-band-bg .hero-slab-2 {
-    top: calc(27.00% + var(--slab-y-shift, 0px));
+    top: calc(27% + var(--slab-y-shift, 0px) + var(--slab2-y, 0px));
     left: calc(-28% + var(--slab-x-shift, 0px));
     transform: rotate(16deg);
     opacity: 0.7;
@@ -186,7 +198,7 @@
   }
 
   .fx-band-bg .hero-slab-4 {
-    top: calc(-0.50% + var(--slab-y-shift, 0px));
+    top: calc(-0.5% + var(--slab-y-shift, 0px) + var(--slab4-y, 0px));
     left: calc(-45% + var(--slab-x-shift, 0px));
     width: min(600px, 130vw);
     height: min(270px, 104vw);
@@ -220,7 +232,7 @@
   }
 
   .fx-band-bg .hero-slab-8 {
-    top: calc(-1.7% + var(--slab-y-shift, 0px));
+    top: calc(-1.7% + var(--slab-y-shift, 0px) + var(--slab8-y, 0px));
     left: calc(-20% + var(--slab-x-shift, 0px));
     width: min(600px, 130vw);
     height: min(600px, 104vw);
@@ -230,7 +242,7 @@
   }
 
   .fx-band-bg .hero-slab-9 {
-    top: calc(21% + var(--slab-y-shift, 0px));
+    top: calc(21% + var(--slab-y-shift, 0px) + var(--slab9-y, 0px));
     right: calc(-40% + var(--slab-x-shift, 0px));
     transform: rotate(-6deg);
     opacity: 0.55;
@@ -238,7 +250,7 @@
   }
 
   .fx-band-bg .hero-slab-10 {
-    top: calc(41.5% + var(--slab-y-shift, 0px));
+    top: calc(41.5% + var(--slab-y-shift, 0px) + var(--slab10-y, 0px));
     left: calc(-30% + var(--slab-x-shift, 0px));
     transform: rotate(8deg);
     opacity: 0.45;
@@ -246,7 +258,7 @@
   }
 
   .fx-band-bg .hero-slab-11 {
-    top: calc(58.5% + var(--slab-y-shift, 0px));
+    top: calc(58.5% + var(--slab-y-shift, 0px) + var(--slab11-y, 0px));
     right: calc(-42% + var(--slab-x-shift, 0px));
     transform: rotate(-6deg);
     opacity: 0.52;
