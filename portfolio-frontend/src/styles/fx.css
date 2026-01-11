@@ -238,7 +238,7 @@
   }
 
   .fx-band-bg .hero-slab-10 {
-    top: calc(72.75% + var(--slab-y-shift, 0px));
+    top: calc(41.5% + var(--slab-y-shift, 0px));
     left: calc(-30% + var(--slab-x-shift, 0px));
     transform: rotate(8deg);
     opacity: 0.45;
@@ -246,7 +246,7 @@
   }
 
   .fx-band-bg .hero-slab-11 {
-    top: calc(86.1% + var(--slab-y-shift, 0px));
+    top: calc(58.5% + var(--slab-y-shift, 0px));
     right: calc(-42% + var(--slab-x-shift, 0px));
     transform: rotate(-6deg);
     opacity: 0.52;
@@ -254,7 +254,7 @@
   }
 
   .fx-band-bg .hero-slab-12 {
-    top: calc(92.6% + var(--slab-y-shift, 0px));
+    top: calc(83.5% + var(--slab-y-shift, 0px));
     left: calc(-14% + var(--slab-x-shift, 0px));
     width: min(580px, 120vw);
     height: min(470px, 104vw);
