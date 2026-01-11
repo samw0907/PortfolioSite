@@ -146,19 +146,22 @@
 @media (max-width: 640px) and (min-height: 780px) {
   :root {
     --slab1-y: -50px;
-    --slab4-y: -12px;
+    --slab2-y: 12px;
+    --slab3-y: 12px;
+    --slab4-y: 12px;
     --slab5-y: -18px;
     --slab6-y: 14px;
     --slab7-y: -60px;
-    --slab8-y: -70px;
+    --slab8-y: -75px;
     --slab9-y: -70px;
-    --slab10-y: -62px;
-    --slab11-y: 56px;
-    --slab12-y: -14px;
+    --slab10-y: -92px;
+    --slab11-y: 96px;
+    --slab12-y: -34px;
 
     --hero-push: 42px;
 
     --slab2-scale: 0.78;
+    --slab9-scale: 0.78;
   }
 
   .fx-band--a .fx-band-content {
