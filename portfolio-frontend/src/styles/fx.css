@@ -157,6 +157,8 @@
     --slab12-y: -14px;
 
     --hero-push: 42px;
+
+    --slab2-scale: 0.68;
   }
 
   .fx-band--a .fx-band-content {
