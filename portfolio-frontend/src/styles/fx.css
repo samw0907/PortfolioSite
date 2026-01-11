@@ -145,13 +145,13 @@
 
 @media (max-width: 640px) and (min-height: 780px) {
   :root {
-    --slab1-y: -10px;
-    --slab2-y: -10px;
-    --slab4-y: 8px;
-    --slab8-y: -20px;
-    --slab9-y: -12px;
-    --slab10-y: -12px;
-    --slab11-y: -12px;
+    --slab1-y: -30px;
+    --slab2-y: -30px;
+    --slab4-y: 28px;
+    --slab8-y: -30px;
+    --slab9-y: -32px;
+    --slab10-y: -22px;
+    --slab11-y: -32px;
   }
 }
 
