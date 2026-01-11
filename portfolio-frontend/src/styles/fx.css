@@ -154,14 +154,14 @@
     --slab7-y: -60px;
     --slab8-y: -80px;
     --slab9-y: -70px;
-    --slab10-y: -122px;
+    --slab10-y: -152px;
     --slab11-y: 126px;
-    --slab12-y: -46px;
+    --slab12-y: -56px;
 
     --hero-push: 42px;
 
     --slab2-scale: 0.78;
-    --slab9-scale: 0.70;
+    --slab9-scale: 0.60;
   }
 
   .fx-band--a .fx-band-content {
