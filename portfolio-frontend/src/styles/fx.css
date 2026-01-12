@@ -5,17 +5,6 @@
   width: 100%;
 }
 
-/* ✅ Prevent the #home anchor from creating a visible “gap” under the navbar */
-.home-fx > .section-anchor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-  opacity: 0;
-}
-
 .home-fx-bg {
   position: absolute;
   inset: 0;
@@ -273,12 +262,14 @@
     top: calc(-1.7% + var(--slab-y-shift, 0px) + var(--slab8-y, 0px));
     left: calc(-20% + var(--slab-x-shift, 0px));
 
+    /* ✅ NEW: size + scale are now controllable */
     width: var(--slab8-w, min(600px, 130vw));
     height: var(--slab8-h, min(600px, 104vw));
 
     transform: rotate(8deg) scale(var(--slab8-scale, 1));
     opacity: 0.7;
 
+    /* ✅ NEW: each polygon point is tweakable */
     clip-path: polygon(
       var(--slab8-p1x, 2%) var(--slab8-p1y, 42%),
       var(--slab8-p2x, 96%) var(--slab8-p2y, 36%),
