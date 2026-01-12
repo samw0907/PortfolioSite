@@ -43,7 +43,7 @@ export default function HomeAbout() {
       {
         title: "Music",
         body: [
-          "I’m a big music fan, basically any genre is on the table for me. I love spending time trying to discover new artists and albums and still have a very big physical music collection. I love to hear what music people are enjoying and trying to find an artist they may not have heard of to fit their taste.",
+          "I’m a big music fan, basically any genre is on the table for me. I love spending time trying to discover new artists and albums and still have a big physical music collection. I love to hear what music people are enjoying and trying to find an artist they may not have heard of to fit their taste.",
           "If your looking for a bit of fun, please feel free to drop me a message listing a few artists your enjoying at the moment and I'll see if I can make a few personal recommedations for you!",
           "Below is a small, very mixed genre playlist with a variety of lesser known and more well known artists I've been enjoying recently if you'd like to take a listen.",
         ],

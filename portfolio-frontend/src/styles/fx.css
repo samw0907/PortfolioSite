@@ -143,7 +143,6 @@
   }
 }
 
-/* Nokia-ish tuning bucket */
 @media (max-width: 640px) and (min-height: 780px) {
   :root {
     --slab1-y: -40px;
@@ -180,6 +179,10 @@
 
   .fx-band--a .fx-band-content {
     padding-top: var(--hero-push, 0px);
+  }
+
+  .fx-band--a .fx-band-bg {
+    inset: calc(-24px - var(--hero-push, 0px)) -24px -24px -24px;
   }
 }
 
