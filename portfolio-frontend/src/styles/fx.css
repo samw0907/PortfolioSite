@@ -158,9 +158,9 @@
 
 @media (max-width: 640px) and (min-height: 780px) {
   :root {
-    --slab1-y: 30px;
-    --slab2-y: 25px;
-    --slab3-y: 15px;
+    --slab1-y: 0px;
+    --slab2-y: 15px;
+    --slab3-y: 25px;
     --slab4-y: 18px;
     --slab5-y: -18px;
     --slab6-y: 14px;
