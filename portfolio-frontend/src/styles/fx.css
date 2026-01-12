@@ -180,35 +180,6 @@
   .fx-band--a .fx-band-content {
     padding-top: var(--hero-push, 0px);
   }
-
-    .fx-band--a::before {
-    content: "";
-    position: absolute;
-    left: -24px;
-    right: -24px;
-    top: -24px;
-    height: calc(24px + var(--hero-push, 0px) + 36px);
-    pointer-events: none;
-    z-index: 0;
-
-    /* Soft glow that fills the "revealed" strip when hero is pushed down */
-    background: radial-gradient(
-      900px 280px at 50% 0%,
-      rgb(var(--accent) / 0.16) 0%,
-      rgb(var(--accent) / 0.10) 22%,
-      transparent 70%
-    );
-  }
-
-  /* ensure the slabs/noise stay above the cap glow */
-  .fx-band--a .fx-band-bg {
-    z-index: 1;
-  }
-
-  .fx-band--a .fx-band-content {
-    position: relative;
-    z-index: 2;
-  }
 }
 
 @media (max-width: 640px) {
