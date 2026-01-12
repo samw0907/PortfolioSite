@@ -47,6 +47,12 @@
   display: none;
 }
 
+@media (min-width: 641px) {
+  .home-fx-content .fx-band-bg {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .home-fx-bg {
     display: none;
