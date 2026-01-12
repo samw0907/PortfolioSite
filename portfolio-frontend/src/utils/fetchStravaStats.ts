@@ -9,7 +9,14 @@ export const fetchStravaStats = async () => {
   try {
     const response = await fetch(`${baseUrl}/api/strava/stats`);
     if (!response.ok) throw new Error("Failed to fetch stats");
-    return await response.json();
+
+    const json = await response.json();
+
+    if (json && typeof json === "object" && "data" in json) {
+      return (json as { data: unknown }).data;
+    }
+
+    return json;
   } catch (error) {
     console.error("Error fetching Strava stats:", error);
     return null;
