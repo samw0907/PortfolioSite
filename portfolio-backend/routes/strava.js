@@ -1,9 +1,13 @@
-// routes/strava.js
+/* backend/routes/strava.js */
 import express from "express";
 import axios from "axios";
-import { refreshStravaToken } from "../utils/stravaAuth.js";
+import { getStravaAccessToken, clearStravaTokenCache } from "../utils/stravaAuth.js";
 
 const router = express.Router();
+
+let cachedAthleteId = null;
+let lastGoodStats = null;
+let lastGoodStatsAtMs = 0;
 
 function formatStats(stats) {
   const format = (obj) => ({
@@ -32,30 +36,106 @@ function formatStats(stats) {
   };
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function withRetry(fn, { attempts = 3, baseDelayMs = 250 } = {}) {
+  let lastErr = null;
+
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+
+      const status = err?.response?.status;
+      const shouldRetry =
+        !status ||
+        status === 408 ||
+        status === 429 ||
+        (status >= 500 && status <= 599);
+
+      if (!shouldRetry || i === attempts - 1) {
+        throw err;
+      }
+
+      const backoff = baseDelayMs * Math.pow(2, i);
+      await sleep(backoff);
+    }
+  }
+
+  throw lastErr;
+}
+
 async function fetchAthleteId(accessToken) {
-  const athleteRes = await axios.get("https://www.strava.com/api/v3/athlete", {
+  const res = await axios.get("https://www.strava.com/api/v3/athlete", {
     headers: { Authorization: `Bearer ${accessToken}` },
+    timeout: 10000,
   });
 
-  return athleteRes.data.id;
+  return res.data.id;
+}
+
+async function getAthleteId(accessToken) {
+  if (cachedAthleteId) return cachedAthleteId;
+
+  if (process.env.STRAVA_ATHLETE_ID) {
+    cachedAthleteId = Number(process.env.STRAVA_ATHLETE_ID);
+    return cachedAthleteId;
+  }
+
+  cachedAthleteId = await withRetry(() => fetchAthleteId(accessToken), {
+    attempts: 3,
+    baseDelayMs: 250,
+  });
+
+  return cachedAthleteId;
 }
 
 router.get("/stats", async (req, res) => {
   try {
-    const accessToken = await refreshStravaToken();
+    const accessToken = await getStravaAccessToken();
+    const athleteId = await getAthleteId(accessToken);
 
-    const athleteId = await fetchAthleteId(accessToken);
-
-    const statsRes = await axios.get(
-      `https://www.strava.com/api/v3/athletes/${athleteId}/stats`,
-      { headers: { Authorization: `Bearer ${accessToken}` } }
+    const statsRes = await withRetry(
+      () =>
+        axios.get(`https://www.strava.com/api/v3/athletes/${athleteId}/stats`, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+          timeout: 12000,
+        }),
+      { attempts: 3, baseDelayMs: 300 }
     );
 
     const formatted = formatStats(statsRes.data);
-    res.json(formatted);
+
+    lastGoodStats = formatted;
+    lastGoodStatsAtMs = Date.now();
+
+    res.json({ ok: true, source: "live", data: formatted });
   } catch (error) {
-    console.error("Failed to fetch Strava stats:", error.response?.data || error.message);
-    res.status(500).json({ error: "Failed to fetch Strava stats" });
+    const status = error?.response?.status;
+
+    if (status === 401) {
+      clearStravaTokenCache();
+      cachedAthleteId = null;
+    }
+
+    if (lastGoodStats) {
+      res.status(200).json({
+        ok: true,
+        source: "cache",
+        cached_at: new Date(lastGoodStatsAtMs).toISOString(),
+        data: lastGoodStats,
+      });
+      return;
+    }
+
+    res.status(502).json({
+      ok: false,
+      error: "Failed to fetch Strava stats",
+      details: status ? `Upstream status ${status}` : "Upstream request failed",
+    });
   }
 });
 
