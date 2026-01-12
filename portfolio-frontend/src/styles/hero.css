@@ -461,7 +461,7 @@
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: rgb(var(--text) / 0.99);
-  font-weight: 400;
+  font-weight: 400
 }
 
 .hero-proof-value {
@@ -504,43 +504,55 @@
   border-color: rgb(var(--border) / 0.42);
 }
 
+/* --- Mobile-only slab positioning --- */
+/* Put this BELOW your base (desktop) slab rules so it overrides them */
+
+/* ------------------------------------------------------------------ */
+/* 1) WIDER PHONES (390–640): iPhone 12/13/14/15 etc + many Androids   */
+/* ------------------------------------------------------------------ */
 @media (min-width: 390px) and (max-width: 640px) {
   :root {
-    --slab-y-shift: -24px;
-    --slab-x-shift: 0px;
+    --slab-y-shift: -24px; /* tune */
+    --slab-x-shift: 0px;   /* IMPORTANT: always define */
   }
 }
 
+/* ------------------------------------------------------------ */
+/* 2) MID WIDTH (361–389): fills the gap between 360 and 390     */
+/* ------------------------------------------------------------ */
 @media (min-width: 361px) and (max-width: 389px) {
   :root {
-    --slab-y-shift: 0px;
+    --slab-y-shift: 0px; /* tune if needed */
     --slab-x-shift: 0px;
   }
 }
 
+/* ---------------------------------------------------------------- */
+/* 3) BASELINE: small Android (<= 360px)                             */
+/* ---------------------------------------------------------------- */
 @media (max-width: 360px) {
   :root {
     --slab-y-shift: 0px;
     --slab-x-shift: 0px;
   }
 
-  .fx-band-bg .hero-slab,
-  .fx-band-bg .hero-slab-2,
-  .fx-band-bg .hero-slab-3,
-  .fx-band-bg .hero-slab-4,
-  .fx-band-bg .hero-slab-5,
-  .fx-band-bg .hero-slab-6,
-  .fx-band-bg .hero-slab-7,
-  .fx-band-bg .hero-slab-8,
-  .fx-band-bg .hero-slab-9,
-  .fx-band-bg .hero-slab-10,
-  .fx-band-bg .hero-slab-11,
-  .fx-band-bg .hero-slab-12 {
+  .hero-slab,
+  .hero-slab-2,
+  .hero-slab-3,
+  .hero-slab-4,
+  .hero-slab-5,
+  .hero-slab-6,
+  .hero-slab-7,
+  .hero-slab-8,
+  .hero-slab-9,
+  .hero-slab-10,
+  .hero-slab-11,
+  .hero-slab-12 {
     width: min(460px, 96vw);
     height: min(460px, 96vw);
   }
 
-  .fx-band-bg .hero-slab {
+  .hero-slab {
     top: calc(-3.5% + var(--slab-y-shift, 0px));
     right: calc(-40% + var(--slab-x-shift, 0px));
     left: auto;
@@ -549,15 +561,15 @@
     opacity: 0.85;
   }
 
-  .fx-band-bg .hero-slab-2 {
+  .hero-slab-2 {
     top: calc(5.05% + var(--slab-y-shift, 0px));
     left: calc(-28% + var(--slab-x-shift, 0px));
     transform: rotate(16deg);
-    opacity: 0.7;
+    opacity: 0.70;
     clip-path: polygon(15% 7%, 97% 4%, 78% 62%, 23% 78%);
   }
 
-  .fx-band-bg .hero-slab-3 {
+  .hero-slab-3 {
     top: calc(9% + var(--slab-y-shift, 0px));
     right: calc(-32% + var(--slab-x-shift, 0px));
     transform: rotate(12deg);
@@ -565,7 +577,7 @@
     clip-path: polygon(6% 18%, 91% 0%, 99% 85%, 39% 66%);
   }
 
-  .fx-band-bg .hero-slab-4 {
+  .hero-slab-4 {
     top: calc(18.75% + var(--slab-y-shift, 0px));
     left: calc(-45% + var(--slab-x-shift, 0px));
     width: min(600px, 130vw);
@@ -575,7 +587,7 @@
     clip-path: polygon(26% 18%, 99% 28%, 79% 78%, 28% 54%);
   }
 
-  .fx-band-bg .hero-slab-5 {
+  .hero-slab-5 {
     top: calc(28.9% + var(--slab-y-shift, 0px));
     right: calc(-38% + var(--slab-x-shift, 0px));
     width: min(600px, 130vw);
@@ -585,31 +597,31 @@
     clip-path: polygon(29% 12%, 88% 36%, 78% 99%, 26% 94%);
   }
 
-  .fx-band-bg .hero-slab-6 {
+  .hero-slab-6 {
     top: calc(37.1% + var(--slab-y-shift, 0px));
     left: calc(-23% + var(--slab-x-shift, 0px));
     transform: rotate(10deg);
     opacity: 0.55;
   }
 
-  .fx-band-bg .hero-slab-7 {
+  .hero-slab-7 {
     top: calc(43.6% + var(--slab-y-shift, 0px));
     right: calc(-50% + var(--slab-x-shift, 0px));
     transform: rotate(-14deg);
     opacity: 0.72;
   }
 
-  .fx-band-bg .hero-slab-8 {
+  .hero-slab-8 {
     top: calc(52.65% + var(--slab-y-shift, 0px));
     left: calc(-20% + var(--slab-x-shift, 0px));
     width: min(600px, 130vw);
     height: min(600px, 104vw);
     transform: rotate(8deg);
-    opacity: 0.7;
+    opacity: 0.70;
     clip-path: polygon(2% 42%, 96% 36%, 86% 90%, 2% 99%);
   }
 
-  .fx-band-bg .hero-slab-9 {
+  .hero-slab-9 {
     top: calc(63.2% + var(--slab-y-shift, 0px));
     right: calc(-45% + var(--slab-x-shift, 0px));
     transform: rotate(-6deg);
@@ -617,7 +629,7 @@
     clip-path: polygon(4% 45%, 96% 36%, 56% 90%, 2% 74%);
   }
 
-  .fx-band-bg .hero-slab-10 {
+  .hero-slab-10 {
     top: calc(72.75% + var(--slab-y-shift, 0px));
     left: calc(-30% + var(--slab-x-shift, 0px));
     transform: rotate(8deg);
@@ -625,7 +637,7 @@
     clip-path: polygon(4% 25%, 96% 26%, 76% 90%, 12% 98%);
   }
 
-  .fx-band-bg .hero-slab-11 {
+  .hero-slab-11 {
     top: calc(86.1% + var(--slab-y-shift, 0px));
     right: calc(-42% + var(--slab-x-shift, 0px));
     transform: rotate(-6deg);
@@ -633,7 +645,7 @@
     clip-path: polygon(4% 25%, 96% 26%, 76% 90%, 12% 98%);
   }
 
-  .fx-band-bg .hero-slab-12 {
+  .hero-slab-12 {
     top: calc(92.6% + var(--slab-y-shift, 0px));
     left: calc(-14% + var(--slab-x-shift, 0px));
     width: min(580px, 120vw);
@@ -644,9 +656,12 @@
   }
 }
 
+/* ---------------------------------------------------------------- */
+/* 4) SHORT-HEIGHT OUTLIERS: only for the <=360 baseline             */
+/* ---------------------------------------------------------------- */
 @media (max-width: 360px) and (max-height: 700px) {
   :root {
-    --slab-y-shift: -18px;
+    --slab-y-shift: -18px; /* tune */
     --slab-x-shift: 0px;
   }
 }
