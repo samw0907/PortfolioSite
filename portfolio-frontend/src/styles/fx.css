@@ -143,6 +143,7 @@
   }
 }
 
+/* Nokia-ish tuning bucket */
 @media (max-width: 640px) and (min-height: 780px) {
   :root {
     --slab1-y: -40px;
@@ -162,6 +163,21 @@
 
     --slab2-scale: 0.78;
     --slab9-scale: 0.60;
+
+    /* ✅ NEW: slab 8 precision controls */
+    --slab8-scale: 1;
+    --slab8-w: min(600px, 130vw);
+    --slab8-h: min(600px, 104vw);
+
+    /* Default was: polygon(2% 42%, 96% 36%, 86% 90%, 2% 99%) */
+    --slab8-p1x: 2%;
+    --slab8-p1y: 42%;
+    --slab8-p2x: 96%;
+    --slab8-p2y: 36%;
+    --slab8-p3x: 86%;
+    --slab8-p3y: 90%;
+    --slab8-p4x: 2%;
+    --slab8-p4y: 99%;
   }
 
   .fx-band--a .fx-band-content {
@@ -248,17 +264,27 @@
   .fx-band-bg .hero-slab-8 {
     top: calc(-1.7% + var(--slab-y-shift, 0px) + var(--slab8-y, 0px));
     left: calc(-20% + var(--slab-x-shift, 0px));
-    width: min(600px, 130vw);
-    height: min(600px, 104vw);
-    transform: rotate(8deg);
+
+    /* ✅ NEW: size + scale are now controllable */
+    width: var(--slab8-w, min(600px, 130vw));
+    height: var(--slab8-h, min(600px, 104vw));
+
+    transform: rotate(8deg) scale(var(--slab8-scale, 1));
     opacity: 0.7;
-    clip-path: polygon(2% 42%, 96% 36%, 86% 90%, 2% 99%);
+
+    /* ✅ NEW: each polygon point is tweakable */
+    clip-path: polygon(
+      var(--slab8-p1x, 2%) var(--slab8-p1y, 42%),
+      var(--slab8-p2x, 96%) var(--slab8-p2y, 36%),
+      var(--slab8-p3x, 86%) var(--slab8-p3y, 90%),
+      var(--slab8-p4x, 2%) var(--slab8-p4y, 99%)
+    );
   }
 
   .fx-band-bg .hero-slab-9 {
     top: calc(21% + var(--slab-y-shift, 0px) + var(--slab9-y, 0px));
     right: calc(-40% + var(--slab-x-shift, 0px));
-    transform: rotate(-6deg);
+    transform: rotate(-6deg) scale(var(--slab9-scale, 1));
     opacity: 0.55;
     clip-path: polygon(22% 45%, 96% 31%, 56% 90%, 2% 74%);
   }
