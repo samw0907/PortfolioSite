@@ -155,27 +155,25 @@
     --slab7-y: -60px;
     --slab8-y: -80px;
     --slab9-y: -70px;
-    --slab10-y: -152px;
-    --slab11-y: 126px;
+    --slab10-y: -145px;
+    --slab11-y: 156px;
     --slab12-y: -56px;
 
     --hero-push: 42px;
 
     --slab2-scale: 0.78;
-    --slab9-scale: 0.60;
+    --slab9-scale: 0.65;
 
-    /* ✅ NEW: slab 8 precision controls */
     --slab8-scale: 1;
     --slab8-w: min(600px, 130vw);
     --slab8-h: min(600px, 104vw);
 
-    /* Default was: polygon(2% 42%, 96% 36%, 86% 90%, 2% 99%) */
     --slab8-p1x: 2%;
-    --slab8-p1y: 42%;
+    --slab8-p1y: 47%;
     --slab8-p2x: 96%;
-    --slab8-p2y: 36%;
-    --slab8-p3x: 86%;
-    --slab8-p3y: 90%;
+    --slab8-p2y: 41%;
+    --slab8-p3x: 88%;
+    --slab8-p3y: 89%;
     --slab8-p4x: 2%;
     --slab8-p4y: 99%;
   }
